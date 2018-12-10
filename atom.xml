@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Nan&#39;s Blog</title>
   
-  <subtitle>俱往昔，数风流人物，还看今朝！</subtitle>
+  <subtitle>弱者才言命，强者只言运！</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
@@ -38,11 +38,11 @@
       <category term="Linux" scheme="/categories/Linux/"/>
     
     
-      <category term="Ubuntu" scheme="/tags/Ubuntu/"/>
-    
       <category term="技巧" scheme="/tags/%E6%8A%80%E5%B7%A7/"/>
     
       <category term="配置" scheme="/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="Ubuntu" scheme="/tags/Ubuntu/"/>
     
       <category term="VNC" scheme="/tags/VNC/"/>
     
@@ -97,11 +97,11 @@
       <category term="Linux" scheme="/categories/Linux/"/>
     
     
-      <category term="Ubuntu" scheme="/tags/Ubuntu/"/>
-    
       <category term="技巧" scheme="/tags/%E6%8A%80%E5%B7%A7/"/>
     
       <category term="配置" scheme="/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="Ubuntu" scheme="/tags/Ubuntu/"/>
     
   </entry>
   
