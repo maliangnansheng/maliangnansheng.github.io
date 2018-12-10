@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>用VNC搭建Ubuntu VNC可视化界面 | Nan&#39;s Blog | 俱往昔，数风流人物，还看今朝！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="技巧,配置,Ubuntu,VNC">
+    <meta name="description" content="安装配置软件 VNC的安装与配置安装之前先输入（获取最新套件的信息） 1apt-get update 输入以下命令安装VNC，安装过程中需要输入Y来确认 1apt-get install vnc4server 启动VNC（第一次启动需要设置密码） 1vncserver 设置vncserver开机启动（待完善…） 设置启动脚本  123sudo touch /etc/init.d/vncserver">
+<meta name="keywords" content="技巧,配置,Ubuntu,VNC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用VNC搭建Ubuntu VNC可视化界面">
+<meta property="og:url" content="/2018/12/10/用VNC搭建Ubuntu VNC可视化界面/index.html">
+<meta property="og:site_name" content="Nan&#39;s Blog">
+<meta property="og:description" content="安装配置软件 VNC的安装与配置安装之前先输入（获取最新套件的信息） 1apt-get update 输入以下命令安装VNC，安装过程中需要输入Y来确认 1apt-get install vnc4server 启动VNC（第一次启动需要设置密码） 1vncserver 设置vncserver开机启动（待完善…） 设置启动脚本  123sudo touch /etc/init.d/vncserver">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-10T12:01:46.541Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用VNC搭建Ubuntu VNC可视化界面">
+<meta name="twitter:description" content="安装配置软件 VNC的安装与配置安装之前先输入（获取最新套件的信息） 1apt-get update 输入以下命令安装VNC，安装过程中需要输入Y来确认 1apt-get install vnc4server 启动VNC（第一次启动需要设置密码） 1vncserver 设置vncserver开机启动（待完善…） 设置启动脚本  123sudo touch /etc/init.d/vncserver">
+    
+        <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">马亮南生</h5>
+          <a href="mailto:maliangnansheng@gmail.com" title="maliangnansheng@gmail.com" class="mail">maliangnansheng@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/maliangnansheng" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">用VNC搭建Ubuntu VNC可视化界面</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">用VNC搭建Ubuntu VNC可视化界面</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-12-10T11:48:46.000Z" itemprop="datePublished" class="page-time">
+  2018-12-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装配置软件"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装配置软件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#VNC的安装与配置"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">VNC的安装与配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置vncserver开机启动（待完善…）"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">设置vncserver开机启动（待完善…）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#gnome-桌面环境安装与配置（可直接跳至第3步）"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">gnome 桌面环境安装与配置（可直接跳至第3步）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ubuntu卸载gnome桌面（可直接跳至第3步）"><span class="post-toc-number">2.</span> <span class="post-toc-text">ubuntu卸载gnome桌面（可直接跳至第3步）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#卸载掉gnome-shell主程序"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">卸载掉gnome-shell主程序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#卸载掉gnome"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">卸载掉gnome</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#卸载不需要的依赖关系"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">卸载不需要的依赖关系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#彻底卸载删除gnome的相关配置文件"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">彻底卸载删除gnome的相关配置文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#清理安装gnome时候留下的缓存程序软件包"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">清理安装gnome时候留下的缓存程序软件包</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ubuntu运行VNC-Server无桌面时的解决方案"><span class="post-toc-number">3.</span> <span class="post-toc-text">ubuntu运行VNC Server无桌面时的解决方案</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#问题"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装xfce"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">安装xfce</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#本地使用VNC连接"><span class="post-toc-number">4.</span> <span class="post-toc-text">本地使用VNC连接</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#附录"><span class="post-toc-number">5.</span> <span class="post-toc-text">附录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下载地址"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">下载地址</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-用VNC搭建Ubuntu VNC可视化界面" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">用VNC搭建Ubuntu VNC可视化界面</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-12-10 19:48:46" datetime="2018-12-10T11:48:46.000Z" itemprop="datePublished">2018-12-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="安装配置软件"><a href="#安装配置软件" class="headerlink" title="安装配置软件"></a>安装配置软件</h2><ul>
+<li><h3 id="VNC的安装与配置"><a href="#VNC的安装与配置" class="headerlink" title="VNC的安装与配置"></a>VNC的安装与配置</h3><p>安装之前先输入（获取最新套件的信息）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br></pre></td></tr></table></figure>
+<p>输入以下命令安装VNC，安装过程中需要输入Y来确认</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install vnc4server</span><br></pre></td></tr></table></figure>
+<p>启动VNC（第一次启动需要设置密码）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver</span><br></pre></td></tr></table></figure>
+<h3 id="设置vncserver开机启动（待完善…）"><a href="#设置vncserver开机启动（待完善…）" class="headerlink" title="设置vncserver开机启动（待完善…）"></a>设置vncserver开机启动（待完善…）</h3><ul>
+<li><strong>设置启动脚本</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo touch /etc/init.d/vncserver</span><br><span class="line">sudo chmod +x /etc/init.d/vncserver</span><br><span class="line">sudo vi /etc/init.d/vncserver</span><br></pre></td></tr></table></figure>
+<p>写入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"> </span><br><span class="line">### BEGIN INIT INFO</span><br><span class="line"># Provides:          vnc4server</span><br><span class="line"># Required-Start:    $local_fs $network</span><br><span class="line"># Required-Stop:     $local_fs</span><br><span class="line"># Default-Start:     2 3 4 5</span><br><span class="line"># Default-Stop:      0 1 6</span><br><span class="line"># Short-Description: VNC</span><br><span class="line"># Description:       VNC Service</span><br><span class="line">### END INIT INFO</span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">start)</span><br><span class="line">	#su  -c &quot;vncserver -depth 32 -geometry 1024x768&quot; root</span><br><span class="line">	su  -c &quot;vncserver -geometry 1440x900&quot; username</span><br><span class="line">	#su  -c &quot;vncserver&quot; root</span><br><span class="line">	;;</span><br><span class="line">stop)</span><br><span class="line">	vncserver -kill :1</span><br><span class="line">	;;</span><br><span class="line">*)</span><br><span class="line">	echo $&quot;Usage: $0 &#123;start|stop&#125;&quot;</span><br><span class="line">exit 1</span><br><span class="line">esac</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>将它加入启动项将它加入启动项</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-rc.d vncserver defaults 99</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="gnome-桌面环境安装与配置（可直接跳至第3步）"><a href="#gnome-桌面环境安装与配置（可直接跳至第3步）" class="headerlink" title="gnome 桌面环境安装与配置（可直接跳至第3步）"></a>gnome 桌面环境安装与配置（可直接跳至第3步）</h3><p>安装x－windows的基础</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install x-window-system-core</span><br></pre></td></tr></table></figure>
+<p>安装登录管理器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gdm</span><br></pre></td></tr></table></figure>
+<p>安装Ubuntu的桌面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ubuntu-desktop</span><br></pre></td></tr></table></figure>
+<p>安装gnome配套软件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal</span><br></pre></td></tr></table></figure>
+<p><strong>修改VNC配置文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi ~/.vnc/xstartup</span><br></pre></td></tr></table></figure>
+<p><strong>修改为：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"># Uncomment the following two lines for normal desktop:</span><br><span class="line">export XKL_XMODMAP_DISABLE=1</span><br><span class="line"> unset SESSION_MANAGER</span><br><span class="line"># exec /etc/X11/xinit/xinitrc</span><br><span class="line">unset DBUS_SESSION_BUS_ADDRESS</span><br><span class="line">gnome-panel &amp;</span><br><span class="line">gnmoe-settings-daemon &amp;</span><br><span class="line">metacity &amp;</span><br><span class="line">nautilus &amp;</span><br><span class="line">gnome-terminal &amp;</span><br></pre></td></tr></table></figure>
+<p>杀掉原桌面进程，输入命令（其中的:1是桌面号）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -kill :1</span><br></pre></td></tr></table></figure>
+<p>输入以下命令生成新的会话：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver :1</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="ubuntu卸载gnome桌面（可直接跳至第3步）"><a href="#ubuntu卸载gnome桌面（可直接跳至第3步）" class="headerlink" title="ubuntu卸载gnome桌面（可直接跳至第3步）"></a>ubuntu卸载gnome桌面（可直接跳至第3步）</h2><p> 之前安装好了ubuntu18.04，本来想装个gnome shell来美化一下桌面，结果出现了开机黑屏（灰屏）的现象，经网上查询发现是显卡驱动在gnome3的环境下产生了不兼容，具体解决方法我还没找到，情急之下只能先卸载掉gnome桌面环境。</p>
+<ul>
+<li><h3 id="卸载掉gnome-shell主程序"><a href="#卸载掉gnome-shell主程序" class="headerlink" title="卸载掉gnome-shell主程序"></a>卸载掉gnome-shell主程序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove gnome-shell</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="卸载掉gnome"><a href="#卸载掉gnome" class="headerlink" title="卸载掉gnome"></a>卸载掉gnome</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove gnome</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="卸载不需要的依赖关系"><a href="#卸载不需要的依赖关系" class="headerlink" title="卸载不需要的依赖关系"></a>卸载不需要的依赖关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="彻底卸载删除gnome的相关配置文件"><a href="#彻底卸载删除gnome的相关配置文件" class="headerlink" title="彻底卸载删除gnome的相关配置文件"></a>彻底卸载删除gnome的相关配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge gnome</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="清理安装gnome时候留下的缓存程序软件包"><a href="#清理安装gnome时候留下的缓存程序软件包" class="headerlink" title="清理安装gnome时候留下的缓存程序软件包"></a>清理安装gnome时候留下的缓存程序软件包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoclean</span><br><span class="line">sudo apt-get clean</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="ubuntu运行VNC-Server无桌面时的解决方案"><a href="#ubuntu运行VNC-Server无桌面时的解决方案" class="headerlink" title="ubuntu运行VNC Server无桌面时的解决方案"></a>ubuntu运行VNC Server无桌面时的解决方案</h2><p>配置vnc server实在是一个特别诡异的事，我在不同的ubuntu机器上配置服务时，总是遇到千奇百怪的问题，大部分情况下比较顺利，将<code>~/.vnc/xstartup</code>最后一句<code>x-window-manager&amp;</code>替换为<code>gnome-session&amp;</code>就能顺利地出现桌面，而有些则不行，需要改为<code>gnome-session --session=ubuntu-2d&amp;</code></p>
+<ul>
+<li><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>而今天遇到的ubuntu 18.04，则死活不行，用realvnc viewer连接之后，只有灰灰的一个背景，没有桌面，没有terminal。</p>
+<p>查阅了很多博文，有说需要安装<code>gnome-session-fallback</code>的，有说需要安装<code>gdm</code>的，也有用<code>kde</code>的，除了kde我没有尝试，另外两种验证无效，依然只有一个灰色背景。</p>
+<p>最后用xfce4桌面解决，选择些方案一是因为xfce相对较小，gnome-session死活不行的情况下，再将一个kde未免太过兴师动众，xfce我使用过一段时间，是一个相当轻量级的GUI环境，清爽易用，功能一点不含糊。决定之后，一次尝试即成功。</p>
+</li>
+<li><h3 id="安装xfce"><a href="#安装xfce" class="headerlink" title="安装xfce"></a>安装xfce</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gnome-core xfce4</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>编辑<code>~/.vnc/xstartup</code>文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">unset SESSION_MANAGER</span><br><span class="line">unset DBUS_SESSION_BUS_ADDRESS</span><br><span class="line">startxfce4 &amp;</span><br><span class="line">[ -x /etc/vnc/xstartup ] &amp;&amp; exec /etc/vnc/xstartup</span><br><span class="line">[ -r $HOME/.Xresources ] &amp;&amp; xrdb $HOME/.Xresources</span><br><span class="line">xsetroot -solid grey</span><br><span class="line">vncconfig -iconic &amp;</span><br></pre></td></tr></table></figure>
+<p>输入以下命令生成新的会话：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver :1</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="本地使用VNC连接"><a href="#本地使用VNC连接" class="headerlink" title="本地使用VNC连接"></a>本地使用VNC连接</h2><ol>
+<li>本地安装VNC后，使用ip地址:1（其中的:1是桌面号）的方式连接</li>
+<li>输入之前设置的VNC密码后点击连接</li>
+</ol>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><ul>
+<li><h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p><a href="https://www.realvnc.com/en/connect/download/viewer/" target="_blank" rel="noopener">VNC Viewer和VNC Server</a></p>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-12-10T12:01:46.541Z" itemprop="dateUpdated">2018-12-10 20:01:46</time>
+</span><br>
+
+
+        
+        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2018/12/10/用VNC搭建Ubuntu VNC可视化界面/" target="_blank" rel="external">/2018/12/10/用VNC搭建Ubuntu VNC可视化界面/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="马亮南生">
+            马亮南生
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VNC/">VNC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/配置/">配置</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/12/10/Linux下安装Java-JDK8/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Linux下安装Java JDK8</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "",
+            appKey: "",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>马亮南生 &copy; 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '马亮南生的博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '马亮南生的博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+	
+	<!-- 页面点击小红心 -->
+	<script type="text/javascript" src="/js/love.js"></script>
+</body>
+</html>

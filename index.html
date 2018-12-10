@@ -25,7 +25,7 @@
 <meta name="keywords" content="马亮南生">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nan&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="/index.html">
 <meta property="og:site_name" content="Nan&#39;s Blog">
 <meta property="og:description" content="克己复礼">
 <meta property="og:locale" content="zh-CN">
@@ -59,7 +59,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">马亮南生</h5>
-          <a href="mailto:924818949@qq.com" title="924818949@qq.com" class="mail">924818949@qq.com</a>
+          <a href="mailto:maliangnansheng@gmail.com" title="maliangnansheng@gmail.com" class="mail">maliangnansheng@gmail.com</a>
         </hgroup>
       </div>
     </div>
@@ -98,13 +98,6 @@
               <a href="https://github.com/maliangnansheng" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/custom">
-                <i class="icon icon-lg icon-link"></i>
-                关于
               </a>
             </li>
         
@@ -155,13 +148,13 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-hello-world" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-用VNC搭建Ubuntu VNC可视化界面" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-12-06 00:00:00" datetime="2018-12-05T16:00:00.000Z" itemprop="datePublished">2018-12-06</time>
+        <time class="post-time" title="2018-12-10 19:48:46" datetime="2018-12-10T11:48:46.000Z" itemprop="datePublished">2018-12-10</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web前端/">web前端</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
 
 
 
@@ -172,7 +165,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/06/hello-world/">Hello World</a>
+      <a class="post-title-link" href="/2018/12/10/用VNC搭建Ubuntu VNC可视化界面/">用VNC搭建Ubuntu VNC可视化界面</a>
     </h3>
   
 
@@ -182,18 +175,137 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qu...
+        安装配置软件
+VNC的安装与配置安装之前先输入（获取最新套件的信息）
+1apt-get update
+输入以下命令安装VNC，安装过程中需要输入Y来确认
+1apt-get install vnc4server
+启动VNC（第一次启动需要设置密码）
+1vncserver
+设置vncserver开机启动（待完善…）
+设置启动脚本
+
+123sudo touch /etc/init.d/vncser...
     
 
-        <a href="/2018/12/06/hello-world/" class="post-more waves-effect waves-button">
+        <a href="/2018/12/10/用VNC搭建Ubuntu VNC可视化界面/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/表单验证/">表单验证</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/表格/">表格</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VNC/">VNC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/配置/">配置</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Linux下安装Java-JDK8" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-12-10 19:44:56" datetime="2018-12-10T11:44:56.000Z" itemprop="datePublished">2018-12-10</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/12/10/Linux下安装Java-JDK8/">Linux下安装Java JDK8</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+手动下载压缩包安装oracle Java JDK
+前往oracle Java官网下载JDK
+
+解压缩到指定目录（以jdk-8u144-linux-x64.tar.gz为例）
+
+创建目录:
+1sudo mkdir /usr/lib/jvm
+
+解压缩到该目录:
+1sudo tar -zxvf jdk-7u60-linux-x64.gz -C /usr/lib/jvm
+
+
+
+修改环境变量:
+1s...
+    
+
+        <a href="/2018/12/10/Linux下安装Java-JDK8/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/配置/">配置</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Ubuntu的使用技巧" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-12-10 19:21:02" datetime="2018-12-10T11:21:02.000Z" itemprop="datePublished">2018-12-10</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/12/10/Ubuntu的使用技巧/">Ubuntu的使用技巧</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Ubuntu 修改用户名（将admin改为test）由于开始装系统时，用户名脑残打错了，后来强迫症想去更改用户名，所以网上找了一个比较详细的方法
+
+修改 /etc/passwd用户信息文件1vim /etc/passwd
+123#admin:x:1001:1001:admin,,,:/home/admin:/bin/bash#把用户名admin改成rest#test:x:1001:1001:...
+    
+
+        <a href="/2018/12/10/Ubuntu的使用技巧/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/配置/">配置</a></li></ul>
 
     </div>
     

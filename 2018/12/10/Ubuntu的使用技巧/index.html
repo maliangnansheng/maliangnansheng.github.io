@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Ubuntu的使用技巧 | Nan&#39;s Blog | 俱往昔，数风流人物，还看今朝！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="技巧,配置,Ubuntu">
+    <meta name="description" content="Ubuntu 修改用户名（将admin改为test）由于开始装系统时，用户名脑残打错了，后来强迫症想去更改用户名，所以网上找了一个比较详细的方法  修改 /etc/passwd用户信息文件1vim /etc/passwd 123#admin:x:1001:1001:admin,,,:/home/admin:/bin/bash#把用户名admin改成rest#test:x:1001:1001:adm">
+<meta name="keywords" content="技巧,配置,Ubuntu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu的使用技巧">
+<meta property="og:url" content="/2018/12/10/Ubuntu的使用技巧/index.html">
+<meta property="og:site_name" content="Nan&#39;s Blog">
+<meta property="og:description" content="Ubuntu 修改用户名（将admin改为test）由于开始装系统时，用户名脑残打错了，后来强迫症想去更改用户名，所以网上找了一个比较详细的方法  修改 /etc/passwd用户信息文件1vim /etc/passwd 123#admin:x:1001:1001:admin,,,:/home/admin:/bin/bash#把用户名admin改成rest#test:x:1001:1001:adm">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-10T11:50:33.608Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu的使用技巧">
+<meta name="twitter:description" content="Ubuntu 修改用户名（将admin改为test）由于开始装系统时，用户名脑残打错了，后来强迫症想去更改用户名，所以网上找了一个比较详细的方法  修改 /etc/passwd用户信息文件1vim /etc/passwd 123#admin:x:1001:1001:admin,,,:/home/admin:/bin/bash#把用户名admin改成rest#test:x:1001:1001:adm">
+    
+        <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">马亮南生</h5>
+          <a href="mailto:maliangnansheng@gmail.com" title="maliangnansheng@gmail.com" class="mail">maliangnansheng@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/maliangnansheng" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Ubuntu的使用技巧</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Ubuntu的使用技巧</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-12-10T11:21:02.000Z" itemprop="datePublished" class="page-time">
+  2018-12-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Ubuntu-修改用户名（将admin改为test）"><span class="post-toc-number">1.</span> <span class="post-toc-text">Ubuntu 修改用户名（将admin改为test）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-passwd用户信息文件"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">修改 /etc/passwd用户信息文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-shadow用户密码文件"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">修改 /etc/shadow用户密码文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#再修改-etc-group用户组文件"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">再修改 /etc/group用户组文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改用户的家目录"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">修改用户的家目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#xx-is-not-in-the-sudoers-file-问题解决"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">xx is not in the sudoers file 问题解决</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改用户密码"><span class="post-toc-number">2.</span> <span class="post-toc-text">修改用户密码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开启root用户和使用root用户登陆"><span class="post-toc-number">3.</span> <span class="post-toc-text">开启root用户和使用root用户登陆</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开启root用户"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">开启root用户</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用root用户登陆"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">使用root用户登陆</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关闭guest用户"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">关闭guest用户</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#找出文件所在的位置"><span class="post-toc-number">4.</span> <span class="post-toc-text">找出文件所在的位置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看端口占用并杀死-kill"><span class="post-toc-number">5.</span> <span class="post-toc-text">查看端口占用并杀死(kill)</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Ubuntu的使用技巧" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Ubuntu的使用技巧</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-12-10 19:21:02" datetime="2018-12-10T11:21:02.000Z" itemprop="datePublished">2018-12-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="Ubuntu-修改用户名（将admin改为test）"><a href="#Ubuntu-修改用户名（将admin改为test）" class="headerlink" title="Ubuntu 修改用户名（将admin改为test）"></a>Ubuntu 修改用户名（将admin改为test）</h2><p>由于开始装系统时，用户名脑残打错了，后来强迫症想去更改用户名，所以网上找了一个比较详细的方法</p>
+<ul>
+<li><h3 id="修改-etc-passwd用户信息文件"><a href="#修改-etc-passwd用户信息文件" class="headerlink" title="修改 /etc/passwd用户信息文件"></a>修改 /etc/passwd用户信息文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/passwd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#admin:x:1001:1001:admin,,,:/home/admin:/bin/bash</span><br><span class="line">#把用户名admin改成rest</span><br><span class="line">#test:x:1001:1001:admin,,,:/home/test:/bin/bash</span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">admin:x:1001:1001:admin,,,:/home/admin:/bin/bash</span><br><span class="line">中的admin,,,不可修改，若修改后重启，你将会因为密码错误而不能成功登入系统（只得去机房重新注册用户了）</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="修改-etc-shadow用户密码文件"><a href="#修改-etc-shadow用户密码文件" class="headerlink" title="修改 /etc/shadow用户密码文件"></a>修改 /etc/shadow用户密码文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/shadow</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#admin:Dnakfw28zf38w:8764:0:168:7:::</span><br><span class="line">#由于密码加密方式存放，只修改用户名即可（密码不变）</span><br><span class="line">#test:Dnakfw28zf38w:8764:0:168:7:::</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="再修改-etc-group用户组文件"><a href="#再修改-etc-group用户组文件" class="headerlink" title="再修改 /etc/group用户组文件"></a>再修改 /etc/group用户组文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/group</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#admin:x:1:root,bin,admin</span><br><span class="line">#修改admin组为test组</span><br><span class="line">#test:x:1:root,bin,test</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="修改用户的家目录"><a href="#修改用户的家目录" class="headerlink" title="修改用户的家目录"></a>修改用户的家目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /home/admin /home/test</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="xx-is-not-in-the-sudoers-file-问题解决"><a href="#xx-is-not-in-the-sudoers-file-问题解决" class="headerlink" title="xx is not in the sudoers file 问题解决"></a>xx is not in the sudoers file 问题解决</h3><p>首先利用whereis 命令查找sudoers配置文件的目录（默认会在/etc/sudoers)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis sudoers</span><br></pre></td></tr></table></figure>
+<p>然后就可以利用vi编辑器来把用户添加到sudoers之中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sudoers</span><br></pre></td></tr></table></figure>
+<p>然后找到root    ALL=(ALL)       ALL 或者 root    ALL=(ALL:ALL) ALL所在的位置，把所要添加的用户添加到文件之中</p>
+<p>下面是添加完的结果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Allow root to run any commands anywhere</span><br><span class="line"></span><br><span class="line">root    ALL=(ALL)       ALL</span><br><span class="line">maliang	ALL=(ALL)       ALL（这一行是添加的内容，maliang是我的用户名）</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="修改用户密码"><a href="#修改用户密码" class="headerlink" title="修改用户密码"></a>修改用户密码</h2><p>在终端运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd username</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">改变口令为 username。</span><br><span class="line">(当前)UNIX 口令：&lt;输入现在的密码&gt; </span><br><span class="line">输入新的 UNIX 口令： &lt;输入新密码&gt; </span><br><span class="line">重新输入新的 UNIX 口令：&lt;重新输入新密码&gt;</span><br><span class="line"></span><br><span class="line">passwd：已成功更新密码</span><br></pre></td></tr></table></figure>
+<h2 id="开启root用户和使用root用户登陆"><a href="#开启root用户和使用root用户登陆" class="headerlink" title="开启root用户和使用root用户登陆"></a>开启root用户和使用root用户登陆</h2><ol>
+<li><h3 id="开启root用户"><a href="#开启root用户" class="headerlink" title="开启root用户"></a>开启root用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd root</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="使用root用户登陆"><a href="#使用root用户登陆" class="headerlink" title="使用root用户登陆"></a>使用root用户登陆</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf</span><br></pre></td></tr></table></figure>
+<p>在最后增加<code>greeter-show-manual-login=true</code><br>保存退出。注销后可看到登陆框已显示，可输入用户名</p>
+</li>
+<li><h3 id="关闭guest用户"><a href="#关闭guest用户" class="headerlink" title="关闭guest用户"></a>关闭guest用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf</span><br></pre></td></tr></table></figure>
+<p>在最后增加<code>allow-guest=false</code><br>保存退出。注销后可看到已经没有guest用户登陆的选项。</p>
+</li>
+</ol>
+<h2 id="找出文件所在的位置"><a href="#找出文件所在的位置" class="headerlink" title="找出文件所在的位置"></a>找出文件所在的位置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis sudoers（你要找的文件名）</span><br></pre></td></tr></table></figure>
+<h2 id="查看端口占用并杀死-kill"><a href="#查看端口占用并杀死-kill" class="headerlink" title="查看端口占用并杀死(kill)"></a>查看端口占用并杀死(kill)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 查看</span><br><span class="line">sudo netstat -tlnp|grep 9090</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 杀死</span><br><span class="line">kill -9 31540</span><br></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-12-10T11:50:33.608Z" itemprop="dateUpdated">2018-12-10 19:50:33</time>
+</span><br>
+
+
+        
+        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2018/12/10/Ubuntu的使用技巧/" target="_blank" rel="external">/2018/12/10/Ubuntu的使用技巧/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="马亮南生">
+            马亮南生
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/配置/">配置</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/12/10/Linux下安装Java-JDK8/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Linux下安装Java JDK8</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "",
+            appKey: "",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>马亮南生 &copy; 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '马亮南生的博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '马亮南生的博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+	
+	<!-- 页面点击小红心 -->
+	<script type="text/javascript" src="/js/love.js"></script>
+</body>
+</html>
