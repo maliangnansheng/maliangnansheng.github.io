@@ -14,24 +14,24 @@
     
     
     
-    <title>Ubuntu的使用技巧 | Nan&#39;s Blog | 弱者才言命，强者只言运！</title>
+    <title>Linux的使用技巧 | Nan&#39;s Blog | 弱者才言命，强者只言运！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="技巧,配置,Ubuntu">
+    <meta name="keywords" content="Ubuntu,技巧,配置">
     <meta name="description" content="Ubuntu 修改用户名（将admin改为test）由于开始装系统时，用户名脑残打错了，后来强迫症想去更改用户名，所以网上找了一个比较详细的方法  修改 /etc/passwd用户信息文件1vim /etc/passwd 123#admin:x:1001:1001:admin,,,:/home/admin:/bin/bash#把用户名admin改成rest#test:x:1001:1001:adm">
-<meta name="keywords" content="技巧,配置,Ubuntu">
+<meta name="keywords" content="Ubuntu,技巧,配置">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu的使用技巧">
-<meta property="og:url" content="/2018/12/10/Ubuntu的使用技巧/index.html">
+<meta property="og:title" content="Linux的使用技巧">
+<meta property="og:url" content="/2018/12/10/Linux的使用技巧/index.html">
 <meta property="og:site_name" content="Nan&#39;s Blog">
 <meta property="og:description" content="Ubuntu 修改用户名（将admin改为test）由于开始装系统时，用户名脑残打错了，后来强迫症想去更改用户名，所以网上找了一个比较详细的方法  修改 /etc/passwd用户信息文件1vim /etc/passwd 123#admin:x:1001:1001:admin,,,:/home/admin:/bin/bash#把用户名admin改成rest#test:x:1001:1001:adm">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-10T11:50:33.608Z">
+<meta property="og:updated_time" content="2018-12-13T09:07:22.247Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu的使用技巧">
+<meta name="twitter:title" content="Linux的使用技巧">
 <meta name="twitter:description" content="Ubuntu 修改用户名（将admin改为test）由于开始装系统时，用户名脑残打错了，后来强迫症想去更改用户名，所以网上找了一个比较详细的方法  修改 /etc/passwd用户信息文件1vim /etc/passwd 123#admin:x:1001:1001:admin,,,:/home/admin:/bin/bash#把用户名admin改成rest#test:x:1001:1001:adm">
     
         <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
@@ -113,7 +113,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Ubuntu的使用技巧</div>
+        <div class="flex-col header-title ellipsis">Linux的使用技巧</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -131,7 +131,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Ubuntu的使用技巧</h1>
+        <h1 class="title">Linux的使用技巧</h1>
         <h5 class="subtitle">
             
                 <time datetime="2018-12-10T11:21:02.000Z" itemprop="datePublished" class="page-time">
@@ -156,15 +156,15 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Ubuntu-修改用户名（将admin改为test）"><span class="post-toc-number">1.</span> <span class="post-toc-text">Ubuntu 修改用户名（将admin改为test）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-passwd用户信息文件"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">修改 /etc/passwd用户信息文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-shadow用户密码文件"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">修改 /etc/shadow用户密码文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#再修改-etc-group用户组文件"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">再修改 /etc/group用户组文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改用户的家目录"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">修改用户的家目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#xx-is-not-in-the-sudoers-file-问题解决"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">xx is not in the sudoers file 问题解决</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改用户密码"><span class="post-toc-number">2.</span> <span class="post-toc-text">修改用户密码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开启root用户和使用root用户登陆"><span class="post-toc-number">3.</span> <span class="post-toc-text">开启root用户和使用root用户登陆</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开启root用户"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">开启root用户</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用root用户登陆"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">使用root用户登陆</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关闭guest用户"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">关闭guest用户</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#找出文件所在的位置"><span class="post-toc-number">4.</span> <span class="post-toc-text">找出文件所在的位置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看端口占用并杀死-kill"><span class="post-toc-number">5.</span> <span class="post-toc-text">查看端口占用并杀死(kill)</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Ubuntu-修改用户名（将admin改为test）"><span class="post-toc-number">1.</span> <span class="post-toc-text">Ubuntu 修改用户名（将admin改为test）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-passwd用户信息文件"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">修改 /etc/passwd用户信息文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-shadow用户密码文件"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">修改 /etc/shadow用户密码文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#再修改-etc-group用户组文件"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">再修改 /etc/group用户组文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改用户的家目录"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">修改用户的家目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#xx-is-not-in-the-sudoers-file-问题解决"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">xx is not in the sudoers file 问题解决</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改用户密码"><span class="post-toc-number">2.</span> <span class="post-toc-text">修改用户密码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开启root用户和使用root用户登陆"><span class="post-toc-number">3.</span> <span class="post-toc-text">开启root用户和使用root用户登陆</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开启root用户"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">开启root用户</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用root用户登陆"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">使用root用户登陆</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关闭guest用户"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">关闭guest用户</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#找出文件所在的位置"><span class="post-toc-number">4.</span> <span class="post-toc-text">找出文件所在的位置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看端口占用并杀死-kill"><span class="post-toc-number">5.</span> <span class="post-toc-text">查看端口占用并杀死(kill)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何从Yum库下载rpm包但不安装"><span class="post-toc-number">6.</span> <span class="post-toc-text">如何从Yum库下载rpm包但不安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看Linux版本方法"><span class="post-toc-number">7.</span> <span class="post-toc-text">查看Linux版本方法</span></a></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-Ubuntu的使用技巧" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-Linux的使用技巧" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Ubuntu的使用技巧</h1>
+        <h1 class="post-card-title">Linux的使用技巧</h1>
         <div class="post-meta">
             <time class="post-time" title="2018-12-10 19:21:02" datetime="2018-12-10T11:21:02.000Z" itemprop="datePublished">2018-12-10</time>
 
@@ -221,6 +221,19 @@
 <h2 id="找出文件所在的位置"><a href="#找出文件所在的位置" class="headerlink" title="找出文件所在的位置"></a>找出文件所在的位置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis sudoers（你要找的文件名）</span><br></pre></td></tr></table></figure>
 <h2 id="查看端口占用并杀死-kill"><a href="#查看端口占用并杀死-kill" class="headerlink" title="查看端口占用并杀死(kill)"></a>查看端口占用并杀死(kill)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 查看</span><br><span class="line">sudo netstat -tlnp|grep 9090</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 杀死</span><br><span class="line">kill -9 31540</span><br></pre></td></tr></table></figure>
+<h2 id="如何从Yum库下载rpm包但不安装"><a href="#如何从Yum库下载rpm包但不安装" class="headerlink" title="如何从Yum库下载rpm包但不安装"></a>如何从Yum库下载rpm包但不安装</h2><p>方法一（推荐）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 将一个包（包含所有依赖）下载到一个指定的目录(如/opt/gccmkdir/)：</span><br><span class="line">yum install -y gcc --downloadonly --downloaddir=/opt/gccmkdir/</span><br></pre></td></tr></table></figure>
+<p>方法二</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># --resolve 表示为下载依赖</span><br><span class="line">yumdownloader lsof --resolve --destdir=/data/mydepot/</span><br></pre></td></tr></table></figure>
+<p>方法三（推荐）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 把/etc/yum.conf配置中的keepcache=0参数修改为keepcache=1</span><br><span class="line"># 再yum 下载：</span><br><span class="line">yum install -y gcc</span><br><span class="line">#默认情况下，RPM包会保存在下面的目录中:</span><br><span class="line">/var/cache/yum/x86_64/[centos/fedora-version]/[repository]/packages</span><br></pre></td></tr></table></figure>
+<h2 id="查看Linux版本方法"><a href="#查看Linux版本方法" class="headerlink" title="查看Linux版本方法"></a>查看Linux版本方法</h2><p>方法一</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># lsb_release -a</span><br><span class="line">LSB Version:    :core-3.1-ia32:core-3.1-noarch:graphics-3.1-ia32:graphics-3.1-noarch</span><br><span class="line">Distributor ID: CentOS</span><br><span class="line">Description:    CentOS release 5.4 (Final)</span><br><span class="line">Release:        5.4</span><br><span class="line">Codename:       Final</span><br></pre></td></tr></table></figure>
+<p>方法二</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># cat /etc/redhat-release</span><br><span class="line">CentOS release 5.4 (Final)</span><br></pre></td></tr></table></figure>
+<p>方法三</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># rpm -q centos-release</span><br><span class="line">centos-release-5-4.el5.centos.1</span><br></pre></td></tr></table></figure>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -228,12 +241,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-12-10T11:50:33.608Z" itemprop="dateUpdated">2018-12-10 19:50:33</time>
+    最后更新时间：<time datetime="2018-12-13T09:07:22.247Z" itemprop="dateUpdated">2018-12-13 17:07:22</time>
 </span><br>
 
 
         
-        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2018/12/10/Ubuntu的使用技巧/" target="_blank" rel="external">/2018/12/10/Ubuntu的使用技巧/</a>
+        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2018/12/10/Linux的使用技巧/" target="_blank" rel="external">/2018/12/10/Linux的使用技巧/</a>
         
     </div>
     
