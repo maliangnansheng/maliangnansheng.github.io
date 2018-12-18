@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2018-12-10T12:01:46.541Z</updated>
+  <updated>2018-12-18T11:10:47.028Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OpenOffice使用总汇</title>
+    <link href="/2018/12/18/OpenOffice%E4%BD%BF%E7%94%A8%E6%80%BB%E6%B1%87/"/>
+    <id>/2018/12/18/OpenOffice使用总汇/</id>
+    <published>2018-12-18T11:10:47.000Z</published>
+    <updated>2018-12-18T11:10:47.028Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>itextpdf使用总汇</title>
+    <link href="/2018/12/18/itextpdf%E4%BD%BF%E7%94%A8%E6%80%BB%E6%B1%87/"/>
+    <id>/2018/12/18/itextpdf使用总汇/</id>
+    <published>2018-12-18T11:10:03.000Z</published>
+    <updated>2018-12-18T11:10:03.485Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>POI使用总汇</title>
+    <link href="/2018/12/18/POI%E4%BD%BF%E7%94%A8%E6%80%BB%E6%B1%87/"/>
+    <id>/2018/12/18/POI使用总汇/</id>
+    <published>2018-12-18T11:08:31.000Z</published>
+    <updated>2018-12-18T12:16:18.204Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="目标：将word里的图片全部替换成文本"><a href="#目标：将word里的图片全部替换成文本" class="headerlink" title="目标：将word里的图片全部替换成文本"></a>目标：将word里的图片全部替换成文本</h2><p><strong>流程、思想：</strong></p><p>读取出Word中的图片 - 存储读取到的图片（提供图片识别原） - 删除Word中的该图片 - 在Word中该图片位置插入替换文字 - 删除存储的图片</p><h3 id="Maven依赖"><a href="#Maven依赖" class="headerlink" title="Maven依赖"></a>Maven依赖</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- poi-实现word文件的读取和修改等操作 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.poi&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;poi&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!-- 针对于<span class="number">2007</span>版（.docx） --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.poi&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;poi-ooxml&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!-- 针对于<span class="number">2003</span>版（.doc） --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.poi&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;poi-scratchpad&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        textReplacePhoto(<span class="string">"D:\\Test\\原报格式样例3.docx"</span>,</span><br><span class="line">                         <span class="string">"D:\\Test\\原报格式样例3-1.docx"</span>,<span class="string">"D:/Test/img"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 将word里的图片全部替换成文本</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> oldFileName 传入原文件的全路径（含文件名）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> newFileName 保存修改后文件的全路径（含文件名）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> picturePath 读取出来的图片保存路径</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">textReplacePhoto</span><span class="params">(String oldFileName, String newFileName,String picturePath)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    File newFile = <span class="keyword">new</span> File(newFileName.replace(<span class="keyword">new</span> File(newFileName).getName(),<span class="string">""</span>));</span><br><span class="line">    <span class="comment">//保存路径不存在，则创建</span></span><br><span class="line">        <span class="keyword">if</span> (!newFile.exists())&#123;</span><br><span class="line">            newFile.mkdirs();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (oldFileName.endsWith(<span class="string">".docx"</span>))&#123;    <span class="comment">//.docx文件的处理方法</span></span><br><span class="line">            <span class="comment">//为了确定图片集中的某一张图片</span></span><br><span class="line">            <span class="keyword">int</span> imgNum=<span class="number">0</span>;</span><br><span class="line">            <span class="comment">//创建输入流</span></span><br><span class="line">            InputStream oldIs = <span class="keyword">new</span> FileInputStream(oldFileName);</span><br><span class="line">            <span class="comment">//创建输出流</span></span><br><span class="line">            OutputStream newOs = <span class="keyword">new</span> FileOutputStream(newFileName);</span><br><span class="line">            <span class="comment">//创建一个XWPFDocument</span></span><br><span class="line">            XWPFDocument docx = <span class="keyword">new</span> XWPFDocument(oldIs);</span><br><span class="line">            <span class="comment">//获取到该文档的所有段落集</span></span><br><span class="line">            List&lt;XWPFParagraph&gt; paras = docx.getParagraphs();</span><br><span class="line">            <span class="comment">//获取到该文档的所有图片集</span></span><br><span class="line">            List&lt;XWPFPictureData&gt; pictures = docx.getAllPictures();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (XWPFParagraph para:paras)&#123;</span><br><span class="line">                <span class="comment">//段落中所有XWPFRun</span></span><br><span class="line">                List&lt;XWPFRun&gt; runList = para.getRuns();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;runList.size();i++) &#123;</span><br><span class="line">                    XWPFRun run=runList.get(i);</span><br><span class="line">                    <span class="comment">//判断该段落是否是图片</span></span><br><span class="line">                    <span class="keyword">if</span> (!run.getEmbeddedPictures().isEmpty())&#123;</span><br><span class="line">                        <span class="comment">//存储读取到的图片,并获取图片全路径</span></span><br><span class="line">                        String pictureName =     savePictureDocx(pictures,picturePath,imgNum++);</span><br><span class="line">                        <span class="comment">//实际有图片才进行以下操作</span></span><br><span class="line">                        <span class="keyword">if</span> (pictureName!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                            <span class="comment">//删除图片</span></span><br><span class="line">                            para.removeRun(i);</span><br><span class="line">                            <span class="comment">//插入文字</span></span><br><span class="line">                            para.insertNewRun(i).setText(<span class="string">"&#123;&#123;title&#125;&#125;"</span>);</span><br><span class="line">                            <span class="comment">//删除图片</span></span><br><span class="line">                            deletePicture(pictureName);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            docx.write(newOs);</span><br><span class="line">            docx.close();</span><br><span class="line">            oldIs.close();</span><br><span class="line">            newOs.flush();</span><br><span class="line">            newOs.close();</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 存储读取到的图片 - docx</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> pictures 图片集</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> picturePath 图片保存路径</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> imgNum 确定图片集中的某一张图片</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 图片全路径</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">savePictureDocx</span><span class="params">(List&lt;XWPFPictureData&gt; pictures,</span></span></span><br><span class="line"><span class="function"><span class="params">    String picturePath,<span class="keyword">int</span> imgNum)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    </span><br><span class="line">    File pictureFile = <span class="keyword">new</span> File(picturePath);</span><br><span class="line">    <span class="comment">//保存路径不存在，则创建</span></span><br><span class="line">    <span class="keyword">if</span> (!pictureFile.exists())&#123;</span><br><span class="line">        pictureFile.mkdirs();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    List&lt;XWPFPictureData&gt; pictures = para.getDocument().getAllPictures();</span><br><span class="line">    <span class="keyword">if</span> (pictures.size()!=<span class="number">0</span>)&#123;</span><br><span class="line">        XWPFPictureData picture = pictures.get(imgNum);</span><br><span class="line">        String rawName = picture.getFileName();</span><br><span class="line">        String fileExt = rawName.substring(rawName.lastIndexOf(<span class="string">"."</span>));</span><br><span class="line">        String newName = System.currentTimeMillis() + </span><br><span class="line">            UUID.randomUUID().toString() + fileExt;</span><br><span class="line">        String pictureName = picturePath + File.separator + newName;</span><br><span class="line">        FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(pictureName);</span><br><span class="line">        fos.write(picture.getData());</span><br><span class="line"></span><br><span class="line">        fos.flush();</span><br><span class="line">        fos.close();</span><br><span class="line">        <span class="keyword">return</span> pictureName;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除临时存储的图片</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> pictureName 图片全路径（含文件名）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">deletePicture</span><span class="params">(String pictureName)</span> </span>&#123;</span><br><span class="line">    File pictureFile = <span class="keyword">new</span> File(pictureName);</span><br><span class="line">    <span class="comment">// 目录此时为空，可以删除</span></span><br><span class="line">    <span class="keyword">return</span> pictureFile.delete();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;目标：将word里的图片全部替换成文本&quot;&gt;&lt;a href=&quot;#目标：将word里的图片全部替换成文本&quot; class=&quot;headerlink&quot; title=&quot;目标：将word里的图片全部替换成文本&quot;&gt;&lt;/a&gt;目标：将word里的图片全部替换成文本&lt;/h2&gt;&lt;p&gt;&lt;s
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="/categories/Java/"/>
+    
+    
+      <category term="POI" scheme="/tags/POI/"/>
+    
+      <category term="Word" scheme="/tags/Word/"/>
+    
+  </entry>
   
   <entry>
     <title>用VNC搭建Ubuntu VNC可视化界面</title>
@@ -38,11 +93,11 @@
       <category term="Linux" scheme="/categories/Linux/"/>
     
     
-      <category term="Ubuntu" scheme="/tags/Ubuntu/"/>
-    
       <category term="技巧" scheme="/tags/%E6%8A%80%E5%B7%A7/"/>
     
       <category term="配置" scheme="/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="Ubuntu" scheme="/tags/Ubuntu/"/>
     
       <category term="VNC" scheme="/tags/VNC/"/>
     
@@ -97,11 +152,11 @@
       <category term="Linux" scheme="/categories/Linux/"/>
     
     
-      <category term="Ubuntu" scheme="/tags/Ubuntu/"/>
-    
       <category term="技巧" scheme="/tags/%E6%8A%80%E5%B7%A7/"/>
     
       <category term="配置" scheme="/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="Ubuntu" scheme="/tags/Ubuntu/"/>
     
   </entry>
   
