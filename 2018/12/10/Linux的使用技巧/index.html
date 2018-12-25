@@ -20,16 +20,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="技巧,配置,Ubuntu">
+    <meta name="keywords" content="Ubuntu,Java,技巧,配置">
     <meta name="description" content="Ubuntu 修改用户名（将admin改为test）由于开始装系统时，用户名脑残打错了，后来强迫症想去更改用户名，所以网上找了一个比较详细的方法  修改 /etc/passwd用户信息文件1vim /etc/passwd 123#admin:x:1001:1001:admin,,,:/home/admin:/bin/bash#把用户名admin改成rest#test:x:1001:1001:adm">
-<meta name="keywords" content="技巧,配置,Ubuntu">
+<meta name="keywords" content="Ubuntu,Java,技巧,配置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux的使用技巧">
 <meta property="og:url" content="/2018/12/10/Linux的使用技巧/index.html">
 <meta property="og:site_name" content="Nan&#39;s Blog">
 <meta property="og:description" content="Ubuntu 修改用户名（将admin改为test）由于开始装系统时，用户名脑残打错了，后来强迫症想去更改用户名，所以网上找了一个比较详细的方法  修改 /etc/passwd用户信息文件1vim /etc/passwd 123#admin:x:1001:1001:admin,,,:/home/admin:/bin/bash#把用户名admin改成rest#test:x:1001:1001:adm">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-13T09:07:22.247Z">
+<meta property="og:updated_time" content="2018-12-25T02:47:23.669Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux的使用技巧">
 <meta name="twitter:description" content="Ubuntu 修改用户名（将admin改为test）由于开始装系统时，用户名脑残打错了，后来强迫症想去更改用户名，所以网上找了一个比较详细的方法  修改 /etc/passwd用户信息文件1vim /etc/passwd 123#admin:x:1001:1001:admin,,,:/home/admin:/bin/bash#把用户名admin改成rest#test:x:1001:1001:adm">
@@ -156,7 +156,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Ubuntu-修改用户名（将admin改为test）"><span class="post-toc-number">1.</span> <span class="post-toc-text">Ubuntu 修改用户名（将admin改为test）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-passwd用户信息文件"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">修改 /etc/passwd用户信息文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-shadow用户密码文件"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">修改 /etc/shadow用户密码文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#再修改-etc-group用户组文件"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">再修改 /etc/group用户组文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改用户的家目录"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">修改用户的家目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#xx-is-not-in-the-sudoers-file-问题解决"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">xx is not in the sudoers file 问题解决</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改用户密码"><span class="post-toc-number">2.</span> <span class="post-toc-text">修改用户密码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开启root用户和使用root用户登陆"><span class="post-toc-number">3.</span> <span class="post-toc-text">开启root用户和使用root用户登陆</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开启root用户"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">开启root用户</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用root用户登陆"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">使用root用户登陆</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关闭guest用户"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">关闭guest用户</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#找出文件所在的位置"><span class="post-toc-number">4.</span> <span class="post-toc-text">找出文件所在的位置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看端口占用并杀死-kill"><span class="post-toc-number">5.</span> <span class="post-toc-text">查看端口占用并杀死(kill)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何从Yum库下载rpm包但不安装"><span class="post-toc-number">6.</span> <span class="post-toc-text">如何从Yum库下载rpm包但不安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看Linux版本方法"><span class="post-toc-number">7.</span> <span class="post-toc-text">查看Linux版本方法</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Ubuntu-修改用户名（将admin改为test）"><span class="post-toc-number">1.</span> <span class="post-toc-text">Ubuntu 修改用户名（将admin改为test）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-passwd用户信息文件"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">修改 /etc/passwd用户信息文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-shadow用户密码文件"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">修改 /etc/shadow用户密码文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#再修改-etc-group用户组文件"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">再修改 /etc/group用户组文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改用户的家目录"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">修改用户的家目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#xx-is-not-in-the-sudoers-file-问题解决"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">xx is not in the sudoers file 问题解决</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改用户密码"><span class="post-toc-number">2.</span> <span class="post-toc-text">修改用户密码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开启root用户和使用root用户登陆"><span class="post-toc-number">3.</span> <span class="post-toc-text">开启root用户和使用root用户登陆</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开启root用户"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">开启root用户</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用root用户登陆"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">使用root用户登陆</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关闭guest用户"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">关闭guest用户</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#找出文件所在的位置"><span class="post-toc-number">4.</span> <span class="post-toc-text">找出文件所在的位置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看端口占用并杀死-kill"><span class="post-toc-number">5.</span> <span class="post-toc-text">查看端口占用并杀死(kill)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何从Yum库下载rpm包但不安装"><span class="post-toc-number">6.</span> <span class="post-toc-text">如何从Yum库下载rpm包但不安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看Linux版本方法"><span class="post-toc-number">7.</span> <span class="post-toc-text">查看Linux版本方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#linux运行jar包"><span class="post-toc-number">8.</span> <span class="post-toc-text">linux运行jar包</span></a></li></ol>
         </nav>
     </aside>
 
@@ -233,6 +233,21 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># cat /etc/redhat-release</span><br><span class="line">CentOS release 5.4 (Final)</span><br></pre></td></tr></table></figure>
 <p>方法三</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># rpm -q centos-release</span><br><span class="line">centos-release-5-4.el5.centos.1</span><br></pre></td></tr></table></figure>
+<h2 id="linux运行jar包"><a href="#linux运行jar包" class="headerlink" title="linux运行jar包"></a>linux运行jar包</h2><p>要运行java的项目需要先将项目打包成war包或者jar包，打包成war包需要将war包部署到tomcat服务器上才能运行。而打包成jar包可以直接使用java命令执行。在linux系统中运行jar包主要有以下四种方式。</p>
+<ol>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar XXX.jar</span><br></pre></td></tr></table></figure>
+<p>这是最基本的jar包执行方式，但是当我们用ctrl+c中断或者关闭窗口时，程序也会中断执行。</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar XXX.jar &amp;</span><br></pre></td></tr></table></figure>
+<p>&amp;代表在后台运行，使用ctrl+c不会中断程序的运行，但是关闭窗口会中断程序的运行。</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup java -jar XXX.jar &amp;</span><br></pre></td></tr></table></figure>
+<p>使用这种方式运行的程序日志会输出到当前目录下的nohup.out文件，使用ctrl+c中断或者关闭窗口都不会中断程序的执行。</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup java -jar XXX.jar &gt;temp.out &amp;</span><br></pre></td></tr></table></figure>
+<p>‘&gt;temp.out’的意思是将日志输出重定向到temp.out文件，使用ctrl+c中断或者关闭窗口都不会中断程序的执行。</p>
+</li>
+</ol>
 
         </div>
 
@@ -241,7 +256,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-12-13T09:07:22.247Z" itemprop="dateUpdated">2018-12-13 17:07:22</time>
+    最后更新时间：<time datetime="2018-12-25T02:47:23.669Z" itemprop="dateUpdated">2018-12-25 10:47:23</time>
 </span><br>
 
 
@@ -267,7 +282,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/配置/">配置</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/配置/">配置</a></li></ul>
 
 
             

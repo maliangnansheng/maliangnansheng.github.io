@@ -14,25 +14,25 @@
     
     
     
-    <title>iTextPDF-实现向PDF追加内容 | Nan&#39;s Blog | 弱者才言命，强者只言运！</title>
+    <title>linux环境下安装 openOffice 并启动服务 | Nan&#39;s Blog | 弱者才言命，强者只言运！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
-    <meta name="description" content="克己复礼">
-<meta name="keywords" content="马亮南生">
+    <meta name="keywords" content="openOffice,安装">
+    <meta name="description" content="背景故事这两天遇到一个大坑，客户要做office 文档在线预览功能，于是乎就要把office文档转换成pdf交给前端显示。 　     在某度找了一圈都说openOffice+jodconverter 可以搞定这个事情。代码倒是很好找，不过版本很多，各类jar包也很多，但尝试下来发现，转化效果很一般，复杂的excel也无法成功。有同事建议放到服务器上效果可能好些，于是就开始折腾在服务器上安装Ope">
+<meta name="keywords" content="openOffice,安装">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iTextPDF-实现向PDF追加内容">
-<meta property="og:url" content="/2018/12/18/iTextPDF-实现向PDF追加内容/index.html">
+<meta property="og:title" content="linux环境下安装 openOffice 并启动服务">
+<meta property="og:url" content="/2018/12/25/linux环境下安装-openOffice-并启动服务/index.html">
 <meta property="og:site_name" content="Nan&#39;s Blog">
-<meta property="og:description" content="克己复礼">
+<meta property="og:description" content="背景故事这两天遇到一个大坑，客户要做office 文档在线预览功能，于是乎就要把office文档转换成pdf交给前端显示。 　     在某度找了一圈都说openOffice+jodconverter 可以搞定这个事情。代码倒是很好找，不过版本很多，各类jar包也很多，但尝试下来发现，转化效果很一般，复杂的excel也无法成功。有同事建议放到服务器上效果可能好些，于是就开始折腾在服务器上安装Ope">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-18T12:49:51.129Z">
+<meta property="og:updated_time" content="2018-12-25T02:42:07.799Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iTextPDF-实现向PDF追加内容">
-<meta name="twitter:description" content="克己复礼">
+<meta name="twitter:title" content="linux环境下安装 openOffice 并启动服务">
+<meta name="twitter:description" content="背景故事这两天遇到一个大坑，客户要做office 文档在线预览功能，于是乎就要把office文档转换成pdf交给前端显示。 　     在某度找了一圈都说openOffice+jodconverter 可以搞定这个事情。代码倒是很好找，不过版本很多，各类jar包也很多，但尝试下来发现，转化效果很一般，复杂的excel也无法成功。有同事建议放到服务器上效果可能好些，于是就开始折腾在服务器上安装Ope">
     
         <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
     
@@ -113,7 +113,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">iTextPDF-实现向PDF追加内容</div>
+        <div class="flex-col header-title ellipsis">linux环境下安装 openOffice 并启动服务</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -131,13 +131,15 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">iTextPDF-实现向PDF追加内容</h1>
+        <h1 class="title">linux环境下安装 openOffice 并启动服务</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-12-18T11:10:03.000Z" itemprop="datePublished" class="page-time">
-  2018-12-18
+                <time datetime="2018-12-25T02:07:07.000Z" itemprop="datePublished" class="page-time">
+  2018-12-25
 </time>
 
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
 
             
         </h5>
@@ -151,15 +153,24 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景故事"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景故事</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#操作步骤"><span class="post-toc-number">2.</span> <span class="post-toc-text">操作步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题"><span class="post-toc-number">3.</span> <span class="post-toc-text">问题</span></a></li></ol>
+        </nav>
+    </aside>
 
-<article id="post-iTextPDF-实现向PDF追加内容" class="post-article article-type-post fade" itemprop="blogPost">
+
+<article id="post-linux环境下安装-openOffice-并启动服务" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">iTextPDF-实现向PDF追加内容</h1>
+        <h1 class="post-card-title">linux环境下安装 openOffice 并启动服务</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-12-18 19:10:03" datetime="2018-12-18T11:10:03.000Z" itemprop="datePublished">2018-12-18</time>
+            <time class="post-time" title="2018-12-25 10:07:07" datetime="2018-12-25T02:07:07.000Z" itemprop="datePublished">2018-12-25</time>
 
             
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
 
 
             
@@ -170,7 +181,31 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            
+            <h2 id="背景故事"><a href="#背景故事" class="headerlink" title="背景故事"></a>背景故事</h2><p>这两天遇到一个大坑，客户要做office 文档在线预览功能，于是乎就要把office文档转换成pdf交给前端显示。</p>
+<p>　     在某度找了一圈都说openOffice+jodconverter 可以搞定这个事情。代码倒是很好找，不过版本很多，各类jar包也很多，但尝试下来发现，转化效果很一般，复杂的excel也无法成功。有同事建议放到服务器上效果可能好些，于是就开始折腾在服务器上安装OpenOffice这个事情。网上各种找大神的博文，发现安装起来不是很顺畅，就写了这篇随笔，记录一下，遇到的问题，方便自己以后查看。</p>
+<p>​    openOffice转转word文档效果不错，转Excel的话就真的效果不行，简单的Excel能处理处理，复杂的就很慢很慢，而且效果极差。再说，实际上微软自己的office软件转pdf的效果也很差。</p>
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><ol>
+<li><p><a href="http://www.openoffice.org/zh-cn/download/" target="_blank" rel="noopener">http://www.openoffice.org/zh-cn/download/</a> 去官网链接下载linux版本的openOffice 以4.1.6 版本为例。</p>
+</li>
+<li><p>将压缩包上传至服务器上，并进行解压安装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf  对应的压缩包名字</span><br><span class="line">cd 进入解压后的 /zh-cn/RPMS</span><br><span class="line">yum localinstall *.rpm</span><br><span class="line">cd desktop-integration</span><br><span class="line">rpm -ivh openoffice4.1.6-redhat-menus-4.1.6-9789.noarch.rpm</span><br></pre></td></tr></table></figure>
+<p>默认会安装在/opt目录下。</p>
+</li>
+<li><p>启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/opt/openoffice4/program/soffice -headless -accept=&quot;socket,host=127.0.0.1,port=8100;urp;&quot; -nofirststartwizard  临时启动</span><br><span class="line"></span><br><span class="line">nohup /opt/openoffice4/program/soffice -headless -accept=&quot;socket,host=127.0.0.1,port=8100;urp;&quot; -nofirststartwizard &amp;  后台启动</span><br></pre></td></tr></table></figure>
+<p>端口号根据自己项目实际来确定。</p>
+<p>后台启动会一直占用内存，据各路大神说 大概100M，我自己没测过具体值不清楚。</p>
+<p>有的程序是需要预先启动openOffice 服务的，有的则在代码里自己启动服务。</p>
+</li>
+<li><p>.查看进程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -lnp |grep 端口号</span><br></pre></td></tr></table></figure>
+<p>大概显示成这样就算启动完了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcp      0       0 127.0.0.1:8100      0.0.0.0:*      LISTEN      14362/soffice.bin</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>装完openoffice后启动服务可能会报错：no suitable windowing system found, exiting</p>
+<p>从字面上的意思就是缺少一个窗口化的系统。所以就安装一个。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum groupinstall &quot;X Window System&quot;</span><br></pre></td></tr></table></figure>
         </div>
 
         <blockquote class="post-copyright">
@@ -178,12 +213,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-12-18T12:49:51.129Z" itemprop="dateUpdated">2018-12-18 20:49:51</time>
+    最后更新时间：<time datetime="2018-12-25T02:42:07.799Z" itemprop="dateUpdated">2018-12-25 10:42:07</time>
 </span><br>
 
 
         
-        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2018/12/18/iTextPDF-实现向PDF追加内容/" target="_blank" rel="external">/2018/12/18/iTextPDF-实现向PDF追加内容/</a>
+        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2018/12/25/linux环境下安装-openOffice-并启动服务/" target="_blank" rel="external">/2018/12/25/linux环境下安装-openOffice-并启动服务/</a>
         
     </div>
     
@@ -204,6 +239,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openOffice/">openOffice</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安装/">安装</a></li></ul>
+
 
             
 
@@ -212,21 +249,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2018/12/18/OpenOffice-实现文件格式之间的转换/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">OpenOffice-实现文件格式之间的转换.md</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/12/18/将Word-docx-里的图片替换成文本/" id="post-next" class="post-nav-link">
+      <a href="/2018/12/20/将Word-doc-里的图片替换成文本/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">将Word(.docx)-里的图片替换成文本</h4>
+        <h4 class="title">将Word(.doc)里的图片替换成文本</h4>
       </a>
     </div>
   
