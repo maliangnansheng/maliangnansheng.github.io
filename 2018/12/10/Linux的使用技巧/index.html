@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="Nan&#39;s Blog">
 <meta property="og:description" content="修改用户名例：将admin改为test（ubuntu）  修改 /etc/passwd用户信息文件1vim /etc/passwd 123#admin:x:1001:1001:admin,,,:/home/admin:/bin/bash#把用户名admin改成rest#test:x:1001:1001:admin,,,:/home/test:/bin/bash 注： 12admin:x:1001:">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-07T09:24:46.399Z">
+<meta property="og:updated_time" content="2019-01-07T09:51:56.096Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux的使用技巧">
 <meta name="twitter:description" content="修改用户名例：将admin改为test（ubuntu）  修改 /etc/passwd用户信息文件1vim /etc/passwd 123#admin:x:1001:1001:admin,,,:/home/admin:/bin/bash#把用户名admin改成rest#test:x:1001:1001:admin,,,:/home/test:/bin/bash 注： 12admin:x:1001:">
@@ -227,6 +227,20 @@
 <li><p><strong>重启系统，输入root用户名和密码，登录系统</strong></p>
 </li>
 </ol>
+<ul>
+<li><p><strong>解决Ubuntu18.04不能用Xshell使用root用户登录</strong></p>
+<p>今天使用Xshell6连接Ubuntu18.04时，连接普通用户可以，但是连接root用户不行（但是实体机或者虚拟机可以root用户登录）</p>
+<p>解决方案是：</p>
+<p>在Ubuntu18.04中 修改 <code>/etc/ssh/sshd_config</code>这个文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+<p>这是没修改前的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"># Authentication:</span><br><span class="line"></span><br><span class="line">#LoginGraceTime 2m</span><br><span class="line">#PermitRootLogin prohibit-password</span><br><span class="line">#StrictModes yes</span><br><span class="line">#MaxAuthTries 6</span><br><span class="line">#MaxSessions 10</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>修改后的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"># Authentication:</span><br><span class="line"></span><br><span class="line">LoginGraceTime 2m</span><br><span class="line">#PermitRootLogin prohibit-password</span><br><span class="line">PermitRootLogin yes</span><br><span class="line">StrictModes yes</span><br><span class="line">#MaxAuthTries 6</span><br><span class="line">#MaxSessions 10</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>然后再在终端输入一下命令：<code>/etc/init.d/ssh restart</code>  来重启ssh服务</p>
+<p>重新使用root连接，就可以了</p>
+</li>
+</ul>
 <h2 id="找出文件所在的位置"><a href="#找出文件所在的位置" class="headerlink" title="找出文件所在的位置"></a>找出文件所在的位置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis sudoers（你要找的文件名）</span><br></pre></td></tr></table></figure>
 <h2 id="查看端口占用并杀死-kill"><a href="#查看端口占用并杀死-kill" class="headerlink" title="查看端口占用并杀死(kill)"></a>查看端口占用并杀死(kill)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 查看</span><br><span class="line">sudo netstat -tlnp|grep 9090</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 杀死</span><br><span class="line">kill -9 31540</span><br></pre></td></tr></table></figure>
@@ -309,7 +323,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-01-07T09:24:46.399Z" itemprop="dateUpdated">2019-01-07 17:24:46</time>
+    最后更新时间：<time datetime="2019-01-07T09:51:56.096Z" itemprop="dateUpdated">2019-01-07 17:51:56</time>
 </span><br>
 
 
