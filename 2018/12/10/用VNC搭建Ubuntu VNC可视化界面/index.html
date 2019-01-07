@@ -20,19 +20,19 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="Ubuntu,技巧,配置,VNC">
-    <meta name="description" content="安装配置软件 VNC的安装与配置安装之前先输入（获取最新套件的信息） 1apt-get update 输入以下命令安装VNC，安装过程中需要输入Y来确认 1apt-get install vnc4server 启动VNC（第一次启动需要设置密码） 1vncserver 设置vncserver开机启动（待完善…） 设置启动脚本  123sudo touch /etc/init.d/vncserver">
-<meta name="keywords" content="Ubuntu,技巧,配置,VNC">
+    <meta name="keywords" content="技巧,配置,Ubuntu,VNC">
+    <meta name="description" content="安装配置软件 VNC的安装与配置安装之前先输入（获取最新套件的信息） 1apt-get update 输入以下命令安装VNC，安装过程中需要输入Y来确认 1apt-get install vnc4server 启动VNC（第一次启动需要设置密码） 1vncserver 设置vncservgnome 桌面环境安装与配置（可直接跳至第3步）安装x－windows的基础 1sudo apt-get in">
+<meta name="keywords" content="技巧,配置,Ubuntu,VNC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用VNC搭建Ubuntu VNC可视化界面">
 <meta property="og:url" content="/2018/12/10/用VNC搭建Ubuntu VNC可视化界面/index.html">
 <meta property="og:site_name" content="Nan&#39;s Blog">
-<meta property="og:description" content="安装配置软件 VNC的安装与配置安装之前先输入（获取最新套件的信息） 1apt-get update 输入以下命令安装VNC，安装过程中需要输入Y来确认 1apt-get install vnc4server 启动VNC（第一次启动需要设置密码） 1vncserver 设置vncserver开机启动（待完善…） 设置启动脚本  123sudo touch /etc/init.d/vncserver">
+<meta property="og:description" content="安装配置软件 VNC的安装与配置安装之前先输入（获取最新套件的信息） 1apt-get update 输入以下命令安装VNC，安装过程中需要输入Y来确认 1apt-get install vnc4server 启动VNC（第一次启动需要设置密码） 1vncserver 设置vncservgnome 桌面环境安装与配置（可直接跳至第3步）安装x－windows的基础 1sudo apt-get in">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-10T12:01:46.541Z">
+<meta property="og:updated_time" content="2019-01-07T08:42:13.969Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用VNC搭建Ubuntu VNC可视化界面">
-<meta name="twitter:description" content="安装配置软件 VNC的安装与配置安装之前先输入（获取最新套件的信息） 1apt-get update 输入以下命令安装VNC，安装过程中需要输入Y来确认 1apt-get install vnc4server 启动VNC（第一次启动需要设置密码） 1vncserver 设置vncserver开机启动（待完善…） 设置启动脚本  123sudo touch /etc/init.d/vncserver">
+<meta name="twitter:description" content="安装配置软件 VNC的安装与配置安装之前先输入（获取最新套件的信息） 1apt-get update 输入以下命令安装VNC，安装过程中需要输入Y来确认 1apt-get install vnc4server 启动VNC（第一次启动需要设置密码） 1vncserver 设置vncservgnome 桌面环境安装与配置（可直接跳至第3步）安装x－windows的基础 1sudo apt-get in">
     
         <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
     
@@ -156,7 +156,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装配置软件"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装配置软件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#VNC的安装与配置"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">VNC的安装与配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置vncserver开机启动（待完善…）"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">设置vncserver开机启动（待完善…）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#gnome-桌面环境安装与配置（可直接跳至第3步）"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">gnome 桌面环境安装与配置（可直接跳至第3步）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ubuntu卸载gnome桌面（可直接跳至第3步）"><span class="post-toc-number">2.</span> <span class="post-toc-text">ubuntu卸载gnome桌面（可直接跳至第3步）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#卸载掉gnome-shell主程序"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">卸载掉gnome-shell主程序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#卸载掉gnome"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">卸载掉gnome</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#卸载不需要的依赖关系"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">卸载不需要的依赖关系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#彻底卸载删除gnome的相关配置文件"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">彻底卸载删除gnome的相关配置文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#清理安装gnome时候留下的缓存程序软件包"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">清理安装gnome时候留下的缓存程序软件包</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ubuntu运行VNC-Server无桌面时的解决方案"><span class="post-toc-number">3.</span> <span class="post-toc-text">ubuntu运行VNC Server无桌面时的解决方案</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#问题"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装xfce"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">安装xfce</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#本地使用VNC连接"><span class="post-toc-number">4.</span> <span class="post-toc-text">本地使用VNC连接</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#附录"><span class="post-toc-number">5.</span> <span class="post-toc-text">附录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下载地址"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">下载地址</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装配置软件"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装配置软件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#VNC的安装与配置"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">VNC的安装与配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置vncservgnome-桌面环境安装与配置（可直接跳至第3步）"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">设置vncservgnome 桌面环境安装与配置（可直接跳至第3步）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ubuntu卸载gnome桌面（可直接跳至第3步）"><span class="post-toc-number">2.</span> <span class="post-toc-text">ubuntu卸载gnome桌面（可直接跳至第3步）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#卸载掉gnome-shell主程序"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">卸载掉gnome-shell主程序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#卸载掉gnome"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">卸载掉gnome</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#卸载不需要的依赖关系"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">卸载不需要的依赖关系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#彻底卸载删除gnome的相关配置文件"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">彻底卸载删除gnome的相关配置文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#清理安装gnome时候留下的缓存程序软件包"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">清理安装gnome时候留下的缓存程序软件包</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ubuntu运行VNC-Server无桌面时的解决方案"><span class="post-toc-number">3.</span> <span class="post-toc-text">ubuntu运行VNC Server无桌面时的解决方案</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#问题"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装xfce"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">安装xfce</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#本地使用VNC连接"><span class="post-toc-number">4.</span> <span class="post-toc-text">本地使用VNC连接</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#附录"><span class="post-toc-number">5.</span> <span class="post-toc-text">附录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下载地址"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">下载地址</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -188,18 +188,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install vnc4server</span><br></pre></td></tr></table></figure>
 <p>启动VNC（第一次启动需要设置密码）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver</span><br></pre></td></tr></table></figure>
-<h3 id="设置vncserver开机启动（待完善…）"><a href="#设置vncserver开机启动（待完善…）" class="headerlink" title="设置vncserver开机启动（待完善…）"></a>设置vncserver开机启动（待完善…）</h3><ul>
-<li><strong>设置启动脚本</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo touch /etc/init.d/vncserver</span><br><span class="line">sudo chmod +x /etc/init.d/vncserver</span><br><span class="line">sudo vi /etc/init.d/vncserver</span><br></pre></td></tr></table></figure>
-<p>写入以下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"> </span><br><span class="line">### BEGIN INIT INFO</span><br><span class="line"># Provides:          vnc4server</span><br><span class="line"># Required-Start:    $local_fs $network</span><br><span class="line"># Required-Stop:     $local_fs</span><br><span class="line"># Default-Start:     2 3 4 5</span><br><span class="line"># Default-Stop:      0 1 6</span><br><span class="line"># Short-Description: VNC</span><br><span class="line"># Description:       VNC Service</span><br><span class="line">### END INIT INFO</span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">start)</span><br><span class="line">	#su  -c &quot;vncserver -depth 32 -geometry 1024x768&quot; root</span><br><span class="line">	su  -c &quot;vncserver -geometry 1440x900&quot; username</span><br><span class="line">	#su  -c &quot;vncserver&quot; root</span><br><span class="line">	;;</span><br><span class="line">stop)</span><br><span class="line">	vncserver -kill :1</span><br><span class="line">	;;</span><br><span class="line">*)</span><br><span class="line">	echo $&quot;Usage: $0 &#123;start|stop&#125;&quot;</span><br><span class="line">exit 1</span><br><span class="line">esac</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>将它加入启动项将它加入启动项</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-rc.d vncserver defaults 99</span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="gnome-桌面环境安装与配置（可直接跳至第3步）"><a href="#gnome-桌面环境安装与配置（可直接跳至第3步）" class="headerlink" title="gnome 桌面环境安装与配置（可直接跳至第3步）"></a>gnome 桌面环境安装与配置（可直接跳至第3步）</h3><p>安装x－windows的基础</p>
+<h3 id="设置vncservgnome-桌面环境安装与配置（可直接跳至第3步）"><a href="#设置vncservgnome-桌面环境安装与配置（可直接跳至第3步）" class="headerlink" title="设置vncservgnome 桌面环境安装与配置（可直接跳至第3步）"></a>设置vncservgnome 桌面环境安装与配置（可直接跳至第3步）</h3><p>安装x－windows的基础</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install x-window-system-core</span><br></pre></td></tr></table></figure>
 <p>安装登录管理器</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gdm</span><br></pre></td></tr></table></figure>
@@ -260,7 +249,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-12-10T12:01:46.541Z" itemprop="dateUpdated">2018-12-10 20:01:46</time>
+    最后更新时间：<time datetime="2019-01-07T08:42:13.969Z" itemprop="dateUpdated">2019-01-07 16:42:13</time>
 </span><br>
 
 
@@ -412,7 +401,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>马亮南生 &copy; 2018</span>
+        <p><span>马亮南生 &copy; 2018 - 2019</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
