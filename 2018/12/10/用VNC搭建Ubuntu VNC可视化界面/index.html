@@ -20,16 +20,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="Ubuntu,技巧,配置,VNC">
+    <meta name="keywords" content="技巧,配置,Ubuntu,VNC">
     <meta name="description" content="安装配置软件 VNC的安装与配置安装之前先输入（获取最新套件的信息） 1apt-get update 输入以下命令安装VNC，安装过程中需要输入Y来确认 1apt-get install vnc4server 启动VNC（第一次启动需要设置密码） 1vncserver 开机启动请参考：ubuntu-18-04-1-开机启动脚本 设置vncservgnome 桌面环境安装与配置（可直接跳至第3步）安">
-<meta name="keywords" content="Ubuntu,技巧,配置,VNC">
+<meta name="keywords" content="技巧,配置,Ubuntu,VNC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用VNC搭建Ubuntu VNC可视化界面">
 <meta property="og:url" content="/2018/12/10/用VNC搭建Ubuntu VNC可视化界面/index.html">
 <meta property="og:site_name" content="Nan&#39;s Blog">
 <meta property="og:description" content="安装配置软件 VNC的安装与配置安装之前先输入（获取最新套件的信息） 1apt-get update 输入以下命令安装VNC，安装过程中需要输入Y来确认 1apt-get install vnc4server 启动VNC（第一次启动需要设置密码） 1vncserver 开机启动请参考：ubuntu-18-04-1-开机启动脚本 设置vncservgnome 桌面环境安装与配置（可直接跳至第3步）安">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-08T03:59:28.801Z">
+<meta property="og:updated_time" content="2019-01-10T08:08:55.307Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用VNC搭建Ubuntu VNC可视化界面">
 <meta name="twitter:description" content="安装配置软件 VNC的安装与配置安装之前先输入（获取最新套件的信息） 1apt-get update 输入以下命令安装VNC，安装过程中需要输入Y来确认 1apt-get install vnc4server 启动VNC（第一次启动需要设置密码） 1vncserver 开机启动请参考：ubuntu-18-04-1-开机启动脚本 设置vncservgnome 桌面环境安装与配置（可直接跳至第3步）安">
@@ -183,41 +183,41 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <h2 id="安装配置软件"><a href="#安装配置软件" class="headerlink" title="安装配置软件"></a>安装配置软件</h2><ul>
 <li><h3 id="VNC的安装与配置"><a href="#VNC的安装与配置" class="headerlink" title="VNC的安装与配置"></a>VNC的安装与配置</h3><p>安装之前先输入（获取最新套件的信息）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br></pre></td></tr></table></figure>
 <p>输入以下命令安装VNC，安装过程中需要输入Y来确认</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install vnc4server</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install vnc4server</span><br></pre></td></tr></table></figure>
 <p>启动VNC（第一次启动需要设置密码）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver</span><br></pre></td></tr></table></figure>
-<p>开机启动请参考：<a href="ubuntu-18-04-1-开机启动脚本.md">ubuntu-18-04-1-开机启动脚本</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver</span><br></pre></td></tr></table></figure>
+<p>开机启动请参考：<a href="https://maliangnansheng.github.io/2019/01/07/ubuntu-18-04-1-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/" target="_blank" rel="noopener">ubuntu-18-04-1-开机启动脚本</a></p>
 <h3 id="设置vncservgnome-桌面环境安装与配置（可直接跳至第3步）"><a href="#设置vncservgnome-桌面环境安装与配置（可直接跳至第3步）" class="headerlink" title="设置vncservgnome 桌面环境安装与配置（可直接跳至第3步）"></a>设置vncservgnome 桌面环境安装与配置（可直接跳至第3步）</h3><p>安装x－windows的基础</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install x-window-system-core</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install x-window-system-core</span><br></pre></td></tr></table></figure>
 <p>安装登录管理器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gdm</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gdm</span><br></pre></td></tr></table></figure>
 <p>安装Ubuntu的桌面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ubuntu-desktop</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ubuntu-desktop</span><br></pre></td></tr></table></figure>
 <p>安装gnome配套软件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal</span><br></pre></td></tr></table></figure>
 <p><strong>修改VNC配置文件</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi ~/.vnc/xstartup</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi ~/.vnc/xstartup</span><br></pre></td></tr></table></figure>
 <p><strong>修改为：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"># Uncomment the following two lines for normal desktop:</span><br><span class="line">export XKL_XMODMAP_DISABLE=1</span><br><span class="line"> unset SESSION_MANAGER</span><br><span class="line"># exec /etc/X11/xinit/xinitrc</span><br><span class="line">unset DBUS_SESSION_BUS_ADDRESS</span><br><span class="line">gnome-panel &amp;</span><br><span class="line">gnmoe-settings-daemon &amp;</span><br><span class="line">metacity &amp;</span><br><span class="line">nautilus &amp;</span><br><span class="line">gnome-terminal &amp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="comment"># Uncomment the following two lines for normal desktop:</span></span><br><span class="line"><span class="built_in">export</span> XKL_XMODMAP_DISABLE=1</span><br><span class="line"> <span class="built_in">unset</span> SESSION_MANAGER</span><br><span class="line"><span class="comment"># exec /etc/X11/xinit/xinitrc</span></span><br><span class="line"><span class="built_in">unset</span> DBUS_SESSION_BUS_ADDRESS</span><br><span class="line">gnome-panel &amp;</span><br><span class="line">gnmoe-settings-daemon &amp;</span><br><span class="line">metacity &amp;</span><br><span class="line">nautilus &amp;</span><br><span class="line">gnome-terminal &amp;</span><br></pre></td></tr></table></figure>
 <p>杀掉原桌面进程，输入命令（其中的:1是桌面号）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -kill :1</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -<span class="built_in">kill</span> :1</span><br></pre></td></tr></table></figure>
 <p>输入以下命令生成新的会话：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver :1</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver :1</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="ubuntu卸载gnome桌面（可直接跳至第3步）"><a href="#ubuntu卸载gnome桌面（可直接跳至第3步）" class="headerlink" title="ubuntu卸载gnome桌面（可直接跳至第3步）"></a>ubuntu卸载gnome桌面（可直接跳至第3步）</h2><p> 之前安装好了ubuntu18.04，本来想装个gnome shell来美化一下桌面，结果出现了开机黑屏（灰屏）的现象，经网上查询发现是显卡驱动在gnome3的环境下产生了不兼容，具体解决方法我还没找到，情急之下只能先卸载掉gnome桌面环境。</p>
 <ul>
-<li><h3 id="卸载掉gnome-shell主程序"><a href="#卸载掉gnome-shell主程序" class="headerlink" title="卸载掉gnome-shell主程序"></a>卸载掉gnome-shell主程序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove gnome-shell</span><br></pre></td></tr></table></figure>
+<li><h3 id="卸载掉gnome-shell主程序"><a href="#卸载掉gnome-shell主程序" class="headerlink" title="卸载掉gnome-shell主程序"></a>卸载掉gnome-shell主程序</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove gnome-shell</span><br></pre></td></tr></table></figure>
 </li>
-<li><h3 id="卸载掉gnome"><a href="#卸载掉gnome" class="headerlink" title="卸载掉gnome"></a>卸载掉gnome</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove gnome</span><br></pre></td></tr></table></figure>
+<li><h3 id="卸载掉gnome"><a href="#卸载掉gnome" class="headerlink" title="卸载掉gnome"></a>卸载掉gnome</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove gnome</span><br></pre></td></tr></table></figure>
 </li>
-<li><h3 id="卸载不需要的依赖关系"><a href="#卸载不需要的依赖关系" class="headerlink" title="卸载不需要的依赖关系"></a>卸载不需要的依赖关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></table></figure>
+<li><h3 id="卸载不需要的依赖关系"><a href="#卸载不需要的依赖关系" class="headerlink" title="卸载不需要的依赖关系"></a>卸载不需要的依赖关系</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></table></figure>
 </li>
-<li><h3 id="彻底卸载删除gnome的相关配置文件"><a href="#彻底卸载删除gnome的相关配置文件" class="headerlink" title="彻底卸载删除gnome的相关配置文件"></a>彻底卸载删除gnome的相关配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge gnome</span><br></pre></td></tr></table></figure>
+<li><h3 id="彻底卸载删除gnome的相关配置文件"><a href="#彻底卸载删除gnome的相关配置文件" class="headerlink" title="彻底卸载删除gnome的相关配置文件"></a>彻底卸载删除gnome的相关配置文件</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge gnome</span><br></pre></td></tr></table></figure>
 </li>
-<li><h3 id="清理安装gnome时候留下的缓存程序软件包"><a href="#清理安装gnome时候留下的缓存程序软件包" class="headerlink" title="清理安装gnome时候留下的缓存程序软件包"></a>清理安装gnome时候留下的缓存程序软件包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoclean</span><br><span class="line">sudo apt-get clean</span><br></pre></td></tr></table></figure>
+<li><h3 id="清理安装gnome时候留下的缓存程序软件包"><a href="#清理安装gnome时候留下的缓存程序软件包" class="headerlink" title="清理安装gnome时候留下的缓存程序软件包"></a>清理安装gnome时候留下的缓存程序软件包</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoclean</span><br><span class="line">sudo apt-get clean</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="ubuntu运行VNC-Server无桌面时的解决方案"><a href="#ubuntu运行VNC-Server无桌面时的解决方案" class="headerlink" title="ubuntu运行VNC Server无桌面时的解决方案"></a>ubuntu运行VNC Server无桌面时的解决方案</h2><p>配置vnc server实在是一个特别诡异的事，我在不同的ubuntu机器上配置服务时，总是遇到千奇百怪的问题，大部分情况下比较顺利，将<code>~/.vnc/xstartup</code>最后一句<code>x-window-manager&amp;</code>替换为<code>gnome-session&amp;</code>就能顺利地出现桌面，而有些则不行，需要改为<code>gnome-session --session=ubuntu-2d&amp;</code></p>
@@ -226,12 +226,12 @@
 <p>查阅了很多博文，有说需要安装<code>gnome-session-fallback</code>的，有说需要安装<code>gdm</code>的，也有用<code>kde</code>的，除了kde我没有尝试，另外两种验证无效，依然只有一个灰色背景。</p>
 <p>最后用xfce4桌面解决，选择些方案一是因为xfce相对较小，gnome-session死活不行的情况下，再将一个kde未免太过兴师动众，xfce我使用过一段时间，是一个相当轻量级的GUI环境，清爽易用，功能一点不含糊。决定之后，一次尝试即成功。</p>
 </li>
-<li><h3 id="安装xfce"><a href="#安装xfce" class="headerlink" title="安装xfce"></a>安装xfce</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gnome-core xfce4</span><br></pre></td></tr></table></figure>
+<li><h3 id="安装xfce"><a href="#安装xfce" class="headerlink" title="安装xfce"></a>安装xfce</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gnome-core xfce4</span><br></pre></td></tr></table></figure>
 </li>
 <li><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>编辑<code>~/.vnc/xstartup</code>文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">unset SESSION_MANAGER</span><br><span class="line">unset DBUS_SESSION_BUS_ADDRESS</span><br><span class="line">startxfce4 &amp;</span><br><span class="line">[ -x /etc/vnc/xstartup ] &amp;&amp; exec /etc/vnc/xstartup</span><br><span class="line">[ -r $HOME/.Xresources ] &amp;&amp; xrdb $HOME/.Xresources</span><br><span class="line">xsetroot -solid grey</span><br><span class="line">vncconfig -iconic &amp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">unset</span> SESSION_MANAGER</span><br><span class="line"><span class="built_in">unset</span> DBUS_SESSION_BUS_ADDRESS</span><br><span class="line">startxfce4 &amp;</span><br><span class="line">[ -x /etc/vnc/xstartup ] &amp;&amp; <span class="built_in">exec</span> /etc/vnc/xstartup</span><br><span class="line">[ -r <span class="variable">$HOME</span>/.Xresources ] &amp;&amp; xrdb <span class="variable">$HOME</span>/.Xresources</span><br><span class="line">xsetroot -solid grey</span><br><span class="line">vncconfig -iconic &amp;</span><br></pre></td></tr></table></figure>
 <p>输入以下命令生成新的会话：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver :1</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver :1</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="本地使用VNC连接"><a href="#本地使用VNC连接" class="headerlink" title="本地使用VNC连接"></a>本地使用VNC连接</h2><ol>
@@ -250,7 +250,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-01-08T03:59:28.801Z" itemprop="dateUpdated">2019-01-08 11:59:28</time>
+    最后更新时间：<time datetime="2019-01-10T08:08:55.307Z" itemprop="dateUpdated">2019-01-10 16:08:55</time>
 </span><br>
 
 

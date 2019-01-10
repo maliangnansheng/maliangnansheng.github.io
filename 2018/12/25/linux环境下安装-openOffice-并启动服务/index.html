@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="Nan&#39;s Blog">
 <meta property="og:description" content="背景故事这两天遇到一个大坑，客户要做office 文档在线预览功能，于是乎就要把office文档转换成pdf交给前端显示。 　     在某度找了一圈都说openOffice+jodconverter 可以搞定这个事情。代码倒是很好找，不过版本很多，各类jar包也很多，但尝试下来发现，转化效果很一般，复杂的excel也无法成功。有同事建议放到服务器上效果可能好些，于是就开始折腾在服务器上安装Ope">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-25T02:42:07.799Z">
+<meta property="og:updated_time" content="2019-01-10T08:06:15.269Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux环境下安装 openOffice 并启动服务">
 <meta name="twitter:description" content="背景故事这两天遇到一个大坑，客户要做office 文档在线预览功能，于是乎就要把office文档转换成pdf交给前端显示。 　     在某度找了一圈都说openOffice+jodconverter 可以搞定这个事情。代码倒是很好找，不过版本很多，各类jar包也很多，但尝试下来发现，转化效果很一般，复杂的excel也无法成功。有同事建议放到服务器上效果可能好些，于是就开始折腾在服务器上安装Ope">
@@ -188,24 +188,24 @@
 <li><p><a href="http://www.openoffice.org/zh-cn/download/" target="_blank" rel="noopener">http://www.openoffice.org/zh-cn/download/</a> 去官网链接下载linux版本的openOffice 以4.1.6 版本为例。</p>
 </li>
 <li><p>将压缩包上传至服务器上，并进行解压安装。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf  对应的压缩包名字</span><br><span class="line">cd 进入解压后的 /zh-cn/RPMS</span><br><span class="line">yum localinstall *.rpm</span><br><span class="line">cd desktop-integration</span><br><span class="line">rpm -ivh openoffice4.1.6-redhat-menus-4.1.6-9789.noarch.rpm</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf  对应的压缩包名字</span><br><span class="line"><span class="built_in">cd</span> 进入解压后的 /zh-cn/RPMS</span><br><span class="line">yum localinstall *.rpm</span><br><span class="line"><span class="built_in">cd</span> desktop-integration</span><br><span class="line">rpm -ivh openoffice4.1.6-redhat-menus-4.1.6-9789.noarch.rpm</span><br></pre></td></tr></table></figure>
 <p>默认会安装在/opt目录下。</p>
 </li>
 <li><p>启动服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/opt/openoffice4/program/soffice -headless -accept=&quot;socket,host=127.0.0.1,port=8100;urp;&quot; -nofirststartwizard  临时启动</span><br><span class="line"></span><br><span class="line">nohup /opt/openoffice4/program/soffice -headless -accept=&quot;socket,host=127.0.0.1,port=8100;urp;&quot; -nofirststartwizard &amp;  后台启动</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/opt/openoffice4/program/soffice -headless -accept=<span class="string">"socket,host=127.0.0.1,port=8100;urp;"</span> -nofirststartwizard  临时启动</span><br><span class="line"></span><br><span class="line">nohup /opt/openoffice4/program/soffice -headless -accept=<span class="string">"socket,host=127.0.0.1,port=8100;urp;"</span> -nofirststartwizard &amp;  后台启动</span><br></pre></td></tr></table></figure>
 <p>端口号根据自己项目实际来确定。</p>
 <p>后台启动会一直占用内存，据各路大神说 大概100M，我自己没测过具体值不清楚。</p>
 <p>有的程序是需要预先启动openOffice 服务的，有的则在代码里自己启动服务。</p>
 </li>
 <li><p>.查看进程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -lnp |grep 端口号</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -lnp |grep 端口号</span><br></pre></td></tr></table></figure>
 <p>大概显示成这样就算启动完了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcp      0       0 127.0.0.1:8100      0.0.0.0:*      LISTEN      14362/soffice.bin</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcp      0       0 127.0.0.1:8100      0.0.0.0:*      LISTEN      14362/soffice.bin</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>装完openoffice后启动服务可能会报错：no suitable windowing system found, exiting</p>
 <p>从字面上的意思就是缺少一个窗口化的系统。所以就安装一个。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum groupinstall &quot;X Window System&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum groupinstall <span class="string">"X Window System"</span></span><br></pre></td></tr></table></figure>
         </div>
 
         <blockquote class="post-copyright">
@@ -213,7 +213,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-12-25T02:42:07.799Z" itemprop="dateUpdated">2018-12-25 10:42:07</time>
+    最后更新时间：<time datetime="2019-01-10T08:06:15.269Z" itemprop="dateUpdated">2019-01-10 16:06:15</time>
 </span><br>
 
 
