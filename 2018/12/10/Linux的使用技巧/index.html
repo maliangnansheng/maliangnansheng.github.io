@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="Nan&#39;s Blog">
 <meta property="og:description" content="修改用户名例：将admin改为test（ubuntu）  修改 /etc/passwd用户信息文件1vim /etc/passwd 123#admin:x:1001:1001:admin,,,:/home/admin:/bin/bash#把用户名admin改成rest#test:x:1001:1001:admin,,,:/home/test:/bin/bash 注： 12admin:x:1001:">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-10T08:05:45.240Z">
+<meta property="og:updated_time" content="2019-01-12T08:08:49.831Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux的使用技巧">
 <meta name="twitter:description" content="修改用户名例：将admin改为test（ubuntu）  修改 /etc/passwd用户信息文件1vim /etc/passwd 123#admin:x:1001:1001:admin,,,:/home/admin:/bin/bash#把用户名admin改成rest#test:x:1001:1001:admin,,,:/home/test:/bin/bash 注： 12admin:x:1001:">
@@ -156,7 +156,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改用户名"><span class="post-toc-number">1.</span> <span class="post-toc-text">修改用户名</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-passwd用户信息文件"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">修改 /etc/passwd用户信息文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-shadow用户密码文件"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">修改 /etc/shadow用户密码文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#再修改-etc-group用户组文件"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">再修改 /etc/group用户组文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改用户的家目录"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">修改用户的家目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#xx-is-not-in-the-sudoers-file-问题解决"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">xx is not in the sudoers file 问题解决</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改用户密码"><span class="post-toc-number">2.</span> <span class="post-toc-text">修改用户密码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开启root用户和使用root用户登陆"><span class="post-toc-number">3.</span> <span class="post-toc-text">开启root用户和使用root用户登陆</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#找出文件所在的位置"><span class="post-toc-number">4.</span> <span class="post-toc-text">找出文件所在的位置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看端口占用并杀死-kill"><span class="post-toc-number">5.</span> <span class="post-toc-text">查看端口占用并杀死(kill)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何从Yum库下载rpm包但不安装"><span class="post-toc-number">6.</span> <span class="post-toc-text">如何从Yum库下载rpm包但不安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#apt-get-与-yum安装有啥区别"><span class="post-toc-number">7.</span> <span class="post-toc-text">apt-get 与 yum安装有啥区别</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装rpm包"><span class="post-toc-number">8.</span> <span class="post-toc-text">安装rpm包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看Linux版本方法"><span class="post-toc-number">9.</span> <span class="post-toc-text">查看Linux版本方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#linux运行jar包"><span class="post-toc-number">10.</span> <span class="post-toc-text">linux运行jar包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XShell上传、下载本地文件到linux服务器"><span class="post-toc-number">11.</span> <span class="post-toc-text">XShell上传、下载本地文件到linux服务器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ubuntu安装ssh服务"><span class="post-toc-number">12.</span> <span class="post-toc-text">ubuntu安装ssh服务</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改用户名"><span class="post-toc-number">1.</span> <span class="post-toc-text">修改用户名</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-passwd用户信息文件"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">修改 /etc/passwd用户信息文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-shadow用户密码文件"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">修改 /etc/shadow用户密码文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#再修改-etc-group用户组文件"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">再修改 /etc/group用户组文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改用户的家目录"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">修改用户的家目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#xx-is-not-in-the-sudoers-file-问题解决"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">xx is not in the sudoers file 问题解决</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改用户密码"><span class="post-toc-number">2.</span> <span class="post-toc-text">修改用户密码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开启root用户和使用root用户登陆"><span class="post-toc-number">3.</span> <span class="post-toc-text">开启root用户和使用root用户登陆</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#找出文件所在的位置"><span class="post-toc-number">4.</span> <span class="post-toc-text">找出文件所在的位置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看端口占用并杀死-kill"><span class="post-toc-number">5.</span> <span class="post-toc-text">查看端口占用并杀死(kill)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何从Yum库下载rpm包但不安装"><span class="post-toc-number">6.</span> <span class="post-toc-text">如何从Yum库下载rpm包但不安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#apt-get-与-yum安装有啥区别"><span class="post-toc-number">7.</span> <span class="post-toc-text">apt-get 与 yum安装有啥区别</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装rpm包"><span class="post-toc-number">8.</span> <span class="post-toc-text">安装rpm包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看Linux版本方法"><span class="post-toc-number">9.</span> <span class="post-toc-text">查看Linux版本方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#linux运行jar包"><span class="post-toc-number">10.</span> <span class="post-toc-text">linux运行jar包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XShell上传、下载本地文件到linux服务器"><span class="post-toc-number">11.</span> <span class="post-toc-text">XShell上传、下载本地文件到linux服务器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ubuntu安装ssh服务"><span class="post-toc-number">12.</span> <span class="post-toc-text">ubuntu安装ssh服务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CentOS7中找不到ifconfig和netstat命令"><span class="post-toc-number">13.</span> <span class="post-toc-text">CentOS7中找不到ifconfig和netstat命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#用ifconfig或者ip-a命令，获取不到IP地址"><span class="post-toc-number">14.</span> <span class="post-toc-text">用ifconfig或者ip a命令，获取不到IP地址</span></a></li></ol>
         </nav>
     </aside>
 
@@ -294,8 +294,11 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#指定下载（linux-&gt;windows）哪个文件-弹出窗口选择需要保存的路径</span></span><br><span class="line">[root@host ~]<span class="comment"># sz 文件名称</span></span><br></pre></td></tr></table></figure>
 <h2 id="ubuntu安装ssh服务"><a href="#ubuntu安装ssh服务" class="headerlink" title="ubuntu安装ssh服务"></a>ubuntu安装ssh服务</h2><p>SSH分客户端<strong>openssh-client</strong>和<strong>openssh-server</strong></p>
 <ol>
-<li>如果你只是想登陆别的机器的SSH只需要安装openssh-client（ubuntu有默认安装，如果没有则<code>sudo apt-get install openssh-client</code>）</li>
-<li>如果要使本机开放SSH服务就需要安装openssh-serversudo（<code>apt-get install openssh-server</code>）</li>
+<li><p>如果你只是想登陆别的机器的SSH只需要安装openssh-client（ubuntu有默认安装，如果没有则<code>sudo apt-get install openssh-client</code>）</p>
+</li>
+<li><p>如果要使本机开放SSH服务就需要安装openssh-serversudo（<code>apt-get install openssh-server</code>）</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install openssh-server</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <p>有时候当你执行<code>sudo apt-get XXX</code>这种命令时出现类似下面的输出错误：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">E: Could not get lock /var/lib/dpkg/lock - open (11 Resource temporarily unavailable)</span><br><span class="line">E: Unable to lock the administration directory (/var/lib/dpkg/) is another process using it?</span><br></pre></td></tr></table></figure>
@@ -311,10 +314,27 @@
 <p>第2列就是线程号(kill processnumber)。我们将<strong>apt</strong>相关的进程给关闭掉，需要使用<code>sudo</code>权限：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">kill</span> 2098</span><br></pre></td></tr></table></figure>
 <p>输出：</p>
-<p>bash: kill: (2098) - Operation not permitted</p>
+<p><code>bash: kill: (2098) - Operation not permitted</code></p>
 <p><strong>然后确认sshserver是否启动了：</strong></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -e |grep ssh</span><br></pre></td></tr></table></figure>
 <p>如果看到sshd那说明ssh-server已经启动了</p>
+<h2 id="CentOS7中找不到ifconfig和netstat命令"><a href="#CentOS7中找不到ifconfig和netstat命令" class="headerlink" title="CentOS7中找不到ifconfig和netstat命令"></a>CentOS7中找不到ifconfig和netstat命令</h2><p>把net-tools包装上就好了</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install net-tools</span><br></pre></td></tr></table></figure>
+<h2 id="用ifconfig或者ip-a命令，获取不到IP地址"><a href="#用ifconfig或者ip-a命令，获取不到IP地址" class="headerlink" title="用ifconfig或者ip a命令，获取不到IP地址"></a>用<code>ifconfig</code>或者<code>ip a</code>命令，获取不到IP地址</h2><p>问题描述：用<code>ifconfig</code>或者<code>ip a</code>命令，获取不到<code>ip</code>地址，即网卡未启动，无法用<code>Xshell</code>远程连接。</p>
+<p>解决方案：</p>
+<ol>
+<li><p>进入<code>/etc/sysconfig/network-scripts</code>目录，发现有一个或多个<code>ifcfg-...</code>，即网卡（驱动）存在但未启用。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /etc/sysconfig/network-scripts</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改<code>/etc/sysconfig/network-scripts/ifcfg-...</code>文件， 把<code>ONBOOT=no</code>改为<code>ONBOOT=yes</code>保存退出<code>wq</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-em1</span><br><span class="line">...</span><br><span class="line"><span class="comment"># 把`ONBOOT=no`改为`ONBOOT=yes`保存退出</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>service network restart</code>重启。出现：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Restarting network (via systemctl):                        [  确定  ] OK</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输入<code>ifconfig</code>或者<code>ip a</code>命令，出现<code>ip</code>地址。用<code>Xshell</code>连接成功。</p>
+</li>
+</ol>
 
         </div>
 
@@ -323,7 +343,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-01-10T08:05:45.240Z" itemprop="dateUpdated">2019-01-10 16:05:45</time>
+    最后更新时间：<time datetime="2019-01-12T08:08:49.831Z" itemprop="dateUpdated">2019-01-12 16:08:49</time>
 </span><br>
 
 

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>pip的使用技巧 | Nan&#39;s Blog | 弱者才言命，强者只言运！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Python,pip">
+    <meta name="description" content="如何使用pip安装特定版本的python第三方包python的包管理器pip特别好用，我们可以使用它来方便的安装第三方包，但是怎样使用pip来安装特定版本的第三方包呢？ 安装好python后，包管理器pip就已经安装好了，在终端中输入pip就可以查阅到pip一些常用用法，如： 12pip install package#这里package即为第三方包的名称，如tensorflow，使用这种安装方式">
+<meta name="keywords" content="Python,pip">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pip的使用技巧">
+<meta property="og:url" content="/2019/01/12/pip的使用技巧/index.html">
+<meta property="og:site_name" content="Nan&#39;s Blog">
+<meta property="og:description" content="如何使用pip安装特定版本的python第三方包python的包管理器pip特别好用，我们可以使用它来方便的安装第三方包，但是怎样使用pip来安装特定版本的第三方包呢？ 安装好python后，包管理器pip就已经安装好了，在终端中输入pip就可以查阅到pip一些常用用法，如： 12pip install package#这里package即为第三方包的名称，如tensorflow，使用这种安装方式">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-12T08:08:22.305Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pip的使用技巧">
+<meta name="twitter:description" content="如何使用pip安装特定版本的python第三方包python的包管理器pip特别好用，我们可以使用它来方便的安装第三方包，但是怎样使用pip来安装特定版本的第三方包呢？ 安装好python后，包管理器pip就已经安装好了，在终端中输入pip就可以查阅到pip一些常用用法，如： 12pip install package#这里package即为第三方包的名称，如tensorflow，使用这种安装方式">
+    
+        <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">马亮南生</h5>
+          <a href="mailto:maliangnansheng@gmail.com" title="maliangnansheng@gmail.com" class="mail">maliangnansheng@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/maliangnansheng" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">pip的使用技巧</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">pip的使用技巧</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-12T06:57:20.000Z" itemprop="datePublished" class="page-time">
+  2019-01-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何使用pip安装特定版本的python第三方包"><span class="post-toc-number">1.</span> <span class="post-toc-text">如何使用pip安装特定版本的python第三方包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#多版本Python共存时pip给指定版本的python安装package的方法"><span class="post-toc-number">2.</span> <span class="post-toc-text">多版本Python共存时pip给指定版本的python安装package的方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看pip指向"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">查看pip指向</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解决方案"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">解决方案</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-pip的使用技巧" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">pip的使用技巧</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-12 14:57:20" datetime="2019-01-12T06:57:20.000Z" itemprop="datePublished">2019-01-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="如何使用pip安装特定版本的python第三方包"><a href="#如何使用pip安装特定版本的python第三方包" class="headerlink" title="如何使用pip安装特定版本的python第三方包"></a>如何使用pip安装特定版本的python第三方包</h2><p>python的包管理器pip特别好用，我们可以使用它来方便的安装第三方包，但是怎样使用pip来安装特定版本的第三方包呢？</p>
+<p>安装好python后，包管理器pip就已经安装好了，在终端中输入pip就可以查阅到pip一些常用用法，如：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install package</span><br><span class="line"><span class="comment">#这里package即为第三方包的名称，如tensorflow，使用这种安装方式会安装最新版本的包</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall package</span><br><span class="line"><span class="comment">#卸载包</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip list</span><br><span class="line"><span class="comment">#列举出当前环境安装的所有包</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip show package</span><br><span class="line"><span class="comment">#显示所安装包的信息</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install package==version</span><br><span class="line"><span class="comment">#package：包名；version：版本号。如pip install tensorflow-gpu==1.12.0即是安装1.12.0版本的gpu版本的tensorflow</span></span><br></pre></td></tr></table></figure>
+<h2 id="多版本Python共存时pip给指定版本的python安装package的方法"><a href="#多版本Python共存时pip给指定版本的python安装package的方法" class="headerlink" title="多版本Python共存时pip给指定版本的python安装package的方法"></a>多版本Python共存时pip给指定版本的python安装package的方法</h2><p>在linux安装了多版本python时（例如python2.7和3.4），pip安装的包不一定是用户想要的位置，此时可以用 <code>-t</code> 选项来指定位置</p>
+<h3 id="查看pip指向"><a href="#查看pip指向" class="headerlink" title="查看pip指向"></a>查看pip指向</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip -V</span><br><span class="line"><span class="comment"># 输出：pip 9.0.1 from /usr/lib/python2.7/site-packages/pip-9.0.1-py2.7.egg (python 2.7)</span></span><br><span class="line"><span class="comment"># 发现指向python 2.7</span></span><br></pre></td></tr></table></figure>
+<p>所以我们的问题变成了怎么通过pip去指定安装到Python3.4下</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ol>
+<li><p>更改pip3指向<strong>（推荐）</strong></p>
+<p>这种方法可以<strong>一劳永逸</strong>地让之后的pip3安装都顺利一点</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">1.查看pip在哪</span><br><span class="line"><span class="built_in">which</span> pip</span><br><span class="line"><span class="comment"># 输出：/usr/bin/pip</span></span><br><span class="line"></span><br><span class="line">2.查看python在哪</span><br><span class="line"><span class="built_in">which</span> python</span><br><span class="line"><span class="comment"># 输出：/usr/bin/python</span></span><br><span class="line"></span><br><span class="line">3.查看python3在哪</span><br><span class="line"><span class="built_in">which</span> python3</span><br><span class="line"><span class="comment"># 输出：/usr/local/bin/python3</span></span><br><span class="line"></span><br><span class="line">4.编辑pip所在文件</span><br><span class="line">vim /usr/bin/pip</span><br><span class="line"><span class="comment"># 我们可以看到如下：</span></span><br><span class="line">-----------------------------pip--------------------------------</span><br><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># EASY-INSTALL-ENTRY-SCRIPT: 'pip==9.0.1','console_scripts','pip'</span></span><br><span class="line">__requires__ = <span class="string">'pip==9.0.1'</span></span><br><span class="line">import re</span><br><span class="line">import sys</span><br><span class="line">from pkg_resources import load_entry_point</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    sys.argv[0] = re.sub(r<span class="string">'(-script\.pyw?|\.exe)?$'</span>, <span class="string">''</span>, sys.argv[0])</span><br><span class="line">    sys.exit(</span><br><span class="line">        load_entry_point(<span class="string">'pip==9.0.1'</span>, <span class="string">'console_scripts'</span>, <span class="string">'pip'</span>)()</span><br><span class="line">    )</span><br><span class="line">-----------------------------pip-end----------------------------</span><br><span class="line"></span><br><span class="line">将第一行 <span class="comment">#!/usr/bin/python 修改为</span></span><br><span class="line"><span class="comment">#!/usr/local/bin/python3</span></span><br><span class="line">然后pip就指向python2了</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>强制安装到Python3.4环境下</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m pip install tensorflow-1.8.0-cp34-cp34m-manylinux1_x86_64.whl</span><br></pre></td></tr></table></figure>
+<p>这样就可以指定安装到python3下了，不过用这种方法的话每次要安装都得这么做，不过因为我是在别人服务器上做，不好随便更改，因此采用这种方式。</p>
+</li>
+<li><p>用 <code>-t</code> 选项来指定安装位置</p>
+<p>例如目标位置是<code>/usr/local/lib/python3.4/site-packages/</code> ，要安装<code>tensorflow-1.8.0-cp34-cp34m-manylinux1_x86_64.whl</code>这个包，则：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -t /usr/<span class="built_in">local</span>/lib/python3.4/site-packages/ tensorflow-1.8.0-cp34-cp34m-manylinux1_x86_64.whl</span><br></pre></td></tr></table></figure>
+<p><strong>这一种方式安装一般会报<code>Command &quot;python setup.py egg_info&quot; failed with error code 1</code>这个错</strong> 。解决方案<strong>（经验）</strong>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install --upgrade --force pip </span><br><span class="line">pip install setuptools==33.1.1</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-01-12T08:08:22.305Z" itemprop="dateUpdated">2019-01-12 16:08:22</time>
+</span><br>
+
+
+        
+        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2019/01/12/pip的使用技巧/" target="_blank" rel="external">/2019/01/12/pip的使用技巧/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="马亮南生">
+            马亮南生
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pip/">pip</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/01/10/Hibernate中更新非空域/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Hibernate中更新非空域</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "",
+            appKey: "",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>马亮南生 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '马亮南生的博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '马亮南生的博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+	
+	<!-- 页面点击小红心 -->
+	<script type="text/javascript" src="/js/love.js"></script>
+</body>
+</html>
