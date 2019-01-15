@@ -20,19 +20,19 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="Desktop,技巧">
-    <meta name="description" content="代码实现123456789101112public static void main(String[] args) &amp;#123;    try &amp;#123;        Desktop desktop = Desktop.getDesktop();        if (desktop.isSupported(Desktop.Action.OPEN)) &amp;#123;            des">
-<meta name="keywords" content="Desktop,技巧">
+    <meta name="keywords" content="技巧,Desktop">
+    <meta name="description" content="打开某一文件（默认软件打开）123456789101112public static void main(String[] args) &amp;#123;    try &amp;#123;        Desktop desktop = Desktop.getDesktop();        if (desktop.isSupported(Desktop.Action.OPEN)) &amp;#123;">
+<meta name="keywords" content="技巧,Desktop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Java打开桌面文件">
 <meta property="og:url" content="/2019/01/15/使用Java打开桌面文件/index.html">
 <meta property="og:site_name" content="Nan&#39;s Blog">
-<meta property="og:description" content="代码实现123456789101112public static void main(String[] args) &amp;#123;    try &amp;#123;        Desktop desktop = Desktop.getDesktop();        if (desktop.isSupported(Desktop.Action.OPEN)) &amp;#123;            des">
+<meta property="og:description" content="打开某一文件（默认软件打开）123456789101112public static void main(String[] args) &amp;#123;    try &amp;#123;        Desktop desktop = Desktop.getDesktop();        if (desktop.isSupported(Desktop.Action.OPEN)) &amp;#123;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-15T09:37:51.177Z">
+<meta property="og:updated_time" content="2019-01-15T09:59:44.143Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Java打开桌面文件">
-<meta name="twitter:description" content="代码实现123456789101112public static void main(String[] args) &amp;#123;    try &amp;#123;        Desktop desktop = Desktop.getDesktop();        if (desktop.isSupported(Desktop.Action.OPEN)) &amp;#123;            des">
+<meta name="twitter:description" content="打开某一文件（默认软件打开）123456789101112public static void main(String[] args) &amp;#123;    try &amp;#123;        Desktop desktop = Desktop.getDesktop();        if (desktop.isSupported(Desktop.Action.OPEN)) &amp;#123;">
     
         <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
     
@@ -156,7 +156,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码实现"><span class="post-toc-number">1.</span> <span class="post-toc-text">代码实现</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#打开某一文件（默认软件打开）"><span class="post-toc-number">1.</span> <span class="post-toc-text">打开某一文件（默认软件打开）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#指定某一软件打开对应的文件"><span class="post-toc-number">2.</span> <span class="post-toc-text">指定某一软件打开对应的文件</span></a></li></ol>
         </nav>
     </aside>
 
@@ -181,7 +181,8 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Desktop desktop = Desktop.getDesktop();</span><br><span class="line">        <span class="keyword">if</span> (desktop.isSupported(Desktop.Action.OPEN)) &#123;</span><br><span class="line">            desktop.open(<span class="keyword">new</span> File(<span class="string">"Your.pdf"</span>)); <span class="comment">//全路径</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"Open is not supported"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException exp) &#123;</span><br><span class="line">        exp.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h2 id="打开某一文件（默认软件打开）"><a href="#打开某一文件（默认软件打开）" class="headerlink" title="打开某一文件（默认软件打开）"></a>打开某一文件（默认软件打开）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Desktop desktop = Desktop.getDesktop();</span><br><span class="line">        <span class="keyword">if</span> (desktop.isSupported(Desktop.Action.OPEN)) &#123;</span><br><span class="line">            desktop.open(<span class="keyword">new</span> File(<span class="string">"Your.pdf"</span>)); <span class="comment">//全路径</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"Open is not supported"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException exp) &#123;</span><br><span class="line">        exp.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="指定某一软件打开对应的文件"><a href="#指定某一软件打开对应的文件" class="headerlink" title="指定某一软件打开对应的文件"></a>指定某一软件打开对应的文件</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Runtime.getRuntime()</span><br><span class="line">    .exec(<span class="string">"WINWORD.EXE（使用啥软件打开）所在全路径 D:\\test.docx（文件全路径）"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//例："C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE D:\\3.pdf"</span></span><br></pre></td></tr></table></figure>
         </div>
 
         <blockquote class="post-copyright">
@@ -189,7 +190,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-01-15T09:37:51.177Z" itemprop="dateUpdated">2019-01-15 17:37:51</time>
+    最后更新时间：<time datetime="2019-01-15T09:59:44.143Z" itemprop="dateUpdated">2019-01-15 17:59:44</time>
 </span><br>
 
 

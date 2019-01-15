@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-01-15T09:37:51.177Z</updated>
+  <updated>2019-01-15T09:59:44.143Z</updated>
   <id>/</id>
   
   <author>
@@ -21,15 +21,15 @@
     <link href="/2019/01/15/%E4%BD%BF%E7%94%A8Java%E6%89%93%E5%BC%80%E6%A1%8C%E9%9D%A2%E6%96%87%E4%BB%B6/"/>
     <id>/2019/01/15/使用Java打开桌面文件/</id>
     <published>2019-01-15T09:34:36.000Z</published>
-    <updated>2019-01-15T09:37:51.177Z</updated>
+    <updated>2019-01-15T09:59:44.143Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Desktop desktop = Desktop.getDesktop();</span><br><span class="line">        <span class="keyword">if</span> (desktop.isSupported(Desktop.Action.OPEN)) &#123;</span><br><span class="line">            desktop.open(<span class="keyword">new</span> File(<span class="string">"Your.pdf"</span>)); <span class="comment">//全路径</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"Open is not supported"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException exp) &#123;</span><br><span class="line">        exp.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="打开某一文件（默认软件打开）"><a href="#打开某一文件（默认软件打开）" class="headerlink" title="打开某一文件（默认软件打开）"></a>打开某一文件（默认软件打开）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Desktop desktop = Desktop.getDesktop();</span><br><span class="line">        <span class="keyword">if</span> (desktop.isSupported(Desktop.Action.OPEN)) &#123;</span><br><span class="line">            desktop.open(<span class="keyword">new</span> File(<span class="string">"Your.pdf"</span>)); <span class="comment">//全路径</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"Open is not supported"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException exp) &#123;</span><br><span class="line">        exp.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="指定某一软件打开对应的文件"><a href="#指定某一软件打开对应的文件" class="headerlink" title="指定某一软件打开对应的文件"></a>指定某一软件打开对应的文件</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Runtime.getRuntime()</span><br><span class="line">    .exec(<span class="string">"WINWORD.EXE（使用啥软件打开）所在全路径 D:\\test.docx（文件全路径）"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//例："C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE D:\\3.pdf"</span></span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;代码实现&quot;&gt;&lt;a href=&quot;#代码实现&quot; class=&quot;headerlink&quot; title=&quot;代码实现&quot;&gt;&lt;/a&gt;代码实现&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre
+        &lt;h2 id=&quot;打开某一文件（默认软件打开）&quot;&gt;&lt;a href=&quot;#打开某一文件（默认软件打开）&quot; class=&quot;headerlink&quot; title=&quot;打开某一文件（默认软件打开）&quot;&gt;&lt;/a&gt;打开某一文件（默认软件打开）&lt;/h2&gt;&lt;figure class=&quot;highlight 
       
     
     </summary>
@@ -37,9 +37,9 @@
       <category term="Java" scheme="/categories/Java/"/>
     
     
-      <category term="Desktop" scheme="/tags/Desktop/"/>
-    
       <category term="技巧" scheme="/tags/%E6%8A%80%E5%B7%A7/"/>
+    
+      <category term="Desktop" scheme="/tags/Desktop/"/>
     
   </entry>
   
