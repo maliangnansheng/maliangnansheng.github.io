@@ -14,25 +14,27 @@
     
     
     
-    <title>使用Java打开桌面文件 | Nan&#39;s Blog | 弱者才言命，强者只言运！</title>
+    <title>CentOS部署kodexplorer可道云搭建私有网盘 | Nan&#39;s Blog | 弱者才言命，强者只言运！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="技巧,Desktop">
-    <meta name="description" content="打开某一文件（默认软件打开）123456789101112public static void main(String[] args) &amp;#123;    try &amp;#123;        Desktop desktop = Desktop.getDesktop();        if (desktop.isSupported(Desktop.Action.OPEN)) &amp;#123;">
-<meta name="keywords" content="技巧,Desktop">
+    <meta name="keywords" content="kodexplorer,部署">
+    <meta name="description" content="工具/原料 xampp 可道云kodexplorer  PHP环境配置 可以在串口使用getconf LONG_BIT 命令来查看并确定linux操作系统版本 输出：32表面系统是32位。输出：64表面系统是64位。  下载与自己操作系统相适应版本的xampp [32bit] wget https://sourceforge.net/projects/xampp/files/XAMPP%20Lin">
+<meta name="keywords" content="kodexplorer,部署">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Java打开桌面文件">
-<meta property="og:url" content="/2019/01/15/使用Java打开桌面文件/index.html">
+<meta property="og:title" content="CentOS部署kodexplorer可道云搭建私有网盘">
+<meta property="og:url" content="/2019/01/16/CentOS部署kodexplorer可道云搭建私有网盘/index.html">
 <meta property="og:site_name" content="Nan&#39;s Blog">
-<meta property="og:description" content="打开某一文件（默认软件打开）123456789101112public static void main(String[] args) &amp;#123;    try &amp;#123;        Desktop desktop = Desktop.getDesktop();        if (desktop.isSupported(Desktop.Action.OPEN)) &amp;#123;">
+<meta property="og:description" content="工具/原料 xampp 可道云kodexplorer  PHP环境配置 可以在串口使用getconf LONG_BIT 命令来查看并确定linux操作系统版本 输出：32表面系统是32位。输出：64表面系统是64位。  下载与自己操作系统相适应版本的xampp [32bit] wget https://sourceforge.net/projects/xampp/files/XAMPP%20Lin">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-15T09:59:44.143Z">
+<meta property="og:image" content="/img/xampp安装.png">
+<meta property="og:updated_time" content="2019-01-16T07:17:50.005Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Java打开桌面文件">
-<meta name="twitter:description" content="打开某一文件（默认软件打开）123456789101112public static void main(String[] args) &amp;#123;    try &amp;#123;        Desktop desktop = Desktop.getDesktop();        if (desktop.isSupported(Desktop.Action.OPEN)) &amp;#123;">
+<meta name="twitter:title" content="CentOS部署kodexplorer可道云搭建私有网盘">
+<meta name="twitter:description" content="工具/原料 xampp 可道云kodexplorer  PHP环境配置 可以在串口使用getconf LONG_BIT 命令来查看并确定linux操作系统版本 输出：32表面系统是32位。输出：64表面系统是64位。  下载与自己操作系统相适应版本的xampp [32bit] wget https://sourceforge.net/projects/xampp/files/XAMPP%20Lin">
+<meta name="twitter:image" content="/img/xampp安装.png">
     
         <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
     
@@ -113,7 +115,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">使用Java打开桌面文件</div>
+        <div class="flex-col header-title ellipsis">CentOS部署kodexplorer可道云搭建私有网盘</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -131,15 +133,15 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">使用Java打开桌面文件</h1>
+        <h1 class="title">CentOS部署kodexplorer可道云搭建私有网盘</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-01-15T09:34:36.000Z" itemprop="datePublished" class="page-time">
-  2019-01-15
+                <time datetime="2019-01-16T06:38:15.000Z" itemprop="datePublished" class="page-time">
+  2019-01-16
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
 
             
         </h5>
@@ -156,20 +158,20 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#打开某一文件（默认软件打开）"><span class="post-toc-number">1.</span> <span class="post-toc-text">打开某一文件（默认软件打开）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#指定某一软件打开对应的文件"><span class="post-toc-number">2.</span> <span class="post-toc-text">指定某一软件打开对应的文件</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#工具-原料"><span class="post-toc-number">1.</span> <span class="post-toc-text">工具/原料</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PHP环境配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">PHP环境配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下载和安装可道云kodexplorer"><span class="post-toc-number">3.</span> <span class="post-toc-text">下载和安装可道云kodexplorer</span></a></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-使用Java打开桌面文件" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-CentOS部署kodexplorer可道云搭建私有网盘" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">使用Java打开桌面文件</h1>
+        <h1 class="post-card-title">CentOS部署kodexplorer可道云搭建私有网盘</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-01-15 17:34:36" datetime="2019-01-15T09:34:36.000Z" itemprop="datePublished">2019-01-15</time>
+            <time class="post-time" title="2019-01-16 14:38:15" datetime="2019-01-16T06:38:15.000Z" itemprop="datePublished">2019-01-16</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
 
 
 
@@ -181,8 +183,49 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="打开某一文件（默认软件打开）"><a href="#打开某一文件（默认软件打开）" class="headerlink" title="打开某一文件（默认软件打开）"></a>打开某一文件（默认软件打开）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Desktop desktop = Desktop.getDesktop();</span><br><span class="line">        <span class="keyword">if</span> (desktop.isSupported(Desktop.Action.OPEN)) &#123;</span><br><span class="line">            desktop.open(<span class="keyword">new</span> File(<span class="string">"Your.pdf"</span>)); <span class="comment">//全路径</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"Open is not supported"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException exp) &#123;</span><br><span class="line">        exp.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="指定某一软件打开对应的文件"><a href="#指定某一软件打开对应的文件" class="headerlink" title="指定某一软件打开对应的文件"></a>指定某一软件打开对应的文件</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Runtime.getRuntime()</span><br><span class="line">    .exec(<span class="string">"WINWORD.EXE（使用啥软件打开）所在全路径 D:\\test.docx（文件全路径）"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//例："C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE D:\\3.pdf"</span></span><br></pre></td></tr></table></figure>
+            <h2 id="工具-原料"><a href="#工具-原料" class="headerlink" title="工具/原料"></a>工具/原料</h2><ol>
+<li>xampp</li>
+<li>可道云kodexplorer</li>
+</ol>
+<h2 id="PHP环境配置"><a href="#PHP环境配置" class="headerlink" title="PHP环境配置"></a>PHP环境配置</h2><ol>
+<li><p>可以在串口使用<code>getconf LONG_BIT</code> 命令来查看并确定linux操作系统版本</p>
+<p>输出：32表面系统是32位。<br>输出：64表面系统是64位。</p>
+</li>
+<li><p>下载与自己操作系统相适应版本的xampp</p>
+<p>[32bit] wget <a href="https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/5.6.14/xampp-linux-5.6.14-4-installer.run" target="_blank" rel="noopener">https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/5.6.14/xampp-linux-5.6.14-4-installer.run</a>&gt;（7.3.0没有32位版本的，自己找找哪个版本有）<br>[64bit] wget <a href="https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/7.3.0/xampp-linux-x64-7.3.0-0-installer.run" target="_blank" rel="noopener">https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/7.3.0/xampp-linux-x64-7.3.0-0-installer.run</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/xampp</span><br><span class="line"><span class="built_in">cd</span> /home/xampp/</span><br><span class="line">wget https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/7.3.0/xampp-linux-x64-7.3.0-0-installer.run</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装xampp，为私有云安装构建Apache和PHP环境</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod u+x xampp-linux-x64-7.3.0-0-installer.run</span><br><span class="line">./xampp-linux-x64-7.3.0-0-installer.run</span><br></pre></td></tr></table></figure>
+<p><img src="/img/xampp安装.png" alt=""></p>
+<p>删除包：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /home/xampp/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动xampp，执行<code>/opt/lampp/lampp start</code>启动服务</p>
+<p>默认安装在<code>/opt/lampp/</code>下</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/lampp/lampp start</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="下载和安装可道云kodexplorer"><a href="#下载和安装可道云kodexplorer" class="headerlink" title="下载和安装可道云kodexplorer"></a>下载和安装可道云kodexplorer</h2><ol>
+<li><p>下载最新版本的可道云KodExplorer程序</p>
+<p>下载地址：<a href="http://kodcloud.com/download.html" target="_blank" rel="noopener">http://kodcloud.com/download.html</a></p>
+<p>下载：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/kodexplorer</span><br><span class="line"><span class="built_in">cd</span> /home/kodexplorer/</span><br><span class="line"><span class="comment"># 当时最新版</span></span><br><span class="line">wget http://static.kalcaddle.com/update/download/kodexplorer4.37.zip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将可道云kodexplorer.zip解压</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip kodexplorer4.37.zip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将解压后的内容拷贝至<code>/opt/lampp/htdocs/</code>目录下</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp -r /home/kodexplorer/ /opt/lampp/htdocs/</span><br><span class="line">chmod 777 /opt/lampp/htdocs/kodexplorer</span><br><span class="line">chmod -R 777 /opt/lampp/htdocs/kodexplorer/data/</span><br></pre></td></tr></table></figure>
+<p>删除不用文件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /home/kodexplorer/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>浏览器访问kodexplorer的index.php即可访问<code>KodExplorer</code>界面</strong></p>
+<p>即：<a href="http://IP地址/kodexplorer/index.php" target="_blank" rel="noopener">http://IP地址/kodexplorer/index.php</a></p>
+<p>例：<a href="http://172.19.15.52/kodexplorer/index.php" target="_blank" rel="noopener">http://172.19.15.52/kodexplorer/index.php</a></p>
+</li>
+</ol>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -190,12 +233,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-01-15T09:59:44.143Z" itemprop="dateUpdated">2019-01-15 17:59:44</time>
+    最后更新时间：<time datetime="2019-01-16T07:17:50.005Z" itemprop="dateUpdated">2019-01-16 15:17:50</time>
 </span><br>
 
 
         
-        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2019/01/15/使用Java打开桌面文件/" target="_blank" rel="external">/2019/01/15/使用Java打开桌面文件/</a>
+        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2019/01/16/CentOS部署kodexplorer可道云搭建私有网盘/" target="_blank" rel="external">/2019/01/16/CentOS部署kodexplorer可道云搭建私有网盘/</a>
         
     </div>
     
@@ -216,7 +259,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Desktop/">Desktop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kodexplorer/">kodexplorer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/部署/">部署</a></li></ul>
 
 
             
@@ -226,21 +269,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2019/01/16/CentOS部署kodexplorer可道云搭建私有网盘/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">CentOS部署kodexplorer可道云搭建私有网盘</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/01/12/pip的使用技巧/" id="post-next" class="post-nav-link">
+      <a href="/2019/01/15/使用Java打开桌面文件/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">pip的使用技巧</h4>
+        <h4 class="title">使用Java打开桌面文件</h4>
       </a>
     </div>
   
