@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-01-16T07:50:17.841Z</updated>
+  <updated>2019-01-24T02:24:05.640Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Maven生成javadoc(api文档)</title>
+    <link href="/2019/01/24/Maven%E7%94%9F%E6%88%90javadoc-api%E6%96%87%E6%A1%A3/"/>
+    <id>/2019/01/24/Maven生成javadoc-api文档/</id>
+    <published>2019-01-24T02:16:22.000Z</published>
+    <updated>2019-01-24T02:24:05.640Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="pom配置"><a href="#pom配置" class="headerlink" title="pom配置"></a>pom配置</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- properties与dependencys同级 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">maven.compiler.encoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">maven.compiler.encoding</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.build.sourceEncoding</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-javadoc-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">reportOutputDirectory</span>&gt;</span>../javadocs<span class="tag">&lt;/<span class="name">reportOutputDirectory</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">destDir</span>&gt;</span>easy-delivery<span class="tag">&lt;/<span class="name">destDir</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure><h2 id="生成doc命令"><a href="#生成doc命令" class="headerlink" title="生成doc命令"></a>生成doc命令</h2><p><strong>首先需要打开<code>cmd</code>，然后<code>cd</code>到项目目录下</strong>，然后执行下面命令即可</p><p>例：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">D:</span><br><span class="line"><span class="built_in">cd</span> D:\maliangnansheng\IDEA_HKAI\hkai-ocr</span><br><span class="line">mvn javadoc:javadoc</span><br></pre></td></tr></table></figure><h2 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h2><p>比如我的项目在<code>hkai-ocr</code>这个文件夹下面，<code>doc</code>也会生成在与<code>hkai-ocr</code>同级目录（也可以修改上面的配置）</p><p>打开生成的<code>doc</code>里<code>index.html</code> 就可以看到api页面</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/api.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;pom配置&quot;&gt;&lt;a href=&quot;#pom配置&quot; class=&quot;headerlink&quot; title=&quot;pom配置&quot;&gt;&lt;/a&gt;pom配置&lt;/h2&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="/categories/Java/"/>
+    
+    
+      <category term="Maven" scheme="/tags/Maven/"/>
+    
+      <category term="api" scheme="/tags/api/"/>
+    
+  </entry>
   
   <entry>
     <title>CentOS部署kodexplorer可道云搭建私有网盘</title>
