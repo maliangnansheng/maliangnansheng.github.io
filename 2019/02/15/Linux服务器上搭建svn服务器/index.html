@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Linux服务器上搭建svn服务器 | Nan&#39;s Blog | 弱者才言命，强者只言运！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="技巧,svn">
+    <meta name="description" content="背景项目开发中需要版本控制，而我们经常使用的是在windows系统上搭建svn服务器，下面介绍在Linux系统（CentOS 7.3.1611）上搭建svn服务器。 使用yum安装svn使用yum安装svn，命令如下： 1yum -y install subversion 安装完成之后，验证svn安装是否成功 1svn help 新建仓库目录在/opt目录下面创建一个svn目录，用来作为svn存储">
+<meta name="keywords" content="技巧,svn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux服务器上搭建svn服务器">
+<meta property="og:url" content="/2019/02/15/Linux服务器上搭建svn服务器/index.html">
+<meta property="og:site_name" content="Nan&#39;s Blog">
+<meta property="og:description" content="背景项目开发中需要版本控制，而我们经常使用的是在windows系统上搭建svn服务器，下面介绍在Linux系统（CentOS 7.3.1611）上搭建svn服务器。 使用yum安装svn使用yum安装svn，命令如下： 1yum -y install subversion 安装完成之后，验证svn安装是否成功 1svn help 新建仓库目录在/opt目录下面创建一个svn目录，用来作为svn存储">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="/img/svnserve.conf.png">
+<meta property="og:image" content="/img/passwd.png">
+<meta property="og:image" content="/img/authz.png">
+<meta property="og:image" content="/img/svn.png">
+<meta property="og:updated_time" content="2019-02-15T03:52:57.374Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux服务器上搭建svn服务器">
+<meta name="twitter:description" content="背景项目开发中需要版本控制，而我们经常使用的是在windows系统上搭建svn服务器，下面介绍在Linux系统（CentOS 7.3.1611）上搭建svn服务器。 使用yum安装svn使用yum安装svn，命令如下： 1yum -y install subversion 安装完成之后，验证svn安装是否成功 1svn help 新建仓库目录在/opt目录下面创建一个svn目录，用来作为svn存储">
+<meta name="twitter:image" content="/img/svnserve.conf.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">马亮南生</h5>
+          <a href="mailto:maliangnansheng@gmail.com" title="maliangnansheng@gmail.com" class="mail">maliangnansheng@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/maliangnansheng" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Linux服务器上搭建svn服务器</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Linux服务器上搭建svn服务器</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-02-15T03:31:10.000Z" itemprop="datePublished" class="page-time">
+  2019-02-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用yum安装svn"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用yum安装svn</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#新建仓库目录"><span class="post-toc-number">3.</span> <span class="post-toc-text">新建仓库目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建一个测试仓库"><span class="post-toc-number">4.</span> <span class="post-toc-text">创建一个测试仓库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置SVN服务的配置文件svnserve-conf"><span class="post-toc-number">5.</span> <span class="post-toc-text">配置SVN服务的配置文件svnserve.conf</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置访问的用户及密码"><span class="post-toc-number">6.</span> <span class="post-toc-text">配置访问的用户及密码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置新用户的授权访问的文件"><span class="post-toc-number">7.</span> <span class="post-toc-text">配置新用户的授权访问的文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动svn服务"><span class="post-toc-number">8.</span> <span class="post-toc-text">启动svn服务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#windows系统拉取代码"><span class="post-toc-number">9.</span> <span class="post-toc-text">windows系统拉取代码</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Linux服务器上搭建svn服务器" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Linux服务器上搭建svn服务器</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-02-15 11:31:10" datetime="2019-02-15T03:31:10.000Z" itemprop="datePublished">2019-02-15</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>项目开发中需要版本控制，而我们经常使用的是在windows系统上搭建svn服务器，下面介绍在Linux系统（CentOS 7.3.1611）上搭建svn服务器。</p>
+<h2 id="使用yum安装svn"><a href="#使用yum安装svn" class="headerlink" title="使用yum安装svn"></a>使用yum安装svn</h2><p>使用yum安装svn，命令如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install subversion</span><br></pre></td></tr></table></figure>
+<p>安装完成之后，验证svn安装是否成功</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<h2 id="新建仓库目录"><a href="#新建仓库目录" class="headerlink" title="新建仓库目录"></a>新建仓库目录</h2><p>在/opt目录下面创建一个svn目录，用来作为svn存储目录，命令如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir  /opt/svn</span><br></pre></td></tr></table></figure>
+<h2 id="创建一个测试仓库"><a href="#创建一个测试仓库" class="headerlink" title="创建一个测试仓库"></a>创建一个测试仓库</h2><p>执行如下命令，创建一个仓库</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svnadmin create /opt/svn/<span class="built_in">test</span>/</span><br></pre></td></tr></table></figure>
+<p>进入仓库目录下，查看仓库的文件，命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/svn/<span class="built_in">test</span>/ <span class="comment">#进入仓库目录</span></span><br><span class="line">ls                <span class="comment">#展示仓库文件</span></span><br></pre></td></tr></table></figure>
+<p>关于仓库文件的说明：</p>
+<blockquote>
+<p>hooks目录：放置hook脚步文件的目录<br>locks目录：用来放置subversion的db锁文件和db_logs锁文件的目录，用来追踪存取文件库的客户端<br>format目录：是一个文本文件，里边只放了一个整数，表示当前文件库配置的版本号<br>conf目录：是这个仓库配置文件（仓库用户访问账户，权限）</p>
+</blockquote>
+<h2 id="配置SVN服务的配置文件svnserve-conf"><a href="#配置SVN服务的配置文件svnserve-conf" class="headerlink" title="配置SVN服务的配置文件svnserve.conf"></a>配置SVN服务的配置文件svnserve.conf</h2><p>进入到conf文件夹下面，编辑svnserve.conf文件，命令如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> conf</span><br><span class="line">ls</span><br><span class="line">vim svnserver.conf</span><br></pre></td></tr></table></figure>
+<p>在svnserver.conf文件中，anon-access前面的注释去掉，将对应的值设置为none，将auth-access前面的注释也去掉，将password-db前面的注释也去掉，还有将authz-db前面的注释也去掉，显示如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/svnserve.conf.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>最重要的一点，<strong>去掉注释之后，配置项前面不能有空格</strong>。</p>
+<h2 id="配置访问的用户及密码"><a href="#配置访问的用户及密码" class="headerlink" title="配置访问的用户及密码"></a>配置访问的用户及密码</h2><p>编辑passwd文件，在文件的末尾加上自己需要添加的用户名和密码，显示如图：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim passwd</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/passwd.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>注意：<strong>用户和密码都是明文显示的</strong></p>
+<h2 id="配置新用户的授权访问的文件"><a href="#配置新用户的授权访问的文件" class="headerlink" title="配置新用户的授权访问的文件"></a>配置新用户的授权访问的文件</h2><p>编辑authz文件，在该文件中追加如下内容：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim authz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加内容</span></span><br><span class="line">[/]</span><br><span class="line">flytzuhan=rw</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/authz.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="启动svn服务"><a href="#启动svn服务" class="headerlink" title="启动svn服务"></a>启动svn服务</h2><p>执行如下命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svnserve -d -r /opt/svn/</span><br></pre></td></tr></table></figure>
+<p>其中-d表示后台运行， -r指定根目录，这里需要注意：<strong>绝对不能将启动命令写成：svnserve -d -r /opt/svn/test/</strong></p>
+<p>还有启动的时候可能会出现如下错误：<code>svnserve: E000098: Can&#39;t bind server socket: Address already in use</code></p>
+<p>这个是由于已经启动了SVN服务，所以需要先关闭进程，重新启动即可，命令如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">killall svnserve</span><br><span class="line">svnserve -d -r /opt/svn/</span><br></pre></td></tr></table></figure>
+<h2 id="windows系统拉取代码"><a href="#windows系统拉取代码" class="headerlink" title="windows系统拉取代码"></a>windows系统拉取代码</h2><p>可以在图形化界面中输入，<code>svn://你的IP(公网)/test</code>链接svn</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/svn.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<blockquote>
+<p>然后你就可以愉快的使用了~~~</p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-02-15T03:52:57.374Z" itemprop="dateUpdated">2019-02-15 11:52:57</time>
+</span><br>
+
+
+        
+        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2019/02/15/Linux服务器上搭建svn服务器/" target="_blank" rel="external">/2019/02/15/Linux服务器上搭建svn服务器/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="马亮南生">
+            马亮南生
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/svn/">svn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/02/14/React上手技巧/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">React上手技巧</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "",
+            appKey: "",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>马亮南生 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '马亮南生的博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '马亮南生的博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+	
+	<!-- 页面点击小红心 -->
+	<script type="text/javascript" src="/js/love.js"></script>
+</body>
+</html>
