@@ -33,7 +33,7 @@
 <meta property="og:image" content="/img/passwd.png">
 <meta property="og:image" content="/img/authz.png">
 <meta property="og:image" content="/img/svn.png">
-<meta property="og:updated_time" content="2019-02-15T03:52:57.374Z">
+<meta property="og:updated_time" content="2019-02-23T08:31:38.515Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux服务器上搭建svn服务器">
 <meta name="twitter:description" content="背景项目开发中需要版本控制，而我们经常使用的是在windows系统上搭建svn服务器，下面介绍在Linux系统（CentOS 7.3.1611）上搭建svn服务器。 使用yum安装svn使用yum安装svn，命令如下： 1yum -y install subversion 安装完成之后，验证svn安装是否成功 1svn help 新建仓库目录在/opt目录下面创建一个svn目录，用来作为svn存储">
@@ -237,7 +237,7 @@
 <p>还有启动的时候可能会出现如下错误：<code>svnserve: E000098: Can&#39;t bind server socket: Address already in use</code></p>
 <p>这个是由于已经启动了SVN服务，所以需要先关闭进程，重新启动即可，命令如下：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">killall svnserve</span><br><span class="line">svnserve -d -r /opt/svn/</span><br></pre></td></tr></table></figure>
-<h2 id="windows系统拉取代码"><a href="#windows系统拉取代码" class="headerlink" title="windows系统拉取代码"></a>windows系统拉取代码</h2><p>可以在图形化界面中输入，<code>svn://你的IP(公网)/test</code>链接svn</p>
+<h2 id="windows系统拉取代码"><a href="#windows系统拉取代码" class="headerlink" title="windows系统拉取代码"></a>windows系统拉取代码</h2><p>可以在图形化界面中输入：<code>svn://你的IP(公网)/test</code>链接svn</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -256,7 +256,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-02-15T03:52:57.374Z" itemprop="dateUpdated">2019-02-15 11:52:57</time>
+    最后更新时间：<time datetime="2019-02-23T08:31:38.515Z" itemprop="dateUpdated">2019-02-23 16:31:38</time>
 </span><br>
 
 
