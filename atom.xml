@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-02-23T08:31:38.515Z</updated>
+  <updated>2019-03-12T08:22:42.205Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java8 实现下载网页的完整代码</title>
+    <link href="/2019/03/12/Java8-%E5%AE%9E%E7%8E%B0%E4%B8%8B%E8%BD%BD%E7%BD%91%E9%A1%B5%E7%9A%84%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81/"/>
+    <id>/2019/03/12/Java8-实现下载网页的完整代码/</id>
+    <published>2019-03-12T07:56:01.000Z</published>
+    <updated>2019-03-12T08:22:42.205Z</updated>
+    
+    <content type="html"><![CDATA[<p>java8 实现网页下载，大致分为4步，分别是:给定目标网页链接-&gt;与目标主机建立连接-&gt;读入网页文件流-&gt;写入本地文件 。会用到java io 和 java net库。程序代码如下，留有注释。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.net.MalformedURLException;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">new</span> test().downloadPage();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">downloadPage</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 目标网页链接</span></span><br><span class="line">        String url = <span class="string">"https://hexo.io/zh-cn/"</span>;</span><br><span class="line">        String inputLine = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            URL pageUrl = <span class="keyword">new</span> URL(url);</span><br><span class="line">            BufferedReader br = <span class="keyword">new</span> BufferedReader(</span><br><span class="line">                <span class="keyword">new</span> InputStreamReader(pageUrl.openStream(), <span class="string">"utf-8"</span>));</span><br><span class="line">            <span class="comment">//程序文件目录建目录 download，用于存放下载的网页</span></span><br><span class="line">            File file = <span class="keyword">new</span> File(<span class="string">"D:\\Test\\maliang\\index.html"</span>); </span><br><span class="line">            FileOutputStream out = <span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line">            OutputStreamWriter write = <span class="keyword">new</span> OutputStreamWriter(out, <span class="string">"utf-8"</span>);</span><br><span class="line">            <span class="comment">// 将输入流读入到变量中，再写入到文件</span></span><br><span class="line">            <span class="keyword">while</span> ((inputLine = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                write.write(inputLine);</span><br><span class="line">                System.out.println(inputLine);</span><br><span class="line">            &#125;</span><br><span class="line">            br.close();</span><br><span class="line">            write.close();</span><br><span class="line">            System.err.println(<span class="string">"下载完毕!"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (MalformedURLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> url;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;java8 实现网页下载，大致分为4步，分别是:给定目标网页链接-&amp;gt;与目标主机建立连接-&amp;gt;读入网页文件流-&amp;gt;写入本地文件 。会用到java io 和 java net库。程序代码如下，留有注释。&lt;/p&gt;
+&lt;figure class=&quot;highlight j
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="/categories/Java/"/>
+    
+    
+      <category term="Java8" scheme="/tags/Java8/"/>
+    
+      <category term="下载网页的完整代码" scheme="/tags/%E4%B8%8B%E8%BD%BD%E7%BD%91%E9%A1%B5%E7%9A%84%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux服务器上搭建svn服务器</title>
@@ -522,34 +550,6 @@
       <category term="Ubuntu" scheme="/tags/Ubuntu/"/>
     
       <category term="VNC" scheme="/tags/VNC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux下安装Java JDK8</title>
-    <link href="/2018/12/10/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Java-JDK8/"/>
-    <id>/2018/12/10/Linux下安装Java-JDK8/</id>
-    <published>2018-12-10T11:44:56.000Z</published>
-    <updated>2019-01-10T08:06:43.445Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><h3 id="手动下载压缩包安装oracle-Java-JDK"><a href="#手动下载压缩包安装oracle-Java-JDK" class="headerlink" title="手动下载压缩包安装oracle Java JDK"></a>手动下载压缩包安装oracle Java JDK</h3><ol><li><p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">前往oracle Java官网下载JDK</a></p></li><li><p>解压缩到指定目录（以jdk-8u144-linux-x64.tar.gz为例）</p><ul><li><p>创建目录:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /usr/lib/jvm</span><br></pre></td></tr></table></figure></li><li><p>解压缩到该目录:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxvf jdk-7u60-linux-x64.gz -C /usr/lib/jvm</span><br></pre></td></tr></table></figure></li></ul></li><li><p>修改环境变量:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi ~/.bashrc</span><br></pre></td></tr></table></figure><p>在文件末尾追加下面内容：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#set oracle jdk environment</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/jdk1.8.0_144  <span class="comment">## 这里要注意目录要换成自己解压的jdk 目录</span></span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre  </span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib  </span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure><p>使环境变量马上生效：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></li><li><p>查看java版本，看看是否安装成功：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure></li></ol></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;h3 id=&quot;手动下载压缩包安装oracle-Java-JDK&quot;&gt;&lt;a href=&quot;#手动下载压缩包安装oracle-Java-JDK&quot; class=&quot;headerlink&quot; title=&quot;手动下载压缩包安装oracle Java JDK&quot;&gt;&lt;/a&gt;手动下载压
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="/categories/Linux/"/>
-    
-    
-      <category term="技巧" scheme="/tags/%E6%8A%80%E5%B7%A7/"/>
-    
-      <category term="配置" scheme="/tags/%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   
