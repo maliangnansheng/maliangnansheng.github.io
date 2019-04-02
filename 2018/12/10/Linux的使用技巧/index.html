@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="Nan&#39;s Blog">
 <meta property="og:description" content="修改用户名例：将admin改为test（ubuntu）  修改 /etc/passwd用户信息文件1vim /etc/passwd 123#admin:x:1001:1001:admin,,,:/home/admin:/bin/bash#把用户名admin改成rest#test:x:1001:1001:admin,,,:/home/test:/bin/bash 注： 12admin:x:1001:">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-02T06:45:14.786Z">
+<meta property="og:updated_time" content="2019-04-02T07:35:23.064Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux的使用技巧">
 <meta name="twitter:description" content="修改用户名例：将admin改为test（ubuntu）  修改 /etc/passwd用户信息文件1vim /etc/passwd 123#admin:x:1001:1001:admin,,,:/home/admin:/bin/bash#把用户名admin改成rest#test:x:1001:1001:admin,,,:/home/test:/bin/bash 注： 12admin:x:1001:">
@@ -243,7 +243,7 @@
 </ul>
 <h2 id="找出文件所在的位置"><a href="#找出文件所在的位置" class="headerlink" title="找出文件所在的位置"></a>找出文件所在的位置</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis sudoers（你要找的文件名）</span><br></pre></td></tr></table></figure>
 <h2 id="linux-find-命令查找文件和文件夹"><a href="#linux-find-命令查找文件和文件夹" class="headerlink" title="linux find 命令查找文件和文件夹"></a>linux find 命令查找文件和文件夹</h2><p>查找目录：<code>find /（查找目录范围） -name &#39;查找关键字&#39; -type d</code><br>查找文件：<code>find /（查找目录范围） -name &#39;查找关键字&#39; -print</code></p>
-<h2 id="查看端口占用并杀死-kill"><a href="#查看端口占用并杀死-kill" class="headerlink" title="查看端口占用并杀死(kill)"></a>查看端口占用并杀死(kill)</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看</span></span><br><span class="line">sudo netstat -tlnp|grep 9090</span><br></pre></td></tr></table></figure>
+<h2 id="查看端口占用并杀死-kill"><a href="#查看端口占用并杀死-kill" class="headerlink" title="查看端口占用并杀死(kill)"></a>查看端口占用并杀死(kill)</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看</span></span><br><span class="line">sudo netstat -tlnp|grep 9090</span><br><span class="line"><span class="comment"># 查看</span></span><br><span class="line">ps aux|grep yum</span><br></pre></td></tr></table></figure>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 杀死</span></span><br><span class="line"><span class="built_in">kill</span> -9 31540</span><br></pre></td></tr></table></figure>
 <h2 id="如何从Yum库下载rpm包但不安装"><a href="#如何从Yum库下载rpm包但不安装" class="headerlink" title="如何从Yum库下载rpm包但不安装"></a>如何从Yum库下载rpm包但不安装</h2><p>方法一（推荐）</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将一个包（包含所有依赖）下载到一个指定的目录(如/opt/gccmkdir/)：</span></span><br><span class="line">yum install -y gcc --downloadonly --downloaddir=/opt/gccmkdir/</span><br></pre></td></tr></table></figure>
@@ -346,7 +346,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-04-02T06:45:14.786Z" itemprop="dateUpdated">2019-04-02 14:45:14</time>
+    最后更新时间：<time datetime="2019-04-02T07:35:23.064Z" itemprop="dateUpdated">2019-04-02 15:35:23</time>
 </span><br>
 
 
