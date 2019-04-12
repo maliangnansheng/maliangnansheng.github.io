@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>CloudStack快速安装指南 | Nan&#39;s Blog | 弱者才言命，强者只言运！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="虚拟机分配,安装指南,CloudStack">
+    <meta name="description" content="CloudStack介绍介绍见： CloudStack介绍 CloudStack安装先决条件 至少两台（cloudstack-management和cloudstack-agent）支持并启用了硬件虚拟化的计算机。 一个CentOS的7.5 x86_64的ISO安装文件 网关位于xxx.xxx.xxx.1的A / 24网络，该网络上不应该有DHCP，运行CloudStack的计算机都不会有动态地址">
+<meta name="keywords" content="虚拟机分配,安装指南,CloudStack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CloudStack快速安装指南">
+<meta property="og:url" content="/2019/04/03/CloudStack快速安装指南/index.html">
+<meta property="og:site_name" content="Nan&#39;s Blog">
+<meta property="og:description" content="CloudStack介绍介绍见： CloudStack介绍 CloudStack安装先决条件 至少两台（cloudstack-management和cloudstack-agent）支持并启用了硬件虚拟化的计算机。 一个CentOS的7.5 x86_64的ISO安装文件 网关位于xxx.xxx.xxx.1的A / 24网络，该网络上不应该有DHCP，运行CloudStack的计算机都不会有动态地址">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="/img/cloudstack结构.png">
+<meta property="og:image" content="/img/我们的cloudstack结构.png">
+<meta property="og:image" content="/img/配置导向.png">
+<meta property="og:image" content="/img/资源域.png">
+<meta property="og:image" content="/img/添加资源域.png">
+<meta property="og:image" content="/img/资源域-基本.png">
+<meta property="og:image" content="/img/资源域-配置区域.png">
+<meta property="og:image" content="/img/资源域-配置网络.png">
+<meta property="og:image" content="/img/资源域-提供点.png">
+<meta property="og:image" content="/img/资源域-来宾流量.png">
+<meta property="og:image" content="/img/资源域-集群.png">
+<meta property="og:image" content="/img/资源域-主机.png">
+<meta property="og:image" content="/img/资源域-主存储.png">
+<meta property="og:image" content="/img/资源域-二级存储.png">
+<meta property="og:image" content="/img/启动.png">
+<meta property="og:image" content="/img/基础架构.png">
+<meta property="og:image" content="/img/启动资源域.png">
+<meta property="og:image" content="/img/基础架构-系统vm.png">
+<meta property="og:image" content="/img/系统vm.png">
+<meta property="og:image" content="/img/系统vm-查看控制台.png">
+<meta property="og:image" content="/img/模板.png">
+<meta property="og:image" content="/img/secs.png">
+<meta property="og:image" content="/img/iso-注册.png">
+<meta property="og:updated_time" content="2019-04-12T06:59:37.403Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CloudStack快速安装指南">
+<meta name="twitter:description" content="CloudStack介绍介绍见： CloudStack介绍 CloudStack安装先决条件 至少两台（cloudstack-management和cloudstack-agent）支持并启用了硬件虚拟化的计算机。 一个CentOS的7.5 x86_64的ISO安装文件 网关位于xxx.xxx.xxx.1的A / 24网络，该网络上不应该有DHCP，运行CloudStack的计算机都不会有动态地址">
+<meta name="twitter:image" content="/img/cloudstack结构.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">马亮南生</h5>
+          <a href="mailto:maliangnansheng@gmail.com" title="maliangnansheng@gmail.com" class="mail">maliangnansheng@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/maliangnansheng" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">CloudStack快速安装指南</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">CloudStack快速安装指南</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-03T09:32:32.000Z" itemprop="datePublished" class="page-time">
+  2019-04-03
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CloudStack介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">CloudStack介绍</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CloudStack安装"><span class="post-toc-number">2.</span> <span class="post-toc-text">CloudStack安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#先决条件"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">先决条件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#环境准备"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">环境准备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#我们的环境"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">我们的环境</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CloudStack管理端"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">CloudStack管理端</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CloudStack系统配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">CloudStack系统配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CloudStack-虚拟机实例"><span class="post-toc-number">4.</span> <span class="post-toc-text">CloudStack 虚拟机实例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#虚拟机实例"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">虚拟机实例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#搭建http服务器-nginx"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">搭建http服务器-nginx</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#制作模板"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">制作模板</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#注册ISO"><span class="post-toc-number">4.3.1.</span> <span class="post-toc-text">注册ISO</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-CloudStack快速安装指南" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">CloudStack快速安装指南</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-04-03 17:32:32" datetime="2019-04-03T09:32:32.000Z" itemprop="datePublished">2019-04-03</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="CloudStack介绍"><a href="#CloudStack介绍" class="headerlink" title="CloudStack介绍"></a>CloudStack介绍</h2><p>介绍见： <a href="CloudStack介绍">CloudStack介绍</a></p>
+<h2 id="CloudStack安装"><a href="#CloudStack安装" class="headerlink" title="CloudStack安装"></a>CloudStack安装</h2><h3 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h3><ol>
+<li>至少两台（<code>cloudstack-management</code>和<code>cloudstack-agent</code>）支持并启用了硬件虚拟化的计算机。</li>
+<li>一个<a href="http://mirrors.kernel.org/centos/7/isos/x86_64/" target="_blank" rel="noopener">CentOS的7.5 x86_64的ISO安装文件</a></li>
+<li>网关位于xxx.xxx.xxx.1的A / 24网络，该网络上不应该有DHCP，运行CloudStack的计算机都不会有动态地址。同样，这是为了简单起见。</li>
+</ol>
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>一套基本的CloudStack环境，包括一台CloudStack管理端（cloudstack-management），一个mysql数据库，若干台支持KVM虚拟化的计算节点（cloudstack-agent）以及一台用来做为二级存储的nfs服务器：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/cloudstack结构.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>在实际生产中，mysql数据库和管理端都可能配备多台作为高可用，计算节点一般也是配置较高的物理服务器，但在实验环境，我们可以采用<code>最小化安装模式</code>，把mysql,nfs和管理端安装在同一台虚拟机上，使用一台支持KVM虚拟化的虚拟机用来作为计算节点</p>
+<h4 id="我们的环境"><a href="#我们的环境" class="headerlink" title="我们的环境"></a>我们的环境</h4><p><strong>本文使用两台虚拟机来搭建我们的环境</strong>，nfs,mysql和管理端都装在同一台虚拟机上，cloudstack-agent安装在一台开启了虚拟化支持的虚拟机上，部署架构如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/我们的cloudstack结构.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>两台服务器的IP是：<ul>
+<li>CloudStack管理端（cloudstack-management）：172.18.1.151</li>
+<li>KVM虚拟化的计算节点（cloudstack-agent）：172.18.1.150</li>
+</ul>
+</li>
+</ul>
+<h3 id="CloudStack管理端"><a href="#CloudStack管理端" class="headerlink" title="CloudStack管理端"></a>CloudStack管理端</h3><h2 id="CloudStack系统配置"><a href="#CloudStack系统配置" class="headerlink" title="CloudStack系统配置"></a>CloudStack系统配置</h2><p>访问地址：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://&lt;management-server-ip-address&gt;:8080/client</span><br></pre></td></tr></table></figure>
+<p>如果管理服务器是全新的安装,那么会出现一个安装向导。在稍后的访问中，你将看到一个登录界面,，你需要通过用户名和密码登入来查看你的仪表盘。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">用户名 -&gt; 你账号的用户ID。默认用户名是admin。</span><br><span class="line">密码 -&gt; 用户ID对应的密码。默认用户名的密码是password。</span><br><span class="line">域 -&gt; 如果你是root用户，此处留空即可。</span><br></pre></td></tr></table></figure>
+<p>CloudStack用户界面帮助云基础设施的用户查看和使用他们的云资源，包括虚拟机、模板和ISO、数据卷和快照、宾客网络，以及IP 地址。如果用户是一个或多个CloudStack项目的成员或管理员，用户界面能提供一个面向项目的视图。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/配置导向.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>选择”我以前是用过CloudStack，跳过此指南”按钮</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/资源域.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>选择“资源域”</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/添加资源域.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>选择“添加资源域”</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/资源域-基本.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>选择“基本”网络，点击”下一步”<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/资源域-配置区域.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置内容如下:</span></span><br><span class="line">名称：Zone1</span><br><span class="line">IPV4 DNS1：8.8.8.8</span><br><span class="line">内部 DNS1：8.8.4.4  </span><br><span class="line">虚拟机选择“KVM”</span><br><span class="line">网络方案默认</span><br><span class="line"><span class="comment"># 这些内容包括下面的填写仅为参考值。可根据实际情况进行修改</span></span><br></pre></td></tr></table></figure>
+<p>点击”下一步”</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/资源域-配置网络.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置内容如下:</span></span><br><span class="line">物理网络名称:默认 <span class="comment">#也可键入cloudstack-management实际网络名称</span></span><br></pre></td></tr></table></figure>
+<p>点击”下一步”</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/资源域-提供点.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置内容如下:</span></span><br><span class="line">提供名称：Pod1</span><br><span class="line">预留的系统网关：172.18.1.150	<span class="comment">#cloudstack-agent计算节点地址</span></span><br><span class="line">预留的系统网络掩码：255.255.255.0</span><br><span class="line">起始预留系统IP：172.18.1.160</span><br><span class="line">结束预留系统IP：172.18.1.170</span><br></pre></td></tr></table></figure>
+<p>点击”下一步”</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/资源域-来宾流量.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置内容如下:</span></span><br><span class="line">来宾网关：172.18.1.150</span><br><span class="line">来宾网络掩码：255.255.255.0</span><br><span class="line">来宾起始IP:172.18.1.171</span><br><span class="line">来宾结束IP：172.18.1.254</span><br></pre></td></tr></table></figure>
+<p>点击”下一步”</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/资源域-集群.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置内容如下:</span></span><br><span class="line">虚拟机管理程序：KVM</span><br><span class="line">集群名称：Cluster</span><br></pre></td></tr></table></figure>
+<p>点击”下一步”</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/资源域-主机.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置内容如下:</span></span><br><span class="line">主机名称：172.18.1.150    <span class="comment">#cloudstack-agent计算节点地址</span></span><br><span class="line">用户名：root              <span class="comment">#cloudstack-agent计算节点用户名</span></span><br><span class="line">密码：password	           <span class="comment">#cloudstack-agent计算节点密码</span></span><br><span class="line">主机标签：可不填</span><br></pre></td></tr></table></figure>
+<p>点击”下一步”</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/资源域-主存储.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置内容如下:</span></span><br><span class="line">名称：primary			<span class="comment">#不是固定的，自己根据需要进行区分即可</span></span><br><span class="line">范围：选择群集</span><br><span class="line">协议：选择nfs</span><br><span class="line">服务器：172.18.1.151</span><br><span class="line">路径：/<span class="built_in">export</span>/primary	<span class="comment">#根据安装时的配置填写</span></span><br><span class="line">存储路径：可不填</span><br></pre></td></tr></table></figure>
+<p>点击”下一步”</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/资源域-二级存储.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置内容如下:</span></span><br><span class="line">提供程序：选择NFS</span><br><span class="line">名称：secondary			<span class="comment">#不是固定的，自己根据需要进行区分即可</span></span><br><span class="line">服务器：172.18.1.151</span><br><span class="line">路径：/<span class="built_in">export</span>/secondary	<span class="comment">#根据安装时的配置填写</span></span><br></pre></td></tr></table></figure>
+<p>点击”下一步”</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/启动.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>点击“启动资源域”</p>
+<p>成功后，先不启动资源域，我们可以先看下基础架构</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/基础架构.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>此时系统VM为0</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/启动资源域.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>资源启动成功后，系统VM会出现2台</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/基础架构-系统vm.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/系统vm.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>系统VM是不同于主机上创建的普通虚拟机的，他们是CloudStack云平台自带的用于<code>完成自身的一些任务的虚拟机</code>。</p>
+<ul>
+<li><strong>Secondary Storage VM：</strong>简称为SSVM，用于管理二级存储的相关操作，如模板跟镜像文件的上传与下载，快照，volumes的存放，第一次创建虚拟机时从二级存储拷贝模板到一级存储并且自动创建快照，每一个资源域可以有多个SSVM，当SSVM被删除或停止，它会自动被重建并启动。</li>
+<li><strong>Console Proxy VM：</strong>用于在web 界面上展示控制台。</li>
+</ul>
+<p>通过<code>查看控制台</code>访问里面的虚拟机</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/系统vm-查看控制台.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="CloudStack-虚拟机实例"><a href="#CloudStack-虚拟机实例" class="headerlink" title="CloudStack 虚拟机实例"></a>CloudStack 虚拟机实例</h2><h3 id="虚拟机实例"><a href="#虚拟机实例" class="headerlink" title="虚拟机实例"></a>虚拟机实例</h3><p>默认的模板并没有被下载</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/模板.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>修改全局设置<code>secstorage.allowed.internal.sites</code>设置 ，二级存储ISO镜像和模板可以下载，IP网段</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/secs.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>重启服务<code>systemctl restart cloudstack-management</code></p>
+<h3 id="搭建http服务器-nginx"><a href="#搭建http服务器-nginx" class="headerlink" title="搭建http服务器-nginx"></a>搭建http服务器-nginx</h3><p><strong>目的：</strong>注册ISO时需要填镜像的url，实时下载镜像，外网或者网速不是很好下载会很慢甚至下载失败，故搭建自己的http服务器以便在内网下载镜像，这样速度会快很多。</p>
+<p><strong>注 ：在<code>cloudstack-management管理服务器节点</code>搭建nginx</strong> </p>
+<p>操作教程见：<a href="搭建http服务器-nginx">搭建http服务器-nginx</a></p>
+<h3 id="制作模板"><a href="#制作模板" class="headerlink" title="制作模板"></a>制作模板</h3><h4 id="注册ISO"><a href="#注册ISO" class="headerlink" title="注册ISO"></a>注册ISO</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/iso-注册.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-04-12T06:59:37.403Z" itemprop="dateUpdated">2019-04-12 14:59:37</time>
+</span><br>
+
+
+        
+        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2019/04/03/CloudStack快速安装指南/" target="_blank" rel="external">/2019/04/03/CloudStack快速安装指南/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="马亮南生">
+            马亮南生
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CloudStack/">CloudStack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安装指南/">安装指南</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/虚拟机分配/">虚拟机分配</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/04/04/搭建http服务器-nginx/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">搭建http服务器-nginx</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/12/Java8-实现下载网页的完整代码/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Java8 实现下载网页的完整代码</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "",
+            appKey: "",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>马亮南生 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '马亮南生的博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '马亮南生的博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+	
+	<!-- 页面点击小红心 -->
+	<script type="text/javascript" src="/js/love.js"></script>
+</body>
+</html>

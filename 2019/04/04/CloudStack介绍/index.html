@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>CloudStack介绍 | Nan&#39;s Blog | 弱者才言命，强者只言运！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="CloudStack,介绍">
+    <meta name="description" content="基本上，云计算只是一种把 IT 资源当作服务来提供的手段。几乎所有 IT 资源都可以作为云服务来提供：应用程序、计算能力、存储容量、联网、编程工具，以至于通信服务和协作工具。 云计算最早为 Google、Amazon 等其他扩建基础设施的大型互联网服务提供商所采用。于是产生一种架构：大规模扩展、水平分布的系统资源，抽象为虚拟 IT 服务，并作为持续配置、合用的资源进行管理。 就最终用户而言，云计算">
+<meta name="keywords" content="CloudStack,介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CloudStack介绍">
+<meta property="og:url" content="/2019/04/04/CloudStack介绍/index.html">
+<meta property="og:site_name" content="Nan&#39;s Blog">
+<meta property="og:description" content="基本上，云计算只是一种把 IT 资源当作服务来提供的手段。几乎所有 IT 资源都可以作为云服务来提供：应用程序、计算能力、存储容量、联网、编程工具，以至于通信服务和协作工具。 云计算最早为 Google、Amazon 等其他扩建基础设施的大型互联网服务提供商所采用。于是产生一种架构：大规模扩展、水平分布的系统资源，抽象为虚拟 IT 服务，并作为持续配置、合用的资源进行管理。 就最终用户而言，云计算">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="d:/gitRepository/blog/source/_posts/img/%E4%BA%91%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="d:/gitRepository/blog/source/_posts/img/cloudstack.png">
+<meta property="og:image" content="d:/gitRepository/blog/source/_posts/img/cloudstack%E9%83%A8%E7%BD%B2.png">
+<meta property="og:updated_time" content="2019-04-04T06:30:02.241Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CloudStack介绍">
+<meta name="twitter:description" content="基本上，云计算只是一种把 IT 资源当作服务来提供的手段。几乎所有 IT 资源都可以作为云服务来提供：应用程序、计算能力、存储容量、联网、编程工具，以至于通信服务和协作工具。 云计算最早为 Google、Amazon 等其他扩建基础设施的大型互联网服务提供商所采用。于是产生一种架构：大规模扩展、水平分布的系统资源，抽象为虚拟 IT 服务，并作为持续配置、合用的资源进行管理。 就最终用户而言，云计算">
+<meta name="twitter:image" content="d:/gitRepository/blog/source/_posts/img/%E4%BA%91%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%84.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">马亮南生</h5>
+          <a href="mailto:maliangnansheng@gmail.com" title="maliangnansheng@gmail.com" class="mail">maliangnansheng@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/maliangnansheng" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">CloudStack介绍</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">CloudStack介绍</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-04T06:27:56.000Z" itemprop="datePublished" class="page-time">
+  2019-04-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基础设施当做服务（IaaS）"><span class="post-toc-number">1.</span> <span class="post-toc-text">基础设施当做服务（IaaS）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CloudStack-介绍"><span class="post-toc-number">2.</span> <span class="post-toc-text">CloudStack 介绍</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-CloudStack介绍" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">CloudStack介绍</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-04-04 14:27:56" datetime="2019-04-04T06:27:56.000Z" itemprop="datePublished">2019-04-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>基本上，云计算只是一种把 IT 资源当作服务来提供的手段。几乎所有 IT 资源都可以作为云服务来提供：应用程序、计算能力、存储容量、联网、编程工具，以至于通信服务和协作工具。</p>
+<p>云计算最早为 Google、Amazon 等其他扩建基础设施的大型互联网服务提供商所采用。于是产生一种架构：大规模扩展、水平分布的系统资源，抽象为虚拟 IT 服务，并作为持续配置、合用的资源进行管理。</p>
+<p><strong>就最终用户而言</strong>，云计算意味着没有硬件购置成本、没有需要管理的软件许可证或升级、不需要雇佣新的员工或咨询人员、不需要租赁设施、没有任何种类的基建投资，而且还没有隐性成本。只是一种用仪表测量出来的、根据使用情况支付的订购费或固定的订购费。只是用您所需的量，而且只按使用量付费。</p>
+<p>云计算结构图如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="D:/gitRepository/blog/source/_posts/img/%E4%BA%91%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%84.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="基础设施当做服务（IaaS）"><a href="#基础设施当做服务（IaaS）" class="headerlink" title="基础设施当做服务（IaaS）"></a>基础设施当做服务（IaaS）</h3><p>基础设施当作服务 (IaaS) 处于最低层级，而且是一种作为标准化服务在网上提供基本存储和计算能力的手段。服务器、存储系统、交换机、路由器和其他系统协作 (例如，通过虚拟化技术) 处理特定类型的工作负载 — 从批处理到峰值负载期间的服务器/存储扩大。</p>
+<p>最著名的商业示例是 Amazon Web 服务 (AWS)，其 EC2 和 S3 服务分别提供基本计算和存储服务。国内代表阿里云、腾讯云、百度云、金山云等。</p>
+<p>优势：</p>
+<ul>
+<li>利用率更高 — 在虚拟化之前，企业数据中心的服务器和存储利用率一般平均不到 50% (事实上，通常利用率为 10% 到 15%)。通过虚拟化，可以把工作负载封装一并转移到空闲或使用不足的系统，这就意味着可以整合现有系统，因而可以延迟或避免购买更多服务器容量。</li>
+<li>资源整合 — 虚拟化使得整合多个 IT 资源成为可能。除服务器和存储整合之外，虚拟化提供一个整合系统架构、应用程序基础设施、数据和数据库、接口、网络、桌面系统甚至业务流程，因而可以节约成本和提高效率。</li>
+<li>节省电能/成本 — 运行企业级数据中心所需的电能不再无限制地使用，而成本呈螺旋式上升趋势。在服务器硬件上每花一美元，就会在电费上增加一美元 (包括服务器运行和散热方面的成本)。利用虚拟化进行整合使得降低总能耗和节约大量资金成为可能。</li>
+<li>节约空间 — 服务器膨胀仍然是多数企业数据中心面临的一个严重问题，可扩大数据中心并不总是一个良好的选择，因为每增大一平方米空间，就会平均增加很多成本。虚拟化通过把多个虚拟系统整合到较少物理系统上，可以缓解空间压力。</li>
+<li>灾难恢复 (Disaster recovery) /业务连续 (Business Continuity) — 虚拟化可提高总体服务级利用率，并提供灾难恢复解决方案新选项。</li>
+</ul>
+<h3 id="CloudStack-介绍"><a href="#CloudStack-介绍" class="headerlink" title="CloudStack 介绍"></a>CloudStack 介绍</h3><p>官网：<a href="http://cloudstack.apache.org/" target="_blank" rel="noopener">http://cloudstack.apache.org/</a></p>
+<p>CloudStack是一个开源的具有高可用性及扩展性的云计算平台CloudStack 是一个开源的云操作系统，它可以帮助用户利用自己的硬件提供类似于Amazon EC2那样的公共云服务。CloudStack可以通过组织和协调用户的虚拟化资源，构建一个和谐的环境。</p>
+<p>CloudStack是一个开源的具有高可用性及扩展性的云计算平台CloudStack 是一个开源的云操作系统，它可以帮助用户利用自己的硬件提供类似于Amazon EC2那样的公共云服务。CloudStack可以通过组织和协调用户的虚拟化资源，构建一个和谐的环境。</p>
+<p>Cloudstack支持管理大部分主流的hypervisors，如KVM，XenServer，VMware，Oracle VM，Xen等。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="D:/gitRepository/blog/source/_posts/img/cloudstack.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>CloudStack 部署图如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="D:/gitRepository/blog/source/_posts/img/cloudstack%E9%83%A8%E7%BD%B2.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p><strong>Zone：</strong>Zone 对应于现实中的一个数据中心，它是 CloudStack 中最大的一个单元。</p>
+<p>即从包含关系上来说，一个 zone 包含多个 pod，一个 pod 包含多个 cluster，一个 cluster 包含多个 host。</p>
+<p><strong>提供点（Pods）：</strong>一个提供点通常代表一个机架，机柜里面的主机在同一个子网，每个区域中必须包含一个或多个提供点，提供点中包含主机和主存储服务器， CloudStack 的内部管理通信配置一个预留 IP 地址范围。预留的 IP 范围对云中的每个区域来说必须唯一。</p>
+<p><strong>集群（Clusters）：</strong>Cluster 是多个主机组成的一个集群。</p>
+<p>​    同一个cluster中的主机有相同的硬件，相同的 Hypervisor，和共用同样的存储。同一个 cluster 中的虚拟机，可以实现无中断服务地从一个主机迁移到另外一个上。</p>
+<p>​    集群由一个或多个宿主机和一个或多个主要存储服务器构成。集群的大小取决于下层虚拟机软件。大多数情况下基本无建议。当使用VMware时，每个VMware集群都被vCenter 服务器管理。管理员必须在本产品中登记vCenter。每个zone下可以有多个vCenter服务器。每个vCenter服务器可能管理多个VMware集群</p>
+<p><strong>主机（Hosts）：</strong></p>
+<p>Host 就是运行的虚拟机（VM）主机。宿主机就是个独立的计算机。宿主机运行来宾虚拟机并提供其相应的计算资源。每个宿主机都装有虚拟机软件来运行来宾虚拟机。比如一个开启了kvm支持的服务器，一个思杰XenServer服务器，或者一个ESXi服务器都可以作为宿主机。</p>
+<p>宿主机在CloudStack部署中属于最小的组织单元。宿主机包含于集群中，集群又属于提供点，而区域中包含提供点（就是在逻辑概念上<code>zone&gt;pod&gt;cluster&gt;host</code>），新增的宿主机可以随时添加以提供更多资源给来宾虚拟机，CloudStack自动探测宿主机的cpu数量和内存资源。宿主机对终端用户不可见。终端用户不能决定他们的虚拟机被分配到哪台宿主机。</p>
+<p><strong>CloudStack 中存在两种存储：</strong></p>
+<ul>
+<li>Primary storage：一级存储与 cluster 关联，它<code>为该 cluster 中的主机的全部虚拟机提供磁盘卷</code>。一个 cluster 至少有一个一级存储，且在部署时位置要临近主机以提供高性能。</li>
+<li>Secondary storage：二级存储与 zone 关联，<code>它存储模板文件，ISO 镜像和磁盘卷快照</code>。</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-04-04T06:30:02.241Z" itemprop="dateUpdated">2019-04-04 14:30:02</time>
+</span><br>
+
+
+        
+        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2019/04/04/CloudStack介绍/" target="_blank" rel="external">/2019/04/04/CloudStack介绍/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="马亮南生">
+            马亮南生
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CloudStack/">CloudStack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/介绍/">介绍</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/04/04/搭建http服务器-nginx/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">搭建http服务器-nginx</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "",
+            appKey: "",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>马亮南生 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '马亮南生的博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '马亮南生的博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+	
+	<!-- 页面点击小红心 -->
+	<script type="text/javascript" src="/js/love.js"></script>
+</body>
+</html>
