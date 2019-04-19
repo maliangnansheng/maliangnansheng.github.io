@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>手把手教你用frp实现内网穿透 | Nan&#39;s Blog | 弱者才言命，强者只言运！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="frp,Linux,Windows">
+    <meta name="description" content="frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp, http, https 协议。  数据准备：  公网IP: X.X.X.X 内网电脑使用的是win10-64系统 公网电脑为linux-64系统。  服务端配置文件下载下载地址：frp下载 具有公网IP的电脑将作为frp服务端(frps)，首先去项目地址的releases页面下载与服务端系统匹配的文件并解压">
+<meta name="keywords" content="frp,Linux,Windows">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手把手教你用frp实现内网穿透">
+<meta property="og:url" content="/2019/04/12/手把手教你用frp实现内网穿透/index.html">
+<meta property="og:site_name" content="Nan&#39;s Blog">
+<meta property="og:description" content="frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp, http, https 协议。  数据准备：  公网IP: X.X.X.X 内网电脑使用的是win10-64系统 公网电脑为linux-64系统。  服务端配置文件下载下载地址：frp下载 具有公网IP的电脑将作为frp服务端(frps)，首先去项目地址的releases页面下载与服务端系统匹配的文件并解压">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="/img/frp-linux.png">
+<meta property="og:image" content="/img/frp-配置.png">
+<meta property="og:image" content="/img/frp-启动.png">
+<meta property="og:image" content="/img/frp-win.png">
+<meta property="og:image" content="/img/frp-win-启动.png">
+<meta property="og:image" content="/img/winsw.png">
+<meta property="og:image" content="/img/winsw2.png">
+<meta property="og:image" content="/img/services.png">
+<meta property="og:updated_time" content="2019-04-16T09:16:39.538Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手把手教你用frp实现内网穿透">
+<meta name="twitter:description" content="frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp, http, https 协议。  数据准备：  公网IP: X.X.X.X 内网电脑使用的是win10-64系统 公网电脑为linux-64系统。  服务端配置文件下载下载地址：frp下载 具有公网IP的电脑将作为frp服务端(frps)，首先去项目地址的releases页面下载与服务端系统匹配的文件并解压">
+<meta name="twitter:image" content="/img/frp-linux.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">马亮南生</h5>
+          <a href="mailto:maliangnansheng@gmail.com" title="maliangnansheng@gmail.com" class="mail">maliangnansheng@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/maliangnansheng" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">手把手教你用frp实现内网穿透</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">手把手教你用frp实现内网穿透</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-12T07:26:19.000Z" itemprop="datePublished" class="page-time">
+  2019-04-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/内网穿透/">内网穿透</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#服务端配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">服务端配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件下载"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">文件下载</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编辑配置文件"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">编辑配置文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动服务端"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">启动服务端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置开机启动和后台运行"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">设置开机启动和后台运行</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#客户端配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">客户端配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件下载-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">文件下载</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编辑配置文件-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">编辑配置文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动服务端-1"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">启动服务端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置开机启动和后台运行-1"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">设置开机启动和后台运行</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-手把手教你用frp实现内网穿透" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">手把手教你用frp实现内网穿透</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-04-12 15:26:19" datetime="2019-04-12T07:26:19.000Z" itemprop="datePublished">2019-04-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/内网穿透/">内网穿透</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp, http, https 协议。</p>
+</blockquote>
+<p><strong>数据准备：</strong></p>
+<ul>
+<li>公网IP: X.X.X.X</li>
+<li>内网电脑使用的是win10-64系统</li>
+<li>公网电脑为linux-64系统。</li>
+</ul>
+<h2 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h2><h3 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h3><p>下载地址：<a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">frp下载</a></p>
+<p>具有公网IP的电脑将作为frp服务端(frps)，首先去项目地址的releases页面下载与服务端系统匹配的文件并解压</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/frp-linux.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入home目录</span></span><br><span class="line"><span class="built_in">cd</span> /home</span><br><span class="line"><span class="comment"># 下载对应的frp作为服务端</span></span><br><span class="line">wget https://github.com/fatedier/frp/releases/download/v0.26.0/frp_0.26.0_linux_amd64.tar.gz</span><br><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar -zxvf frp_0.26.0_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="编辑配置文件"><a href="#编辑配置文件" class="headerlink" title="编辑配置文件"></a>编辑配置文件</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入frp</span></span><br><span class="line"><span class="built_in">cd</span> frp_0.26.0_linux_amd64/</span><br><span class="line"><span class="comment"># 编辑frps.ini配置文件</span></span><br><span class="line">vim frps.ini</span><br></pre></td></tr></table></figure>
+<p>编辑frps.ini为以下内容：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/frp-配置.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p><code>bind_port</code>为客户端与服务端进行通信的端口。其它更丰富的配置可参考frps_full.ini和项目帮助文档。</p>
+<h3 id="启动服务端"><a href="#启动服务端" class="headerlink" title="启动服务端"></a>启动服务端</h3><p>进行到解压后的frp目录，然后通过<code>./frps -c frps.ini</code>命令即可启动服务端，如下图所示：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/frp_0.26.0_linux_amd64/</span><br><span class="line">./frps -c frps.ini</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/frp-启动.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="设置开机启动和后台运行"><a href="#设置开机启动和后台运行" class="headerlink" title="设置开机启动和后台运行"></a>设置开机启动和后台运行</h3><p>上一步中的frps占据了整个命令窗口，所以接下来要考虑如何让它在后台运行并且开机自启：<br>首先通过<code>vim /etc/systemd/system/frps.service</code>命令新建文件并写入以下内容:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=frps daemon</span><br><span class="line">After=syslog.target  network.target</span><br><span class="line">Wants=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">ExecStart=/home/frp_0.26.0_linux_amd64/frps -c /home/frp_0.26.0_linux_amd64/frps.ini</span><br><span class="line">Restart= always</span><br><span class="line">RestartSec=1min</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p><strong>注意<code>ExecStart</code>中要配置成自己的路径.</strong><br>然后使用<code>systemctl start|stop|restart frps</code>即可操作frps, 用<code>systemctl enable frps</code>即可将frps设置为开机启动。</p>
+<h2 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h2><h3 id="文件下载-1"><a href="#文件下载-1" class="headerlink" title="文件下载"></a>文件下载</h3><p>具有内网IP的电脑将作为客户端(frpc)，在releases页面下载<code>frp_0.16.0_windows_amd64.zip</code>解压</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/frp-win.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="编辑配置文件-1"><a href="#编辑配置文件-1" class="headerlink" title="编辑配置文件"></a>编辑配置文件</h3><p>编辑frpc.ini为以下内容：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = X.X.X.X</span><br><span class="line">server_port = 7000</span><br><span class="line"></span><br><span class="line">[ssh]</span><br><span class="line"><span class="built_in">type</span> = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line">local_port = 22</span><br><span class="line">remote_port = 6000</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<ol>
+<li>sever_addr配置为公网电脑的IP，server_port与frps.ini中的bind_port一致。</li>
+<li>ssh为远程桌面的配置。</li>
+</ol>
+<h3 id="启动服务端-1"><a href="#启动服务端-1" class="headerlink" title="启动服务端"></a>启动服务端</h3><p>双击frpc.exe或者用命令 <code>frpc -c frpc.ini</code>即可启动客户端，如下图所示：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/frp-win-启动.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p><strong>注意：</strong>这时候很可能启动不了，一般情况是因为服务器端（linux）7000端口没开放：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看端口开放情况</span></span><br><span class="line">firewall-cmd --list-all</span><br><span class="line"><span class="comment"># 添加开放端口</span></span><br><span class="line">firewall-cmd --zone=public --add-port=7000/tcp --permanent</span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line">systemctl restart firewalld</span><br></pre></td></tr></table></figure>
+<p>然后再执行<code>frpc -c frpc.ini</code>就可以正常启动连接了。</p>
+<h3 id="设置开机启动和后台运行-1"><a href="#设置开机启动和后台运行-1" class="headerlink" title="设置开机启动和后台运行"></a>设置开机启动和后台运行</h3><p>同样的道理，我们也需要对客户端设置后台运行和开机自启。借助 <a href="https://github.com/kohsuke/winsw/releases" target="_blank" rel="noopener">winsw</a> 工具可以将frpc注册为windows系统中的服务。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/winsw.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>下载winsw最新版，为了方便将其重命名为winsw.exe, 将该文件和frpc.exe放在一起,</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/winsw2.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>然后新建winsw.xml写入以下内容：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">service</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>frp<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>frp<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>用frp发布本地电脑网站到外网<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">executable</span>&gt;</span>frpc<span class="tag">&lt;/<span class="name">executable</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">arguments</span>&gt;</span>-c frpc.ini<span class="tag">&lt;/<span class="name">arguments</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">logmode</span>&gt;</span>reset<span class="tag">&lt;/<span class="name">logmode</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">service</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>下载winsw后，在window上安装 <a href="https://www.microsoft.com/zh-cn/download/confirmation.aspx?id=17718" target="_blank" rel="noopener">.net framework4</a> ，否则后面会出问题。（很重要）</p>
+<p>然后使用<code>winsw install</code>和<code>winsw start</code>命令即可将frpc安装为系统服务。</p>
+<p>win+r后通过<code>services.msc</code>进入到服务列表页面找到frp服务。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/services.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-04-16T09:16:39.538Z" itemprop="dateUpdated">2019-04-16 17:16:39</time>
+</span><br>
+
+
+        
+        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2019/04/12/手把手教你用frp实现内网穿透/" target="_blank" rel="external">/2019/04/12/手把手教你用frp实现内网穿透/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="马亮南生">
+            马亮南生
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frp/">frp</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/04/04/CloudStack介绍/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">CloudStack介绍</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "",
+            appKey: "",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>马亮南生 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '马亮南生的博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '马亮南生的博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+	
+	<!-- 页面点击小红心 -->
+	<script type="text/javascript" src="/js/love.js"></script>
+</body>
+</html>
