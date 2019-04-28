@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-04-28T03:40:28.314Z</updated>
+  <updated>2019-04-28T03:57:34.814Z</updated>
   <id>/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="/2019/04/28/IntelliJIDEA-tomcat%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8js%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
     <id>/2019/04/28/IntelliJIDEA-tomcat在浏览器js乱码问题解决/</id>
     <published>2019-04-28T03:30:05.000Z</published>
-    <updated>2019-04-28T03:40:28.314Z</updated>
+    <updated>2019-04-28T03:57:34.814Z</updated>
     
-    <content type="html"><![CDATA[<ul><li><h2 id="在配置Tomcat的时候添加参数"><a href="#在配置Tomcat的时候添加参数" class="headerlink" title="在配置Tomcat的时候添加参数"></a>在配置Tomcat的时候添加参数</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Dfile.encoding=UTF-8</span><br></pre></td></tr></table></figure><p><img src="/img/idea-tomcat.png" alt=""></p></li><li><h2 id="修改idea64-exe-vmoptions和idea-exe-vmoptions文件"><a href="#修改idea64-exe-vmoptions和idea-exe-vmoptions文件" class="headerlink" title="修改idea64.exe.vmoptions和idea.exe.vmoptions文件"></a>修改<code>idea64.exe.vmoptions</code>和<code>idea.exe.vmoptions</code>文件</h2><p>找到idea安装目录bin目录下如下图所示两个文件，用编辑器打开，在文件末尾添加 <code>-Dfile.encoding=UTF-8</code> ，然后<code>重启idea</code>，再打开浏览器就会发现中文已经可以正常显示了</p><p><img src="/img/idea配置.png" alt=""></p><p><img src="C:\Users\92481\AppData\Roaming\Typora\typora-user-images\1556422822650.png" alt=""></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<ul><li><h2 id="在配置Tomcat的时候添加参数"><a href="#在配置Tomcat的时候添加参数" class="headerlink" title="在配置Tomcat的时候添加参数"></a>在配置Tomcat的时候添加参数</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Dfile.encoding=UTF-8</span><br></pre></td></tr></table></figure><p><img src="/img/idea-tomcat.png" alt=""></p></li><li><h2 id="修改idea64-exe-vmoptions和idea-exe-vmoptions文件"><a href="#修改idea64-exe-vmoptions和idea-exe-vmoptions文件" class="headerlink" title="修改idea64.exe.vmoptions和idea.exe.vmoptions文件"></a>修改<code>idea64.exe.vmoptions</code>和<code>idea.exe.vmoptions</code>文件</h2><p>找到idea安装目录bin目录下如下图所示两个文件，用编辑器打开，在文件末尾添加 <code>-Dfile.encoding=UTF-8</code> ，然后<code>重启idea</code>，再打开浏览器就会发现中文已经可以正常显示了</p><p><img src="/img/idea配置.png" alt=""></p><p><img src="/img/idea-v.png" alt=""></p></li></ul>]]></content>
     
     <summary type="html">
     
