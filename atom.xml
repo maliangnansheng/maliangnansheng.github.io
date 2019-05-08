@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-04-28T03:57:34.814Z</updated>
+  <updated>2019-05-08T15:52:13.343Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux下远程连接MySQL数据库</title>
+    <link href="/2019/05/08/Linux%E4%B8%8B%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5MySQL%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <id>/2019/05/08/Linux下远程连接MySQL数据库/</id>
+    <published>2019-05-08T15:43:12.000Z</published>
+    <updated>2019-05-08T15:52:13.343Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><p><strong>在服务器端开启远程访问</strong></p><p>首先进入mysql数据库，然后输入下面两个命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on *.* to &apos;root&apos;@&apos;%&apos; identified by &apos;password&apos;;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure><ul><li><p>第一个*是数据库，可以改成允许访问的数据库名称</p></li><li><p>第二个<em> 是数据库的表名称，</em>代表允许访问任意的表</p></li><li>root代表远程登录使用的用户名，可以自定义</li><li>%代表允许任意ip登录，如果你想指定特定的IP，可以把%替换掉就可以了</li><li>password代表远程登录时使用的密码，可以自定义</li><li><code>flush privileges;</code>这是让权限立即生效</li></ul></li><li><p><strong>修改<code>my.cnf</code>配置文件</strong></p><p>这个是mysql的配置文件，如果你无标题文章找不到在哪里的话，可以输入<code>find /* -name my.cnf</code> 找到<br>通过vim编辑该文件，找到<code>bind-address = 127.0.0.1</code>这一句（如果没有就不管），然后在前面加个#号注释掉，保存退出</p></li><li><p><strong>重启服务</strong></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysql restart</span><br></pre></td></tr></table></figure></li><li><p><strong>开放3306端口（端口以自己实际情况为准）</strong></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=3306/tcp --permanent</span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line">systemctl restart firewalld</span><br></pre></td></tr></table></figure></li><li><p><strong>在本地远程连接</strong></p><p>在终端输入：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h 服务器ip地址 -P 3306 -u root -p</span><br></pre></td></tr></table></figure><p>然后输入密码即可。</p><p>也可以使用连接工具连接，例如<code>Navicat</code></p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;在服务器端开启远程访问&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;首先进入mysql数据库，然后输入下面两个命令：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="/categories/MySQL/"/>
+    
+    
+      <category term="Linux" scheme="/tags/Linux/"/>
+    
+      <category term="远程连接" scheme="/tags/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>IntelliJIDEA tomcat在浏览器js乱码问题解决</title>
@@ -74,9 +104,9 @@
       <category term="内网穿透" scheme="/categories/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
     
     
-      <category term="frp" scheme="/tags/frp/"/>
-    
       <category term="Linux" scheme="/tags/Linux/"/>
+    
+      <category term="frp" scheme="/tags/frp/"/>
     
       <category term="Windows" scheme="/tags/Windows/"/>
     
@@ -307,7 +337,7 @@
     <link href="/2019/01/31/%E8%AE%A9%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%94%AF%E6%8C%81emoji%E5%AD%97%E7%AC%A6/"/>
     <id>/2019/01/31/让应用程序支持emoji字符/</id>
     <published>2019-01-31T03:00:44.000Z</published>
-    <updated>2019-01-31T03:05:54.995Z</updated>
+    <updated>2019-05-08T15:53:29.126Z</updated>
     
     <content type="html"><![CDATA[<p>什么是emoji？就是这些表情和符号：</p><p>😀😄💦😍😂😱😭😴👌</p><p>自iPhone从iOS 5在输入法中开始支持emoji以来，这些表情符号迅速风靡世界。但是很多Web网站竟然还不！支！持！！！</p><p>那怎么才能支持emoji呢？其实代码一行都不用改，因为emoji符号实际上是文本，并不是图片，它们仅仅显示为图片而已。而且，emoji符号已经被标准化并编码到最新的Unicode标准中了，所以，要支持emoji，只需要底层软件系统支持就可以了。</p><p>服务器端要正确存储emoji符号，只需要确保Web程序和底层数据库能支持最新的Unicode标准就可以了。</p><p>如果使用MySQL作为数据库，需要升级到5.5.3或更新的版本，然后，把默认编码从原来的utf8改为utf8mb4，在<code>my.cnf</code>或者<code>my.ini</code>配置文件中修改如下：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-set = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">character-set-server = utf8mb4</span><br><span class="line">collation-server     = utf8mb4_general_ci</span><br></pre></td></tr></table></figure><p>重启MySQL，然后使用以下命令查看编码，应该全部为<code>utf8mb4</code>（<code>character_set_filesystem</code>和<code>character_set_system</code>除外）：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like <span class="string">'%char%'</span>;</span><br><span class="line">+--------------------------+--------------------------+</span><br><span class="line">| Variable_name            | Value                    |</span><br><span class="line">+--------------------------+--------------------------+</span><br><span class="line">| character_set_client     | utf8mb4                  |</span><br><span class="line">| character_set_connection | utf8mb4                  |</span><br><span class="line">| character_set_database   | utf8mb4                  |</span><br><span class="line">| character_set_filesystem | binary                   |</span><br><span class="line">| character_set_results    | utf8mb4                  |</span><br><span class="line">| character_set_server     | utf8mb4                  |</span><br><span class="line">| character_set_system     | utf8                     |</span><br><span class="line">| character_sets_dir       | /usr/<span class="built_in">local</span>/mysql-5.7.... |</span><br><span class="line">+--------------------------+--------------------------+</span><br><span class="line">8 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure><p>使用命令查看collation设置，应该全部是<code>utf8mb4_general_ci</code>：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like <span class="string">'%coll%'</span>;</span><br><span class="line">+----------------------+--------------------+</span><br><span class="line">| Variable_name        | Value              |</span><br><span class="line">+----------------------+--------------------+</span><br><span class="line">| collation_connection | utf8mb4_general_ci |</span><br><span class="line">| collation_database   | utf8mb4_general_ci |</span><br><span class="line">| collation_server     | utf8mb4_general_ci |</span><br><span class="line">+----------------------+--------------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure><p>如果<code>character_set_database</code>还是为<code>utf8</code>，需要重启服务器。</p><p>现在，MySQL就可以正确存储emoji字符了。</p><p>Web软件</p><p>要支持emoji，需要Web软件也支持。目前，已知支持emoji的包括：</p><ul><li>Java 8</li><li>Node</li></ul><p>最后，如果你的Web应用程序没有使用标准的UTF-8编码，而是使用了GBK等编码，想要支持emoji就只能<code>呵呵</code>了</p>]]></content>
     
@@ -323,7 +353,7 @@
     
     </summary>
     
-      <category term="乱语" scheme="/categories/%E4%B9%B1%E8%AF%AD/"/>
+      <category term="MySQL" scheme="/categories/MySQL/"/>
     
     
       <category term="emoji" scheme="/tags/emoji/"/>
@@ -555,34 +585,6 @@
       <category term="文件打包" scheme="/tags/%E6%96%87%E4%BB%B6%E6%89%93%E5%8C%85/"/>
     
       <category term="压缩文件解压" scheme="/tags/%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8E%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux环境下安装 openOffice 并启动服务</title>
-    <link href="/2018/12/25/linux%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%AE%89%E8%A3%85-openOffice-%E5%B9%B6%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1/"/>
-    <id>/2018/12/25/linux环境下安装-openOffice-并启动服务/</id>
-    <published>2018-12-25T02:07:07.000Z</published>
-    <updated>2019-01-10T08:06:15.269Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="背景故事"><a href="#背景故事" class="headerlink" title="背景故事"></a>背景故事</h2><p>这两天遇到一个大坑，客户要做office 文档在线预览功能，于是乎就要把office文档转换成pdf交给前端显示。</p><p>　     在某度找了一圈都说openOffice+jodconverter 可以搞定这个事情。代码倒是很好找，不过版本很多，各类jar包也很多，但尝试下来发现，转化效果很一般，复杂的excel也无法成功。有同事建议放到服务器上效果可能好些，于是就开始折腾在服务器上安装OpenOffice这个事情。网上各种找大神的博文，发现安装起来不是很顺畅，就写了这篇随笔，记录一下，遇到的问题，方便自己以后查看。</p><p>​    openOffice转转word文档效果不错，转Excel的话就真的效果不行，简单的Excel能处理处理，复杂的就很慢很慢，而且效果极差。再说，实际上微软自己的office软件转pdf的效果也很差。</p><h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><ol><li><p><a href="http://www.openoffice.org/zh-cn/download/" target="_blank" rel="noopener">http://www.openoffice.org/zh-cn/download/</a> 去官网链接下载linux版本的openOffice 以4.1.6 版本为例。</p></li><li><p>将压缩包上传至服务器上，并进行解压安装。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf  对应的压缩包名字</span><br><span class="line"><span class="built_in">cd</span> 进入解压后的 /zh-cn/RPMS</span><br><span class="line">yum localinstall *.rpm</span><br><span class="line"><span class="built_in">cd</span> desktop-integration</span><br><span class="line">rpm -ivh openoffice4.1.6-redhat-menus-4.1.6-9789.noarch.rpm</span><br></pre></td></tr></table></figure><p>默认会安装在/opt目录下。</p></li><li><p>启动服务</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/opt/openoffice4/program/soffice -headless -accept=<span class="string">"socket,host=127.0.0.1,port=8100;urp;"</span> -nofirststartwizard  临时启动</span><br><span class="line"></span><br><span class="line">nohup /opt/openoffice4/program/soffice -headless -accept=<span class="string">"socket,host=127.0.0.1,port=8100;urp;"</span> -nofirststartwizard &amp;  后台启动</span><br></pre></td></tr></table></figure><p>端口号根据自己项目实际来确定。</p><p>后台启动会一直占用内存，据各路大神说 大概100M，我自己没测过具体值不清楚。</p><p>有的程序是需要预先启动openOffice 服务的，有的则在代码里自己启动服务。</p></li><li><p>.查看进程</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -lnp |grep 端口号</span><br></pre></td></tr></table></figure><p>大概显示成这样就算启动完了。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcp      0       0 127.0.0.1:8100      0.0.0.0:*      LISTEN      14362/soffice.bin</span><br></pre></td></tr></table></figure></li></ol><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>装完openoffice后启动服务可能会报错：no suitable windowing system found, exiting</p><p>从字面上的意思就是缺少一个窗口化的系统。所以就安装一个。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum groupinstall <span class="string">"X Window System"</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;背景故事&quot;&gt;&lt;a href=&quot;#背景故事&quot; class=&quot;headerlink&quot; title=&quot;背景故事&quot;&gt;&lt;/a&gt;背景故事&lt;/h2&gt;&lt;p&gt;这两天遇到一个大坑，客户要做office 文档在线预览功能，于是乎就要把office文档转换成pdf交给前端显示。&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="/categories/Linux/"/>
-    
-    
-      <category term="openOffice" scheme="/tags/openOffice/"/>
-    
-      <category term="安装" scheme="/tags/%E5%AE%89%E8%A3%85/"/>
     
   </entry>
   
