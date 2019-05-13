@@ -32,7 +32,7 @@
 <meta property="og:image" content="/img/nginx.png">
 <meta property="og:image" content="/img/nginx%E9%85%8D%E7%BD%AE.png">
 <meta property="og:image" content="/img/nginx2.png">
-<meta property="og:updated_time" content="2019-04-19T03:41:22.012Z">
+<meta property="og:updated_time" content="2019-05-13T07:22:26.262Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建http服务器-nginx">
 <meta name="twitter:description" content="安装安装 nginx  1yum  -y install nginx 这一步可能会遇到&amp;quot;No package nginx available.&amp;quot;问题，解决方法如下： 问题处理问题描述：见下图">
@@ -198,12 +198,16 @@
             </figure>
 <p><strong>问题原因：</strong></p>
 <p>nginx位于第三方的yum源里面，而不在centos官方yum源里面</p>
-<p><strong>解决方法：</strong></p>
+<p><strong>解决方法（一）：</strong></p>
 <p>安装epel(Extra Packages for Enterprise Linux)</p>
 <p>去<a href="http://fedoraproject.org/wiki/EPEL" target="_blank" rel="noopener">epel网站</a>下载对应版本</p>
 <p>我的系统是centos7.6，cpu是x86_64</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载epel</span></span><br><span class="line">wget https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装epel</span></span><br><span class="line">rpm -ivh epel-release-7-11.noarch.rpm</span><br></pre></td></tr></table></figure>
 <p>再次执行 <code>yum install nginx</code>,则会提示安装成功了</p>
+<p><strong>解决方法（二）：</strong></p>
+<p>出现这个的原因是因为本地yum源中没有我们想要的nginx，那么我们就需要创建一个<code>/etc/yum.repos.d/nginx.repo</code>的文件，新增一个yum源</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/yum.repos.d/nginx.repo</span><br><span class="line"></span><br><span class="line"><span class="comment">#在文件中写入以下内容：</span></span><br><span class="line">[nginx]</span><br><span class="line">name=nginx repo</span><br><span class="line">baseurl=http://nginx.org/packages/centos/<span class="variable">$releasever</span>/<span class="variable">$basearch</span>/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure>
+<p>退出保存后，再次执行 <code>yum install nginx</code>,则会提示安装成功了</p>
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
 <li>删除<code>/usr/share/nginx/html/</code>目录下的所有文件</li>
 </ul>
@@ -246,7 +250,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-04-19T03:41:22.012Z" itemprop="dateUpdated">2019-04-19 11:41:22</time>
+    最后更新时间：<time datetime="2019-05-13T07:22:26.262Z" itemprop="dateUpdated">2019-05-13 15:22:26</time>
 </span><br>
 
 
