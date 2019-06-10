@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-05-28T09:21:20.090Z</updated>
+  <updated>2019-06-10T08:40:53.564Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VPS搭建属于自己的SS代理</title>
+    <link href="/2019/06/10/VPS%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84SS%E4%BB%A3%E7%90%86/"/>
+    <id>/2019/06/10/VPS搭建属于自己的SS代理/</id>
+    <published>2019-06-10T08:09:06.000Z</published>
+    <updated>2019-06-10T08:40:53.564Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="安装shadowsocks"><a href="#安装shadowsocks" class="headerlink" title="安装shadowsocks"></a>安装shadowsocks</h2><h3 id="第一条命令"><a href="#第一条命令" class="headerlink" title="第一条命令"></a>第一条命令</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载脚本shadowsocks.sh</span></span><br><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 等待下载完成...</span></span><br></pre></td></tr></table></figure><h3 id="第二条命令"><a href="#第二条命令" class="headerlink" title="第二条命令"></a>第二条命令</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 为shadowsocks.sh添加执行权限</span></span><br><span class="line">chmod +x shadowsocks.sh</span><br></pre></td></tr></table></figure><h3 id="第三条命令"><a href="#第三条命令" class="headerlink" title="第三条命令"></a>第三条命令</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 中间会提示我们输入一些信息</span></span><br></pre></td></tr></table></figure><p><strong>中间会提示你输入你的SS server的账号，和端口。不输入就是默认。跑完命令后会出来你的SS客户端的信息。特别注意，由于iphone端的目前只支持到<code>cfb</code>，所以我们选择<code>aes-256-cfb</code>，即7，这一步按回车继续然后需要几分钟的安装过程，请耐心等待出现下面的画面！</strong></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/shadowsocks001.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;安装shadowsocks&quot;&gt;&lt;a href=&quot;#安装shadowsocks&quot; class=&quot;headerlink&quot; title=&quot;安装shadowsocks&quot;&gt;&lt;/a&gt;安装shadowsocks&lt;/h2&gt;&lt;h3 id=&quot;第一条命令&quot;&gt;&lt;a href=&quot;#第一条命
+      
+    
+    </summary>
+    
+      <category term="shadowsocks" scheme="/categories/shadowsocks/"/>
+    
+    
+      <category term="vps" scheme="/tags/vps/"/>
+    
+      <category term="shadowsocks" scheme="/tags/shadowsocks/"/>
+    
+      <category term="翻墙" scheme="/tags/%E7%BF%BB%E5%A2%99/"/>
+    
+  </entry>
   
   <entry>
     <title>Centos7.x中磁盘管理及扩展</title>
@@ -336,9 +365,9 @@
       <category term="Linux" scheme="/categories/Linux/"/>
     
     
-      <category term="技巧" scheme="/tags/%E6%8A%80%E5%B7%A7/"/>
-    
       <category term="svn" scheme="/tags/svn/"/>
+    
+      <category term="技巧" scheme="/tags/%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
@@ -538,33 +567,6 @@
       <category term="kodexplorer" scheme="/tags/kodexplorer/"/>
     
       <category term="部署" scheme="/tags/%E9%83%A8%E7%BD%B2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用Java打开桌面文件</title>
-    <link href="/2019/01/15/%E4%BD%BF%E7%94%A8Java%E6%89%93%E5%BC%80%E6%A1%8C%E9%9D%A2%E6%96%87%E4%BB%B6/"/>
-    <id>/2019/01/15/使用Java打开桌面文件/</id>
-    <published>2019-01-15T09:34:36.000Z</published>
-    <updated>2019-01-15T09:59:44.143Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="打开某一文件（默认软件打开）"><a href="#打开某一文件（默认软件打开）" class="headerlink" title="打开某一文件（默认软件打开）"></a>打开某一文件（默认软件打开）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Desktop desktop = Desktop.getDesktop();</span><br><span class="line">        <span class="keyword">if</span> (desktop.isSupported(Desktop.Action.OPEN)) &#123;</span><br><span class="line">            desktop.open(<span class="keyword">new</span> File(<span class="string">"Your.pdf"</span>)); <span class="comment">//全路径</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"Open is not supported"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException exp) &#123;</span><br><span class="line">        exp.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="指定某一软件打开对应的文件"><a href="#指定某一软件打开对应的文件" class="headerlink" title="指定某一软件打开对应的文件"></a>指定某一软件打开对应的文件</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Runtime.getRuntime()</span><br><span class="line">    .exec(<span class="string">"WINWORD.EXE（使用啥软件打开）所在全路径 D:\\test.docx（文件全路径）"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//例："C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE D:\\3.pdf"</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;打开某一文件（默认软件打开）&quot;&gt;&lt;a href=&quot;#打开某一文件（默认软件打开）&quot; class=&quot;headerlink&quot; title=&quot;打开某一文件（默认软件打开）&quot;&gt;&lt;/a&gt;打开某一文件（默认软件打开）&lt;/h2&gt;&lt;figure class=&quot;highlight 
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="/categories/Java/"/>
-    
-    
-      <category term="技巧" scheme="/tags/%E6%8A%80%E5%B7%A7/"/>
-    
-      <category term="Desktop" scheme="/tags/Desktop/"/>
     
   </entry>
   
