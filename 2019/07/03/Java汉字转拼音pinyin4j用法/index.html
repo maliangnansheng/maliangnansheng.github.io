@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Java汉字转拼音pinyin4j用法 | Nan&#39;s Blog | 弱者才言命，强者只言运！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="汉字转拼音,pinyin4j">
+    <meta name="description" content="来源：https://www.jianshu.com/p/57a6600d2862 工具介绍pinyin4j 是一个支持将简体和繁体中文转换到成拼音的Java开源类库； 功能 支持同一汉字有多个发音 还支持拼音的格式化输出，比如第几声之类的， 同时支持简体中文、繁体中文转换为拼音…使用起来也非常简单。下面是其官方网址，其中提供了下载： pinyin4j的官方下载地址 Maven仓库    目录结构">
+<meta name="keywords" content="汉字转拼音,pinyin4j">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java汉字转拼音pinyin4j用法">
+<meta property="og:url" content="/2019/07/03/Java汉字转拼音pinyin4j用法/index.html">
+<meta property="og:site_name" content="Nan&#39;s Blog">
+<meta property="og:description" content="来源：https://www.jianshu.com/p/57a6600d2862 工具介绍pinyin4j 是一个支持将简体和繁体中文转换到成拼音的Java开源类库； 功能 支持同一汉字有多个发音 还支持拼音的格式化输出，比如第几声之类的， 同时支持简体中文、繁体中文转换为拼音…使用起来也非常简单。下面是其官方网址，其中提供了下载： pinyin4j的官方下载地址 Maven仓库    目录结构">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-03T10:11:24.916Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java汉字转拼音pinyin4j用法">
+<meta name="twitter:description" content="来源：https://www.jianshu.com/p/57a6600d2862 工具介绍pinyin4j 是一个支持将简体和繁体中文转换到成拼音的Java开源类库； 功能 支持同一汉字有多个发音 还支持拼音的格式化输出，比如第几声之类的， 同时支持简体中文、繁体中文转换为拼音…使用起来也非常简单。下面是其官方网址，其中提供了下载： pinyin4j的官方下载地址 Maven仓库    目录结构">
+    
+        <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">马亮南生</h5>
+          <a href="mailto:maliangnansheng@gmail.com" title="maliangnansheng@gmail.com" class="mail">maliangnansheng@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/maliangnansheng" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Java汉字转拼音pinyin4j用法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Java汉字转拼音pinyin4j用法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-03T10:04:41.000Z" itemprop="datePublished" class="page-time">
+  2019-07-03
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#工具介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">工具介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#功能"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">功能</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#目录结构及说明"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">目录结构及说明</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">原理</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pinyin4J-使用"><span class="post-toc-number">2.</span> <span class="post-toc-text">pinyin4J 使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他工具类"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">其他工具类</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java汉字转拼音pinyin4j用法" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Java汉字转拼音pinyin4j用法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-03 18:04:41" datetime="2019-07-03T10:04:41.000Z" itemprop="datePublished">2019-07-03</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>来源：<a href="https://www.jianshu.com/p/57a6600d2862" target="_blank" rel="noopener">https://www.jianshu.com/p/57a6600d2862</a></p>
+<h2 id="工具介绍"><a href="#工具介绍" class="headerlink" title="工具介绍"></a>工具介绍</h2><p>pinyin4j 是一个支持将<code>简体</code>和<code>繁体</code>中文转换到成拼音的Java开源类库；</p>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><ul>
+<li>支持同一汉字有多个发音</li>
+<li>还支持拼音的格式化输出，比如第几声之类的，</li>
+<li>同时支持简体中文、繁体中文转换为拼音…使用起来也非常简单。下面是其官方网址，其中提供了下载：<ul>
+<li>pinyin4j的<a href="http://sourceforge.net/projects/pinyin4j/files/" target="_blank" rel="noopener">官方下载地址</a></li>
+<li>Maven仓库</li>
+</ul>
+</li>
+</ul>
+<h3 id="目录结构及说明"><a href="#目录结构及说明" class="headerlink" title="目录结构及说明"></a>目录结构及说明</h3><p><code>doc :</code> pinyin4j的api文档</p>
+<p><code>lib :</code> pinyin4j的jar包</p>
+<p><code>src:</code> pinyin4j的源代码</p>
+<p><code>CHANGELOG.txt :</code> pinyin4j的版本更新日志</p>
+<p><code>COPYING.txt :</code> LICENSE说明</p>
+<p><code>README.txt :</code> pinyin4j的概要介绍</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>pinyin4j使用了一个.txt的文本文件（uicode_to_hanyu_pinyin.txt）用来存储汉字unicode编码与拼音的对应关系，通过读取该配置文件达到转换的目的。该属性文件存储信息的基本格式如下：89E3 (jie3,jie4,xie4)   //(对应汉字”解”)89E3 是汉字对应的unicode编码的16进制数，(jie3,jie4,xie4)是该汉字对应的三种读音(在汉语里有多音字)，说明pinyin4j支持多音字的处理pinyin4j的处理过程是这样的：根据String的toCharArray方法得到每个字符（得到”解”字的unicode编码，实际上是35299，由于java中char和String都是unicode编码的可以直接转为int型的编码数据35299），然后利用Integer.toHexString(c1).toUpperCase()将其转换成16进制数[也就是89E3]，通过读取配置文件得到“解”字的拼音(jie3,jie4,xie4)，那么这里有三个拼音，pinyin4j的默认取值为第一个，也就是jie3[表示读jie，声调是三声]</p>
+<h2 id="pinyin4J-使用"><a href="#pinyin4J-使用" class="headerlink" title="pinyin4J 使用"></a>pinyin4J 使用</h2><p>pinyin4j 提供的工具类为<code>PinyinHelper</code>,里边提供了静态方法</p>
+<ul>
+<li><code>toHanyuPinyinString()</code>(过时)</li>
+<li><code>toHanyuPinyinStringArray()</code></li>
+</ul>
+<p>pinyin4j 中有四个辅助类分别是：</p>
+<ul>
+<li>HanyuPinyinCaseType</li>
+<li>HanyuPinyinToneType</li>
+<li>HanyuPinyinVCharType</li>
+<li>HanyuPinyinOutputFormat</li>
+</ul>
+<p>具体功能和用法见一下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">HanyuPinyinOutputFormat defaultFormat = <span class="keyword">new</span> HanyuPinyinOutputFormat();</span><br><span class="line"><span class="comment">// 控制大小写</span></span><br><span class="line"><span class="comment">// UPPERCASE：大写  (ZHONG)</span></span><br><span class="line"><span class="comment">// LOWERCASE：小写  (zhong)</span></span><br><span class="line">defaultFormat.setCaseType(HanyuPinyinCaseType.UPPERCASE);</span><br><span class="line"><span class="comment">// WITHOUT_TONE：无音标  (zhong)</span></span><br><span class="line"><span class="comment">// WITH_TONE_NUMBER：1-4数字表示英标  (zhong4)</span></span><br><span class="line"><span class="comment">// WITH_TONE_MARK：直接用音标符（必须WITH_U_UNICODE否则异常）  (zhòng)</span></span><br><span class="line">defaultFormat.setToneType(HanyuPinyinToneType.WITH_TONE_NUMBER);</span><br><span class="line"><span class="comment">// WITH_V：用v表示ü  (nv)</span></span><br><span class="line"><span class="comment">// WITH_U_AND_COLON：用"u:"表示ü  (nu:)</span></span><br><span class="line"><span class="comment">// WITH_U_UNICODE：直接用ü (nü)</span></span><br><span class="line">defaultFormat.setVCharType(HanyuPinyinVCharType.WITH_U_UNICODE);</span><br><span class="line"><span class="comment">// oHanyuPinyinStringArray如果传入的字符不是汉字不能转换成拼音，那么会直接返回null。</span></span><br><span class="line">String[] pinyin = PinyinHelper.toHanyuPinyinStringArray(<span class="string">'重'</span>, defaultFormat);</span><br><span class="line"><span class="keyword">for</span>(String str: pinyin)&#123;</span><br><span class="line">    System.out.println(str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZHONG4</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CHONG2</span><br></pre></td></tr></table></figure>
+<h3 id="其他工具类"><a href="#其他工具类" class="headerlink" title="其他工具类"></a>其他工具类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获得汉语拼音首字母</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> chines</span></span><br><span class="line"><span class="comment"> *            汉字</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getAlpha</span><span class="params">(String chines)</span> </span>&#123;</span><br><span class="line">    String pinyinName = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">char</span>[] nameChar = chines.toCharArray();</span><br><span class="line">    HanyuPinyinOutputFormat defaultFormat = <span class="keyword">new</span> HanyuPinyinOutputFormat();</span><br><span class="line">    defaultFormat.setCaseType(HanyuPinyinCaseType.UPPERCASE);</span><br><span class="line">    defaultFormat.setToneType(HanyuPinyinToneType.WITHOUT_TONE);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nameChar.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nameChar[i] &gt; <span class="number">128</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                pinyinName += PinyinHelper.toHanyuPinyinStringArray(</span><br><span class="line">                        nameChar[i], defaultFormat)[<span class="number">0</span>].charAt(<span class="number">0</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (BadHanyuPinyinOutputFormatCombination e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            pinyinName += nameChar[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pinyinName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 将字符串中的中文转化为拼音,英文字符不变</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> inputString</span></span><br><span class="line"><span class="comment"> *            汉字</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getPingYin</span><span class="params">(String inputString)</span> </span>&#123;</span><br><span class="line">    HanyuPinyinOutputFormat format = <span class="keyword">new</span> HanyuPinyinOutputFormat();</span><br><span class="line">    format.setCaseType(HanyuPinyinCaseType.LOWERCASE);</span><br><span class="line">    format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);</span><br><span class="line">    format.setVCharType(HanyuPinyinVCharType.WITH_V);</span><br><span class="line">    String output = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">if</span> (inputString != <span class="keyword">null</span> &amp;&amp; inputString.length() &gt; <span class="number">0</span></span><br><span class="line">            &amp;&amp; !<span class="string">"null"</span>.equals(inputString)) &#123;</span><br><span class="line">        <span class="keyword">char</span>[] input = inputString.trim().toCharArray();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; input.length; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (java.lang.Character.toString(input[i]).matches(</span><br><span class="line">                        <span class="string">"[\\u4E00-\\u9FA5]+"</span>)) &#123;</span><br><span class="line">                    String[] temp = PinyinHelper.toHanyuPinyinStringArray(</span><br><span class="line">                            input[i], format);</span><br><span class="line">                    output += temp[<span class="number">0</span>];</span><br><span class="line">                &#125; <span class="keyword">else</span></span><br><span class="line">                    output += java.lang.Character.toString(input[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (BadHanyuPinyinOutputFormatCombination e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"*"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> output;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 汉字转换为汉语拼音首字母，英文字符不变</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> chines</span></span><br><span class="line"><span class="comment"> *            汉字</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 拼音</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">converterToFirstSpell</span><span class="params">(String chines)</span> </span>&#123;</span><br><span class="line">    String pinyinName = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">char</span>[] nameChar = chines.toCharArray();</span><br><span class="line">    HanyuPinyinOutputFormat defaultFormat = <span class="keyword">new</span> HanyuPinyinOutputFormat();</span><br><span class="line">    defaultFormat.setCaseType(HanyuPinyinCaseType.UPPERCASE);</span><br><span class="line">    defaultFormat.setToneType(HanyuPinyinToneType.WITHOUT_TONE);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nameChar.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nameChar[i] &gt; <span class="number">128</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                pinyinName += PinyinHelper.toHanyuPinyinStringArray(</span><br><span class="line">                        nameChar[i], defaultFormat)[<span class="number">0</span>].charAt(<span class="number">0</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (BadHanyuPinyinOutputFormatCombination e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            pinyinName += nameChar[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pinyinName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-07-03T10:11:24.916Z" itemprop="dateUpdated">2019-07-03 18:11:24</time>
+</span><br>
+
+
+        
+        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2019/07/03/Java汉字转拼音pinyin4j用法/" target="_blank" rel="external">/2019/07/03/Java汉字转拼音pinyin4j用法/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="马亮南生">
+            马亮南生
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pinyin4j/">pinyin4j</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/汉字转拼音/">汉字转拼音</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/07/02/CloudStack-API编程指南/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">CloudStack API编程指南</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "",
+            appKey: "",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>马亮南生 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '马亮南生的博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '马亮南生的博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+	
+	<!-- 页面点击小红心 -->
+	<script type="text/javascript" src="/js/love.js"></script>
+</body>
+</html>
