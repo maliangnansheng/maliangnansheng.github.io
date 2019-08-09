@@ -32,7 +32,7 @@
 <meta property="og:image" content="/img/nginx.png">
 <meta property="og:image" content="/img/nginx%E9%85%8D%E7%BD%AE.png">
 <meta property="og:image" content="/img/nginx2.png">
-<meta property="og:updated_time" content="2019-07-08T07:46:35.113Z">
+<meta property="og:updated_time" content="2019-08-09T09:47:35.247Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建http服务器-nginx">
 <meta name="twitter:description" content="编译安装nginx参考：https://blog.csdn.net/w410589502/article/details/70787468 安装安装 nginx  1yum  -y install nginx 这一步可能会遇到&amp;quot;No package nginx available.&amp;quot;问题，解决方法如下： 问题处理问题描述：见下图">
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#问题处理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">问题处理</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启用"><span class="post-toc-number">3.</span> <span class="post-toc-text">启用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#附加"><span class="post-toc-number">4.</span> <span class="post-toc-text">附加</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Nginx-显示中文乱码解决"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">Nginx 显示中文乱码解决</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#问题处理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">问题处理</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启用"><span class="post-toc-number">3.</span> <span class="post-toc-text">启用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#附加"><span class="post-toc-number">4.</span> <span class="post-toc-text">附加</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Nginx-显示中文乱码解决"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">Nginx 显示中文乱码解决</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题"><span class="post-toc-number">5.</span> <span class="post-toc-text">问题</span></a></li></ol>
         </nav>
     </aside>
 
@@ -248,6 +248,14 @@
 <p>情如下：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">upstream you.domainName.com &#123;</span><br><span class="line">        server 127.0.0.1:8081;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">server &#123;</span><br><span class="line">	listen    80;</span><br><span class="line">	server_name  you.domainName.com;</span><br><span class="line">    charset utf-8;</span><br><span class="line">    location /examples &#123;</span><br><span class="line">    	<span class="built_in">return</span> 403;</span><br><span class="line">    &#125;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>重启Nginx服务(<code>nginx -s reload</code>)。最后，刷新，一切正常！</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ul>
+<li><p>重置（<code>nginx -s reload</code>）nginx出现这个错误</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx: [error] open() <span class="string">"/usr/local/var/run/nginx.pid"</span> failed (2: No such file or directory)</span><br></pre></td></tr></table></figure>
+<p>解决方法：<code>找到你的nginx.conf的文件夹目录</code>，然后运行这个：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 例如：找到的nginx.conf的文件夹目录为：“/etc/nginx/nginx.conf”</span></span><br><span class="line"><span class="comment"># 执行以下命令</span></span><br><span class="line">nginx -c /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+<p>再运行<code>nginx -s reload</code>，就可以了</p>
+</li>
+</ul>
 
         </div>
 
@@ -256,7 +264,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-07-08T07:46:35.113Z" itemprop="dateUpdated">2019-07-08 15:46:35</time>
+    最后更新时间：<time datetime="2019-08-09T09:47:35.247Z" itemprop="dateUpdated">2019-08-09 17:47:35</time>
 </span><br>
 
 
