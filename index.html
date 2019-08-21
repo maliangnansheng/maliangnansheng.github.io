@@ -617,13 +617,10 @@ LVM是Logical Volume Manager（逻辑卷管理）的简写，它是Linux环境�
     
         
 在服务器端开启远程访问
-首先进入mysql数据库，然后输入下面两个命令：
-1grant all privileges on *.* to &apos;root&apos;@&apos;%&apos; identified by &apos;password&apos;;
-1flush privileges;
-
-第一个*是数据库，可以改成允许访问的数据库名称
-
-第二个 是数据库的表名称，代表...
+首先进入mysql数据库
+12mysql -uroot -pEnter password: #输入密码
+然后输入下面两个命令：
+123456789mysql&gt; grant all privileges on *.* to 'root'@'%' identified by 'password';Query OK, 0 rows affected, 1 warni...
     
 
         <a href="/2019/05/08/Linux下远程连接MySQL数据库/" class="post-more waves-effect waves-button">
