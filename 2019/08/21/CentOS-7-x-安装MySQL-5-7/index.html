@@ -29,10 +29,15 @@
 <meta property="og:site_name" content="Nan&#39;s Blog">
 <meta property="og:description" content="在线安装引用：他人博客、MySQL官网 yum仓库：下载MySQL Yum存储库  CentOS 7的默认yum仓库中并没有MySQL5.7，我们需要手动添加，好在MySQL官方提供了仓库的地址，所以我们能够比较简单地安装MySQL。 本文我们将介绍CentOS 7下MySQL5.7的安装。  添加MySQL5.7仓库123# 地址来源于下载yum存储库时“No thanks, just star">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-21T07:11:57.873Z">
+<meta property="og:image" content="/img/mysql001.png">
+<meta property="og:image" content="/img/mysql002.png">
+<meta property="og:image" content="/img/mysql003.png">
+<meta property="og:image" content="/img/mysql004.png">
+<meta property="og:updated_time" content="2019-08-21T08:40:41.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS 7.x - 安装MySQL 5.7">
 <meta name="twitter:description" content="在线安装引用：他人博客、MySQL官网 yum仓库：下载MySQL Yum存储库  CentOS 7的默认yum仓库中并没有MySQL5.7，我们需要手动添加，好在MySQL官方提供了仓库的地址，所以我们能够比较简单地安装MySQL。 本文我们将介绍CentOS 7下MySQL5.7的安装。  添加MySQL5.7仓库123# 地址来源于下载yum存储库时“No thanks, just star">
+<meta name="twitter:image" content="/img/mysql001.png">
     
         <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
     
@@ -156,7 +161,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#在线安装"><span class="post-toc-number">1.</span> <span class="post-toc-text">在线安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加MySQL5-7仓库"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">添加MySQL5.7仓库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#确认MySQL仓库成功添加"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">确认MySQL仓库成功添加</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开始安装MySQL5-7"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">开始安装MySQL5.7</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动MySQL"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">启动MySQL</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MySQL的安全设置"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">MySQL的安全设置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置数据库编码为utf8"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">设置数据库编码为utf8</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#离线安装"><span class="post-toc-number">2.</span> <span class="post-toc-text">离线安装</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#在线安装"><span class="post-toc-number">1.</span> <span class="post-toc-text">在线安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加MySQL5-7仓库"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">添加MySQL5.7仓库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#确认MySQL仓库成功添加"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">确认MySQL仓库成功添加</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开始安装MySQL5-7"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">开始安装MySQL5.7</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动MySQL"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">启动MySQL</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MySQL的安全设置"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">MySQL的安全设置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MySQL5-7初始化密码报错"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">MySQL5.7初始化密码报错</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CentOS-如何修改MySQL用户root的密码"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">CentOS 如何修改MySQL用户root的密码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置数据库编码为utf8"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">设置数据库编码为utf8</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#离线安装"><span class="post-toc-number">2.</span> <span class="post-toc-text">离线安装</span></a></li></ol>
         </nav>
     </aside>
 
@@ -202,15 +207,62 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status mysqld</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="MySQL的安全设置"><a href="#MySQL的安全设置" class="headerlink" title="MySQL的安全设置"></a>MySQL的安全设置</h2><p>CentOS上的root默认密码可以在文件<code>/var/log/mysqld.log</code>找到，通过下面命令可以打印出来</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/<span class="built_in">log</span>/mysqld.log | grep -i <span class="string">'temporary password'</span></span><br></pre></td></tr></table></figure>
+<h2 id="MySQL的安全设置"><a href="#MySQL的安全设置" class="headerlink" title="MySQL的安全设置"></a>MySQL的安全设置</h2><p>CentOS上的root<code>默认密码</code>可以在文件<code>/var/log/mysqld.log</code>找到，通过下面命令可以打印出来</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 该命令只能查询默认的初始密码（如果修改了密码，并不能查询到更改后的密码）</span></span><br><span class="line">cat /var/<span class="built_in">log</span>/mysqld.log | grep -i <span class="string">'temporary password'</span></span><br></pre></td></tr></table></figure>
 <p>执行下面命令进行安全设置，这个命令会进行设置root密码设置，移除匿名用户，禁止root用户远程连接等</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<h3 id="MySQL5-7初始化密码报错"><a href="#MySQL5-7初始化密码报错" class="headerlink" title="MySQL5.7初始化密码报错"></a>MySQL5.7<code>初始化密码</code>报错</h3><p>报错信息：<code>ERROR 1820 (HY000): You must reset your password using ALTER USER statement before</code></p>
+<ol>
+<li><p><strong>mysql5.6是密码为空直接进入数据库的，但是mysql5.7就需要初始密码</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/<span class="built_in">log</span>/mysqld.log | grep -i <span class="string">'temporary password'</span></span><br></pre></td></tr></table></figure>
+<p><img src="/img/mysql001.png" alt=""></p>
+</li>
+<li><p><strong>然后执行 <code>mysql -uroot -p</code> ，输入上面的到的密码进入，用该密码登录后，必须马上修改新的密码，不然会报如下错误：</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br></pre></td></tr></table></figure>
+<p><img src="/img/mysql002.png" alt=""></p>
+</li>
+<li><p><strong>如果你想要设置一个简单的测试密码的话，比如设置为<code>777888</code>，会提示这个错误，报错的意思就是你的密码不符合要求</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter user <span class="string">'root'</span>@<span class="string">'localhost'</span> identified by <span class="string">'777888'</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="/img/mysql003.png" alt=""></p>
+</li>
+<li><p><strong>这个其实与validate_password_policy的值有关</strong></p>
+<p><code>validate_password_policy</code>有以下取值：</p>
+<p><img src="/img/mysql004.png" alt=""></p>
+<p>默认是1，即MEDIUM，所以刚开始设置的密码<code>必须符合长度</code>，且<code>必须含有数字，小写或大写字母，特殊字符</code>。<br>有时候，只是为了自己测试，不想密码设置得那么复杂，譬如说，我只想设置root的密码为<code>777888</code>。<br>必须修改两个全局参数：</p>
+<p>首先，修改<code>validate_password_policy</code>参数的值</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="built_in">set</span> global validate_password_policy=0;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p><code>validate_password_length</code>(密码长度)参数默认为8，我们修改为1</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="built_in">set</span> global validate_password_length=1;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>完成之后再次执行修改密码语句即可成功</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; alter user <span class="string">'root'</span>@<span class="string">'localhost'</span> identified by <span class="string">'777888'</span>;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="CentOS-如何修改MySQL用户root的密码"><a href="#CentOS-如何修改MySQL用户root的密码" class="headerlink" title="CentOS 如何修改MySQL用户root的密码"></a>CentOS 如何修改MySQL用户root的密码</h3><ol>
+<li><p><strong>用帐号登录mysql</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br><span class="line"></span><br><span class="line">Enter password:<span class="comment"># 输入原密码</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>改变用户数据库</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use mysql;</span><br><span class="line">Reading table information <span class="keyword">for</span> completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>修改密码，记得密码要用<code>password()</code>函数进行加密，一定不要忘记！！！</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 5.6版本修改密码</span></span><br><span class="line">mysql&gt; update user <span class="built_in">set</span> password=password(<span class="string">'Your new password'</span>) <span class="built_in">where</span> user=<span class="string">'root'</span>;</span><br><span class="line">Query OK, 1 row affected (0.04 sec)</span><br><span class="line">Rows matched: 1  Changed: 1  Warnings: 0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5.7版本下的mysql数据库下已经没有password这个字段了，password字段改成了authentication_string</span></span><br><span class="line">mysql&gt; update mysql.user <span class="built_in">set</span> authentication_string=password(<span class="string">'Your new password'</span>) <span class="built_in">where</span> user=<span class="string">'root'</span>;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">Rows matched: 1  Changed: 1  Warnings: 0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>刷新权限表</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; flush privileges;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>退出MySQL</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; quit</span><br><span class="line">Bye</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>重启MySQL</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mysqld</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <h2 id="设置数据库编码为utf8"><a href="#设置数据库编码为utf8" class="headerlink" title="设置数据库编码为utf8"></a>设置数据库编码为utf8</h2><ol>
 <li><p>打开配置文件</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/my.cnf</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>在[mysqld]，[client]，[mysql]节点下添加编码设置</p>
+<li><p>在[mysqld]，[client]，[mysql]节点下添加编码设置（<code>替换</code>成下面的内容）</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-set=utf8</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">collation-server = utf8_unicode_ci</span><br><span class="line">init-connect=<span class="string">'SET NAMES utf8'</span></span><br><span class="line">character-set-server = utf8</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>重启MySQL即可</p>
@@ -225,7 +277,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-08-21T07:11:57.873Z" itemprop="dateUpdated">2019-08-21 15:11:57</time>
+    最后更新时间：<time datetime="2019-08-21T08:40:41.040Z" itemprop="dateUpdated">2019-08-21 16:40:41</time>
 </span><br>
 
 
