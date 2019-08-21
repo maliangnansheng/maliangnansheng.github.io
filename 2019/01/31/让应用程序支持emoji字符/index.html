@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="emoji,utf8mb4,Web">
-    <meta name="description" content="什么是emoji？就是这些表情和符号： 😀😄💦😍😂😱😭😴👌 自iPhone从iOS 5在输入法中开始支持emoji以来，这些表情符号迅速风靡世界。但是很多Web网站竟然还不！支！持！！！ 那怎么才能支持emoji呢？其实代码一行都不用改，因为emoji符号实际上是文本，并不是图片，它们仅仅显示为图片而已。而且，emoji符号已经被标准化并编码到最新的Unicode标准中了，所以，">
+    <meta name="description" content="实现什么是emoji？就是这些表情和符号： 😀😄💦😍😂😱😭😴👌 自iPhone从iOS 5在输入法中开始支持emoji以来，这些表情符号迅速风靡世界。但是很多Web网站竟然还不！支！持！！！ 那怎么才能支持emoji呢？其实代码一行都不用改，因为emoji符号实际上是文本，并不是图片，它们仅仅显示为图片而已。而且，emoji符号已经被标准化并编码到最新的Unicode标准中了，所">
 <meta name="keywords" content="emoji,utf8mb4,Web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="让应用程序支持emoji字符">
 <meta property="og:url" content="/2019/01/31/让应用程序支持emoji字符/index.html">
 <meta property="og:site_name" content="Nan&#39;s Blog">
-<meta property="og:description" content="什么是emoji？就是这些表情和符号： 😀😄💦😍😂😱😭😴👌 自iPhone从iOS 5在输入法中开始支持emoji以来，这些表情符号迅速风靡世界。但是很多Web网站竟然还不！支！持！！！ 那怎么才能支持emoji呢？其实代码一行都不用改，因为emoji符号实际上是文本，并不是图片，它们仅仅显示为图片而已。而且，emoji符号已经被标准化并编码到最新的Unicode标准中了，所以，">
+<meta property="og:description" content="实现什么是emoji？就是这些表情和符号： 😀😄💦😍😂😱😭😴👌 自iPhone从iOS 5在输入法中开始支持emoji以来，这些表情符号迅速风靡世界。但是很多Web网站竟然还不！支！持！！！ 那怎么才能支持emoji呢？其实代码一行都不用改，因为emoji符号实际上是文本，并不是图片，它们仅仅显示为图片而已。而且，emoji符号已经被标准化并编码到最新的Unicode标准中了，所">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-08T15:53:29.126Z">
+<meta property="og:updated_time" content="2019-08-21T09:29:30.981Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="让应用程序支持emoji字符">
-<meta name="twitter:description" content="什么是emoji？就是这些表情和符号： 😀😄💦😍😂😱😭😴👌 自iPhone从iOS 5在输入法中开始支持emoji以来，这些表情符号迅速风靡世界。但是很多Web网站竟然还不！支！持！！！ 那怎么才能支持emoji呢？其实代码一行都不用改，因为emoji符号实际上是文本，并不是图片，它们仅仅显示为图片而已。而且，emoji符号已经被标准化并编码到最新的Unicode标准中了，所以，">
+<meta name="twitter:description" content="实现什么是emoji？就是这些表情和符号： 😀😄💦😍😂😱😭😴👌 自iPhone从iOS 5在输入法中开始支持emoji以来，这些表情符号迅速风靡世界。但是很多Web网站竟然还不！支！持！！！ 那怎么才能支持emoji呢？其实代码一行都不用改，因为emoji符号实际上是文本，并不是图片，它们仅仅显示为图片而已。而且，emoji符号已经被标准化并编码到最新的Unicode标准中了，所">
     
         <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
     
@@ -153,6 +153,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现"><span class="post-toc-number">1.</span> <span class="post-toc-text">实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#附录"><span class="post-toc-number">2.</span> <span class="post-toc-text">附录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#utf8与utf8mb4"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">utf8与utf8mb4</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符集、连接字符集、排序字符集"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">字符集、连接字符集、排序字符集</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
 
 <article id="post-让应用程序支持emoji字符" class="post-article article-type-post fade" itemprop="blogPost">
 
@@ -174,13 +181,13 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>什么是emoji？就是这些表情和符号：</p>
+            <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>什么是emoji？就是这些表情和符号：</p>
 <p>😀😄💦😍😂😱😭😴👌</p>
 <p>自iPhone从iOS 5在输入法中开始支持emoji以来，这些表情符号迅速风靡世界。但是很多Web网站竟然还不！支！持！！！</p>
 <p>那怎么才能支持emoji呢？其实代码一行都不用改，因为emoji符号实际上是文本，并不是图片，它们仅仅显示为图片而已。而且，emoji符号已经被标准化并编码到最新的Unicode标准中了，所以，要支持emoji，只需要底层软件系统支持就可以了。</p>
 <p>服务器端要正确存储emoji符号，只需要确保Web程序和底层数据库能支持最新的Unicode标准就可以了。</p>
 <p>如果使用MySQL作为数据库，需要升级到5.5.3或更新的版本，然后，把默认编码从原来的utf8改为utf8mb4，在<code>my.cnf</code>或者<code>my.ini</code>配置文件中修改如下：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-set = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">character-set-server = utf8mb4</span><br><span class="line">collation-server     = utf8mb4_general_ci</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-set = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">character-set-server = utf8mb4</span><br><span class="line">collation-server     = utf8mb4_unicode_ci	<span class="comment"># 解释见附录</span></span><br></pre></td></tr></table></figure>
 <p>重启MySQL，然后使用以下命令查看编码，应该全部为<code>utf8mb4</code>（<code>character_set_filesystem</code>和<code>character_set_system</code>除外）：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like <span class="string">'%char%'</span>;</span><br><span class="line">+--------------------------+--------------------------+</span><br><span class="line">| Variable_name            | Value                    |</span><br><span class="line">+--------------------------+--------------------------+</span><br><span class="line">| character_set_client     | utf8mb4                  |</span><br><span class="line">| character_set_connection | utf8mb4                  |</span><br><span class="line">| character_set_database   | utf8mb4                  |</span><br><span class="line">| character_set_filesystem | binary                   |</span><br><span class="line">| character_set_results    | utf8mb4                  |</span><br><span class="line">| character_set_server     | utf8mb4                  |</span><br><span class="line">| character_set_system     | utf8                     |</span><br><span class="line">| character_sets_dir       | /usr/<span class="built_in">local</span>/mysql-5.7.... |</span><br><span class="line">+--------------------------+--------------------------+</span><br><span class="line">8 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
 <p>使用命令查看collation设置，应该全部是<code>utf8mb4_general_ci</code>：</p>
@@ -194,6 +201,29 @@
 <li>Node</li>
 </ul>
 <p>最后，如果你的Web应用程序没有使用标准的UTF-8编码，而是使用了GBK等编码，想要支持emoji就只能<code>呵呵</code>了</p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="utf8与utf8mb4"><a href="#utf8与utf8mb4" class="headerlink" title="utf8与utf8mb4"></a>utf8与utf8mb4</h3><ul>
+<li>MySQL 5.5.3之后增加了utfmb4字符编码</li>
+<li>支持BMP（Basic Multilingual Plane，基本多文种平面）和补充字符</li>
+<li>最多使用四个字节存储字符</li>
+</ul>
+<p><code>utf8mb4是utf8的超集并完全兼容utf8</code>，能够用四个字节存储更多的字符。</p>
+<p>标准的UTF-8字符集编码是可以使用1-4个字节去编码21位字符，这几乎包含了世界上所有能看见的语言。<br><strong>MySQL里面实现的utf8最长使用3个字符</strong>，包含了大多数字符但并不是所有。<code>例如emoji和一些不常用的汉字，如“墅”，这些需要四个字节才能编码的就不支持。</code></p>
+<h3 id="字符集、连接字符集、排序字符集"><a href="#字符集、连接字符集、排序字符集" class="headerlink" title="字符集、连接字符集、排序字符集"></a>字符集、连接字符集、排序字符集</h3><p>utf8mb4对应的<code>排序字符集</code>有utf8mb4_unicode_ci、utf8mb4_general_ci.</p>
+<p>utf8mb4_unicode_ci和utf8mb4_general_ci的对比：</p>
+<ul>
+<li>准确性：<ul>
+<li>utf8mb4_unicode_ci是基于标准的Unicode来排序和比较，<code>能够在各种语言之间精确排序</code></li>
+<li>utf8mb4_general_ci没有实现Unicode排序规则，在遇到某些特殊语言或者字符集，排序结果可能不一致。</li>
+<li>但是，<code>在绝大多数情况下，这些特殊字符的顺序并不需要那么精确。</code></li>
+</ul>
+</li>
+<li>性能<ul>
+<li>utf8mb4_general_ci在比较和排序的时候更快</li>
+<li>utf8mb4_unicode_ci在特殊情况下，Unicode排序规则为了能够处理特殊字符的情况，实现了略微复杂的排序算法。</li>
+<li>但是<code>在绝大多数情况下发，不会发生此类复杂比较</code>。相比选择哪一种collation，使用者更<code>应该关心字符集与排序规则在db里需要统一。</code></li>
+</ul>
+</li>
+</ul>
 
         </div>
 
@@ -202,7 +232,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-05-08T15:53:29.126Z" itemprop="dateUpdated">2019-05-08 23:53:29</time>
+    最后更新时间：<time datetime="2019-08-21T09:29:30.981Z" itemprop="dateUpdated">2019-08-21 17:29:30</time>
 </span><br>
 
 
