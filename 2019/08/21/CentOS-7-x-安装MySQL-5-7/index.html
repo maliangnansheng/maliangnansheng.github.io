@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="数据库,MySQL">
-    <meta name="description" content="在线安装引用：https://juejin.im/post/5c088b066fb9a049d4419985  CentOS 7的默认yum仓库中并没有MySQL5.7，我们需要手动添加，好在MySQL官方提供了仓库的地址，所以我们能够比较简单地安装MySQL。 本文我们将介绍CentOS 7下MySQL5.7的安装。  添加MySQL5.7仓库1rpm -ivh https://dev.mysq">
+    <meta name="description" content="在线安装引用：他人博客、MySQL官网 yum仓库：下载MySQL Yum存储库  CentOS 7的默认yum仓库中并没有MySQL5.7，我们需要手动添加，好在MySQL官方提供了仓库的地址，所以我们能够比较简单地安装MySQL。 本文我们将介绍CentOS 7下MySQL5.7的安装。  添加MySQL5.7仓库123# 地址来源于下载yum存储库时“No thanks, just star">
 <meta name="keywords" content="数据库,MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS 7.x - 安装MySQL 5.7">
 <meta property="og:url" content="/2019/08/21/CentOS-7-x-安装MySQL-5-7/index.html">
 <meta property="og:site_name" content="Nan&#39;s Blog">
-<meta property="og:description" content="在线安装引用：https://juejin.im/post/5c088b066fb9a049d4419985  CentOS 7的默认yum仓库中并没有MySQL5.7，我们需要手动添加，好在MySQL官方提供了仓库的地址，所以我们能够比较简单地安装MySQL。 本文我们将介绍CentOS 7下MySQL5.7的安装。  添加MySQL5.7仓库1rpm -ivh https://dev.mysq">
+<meta property="og:description" content="在线安装引用：他人博客、MySQL官网 yum仓库：下载MySQL Yum存储库  CentOS 7的默认yum仓库中并没有MySQL5.7，我们需要手动添加，好在MySQL官方提供了仓库的地址，所以我们能够比较简单地安装MySQL。 本文我们将介绍CentOS 7下MySQL5.7的安装。  添加MySQL5.7仓库123# 地址来源于下载yum存储库时“No thanks, just star">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-21T06:42:58.546Z">
+<meta property="og:updated_time" content="2019-08-21T07:11:57.873Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS 7.x - 安装MySQL 5.7">
-<meta name="twitter:description" content="在线安装引用：https://juejin.im/post/5c088b066fb9a049d4419985  CentOS 7的默认yum仓库中并没有MySQL5.7，我们需要手动添加，好在MySQL官方提供了仓库的地址，所以我们能够比较简单地安装MySQL。 本文我们将介绍CentOS 7下MySQL5.7的安装。  添加MySQL5.7仓库1rpm -ivh https://dev.mysq">
+<meta name="twitter:description" content="在线安装引用：他人博客、MySQL官网 yum仓库：下载MySQL Yum存储库  CentOS 7的默认yum仓库中并没有MySQL5.7，我们需要手动添加，好在MySQL官方提供了仓库的地址，所以我们能够比较简单地安装MySQL。 本文我们将介绍CentOS 7下MySQL5.7的安装。  添加MySQL5.7仓库123# 地址来源于下载yum存储库时“No thanks, just star">
     
         <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
     
@@ -181,12 +181,13 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="在线安装"><a href="#在线安装" class="headerlink" title="在线安装"></a>在线安装</h1><p>引用：<a href="https://juejin.im/post/5c088b066fb9a049d4419985" target="_blank" rel="noopener">https://juejin.im/post/5c088b066fb9a049d4419985</a></p>
+            <h1 id="在线安装"><a href="#在线安装" class="headerlink" title="在线安装"></a>在线安装</h1><p>引用：<a href="https://juejin.im/post/5c088b066fb9a049d4419985" target="_blank" rel="noopener">他人博客</a>、<a href="https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/" target="_blank" rel="noopener">MySQL官网</a></p>
+<p>yum仓库：<a href="https://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="noopener">下载MySQL Yum存储库</a></p>
 <blockquote>
 <p>CentOS 7的默认yum仓库中并没有MySQL5.7，我们需要手动添加，好在MySQL官方提供了仓库的地址，所以我们能够比较简单地安装MySQL。</p>
 <p>本文我们将介绍CentOS 7下MySQL5.7的安装。</p>
 </blockquote>
-<h2 id="添加MySQL5-7仓库"><a href="#添加MySQL5-7仓库" class="headerlink" title="添加MySQL5.7仓库"></a>添加MySQL5.7仓库</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm</span><br></pre></td></tr></table></figure>
+<h2 id="添加MySQL5-7仓库"><a href="#添加MySQL5-7仓库" class="headerlink" title="添加MySQL5.7仓库"></a>添加MySQL5.7仓库</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 地址来源于下载yum存储库时“No thanks, just start my download.”的地址</span></span><br><span class="line"></span><br><span class="line">rpm -ivh https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm</span><br></pre></td></tr></table></figure>
 <h2 id="确认MySQL仓库成功添加"><a href="#确认MySQL仓库成功添加" class="headerlink" title="确认MySQL仓库成功添加"></a>确认MySQL仓库成功添加</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum repolist all | grep mysql | grep enabled</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果展示像下面,则表示成功添加仓库:</span></span><br><span class="line">mysql-connectors-community/x86_64  MySQL Connectors Community    enabled:     51</span><br><span class="line">mysql-tools-community/x86_64       MySQL Tools Community         enabled:     63</span><br><span class="line">mysql57-community/x86_64           MySQL 5.7 Community Server    enabled:    267</span><br></pre></td></tr></table></figure>
 <h2 id="开始安装MySQL5-7"><a href="#开始安装MySQL5-7" class="headerlink" title="开始安装MySQL5.7"></a>开始安装MySQL5.7</h2><p>这个过程用时较久（取决于你的网速）</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install mysql-community-server</span><br></pre></td></tr></table></figure>
@@ -224,7 +225,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-08-21T06:42:58.546Z" itemprop="dateUpdated">2019-08-21 14:42:58</time>
+    最后更新时间：<time datetime="2019-08-21T07:11:57.873Z" itemprop="dateUpdated">2019-08-21 15:11:57</time>
 </span><br>
 
 
