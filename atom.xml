@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-07-11T08:30:38.716Z</updated>
+  <updated>2019-08-21T06:37:06.543Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CentOS 7.x - 安装MySQL 5.7</title>
+    <link href="/2019/08/21/CentOS-7-x-%E5%AE%89%E8%A3%85MySQL-5-7/"/>
+    <id>/2019/08/21/CentOS-7-x-安装MySQL-5-7/</id>
+    <published>2019-08-21T06:20:39.000Z</published>
+    <updated>2019-08-21T06:37:06.543Z</updated>
+    
+    <content type="html"><![CDATA[<p>引用：<a href="https://juejin.im/post/5c088b066fb9a049d4419985" target="_blank" rel="noopener">https://juejin.im/post/5c088b066fb9a049d4419985</a></p><blockquote><p>CentOS 7的默认yum仓库中并没有MySQL5.7，我们需要手动添加，好在MySQL官方提供了仓库的地址，所以我们能够比较简单地安装MySQL。</p><p>本文我们将介绍CentOS 7下MySQL5.7的安装。</p></blockquote><h2 id="添加Mysql5-7仓库"><a href="#添加Mysql5-7仓库" class="headerlink" title="添加Mysql5.7仓库"></a>添加Mysql5.7仓库</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rpm -ivh https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm</span><br></pre></td></tr></table></figure><h2 id="确认Mysql仓库成功添加"><a href="#确认Mysql仓库成功添加" class="headerlink" title="确认Mysql仓库成功添加"></a>确认Mysql仓库成功添加</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo yum repolist all | grep mysql | grep enabled</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果展示像下面,则表示成功添加仓库:</span></span><br><span class="line">mysql-connectors-community/x86_64  MySQL Connectors Community    enabled:     51</span><br><span class="line">mysql-tools-community/x86_64       MySQL Tools Community         enabled:     63</span><br><span class="line">mysql57-community/x86_64           MySQL 5.7 Community Server    enabled:    267</span><br></pre></td></tr></table></figure><h2 id="开始安装Mysql5-7"><a href="#开始安装Mysql5-7" class="headerlink" title="开始安装Mysql5.7"></a>开始安装Mysql5.7</h2><p>这个过程用时较久（取决于你的网速）</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install mysql-community-server</span><br></pre></td></tr></table></figure><h2 id="启动Mysql"><a href="#启动Mysql" class="headerlink" title="启动Mysql"></a>启动Mysql</h2><ol><li><p>启动</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start mysqld</span><br></pre></td></tr></table></figure></li><li><p>设置系统启动时自动启动</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> mysqld</span><br></pre></td></tr></table></figure></li><li><p>查看启动状态</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status mysqld</span><br></pre></td></tr></table></figure></li></ol><h2 id="Mysql的安全设置"><a href="#Mysql的安全设置" class="headerlink" title="Mysql的安全设置"></a>Mysql的安全设置</h2><p>CentOS上的root默认密码可以在文件<code>/var/log/mysqld.log</code>找到，通过下面命令可以打印出来</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/<span class="built_in">log</span>/mysqld.log | grep -i <span class="string">'temporary password'</span></span><br></pre></td></tr></table></figure><p>执行下面命令进行安全设置，这个命令会进行设置root密码设置，移除匿名用户，禁止root用户远程连接等</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure><h2 id="设置数据库编码为utf8"><a href="#设置数据库编码为utf8" class="headerlink" title="设置数据库编码为utf8"></a>设置数据库编码为utf8</h2><ol><li><p>打开配置文件</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/my.cnf</span><br></pre></td></tr></table></figure></li><li><p>在[mysqld]，[client]，[mysql]节点下添加编码设置</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-set=utf8</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">collation-server = utf8_unicode_ci</span><br><span class="line">init-connect=<span class="string">'SET NAMES utf8'</span></span><br><span class="line">character-set-server = utf8</span><br></pre></td></tr></table></figure></li><li><p>重启Mysql即可</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart mysqld</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;引用：&lt;a href=&quot;https://juejin.im/post/5c088b066fb9a049d4419985&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://juejin.im/post/5c088b066fb9a049d44199
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="/categories/MySQL/"/>
+    
+    
+      <category term="数据库" scheme="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="MySQL" scheme="/tags/MySQL/"/>
+    
+  </entry>
   
   <entry>
     <title>Servlet登录拦截器</title>
@@ -532,38 +559,6 @@
       <category term="学习计划" scheme="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/"/>
     
       <category term="工作计划" scheme="/tags/%E5%B7%A5%E4%BD%9C%E8%AE%A1%E5%88%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>让应用程序支持emoji字符</title>
-    <link href="/2019/01/31/%E8%AE%A9%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%94%AF%E6%8C%81emoji%E5%AD%97%E7%AC%A6/"/>
-    <id>/2019/01/31/让应用程序支持emoji字符/</id>
-    <published>2019-01-31T03:00:44.000Z</published>
-    <updated>2019-05-08T15:53:29.126Z</updated>
-    
-    <content type="html"><![CDATA[<p>什么是emoji？就是这些表情和符号：</p><p>😀😄💦😍😂😱😭😴👌</p><p>自iPhone从iOS 5在输入法中开始支持emoji以来，这些表情符号迅速风靡世界。但是很多Web网站竟然还不！支！持！！！</p><p>那怎么才能支持emoji呢？其实代码一行都不用改，因为emoji符号实际上是文本，并不是图片，它们仅仅显示为图片而已。而且，emoji符号已经被标准化并编码到最新的Unicode标准中了，所以，要支持emoji，只需要底层软件系统支持就可以了。</p><p>服务器端要正确存储emoji符号，只需要确保Web程序和底层数据库能支持最新的Unicode标准就可以了。</p><p>如果使用MySQL作为数据库，需要升级到5.5.3或更新的版本，然后，把默认编码从原来的utf8改为utf8mb4，在<code>my.cnf</code>或者<code>my.ini</code>配置文件中修改如下：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-set = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">character-set-server = utf8mb4</span><br><span class="line">collation-server     = utf8mb4_general_ci</span><br></pre></td></tr></table></figure><p>重启MySQL，然后使用以下命令查看编码，应该全部为<code>utf8mb4</code>（<code>character_set_filesystem</code>和<code>character_set_system</code>除外）：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like <span class="string">'%char%'</span>;</span><br><span class="line">+--------------------------+--------------------------+</span><br><span class="line">| Variable_name            | Value                    |</span><br><span class="line">+--------------------------+--------------------------+</span><br><span class="line">| character_set_client     | utf8mb4                  |</span><br><span class="line">| character_set_connection | utf8mb4                  |</span><br><span class="line">| character_set_database   | utf8mb4                  |</span><br><span class="line">| character_set_filesystem | binary                   |</span><br><span class="line">| character_set_results    | utf8mb4                  |</span><br><span class="line">| character_set_server     | utf8mb4                  |</span><br><span class="line">| character_set_system     | utf8                     |</span><br><span class="line">| character_sets_dir       | /usr/<span class="built_in">local</span>/mysql-5.7.... |</span><br><span class="line">+--------------------------+--------------------------+</span><br><span class="line">8 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure><p>使用命令查看collation设置，应该全部是<code>utf8mb4_general_ci</code>：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like <span class="string">'%coll%'</span>;</span><br><span class="line">+----------------------+--------------------+</span><br><span class="line">| Variable_name        | Value              |</span><br><span class="line">+----------------------+--------------------+</span><br><span class="line">| collation_connection | utf8mb4_general_ci |</span><br><span class="line">| collation_database   | utf8mb4_general_ci |</span><br><span class="line">| collation_server     | utf8mb4_general_ci |</span><br><span class="line">+----------------------+--------------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure><p>如果<code>character_set_database</code>还是为<code>utf8</code>，需要重启服务器。</p><p>现在，MySQL就可以正确存储emoji字符了。</p><p>Web软件</p><p>要支持emoji，需要Web软件也支持。目前，已知支持emoji的包括：</p><ul><li>Java 8</li><li>Node</li></ul><p>最后，如果你的Web应用程序没有使用标准的UTF-8编码，而是使用了GBK等编码，想要支持emoji就只能<code>呵呵</code>了</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;什么是emoji？就是这些表情和符号：&lt;/p&gt;
-&lt;p&gt;😀😄💦😍😂😱😭😴👌&lt;/p&gt;
-&lt;p&gt;自iPhone从iOS 5在输入法中开始支持emoji以来，这些表情符号迅速风靡世界。但是很多Web网站竟然还不！支！持！！！&lt;/p&gt;
-&lt;p&gt;那怎么才能支持emoji呢
-      
-    
-    </summary>
-    
-      <category term="MySQL" scheme="/categories/MySQL/"/>
-    
-    
-      <category term="emoji" scheme="/tags/emoji/"/>
-    
-      <category term="utf8mb4" scheme="/tags/utf8mb4/"/>
-    
-      <category term="Web" scheme="/tags/Web/"/>
     
   </entry>
   
