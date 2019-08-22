@@ -33,7 +33,7 @@
 <meta property="og:image" content="/img/mysql002.png">
 <meta property="og:image" content="/img/mysql003.png">
 <meta property="og:image" content="/img/mysql004.png">
-<meta property="og:updated_time" content="2019-08-21T08:40:41.040Z">
+<meta property="og:updated_time" content="2019-08-22T02:32:48.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS 7.x - 安装MySQL 5.7">
 <meta name="twitter:description" content="在线安装引用：他人博客、MySQL官网 yum仓库：下载MySQL Yum存储库  CentOS 7的默认yum仓库中并没有MySQL5.7，我们需要手动添加，好在MySQL官方提供了仓库的地址，所以我们能够比较简单地安装MySQL。 本文我们将介绍CentOS 7下MySQL5.7的安装。  添加MySQL5.7仓库123# 地址来源于下载yum存储库时“No thanks, just star">
@@ -262,7 +262,7 @@
 <li><p>打开配置文件</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/my.cnf</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>在[mysqld]，[client]，[mysql]节点下添加编码设置（<code>替换</code>成下面的内容）</p>
+<li><p>在[mysqld]，[client]，[mysql]节点下添加编码设置（<code>原本就有的替换、没有的追加</code>成下面的内容）</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-set=utf8</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">collation-server = utf8_unicode_ci</span><br><span class="line">init-connect=<span class="string">'SET NAMES utf8'</span></span><br><span class="line">character-set-server = utf8</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>重启MySQL即可</p>
@@ -277,7 +277,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-08-21T08:40:41.040Z" itemprop="dateUpdated">2019-08-21 16:40:41</time>
+    最后更新时间：<time datetime="2019-08-22T02:32:48.366Z" itemprop="dateUpdated">2019-08-22 10:32:48</time>
 </span><br>
 
 
