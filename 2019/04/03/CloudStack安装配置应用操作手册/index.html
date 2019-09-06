@@ -56,7 +56,7 @@
 <meta property="og:image" content="/img/iso注册.png">
 <meta property="og:image" content="/img/添加实例.png">
 <meta property="og:image" content="/img/添加实例2.png">
-<meta property="og:updated_time" content="2019-08-06T01:37:52.181Z">
+<meta property="og:updated_time" content="2019-09-06T03:16:10.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CloudStack安装配置应用操作手册">
 <meta name="twitter:description" content="CloudStack介绍介绍见： CloudStack介绍 CloudStack安装先决条件 至少两台（cloudstack-management和cloudstack-agent）支持并启用了硬件虚拟化的计算机。 一个CentOS的7.5 x86_64的ISO安装文件 网关位于xxx.xxx.xxx.1的A / 24网络，该网络上不应该有DHCP，运行CloudStack的计算机都不会有动态地址">
@@ -275,6 +275,8 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld</span><br></pre></td></tr></table></figure>
 <p>我们现在需要配置nfs服务以在启动时启动，并通过执行以下命令实际在主机上启动它：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> rpcbind</span><br><span class="line">systemctl <span class="built_in">enable</span> nfs</span><br><span class="line">systemctl start rpcbind</span><br><span class="line">systemctl start nfs</span><br></pre></td></tr></table></figure>
+<p>重新启动nfs</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nfs</span><br></pre></td></tr></table></figure>
 <p>测试nfs服务端是否能访问</p>
 <p>在 agent端执行<code>showmount -e 172.18.193.1</code></p>
 <figure class="image-bubble">
@@ -598,7 +600,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-08-06T01:37:52.181Z" itemprop="dateUpdated">2019-08-06 09:37:52</time>
+    最后更新时间：<time datetime="2019-09-06T03:16:10.885Z" itemprop="dateUpdated">2019-09-06 11:16:10</time>
 </span><br>
 
 
