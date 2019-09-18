@@ -38,7 +38,7 @@
 <meta property="og:image" content="/img/lvm7.png">
 <meta property="og:image" content="/img/lvm8.png">
 <meta property="og:image" content="/img/lvm9.png">
-<meta property="og:updated_time" content="2019-09-18T07:11:50.130Z">
+<meta property="og:updated_time" content="2019-09-18T07:42:53.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Centos7.x中磁盘管理及扩展">
 <meta name="twitter:description" content="前提要求：虚拟机：centos7.x 在安装Centos系统时，磁盘选择为LVM逻辑卷。当选择为LVM后才能创建逻辑卷等（必须） 数据格式选择的是xfs，很多讲解使用的是ext3，但以后xfs的优势会比ext越来越大。（可选） LVM是Logical Volume Manager（逻辑卷管理）的简写，它是Linux环境下对硬盘分区进行管理的一种机制。LVM是建立在硬盘和分区上的逻辑层，它允许跨硬盘">
@@ -258,7 +258,7 @@
                 <div class="image-caption"></div>
             </figure>
 <h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><p>在逻辑卷lv0创建完成后还需要创建文件系统并挂载到指定目录才能够使用,当然还需要将挂载信息写入/etc/fstab文件 </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mkfs.xfs /dev/vg0/lv0	<span class="comment"># 创建文件系统</span></span><br><span class="line">lsblk /dev/vda -f</span><br><span class="line">lsblk /dev/vg0/lv0 -f</span><br><span class="line"><span class="comment"># 将逻辑卷挂载到指定目录（/data），如果改为其他，则以下所有/data都要改成对应的目录</span></span><br><span class="line">mkdir /data &amp;&amp; mount /dev/vg0/lv0 /data</span><br><span class="line">df -T	<span class="comment"># 查看挂载点</span></span><br><span class="line">blkid /dev/vg0/lv0	<span class="comment">#注意UUID，下面命令会使用</span></span><br><span class="line">df -T /dev/vg0/lv0</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"UUID=2fb5642b-0167-4709-9d35-85a407b4801a /data                 xfs    defaults        0 0"</span> &gt;&gt; /etc/fstab	<span class="comment">#UUID填自己的（上面命令结果有输出）</span></span><br><span class="line">cat /etc/fstab | egrep <span class="string">"UUID"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mkfs.xfs /dev/vg0/lv0	<span class="comment"># 创建文件系统</span></span><br><span class="line">lsblk /dev/vda -f</span><br><span class="line">lsblk /dev/vg0/lv0 -f</span><br><span class="line"><span class="comment"># 将逻辑卷挂载到指定目录（/data），如果改为其他，则以下所有/data都要改成对应的目录（根目录/不可以）</span></span><br><span class="line"><span class="keyword">if</span>(/data目录不存在)&#123;</span><br><span class="line">	mkdir /data &amp;&amp; mount /dev/vg0/lv0 /data</span><br><span class="line">&#125; <span class="keyword">else</span>&#123;</span><br><span class="line">	mount /dev/vg0/lv0 /data</span><br><span class="line">&#125;</span><br><span class="line">df -T	<span class="comment"># 查看挂载点</span></span><br><span class="line">blkid /dev/vg0/lv0	<span class="comment">#注意UUID，下面命令会使用</span></span><br><span class="line">df -T /dev/vg0/lv0</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"UUID=2fb5642b-0167-4709-9d35-85a407b4801a /data                 xfs    defaults        0 0"</span> &gt;&gt; /etc/fstab	<span class="comment">#UUID填自己的（上面命令结果有输出）</span></span><br><span class="line">cat /etc/fstab | egrep <span class="string">"UUID"</span></span><br></pre></td></tr></table></figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -284,7 +284,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-09-18T07:11:50.130Z" itemprop="dateUpdated">2019-09-18 15:11:50</time>
+    最后更新时间：<time datetime="2019-09-18T07:42:53.704Z" itemprop="dateUpdated">2019-09-18 15:42:53</time>
 </span><br>
 
 
