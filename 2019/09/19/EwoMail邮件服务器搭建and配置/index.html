@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>EwoMail邮件服务器搭建and配置 | Nan&#39;s Blog | 弱者才言命，强者只言运！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="邮件服务器,搭建,配置">
+    <meta name="description" content="引用：  EwoMail 邮件服务器（开源版文档） 利用EwoMail开源软件自建邮件服务器 - 安装设置篇  安装以下是无错的简单安装流程，如安装过程出错请参见《引用》地址 安装环境安装前请检查端口，点击查看（无法连接服务器） centos6/7系统，服务器需要干净环境，要求全新干净系统，不能安装在已有的apache,mysql的环境中。 最低配置要求CPU：1核内存：1G硬盘：40G 由于新版">
+<meta name="keywords" content="邮件服务器,搭建,配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EwoMail邮件服务器搭建and配置">
+<meta property="og:url" content="/2019/09/19/EwoMail邮件服务器搭建and配置/index.html">
+<meta property="og:site_name" content="Nan&#39;s Blog">
+<meta property="og:description" content="引用：  EwoMail 邮件服务器（开源版文档） 利用EwoMail开源软件自建邮件服务器 - 安装设置篇  安装以下是无错的简单安装流程，如安装过程出错请参见《引用》地址 安装环境安装前请检查端口，点击查看（无法连接服务器） centos6/7系统，服务器需要干净环境，要求全新干净系统，不能安装在已有的apache,mysql的环境中。 最低配置要求CPU：1核内存：1G硬盘：40G 由于新版">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="/img/ewomail001.png">
+<meta property="og:image" content="/img/ewomail002.png">
+<meta property="og:image" content="/img/ewomail003.png">
+<meta property="og:image" content="/img/ewomail004.png">
+<meta property="og:image" content="/img/ewomail005.png">
+<meta property="og:updated_time" content="2019-09-19T08:58:30.371Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EwoMail邮件服务器搭建and配置">
+<meta name="twitter:description" content="引用：  EwoMail 邮件服务器（开源版文档） 利用EwoMail开源软件自建邮件服务器 - 安装设置篇  安装以下是无错的简单安装流程，如安装过程出错请参见《引用》地址 安装环境安装前请检查端口，点击查看（无法连接服务器） centos6/7系统，服务器需要干净环境，要求全新干净系统，不能安装在已有的apache,mysql的环境中。 最低配置要求CPU：1核内存：1G硬盘：40G 由于新版">
+<meta name="twitter:image" content="/img/ewomail001.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">马亮南生</h5>
+          <a href="mailto:maliangnansheng@gmail.com" title="maliangnansheng@gmail.com" class="mail">maliangnansheng@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/maliangnansheng" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">EwoMail邮件服务器搭建and配置</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">EwoMail邮件服务器搭建and配置</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-09-19T08:24:34.000Z" itemprop="datePublished" class="page-time">
+  2019-09-19
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/EwoMail/">EwoMail</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装环境"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">安装环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关闭selinux"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">关闭selinux</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#检查swap"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">检查swap</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建swap分区（内存超过2G，可不配置）"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">创建swap分区（内存超过2G，可不配置）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#邮箱域名"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">邮箱域名</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置主机名（可不配置主机名）"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">设置主机名（可不配置主机名）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装EwoMail邮件软件"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">安装EwoMail邮件软件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#EwoMail邮件系统登录管理"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">EwoMail邮件系统登录管理</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">配置</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-EwoMail邮件服务器搭建and配置" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">EwoMail邮件服务器搭建and配置</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-09-19 16:24:34" datetime="2019-09-19T08:24:34.000Z" itemprop="datePublished">2019-09-19</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/EwoMail/">EwoMail</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><strong>引用：</strong></p>
+<ul>
+<li><a href="http://doc.ewomail.com/docs/ewomail/install" target="_blank" rel="noopener">EwoMail 邮件服务器（开源版文档）</a></li>
+<li><a href="https://www.laozuo.org/12465.html" target="_blank" rel="noopener">利用EwoMail开源软件自建邮件服务器 - 安装设置篇</a></li>
+</ul>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>以下是无错的简单安装流程，如安装过程出错请参见《引用》地址</p>
+<h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><p>安装前请检查端口，点击查看（<a href="http://doc.ewomail.com/docs/ewomail/not_server" target="_blank" rel="noopener">无法连接服务器</a>）</p>
+<p>centos6/7系统，服务器需要干净环境，要求全新干净系统，不能安装在已有的apache,mysql的环境中。</p>
+<p>最低配置要求<br>CPU：1核<br>内存：1G<br>硬盘：40G</p>
+<p>由于新版本的杀毒软件占用的内存比较多，512M到2GB内存请参考<a href="http://doc.ewomail.com/docs/ewomail/reduce_memory" target="_blank" rel="noopener">降低内存占用</a></p>
+<p>EwoMail安装后会把数据存放在 <code>/ewomail</code> 目录<br>建议你提前创建 <code>/ewomail</code> 目录，并且将硬盘容量挂载或分配到<code>/ewomail</code></p>
+<h2 id="关闭selinux"><a href="#关闭selinux" class="headerlink" title="关闭selinux"></a>关闭selinux</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/selinux</span><br><span class="line"></span><br><span class="line"><span class="comment"># SELINUX=enforcing 改为 SELINUX=disabled</span></span><br></pre></td></tr></table></figure>
+<h2 id="检查swap"><a href="#检查swap" class="headerlink" title="检查swap"></a>检查swap</h2><p>如果没启动swap，这会导致EwoMail的防病毒组件不能启动，所以在安装前先检查swap是否已经启动，如已启动可跳过该步骤。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看swap</span></span><br><span class="line">free -m</span><br></pre></td></tr></table></figure>
+<p>如果swap位置<code>都显示是0</code>，那么系统还没创建swap</p>
+<h3 id="创建swap分区（内存超过2G，可不配置）"><a href="#创建swap分区（内存超过2G，可不配置）" class="headerlink" title="创建swap分区（内存超过2G，可不配置）"></a>创建swap分区<code>（内存超过2G，可不配置）</code></h3><p>创建1G的swap，可以根据你的服务器配置来调整大小</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd <span class="keyword">if</span>=/dev/zero of=/mnt/swap bs=1M count=1024</span><br></pre></td></tr></table></figure>
+<p>设置交换分区文件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkswap /mnt/swap</span><br></pre></td></tr></table></figure>
+<p>启动swap</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapon /mnt/swap</span><br></pre></td></tr></table></figure>
+<p>设置开机时自启用 swap 分区</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 需要修改文件 /etc/fstab 中的 swap 行，在最后-添加以下内容</span></span><br><span class="line">/mnt/swap swap swap defaults 0 0</span><br></pre></td></tr></table></figure>
+<h2 id="邮箱域名"><a href="#邮箱域名" class="headerlink" title="邮箱域名"></a>邮箱域名</h2><p>EwoMail本身是可以配置<code>多个域名</code>来收发邮件的，但在安装前需要<code>一个邮箱的主域名</code>。<br>本次教程例子使用的主域名是sunsheen.cn</p>
+<h2 id="设置主机名（可不配置主机名）"><a href="#设置主机名（可不配置主机名）" class="headerlink" title="设置主机名（可不配置主机名）"></a>设置主机名<code>（可不配置主机名）</code></h2><p>EwoMail在安装后会默认使用域名前缀mail的主机名，例如mail.sunsheen.cn<br>将系统主机名改成mail.sunsheen.cn</p>
+<p>查看当前主机名</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname -f</span><br></pre></td></tr></table></figure>
+<p>输入命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostnamectl <span class="built_in">set</span>-hostname mail.sunsheen.cn</span><br></pre></td></tr></table></figure>
+<p>修改文件 <code>/etc/hosts</code> , 添加 <code>mail.sunsheen.cn</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/hosts</span><br><span class="line"><span class="comment"># 在文件最后添加一下内容：</span></span><br><span class="line">172.18.11.11 mail.sunsheen.cn mail localhost</span><br></pre></td></tr></table></figure>
+<h2 id="安装EwoMail邮件软件"><a href="#安装EwoMail邮件软件" class="headerlink" title="安装EwoMail邮件软件"></a>安装EwoMail邮件软件</h2><ol>
+<li><p>代码获取渠道</p>
+<blockquote>
+<p>渠道：<a href="http://ewomail.com/list-11.html" target="_blank" rel="noopener">http://ewomail.com/list-11.html</a></p>
+</blockquote>
+<p>输入域名，然后生成安装地址，然后去执行安装</p>
+<p><img src="/img/ewomail001.png" alt=""></p>
+</li>
+<li><p>安装成功</p>
+<p><img src="/img/ewomail002.png" alt=""></p>
+<p>现在就安装成功了，可以访问<code>邮箱管理后台</code>和<code>web邮件系统</code></p>
+</li>
+</ol>
+<h2 id="EwoMail邮件系统登录管理"><a href="#EwoMail邮件系统登录管理" class="headerlink" title="EwoMail邮件系统登录管理"></a>EwoMail邮件系统登录管理</h2><blockquote>
+<p>邮箱管理后台：<a href="http://IP:8010" target="_blank" rel="noopener">http://IP:8010</a> （默认账号admin，密码ewomail123）</p>
+<p>web邮件系统：<a href="http://IP:8000" target="_blank" rel="noopener">http://IP:8000</a></p>
+</blockquote>
+<ul>
+<li><p>web邮件系统-8000</p>
+<p><img src="/img/ewomail003.png" alt=""></p>
+</li>
+<li><p>邮箱管理后台-8010</p>
+<p><img src="/img/ewomail004.png" alt=""></p>
+<p>登录后：</p>
+<p><img src="/img/ewomail005.png" alt=""></p>
+</li>
+</ul>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-19T08:58:30.371Z" itemprop="dateUpdated">2019-09-19 16:58:30</time>
+</span><br>
+
+
+        
+        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2019/09/19/EwoMail邮件服务器搭建and配置/" target="_blank" rel="external">/2019/09/19/EwoMail邮件服务器搭建and配置/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="马亮南生">
+            马亮南生
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搭建/">搭建</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/邮件服务器/">邮件服务器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/配置/">配置</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/09/05/Java-远程执行-Linux-的命令/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Java 远程执行 Linux 的命令</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "",
+            appKey: "",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>马亮南生 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '马亮南生的博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '马亮南生的博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+	
+	<!-- 页面点击小红心 -->
+	<script type="text/javascript" src="/js/love.js"></script>
+</body>
+</html>

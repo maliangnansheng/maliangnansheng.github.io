@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-09-10T02:25:14.916Z</updated>
+  <updated>2019-09-19T08:58:30.371Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>EwoMail邮件服务器搭建and配置</title>
+    <link href="/2019/09/19/EwoMail%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAand%E9%85%8D%E7%BD%AE/"/>
+    <id>/2019/09/19/EwoMail邮件服务器搭建and配置/</id>
+    <published>2019-09-19T08:24:34.000Z</published>
+    <updated>2019-09-19T08:58:30.371Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>引用：</strong></p><ul><li><a href="http://doc.ewomail.com/docs/ewomail/install" target="_blank" rel="noopener">EwoMail 邮件服务器（开源版文档）</a></li><li><a href="https://www.laozuo.org/12465.html" target="_blank" rel="noopener">利用EwoMail开源软件自建邮件服务器 - 安装设置篇</a></li></ul><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>以下是无错的简单安装流程，如安装过程出错请参见《引用》地址</p><h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><p>安装前请检查端口，点击查看（<a href="http://doc.ewomail.com/docs/ewomail/not_server" target="_blank" rel="noopener">无法连接服务器</a>）</p><p>centos6/7系统，服务器需要干净环境，要求全新干净系统，不能安装在已有的apache,mysql的环境中。</p><p>最低配置要求<br>CPU：1核<br>内存：1G<br>硬盘：40G</p><p>由于新版本的杀毒软件占用的内存比较多，512M到2GB内存请参考<a href="http://doc.ewomail.com/docs/ewomail/reduce_memory" target="_blank" rel="noopener">降低内存占用</a></p><p>EwoMail安装后会把数据存放在 <code>/ewomail</code> 目录<br>建议你提前创建 <code>/ewomail</code> 目录，并且将硬盘容量挂载或分配到<code>/ewomail</code></p><h2 id="关闭selinux"><a href="#关闭selinux" class="headerlink" title="关闭selinux"></a>关闭selinux</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/selinux</span><br><span class="line"></span><br><span class="line"><span class="comment"># SELINUX=enforcing 改为 SELINUX=disabled</span></span><br></pre></td></tr></table></figure><h2 id="检查swap"><a href="#检查swap" class="headerlink" title="检查swap"></a>检查swap</h2><p>如果没启动swap，这会导致EwoMail的防病毒组件不能启动，所以在安装前先检查swap是否已经启动，如已启动可跳过该步骤。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看swap</span></span><br><span class="line">free -m</span><br></pre></td></tr></table></figure><p>如果swap位置<code>都显示是0</code>，那么系统还没创建swap</p><h3 id="创建swap分区（内存超过2G，可不配置）"><a href="#创建swap分区（内存超过2G，可不配置）" class="headerlink" title="创建swap分区（内存超过2G，可不配置）"></a>创建swap分区<code>（内存超过2G，可不配置）</code></h3><p>创建1G的swap，可以根据你的服务器配置来调整大小</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd <span class="keyword">if</span>=/dev/zero of=/mnt/swap bs=1M count=1024</span><br></pre></td></tr></table></figure><p>设置交换分区文件</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkswap /mnt/swap</span><br></pre></td></tr></table></figure><p>启动swap</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapon /mnt/swap</span><br></pre></td></tr></table></figure><p>设置开机时自启用 swap 分区</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 需要修改文件 /etc/fstab 中的 swap 行，在最后-添加以下内容</span></span><br><span class="line">/mnt/swap swap swap defaults 0 0</span><br></pre></td></tr></table></figure><h2 id="邮箱域名"><a href="#邮箱域名" class="headerlink" title="邮箱域名"></a>邮箱域名</h2><p>EwoMail本身是可以配置<code>多个域名</code>来收发邮件的，但在安装前需要<code>一个邮箱的主域名</code>。<br>本次教程例子使用的主域名是sunsheen.cn</p><h2 id="设置主机名（可不配置主机名）"><a href="#设置主机名（可不配置主机名）" class="headerlink" title="设置主机名（可不配置主机名）"></a>设置主机名<code>（可不配置主机名）</code></h2><p>EwoMail在安装后会默认使用域名前缀mail的主机名，例如mail.sunsheen.cn<br>将系统主机名改成mail.sunsheen.cn</p><p>查看当前主机名</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname -f</span><br></pre></td></tr></table></figure><p>输入命令：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostnamectl <span class="built_in">set</span>-hostname mail.sunsheen.cn</span><br></pre></td></tr></table></figure><p>修改文件 <code>/etc/hosts</code> , 添加 <code>mail.sunsheen.cn</code></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/hosts</span><br><span class="line"><span class="comment"># 在文件最后添加一下内容：</span></span><br><span class="line">172.18.11.11 mail.sunsheen.cn mail localhost</span><br></pre></td></tr></table></figure><h2 id="安装EwoMail邮件软件"><a href="#安装EwoMail邮件软件" class="headerlink" title="安装EwoMail邮件软件"></a>安装EwoMail邮件软件</h2><ol><li><p>代码获取渠道</p><blockquote><p>渠道：<a href="http://ewomail.com/list-11.html" target="_blank" rel="noopener">http://ewomail.com/list-11.html</a></p></blockquote><p>输入域名，然后生成安装地址，然后去执行安装</p><p><img src="/img/ewomail001.png" alt=""></p></li><li><p>安装成功</p><p><img src="/img/ewomail002.png" alt=""></p><p>现在就安装成功了，可以访问<code>邮箱管理后台</code>和<code>web邮件系统</code></p></li></ol><h2 id="EwoMail邮件系统登录管理"><a href="#EwoMail邮件系统登录管理" class="headerlink" title="EwoMail邮件系统登录管理"></a>EwoMail邮件系统登录管理</h2><blockquote><p>邮箱管理后台：<a href="http://IP:8010" target="_blank" rel="noopener">http://IP:8010</a> （默认账号admin，密码ewomail123）</p><p>web邮件系统：<a href="http://IP:8000" target="_blank" rel="noopener">http://IP:8000</a></p></blockquote><ul><li><p>web邮件系统-8000</p><p><img src="/img/ewomail003.png" alt=""></p></li><li><p>邮箱管理后台-8010</p><p><img src="/img/ewomail004.png" alt=""></p><p>登录后：</p><p><img src="/img/ewomail005.png" alt=""></p></li></ul><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;引用：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://doc.ewomail.com/docs/ewomail/install&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;EwoMail 邮件服务器（开源版文
+      
+    
+    </summary>
+    
+      <category term="EwoMail" scheme="/categories/EwoMail/"/>
+    
+    
+      <category term="邮件服务器" scheme="/tags/%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+      <category term="搭建" scheme="/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+      <category term="配置" scheme="/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>Java 远程执行 Linux 的命令</title>
@@ -534,34 +565,6 @@
       <category term="前端" scheme="/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="React" scheme="/tags/React/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux下端口映射工具rinetd</title>
-    <link href="/2019/02/12/Linux%E4%B8%8B%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%B7%A5%E5%85%B7rinetd/"/>
-    <id>/2019/02/12/Linux下端口映射工具rinetd/</id>
-    <published>2019-02-12T08:51:22.000Z</published>
-    <updated>2019-02-12T09:30:58.619Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>Linux下简单好用的工具rinetd，实现端口映射/转发/重定向</strong></p><p>官网地址<a href="http://www.boutell.com/rinetd" target="_blank" rel="noopener">http://www.boutell.com/rinetd</a></p><h2 id="软件下载"><a href="#软件下载" class="headerlink" title="软件下载"></a>软件下载</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.boutell.com/rinetd/http/rinetd.tar.gz</span><br></pre></td></tr></table></figure><h2 id="解压安装"><a href="#解压安装" class="headerlink" title="解压安装"></a>解压安装</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf rinetd.tar.gz</span><br><span class="line"><span class="built_in">cd</span> rinetd</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure><p><strong>注意：</strong>执行<code>make install</code>时可能出现错误：</p><p><code>缺少目录/usr/man/man8</code></p><p>此时执行 <code>mkdir /usr/man/man8</code>后再执行<code>make install</code>即可</p><h2 id="编辑配置"><a href="#编辑配置" class="headerlink" title="编辑配置"></a>编辑配置</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/rinetd.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 内容</span></span><br><span class="line">0.0.0.0 8080 172.19.94.3 8080</span><br><span class="line">0.0.0.0 2222 192.168.0.103 3389</span><br><span class="line">1.2.3.4 80     192.168.0.10 80</span><br></pre></td></tr></table></figure><p>说明一下（0.0.0.0表示本机绑定所有可用地址）<br>将所有发往本机8080端口的请求转发到172.19.94.3的8080端口<br>将所有发往本机2222端口的请求转发到192.168.0.103的3389端口<br>将所有发往1.2.3.4的80端口请求转发到192.168.0.10的80端口</p><p>命令格式是<br><code>bindaddress bindport connectaddress connectport</code><br><code>绑定的地址  绑定的端口  连接的地址  连接的端口</code><br>或<br><code>[Source Address] [Source Port] [Destination Address] [Destination Port]</code><br><code>源地址  源端口   目的地址  目的端口</code></p><h2 id="启动程序"><a href="#启动程序" class="headerlink" title="启动程序"></a>启动程序</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rinetd -c /etc/rinetd.conf  <span class="comment">##启动转发</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 附加：</span></span><br><span class="line">pkill rinetd  <span class="comment">##关闭进程</span></span><br></pre></td></tr></table></figure><p>把命令<code>rinetd -c /etc/rinetd.conf</code>加到<a href="https://maliangnansheng.github.io/2019/01/07/ubuntu-18-04-1-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/#%E4%BF%AE%E6%94%B9-etc-rc-local%E8%84%9A%E6%9C%AC" target="_blank" rel="noopener">/etc/rc.local</a>里面就可以开机自动运行</p><h2 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">netstat -antp | grep 8080 | grep -v grep</span><br><span class="line"></span><br><span class="line">netstat -antp | grep rinetd | grep -v grep</span><br></pre></td></tr></table></figure><h2 id="需要注意"><a href="#需要注意" class="headerlink" title="需要注意"></a>需要注意</h2><ol><li><p>rinetd.conf中绑定的本机端口必须没有被其它程序占用</p></li><li><p>运行rinetd的系统防火墙应该打开绑定的本机端口（或者直接关闭防火墙？）</p><p>例如：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 1111 -j ACCEPT</span><br><span class="line">-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 2222 -j ACCEPT</span><br></pre></td></tr></table></figure></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;Linux下简单好用的工具rinetd，实现端口映射/转发/重定向&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;官网地址&lt;a href=&quot;http://www.boutell.com/rinetd&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="/categories/Linux/"/>
-    
-    
-      <category term="映射" scheme="/tags/%E6%98%A0%E5%B0%84/"/>
-    
-      <category term="rinetd" scheme="/tags/rinetd/"/>
     
   </entry>
   
