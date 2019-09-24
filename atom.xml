@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-09-24T02:52:06.535Z</updated>
+  <updated>2019-09-24T03:03:31.324Z</updated>
   <id>/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="/2019/09/24/PHP%E5%85%A5%E9%97%A8%E6%8A%80%E5%B7%A7/"/>
     <id>/2019/09/24/PHP入门技巧/</id>
     <published>2019-09-24T02:01:34.000Z</published>
-    <updated>2019-09-24T02:52:06.535Z</updated>
+    <updated>2019-09-24T03:03:31.324Z</updated>
     
     <content type="html"><![CDATA[<h2 id="集成环境"><a href="#集成环境" class="headerlink" title="集成环境"></a>集成环境</h2><h3 id="wamperserver"><a href="#wamperserver" class="headerlink" title="wamperserver"></a>wamperserver</h3><ol><li><p>下载好安装到本地指定目录，官网下载地址  <a href="http://www.wampserver.com" target="_blank" rel="noopener">http://www.wampserver.com</a></p><p><strong>安装成功的标志：</strong></p><ol><li><p>双击运行<code>wamperserver</code>图标后：</p><p><img src="/img/php003.png" alt=""></p></li><li><p>浏览器访问<code>localhost</code>出现以下页面表示安装成功</p><p><img src="/img/php004.png" alt=""></p></li></ol></li><li><p>根据自己实际的安装路径，<code>D:\maliangnansheng\wamp64\bin\apache\apache2.4.39\conf</code>，找到 apache  的配置文件 <code>httpd.conf</code></p><p><img src="/img/php001.png" alt=""></p><p>也可以<code>左键</code>图标直接打开文件修改：</p><p><img src="/img/php002.png" alt=""></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1，打开文件httpd.conf文件</span><br><span class="line">2，搜索Include conf/extra/httpd-vhosts.conf</span><br><span class="line">3，去掉它前面的#，然后保存这个文件</span><br></pre></td></tr></table></figure></li><li><p>打开<code>D:\maliangnansheng\wamp64\bin\apache\apache2.4.39\conf\extra\httpd-vhosts.conf</code>文件，添加域名映射项，一般是在文件的最后添加上：</p><p><img src="/img/php005.png" alt=""></p><p>也可以<code>左键</code>图标直接打开文件修改：</p><p><img src="/img/php006.png" alt=""></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加的内容：</span></span><br><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">  ServerName wampserver-test.com</span><br><span class="line">  ServerAlias wampserver-test.com</span><br><span class="line">  DocumentRoot <span class="string">"<span class="variable">$&#123;INSTALL_DIR&#125;</span>/www"</span></span><br><span class="line">  &lt;Directory <span class="string">"<span class="variable">$&#123;INSTALL_DIR&#125;</span>/www/"</span>&gt;</span><br><span class="line">    Options +Indexes +Includes +FollowSymLinks +MultiViews</span><br><span class="line">    AllowOverride All</span><br><span class="line">    Require <span class="built_in">local</span></span><br><span class="line">  &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># ServerName wampserver-test.com为配置的虚拟站点</span></span><br><span class="line"><span class="comment"># DocumentRoot "$&#123;INSTALL_DIR&#125;/www"项目文件的路径</span></span><br></pre></td></tr></table></figure><p>视图如下：</p><p><img src="/img/php007.png" alt=""></p></li><li><p>找到本机的 host  文件（<code>C:\Windows\System32\drivers\etc</code> ），绑定到本地</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在文件最后添加域名：</span></span><br><span class="line">127.0.0.1 wampserver-test.com</span><br></pre></td></tr></table></figure></li><li><p>重启服务环境，就可以通过域名访问项目了</p><p><img src="/img/php008.png" alt=""></p></li></ol><h3 id="phpStudy"><a href="#phpStudy" class="headerlink" title="phpStudy"></a>phpStudy</h3><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/php009.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure>]]></content>
     
@@ -66,11 +66,11 @@
       <category term="EwoMail" scheme="/categories/EwoMail/"/>
     
     
-      <category term="配置" scheme="/tags/%E9%85%8D%E7%BD%AE/"/>
-    
       <category term="邮件服务器" scheme="/tags/%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
       <category term="搭建" scheme="/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+      <category term="配置" scheme="/tags/%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   
