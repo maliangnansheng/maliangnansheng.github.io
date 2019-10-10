@@ -32,7 +32,7 @@
 <meta property="og:image" content="/img/nginx.png">
 <meta property="og:image" content="/img/nginx%E9%85%8D%E7%BD%AE.png">
 <meta property="og:image" content="/img/nginx2.png">
-<meta property="og:updated_time" content="2019-09-04T06:39:32.302Z">
+<meta property="og:updated_time" content="2019-10-10T03:19:16.658Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建http服务器-nginx">
 <meta name="twitter:description" content="编译安装nginx参考：https://blog.csdn.net/w410589502/article/details/70787468 安装安装 nginx  1yum  -y install nginx 这一步可能会遇到&amp;quot;No package nginx available.&amp;quot;问题，解决方法如下： 问题处理问题描述：见下图">
@@ -203,7 +203,7 @@
 <p>安装epel(Extra Packages for Enterprise Linux)</p>
 <p>去<a href="http://fedoraproject.org/wiki/EPEL" target="_blank" rel="noopener">epel网站</a>下载对应版本</p>
 <p>我的系统是centos7.6，cpu是x86_64</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载epel</span></span><br><span class="line">wget https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装epel</span></span><br><span class="line">rpm -ivh epel-release-7-11.noarch.rpm</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载epel</span></span><br><span class="line">wget https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm</span><br><span class="line">or</span><br><span class="line">wget https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-12.noarch.rpm</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装epel</span></span><br><span class="line">rpm -ivh epel-release-7-11.noarch.rpm</span><br><span class="line">or</span><br><span class="line">rpm -ivh epel-release-7-12.noarch.rpm</span><br></pre></td></tr></table></figure>
 <p>再次执行 <code>yum install nginx</code>,则会提示安装成功了</p>
 <p><strong>解决方法（二）：</strong></p>
 <p>出现这个的原因是因为本地yum源中没有我们想要的nginx，那么我们就需要创建一个<code>/etc/yum.repos.d/nginx.repo</code>的文件，新增一个yum源</p>
@@ -270,7 +270,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-09-04T06:39:32.302Z" itemprop="dateUpdated">2019-09-04 14:39:32</time>
+    最后更新时间：<time datetime="2019-10-10T03:19:16.658Z" itemprop="dateUpdated">2019-10-10 11:19:16</time>
 </span><br>
 
 
