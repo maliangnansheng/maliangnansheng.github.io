@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-09-27T02:11:46.011Z</updated>
+  <updated>2019-10-16T03:33:09.027Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>软件需求，概要设计，详细设计（文档）怎么做，做什么？</title>
+    <link href="/2019/10/16/%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%EF%BC%8C%E6%A6%82%E8%A6%81%E8%AE%BE%E8%AE%A1%EF%BC%8C%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%EF%BC%88%E6%96%87%E6%A1%A3%EF%BC%89%E6%80%8E%E4%B9%88%E5%81%9A%EF%BC%8C%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F/"/>
+    <id>/2019/10/16/软件需求，概要设计，详细设计（文档）怎么做，做什么？/</id>
+    <published>2019-10-16T03:25:39.000Z</published>
+    <updated>2019-10-16T03:33:09.027Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于项目工作需要 ，需要提供《软件需求规格说明书》，《软件概要设计说明书》和《软件详细设计说明书》。所以这里整理学习一下相关文档需要的内容。文章并不设计对所有需求分析，概要设计和详细设计的详细描述。因为这其中的任何一点都可以单独提取出来成为软件工程学科中的一本书籍内容。</p><h2 id="软件设计的整体流程："><a href="#软件设计的整体流程：" class="headerlink" title="软件设计的整体流程："></a>软件设计的整体流程：</h2><ul><li>软件需求分析阶段：输出了《软件需求规格说明书》，不涉及具体实现方法。用户能看得明白，开发人员也可据此进行下面的工作，<code>搞清楚“要解决什么问题”</code></li><li>概要设计阶段：确定软件系统的总体布局，各个子模块的功能和模块间的关系，与外部系统的关系，选择的技术路线。有一些研究与论证性的内容。并输出《软件概要设计说明书》。<code>搞清楚“总体实现方案”</code></li><li>详细设计阶段：对概要设计的进一步细化，一般由各部分的担当人员依据概要设计分别完成，然后在集成，是具体的实现细节。是“程序”的蓝图，确定每个模块采用的算法、数据结构、接口的实现、属性、参数。并输出《软件详细设计说明书》。<code>搞清楚“每个模块怎么做”</code></li></ul><h2 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2><h3 id="我们为什么需要《软件需求规格说明书》-？"><a href="#我们为什么需要《软件需求规格说明书》-？" class="headerlink" title="我们为什么需要《软件需求规格说明书》 ？"></a>我们为什么需要《软件需求规格说明书》 ？</h3><p>如果需求的编写只是为了解释说明软件实现的功能，那么良好的编码结构，代码注释就可以很好的实现软件的功能说明，程序员可以将编写需求的时间节约下来进行更多功能的实现； 可是，这样的情况可能更多适用于中小型项目，或者互联网项目，因为这样的项目需求不复杂，并且需求变化很快，所以研发的效率非常重要。然而，针对大型软件项目或者功能比较复杂的系统，软件研发可能是多人协作的成果，所以在信息传递过程中， 我们只有提前考虑好软件需求的内容，才能正确评估开发软件所需要的时间，成本的要素，从而更好的管理项目。</p><h3 id="《软件需求规格说明书》的一般结构"><a href="#《软件需求规格说明书》的一般结构" class="headerlink" title="《软件需求规格说明书》的一般结构"></a>《软件需求规格说明书》的一般结构</h3><ul><li>正文的第一章内容是1.概述，包含<br>1.1.编写目的；1.2.术语与定义；1.3.参考资料；三个部分</li><li>第二章要给出该项目的标准和规范，在文档的后续内容编写中以及项目开发过程中必须遵照这个标准和规范进行。</li><li>第三章应该说明该项目的相关假设、限制和一些依赖条件，在后续系统部署的过程中可以有参考意义。</li><li>第四章“功能规格”是重点，重点介绍这个系统的角色，界面设计思路，系统的功能视图和功能点清单，以及系统的需求用例。这个内容必须详细描述，这样才能对后续的开发和测试提供指导意义。</li><li>第五章“非功能规格”要对项目的性能、安全、数据的备份恢复等内容解释解释说明，一个项目除了功能完整之外，还要考虑性能、安全等相应的要求。</li><li>第六章“附录”，是对软件需求规格说明书的一些补充说明文档，其中的“软件需求跟踪矩阵”是重点，这份文档是对后续需求的完善程度进行了严格的控制。</li></ul><h2 id="概要设计"><a href="#概要设计" class="headerlink" title="概要设计"></a>概要设计</h2><h3 id="《概要设计说明书》的一般结构"><a href="#《概要设计说明书》的一般结构" class="headerlink" title="《概要设计说明书》的一般结构"></a>《概要设计说明书》的一般结构</h3><ul><li>总述：需求或目标（讲一下事情的起源）、环境、局限；</li><li>总体设计：从全局的角度说一下 组织结构、功能、处理流程、有哪些模块、模块间的关系，运行环境等。（输出图：系统结构图，系统流程图，数据流程图，推荐在线画图工具<a href="https://www.processon.com/" target="_blank" rel="noopener">https://www.processon.com/</a>）</li><li>外部接口：总体说明外部用户、软、硬件接口(可用资源)；</li><li>模块设计：每个模块“做什么”、简要说明“怎么做”（输入、输出、处理逻辑、与其它模块或系统的接口），处在什么逻辑位置、物理位置。</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">模块设计,可以写以下内容：</span><br><span class="line">   1、模块描述：说明哪些模块实现了哪些功能；</span><br><span class="line">   2、模块层次结构：可以使用某个视角的软件框架图来表达；</span><br><span class="line">   3、模块间的关系：模块间依赖关系的描述，通信机制描述；</span><br><span class="line">   4、模块的核心接口：说明模块传递的信息、信息的结构；</span><br><span class="line">   5、处理方式设计：说一些满足功能和性能的算法；</span><br></pre></td></tr></table></figure><ul><li>数据结构：逻辑结构、物理结构。</li><li>容灾设计：出错信息、出错处理。（可选）</li><li>监控设计：运行模块组合、控制、时间。（可选）</li><li>用户界面设计：（可选）。</li><li>安全设计：（可选）。</li><li>其它设计：（可选）。</li><li>制定规范（附录）： 设计原则,代码规范、接口规约、命名规则。</li></ul><h3 id="概要设计需要注意的地方"><a href="#概要设计需要注意的地方" class="headerlink" title="概要设计需要注意的地方"></a>概要设计需要注意的地方</h3><ul><li>用来评价总体设计的可行性。</li><li>用来检查设计的模块是否完整，保证每一个功能都有对应的模块来实现。</li><li>用来评估开发工作量、指导开发计划（在不写详细设计的情况下）。</li><li>概要设计阶段过于重视业务流程是个误区。</li><li>概要设计阶段过于重视细节实现是个误区。</li></ul><h2 id="详细设计"><a href="#详细设计" class="headerlink" title="详细设计"></a>详细设计</h2><h3 id="《详细设计说明书》的一般结构"><a href="#《详细设计说明书》的一般结构" class="headerlink" title="《详细设计说明书》的一般结构"></a>《详细设计说明书》的一般结构</h3><p>参考<a href="https://blog.csdn.net/xiaxia_1006/article/details/52330202" target="_blank" rel="noopener">如何撰写软件详细设计内容？</a></p><ul><li>引言，包含：<br>编写目的，背景，参考资料，术语定义及说明</li><li>设计概述，包含：任务和目标，需求概述，运行环境概述， 条件与限制，详细设计方法和工具</li><li>系统详细需求分析，包含：详细需求分析，详细系统运行环境及限制条件分析接口需求分析</li><li>总体方案确认，包含： 系统总体结构确认， 系统详细界面划分</li><li>系统详细设计，包含： 系统结构设计及子系统划分，系统功能模块详细设计（采用HIPO图进行功能分解与模块描述，，用IPO或结构图描述各模块的组成结构、算法、模块间的接口关系，以及需求、功能和模块三者之间的交叉参照关系。）, 系统界面详细设计</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">每个模块的描述说明可参照以下格式：</span><br><span class="line"></span><br><span class="line">**模块编号：**</span><br><span class="line"></span><br><span class="line">**模块名称：**</span><br><span class="line"></span><br><span class="line">**输入：**</span><br><span class="line"></span><br><span class="line">**处理：**</span><br><span class="line"></span><br><span class="line">**算法描述：**</span><br><span class="line"></span><br><span class="line">**输出：**</span><br></pre></td></tr></table></figure><ul><li>数据库系统设计</li></ul><h3 id="详细设计需要注意的地方"><a href="#详细设计需要注意的地方" class="headerlink" title="详细设计需要注意的地方"></a>详细设计需要注意的地方</h3><p>如果有或者有必要，特别是大型的软件系统，详细设计阶段划分系统功能模块或子系统。</p><h2 id="概要设计和详细设计的区别"><a href="#概要设计和详细设计的区别" class="headerlink" title="概要设计和详细设计的区别"></a>概要设计和详细设计的区别</h2><h3 id="概要设计阶段"><a href="#概要设计阶段" class="headerlink" title="概要设计阶段"></a>概要设计阶段</h3><p>在这个阶段，设计者会大致考虑并照顾模块的内部实现，但不过多纠缠于此。主要集中于划分模块、分配任务、定义调用关系。模块间的接口与传参在这个阶段要定得十分细致明确，应编写严谨的数据字典，避免后续设计产生不解或误解。概要设计一般不是一次就能做到位，而是反复地进行结构调整。典型的调整是合并功能重复的模块，或者进一步分解出可以复用的模块。在概要设计阶段，应最大限度地提取可以重用的模块，建立合理的结构体系，节省后续环节的工作量。<br>概要设计文档最重要的部分是分层数据流图、结构图、数据字典以及相应的文字说明等。以概要设计文档为依据，各个模块的详细设计就可以并行展开了。</p><h3 id="详细设计阶段"><a href="#详细设计阶段" class="headerlink" title="详细设计阶段"></a>详细设计阶段</h3><p>在这个阶段，各个模块可以分给不同的人去并行设计。在详细设计阶段，设计者的工作对象是一个模块，根据概要设计赋予的局部任务和对外接口，设计并表达出模块的算法、流程、状态转换等内容。这里要注意，如果发现有结构调整（如分解出子模块等）的必要，必须返回到概要设计阶段，将调整反应到概要设计文档中，而不能就地解决，不打招呼。<br>详细设计文档最重要的部分是模块的流程图、状态图、局部变量及相应的文字说明等。</p><h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://jingyan.baidu.com/article/4ae03de3d7bdc43eff9e6b19.html" target="_blank" rel="noopener">软件需求规格说明书模板</a><br><a href="https://www.cnblogs.com/bmaker/p/6116177.html" target="_blank" rel="noopener">软件概要设计-模板</a><br><a href="http://elf8848.iteye.com/blog/1582323" target="_blank" rel="noopener">软件概要设计做什么，怎么做</a><br><a href="http://elf8848.iteye.com/blog/2165655" target="_blank" rel="noopener">互联网公司研发RD如何撰写总体设计与详细设计文档</a><br><a href="https://bbs.csdn.net/topics/330012397" target="_blank" rel="noopener">项目开发过程中详细设计和概要设计有什么区别和要求?</a><br><a href="https://blog.csdn.net/xiaxia_1006/article/details/52330202" target="_blank" rel="noopener">如何撰写软件详细设计内容？</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;由于项目工作需要 ，需要提供《软件需求规格说明书》，《软件概要设计说明书》和《软件详细设计说明书》。所以这里整理学习一下相关文档需要的内容。
+      
+    
+    </summary>
+    
+      <category term="文档" scheme="/categories/%E6%96%87%E6%A1%A3/"/>
+    
+    
+      <category term="软件需求" scheme="/tags/%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82/"/>
+    
+      <category term="概要设计" scheme="/tags/%E6%A6%82%E8%A6%81%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="详细设计" scheme="/tags/%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>Rainloop安装配置</title>
@@ -93,11 +122,11 @@
       <category term="EwoMail" scheme="/categories/EwoMail/"/>
     
     
+      <category term="配置" scheme="/tags/%E9%85%8D%E7%BD%AE/"/>
+    
       <category term="邮件服务器" scheme="/tags/%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
       <category term="搭建" scheme="/tags/%E6%90%AD%E5%BB%BA/"/>
-    
-      <category term="配置" scheme="/tags/%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   
@@ -537,34 +566,6 @@
       <category term="虚拟机分配" scheme="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%88%86%E9%85%8D/"/>
     
       <category term="安装指南" scheme="/tags/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java8 实现下载网页的完整代码</title>
-    <link href="/2019/03/12/Java8-%E5%AE%9E%E7%8E%B0%E4%B8%8B%E8%BD%BD%E7%BD%91%E9%A1%B5%E7%9A%84%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81/"/>
-    <id>/2019/03/12/Java8-实现下载网页的完整代码/</id>
-    <published>2019-03-12T07:56:01.000Z</published>
-    <updated>2019-03-12T08:22:42.205Z</updated>
-    
-    <content type="html"><![CDATA[<p>java8 实现网页下载，大致分为4步，分别是:给定目标网页链接-&gt;与目标主机建立连接-&gt;读入网页文件流-&gt;写入本地文件 。会用到java io 和 java net库。程序代码如下，留有注释。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.net.MalformedURLException;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">new</span> test().downloadPage();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">downloadPage</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 目标网页链接</span></span><br><span class="line">        String url = <span class="string">"https://hexo.io/zh-cn/"</span>;</span><br><span class="line">        String inputLine = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            URL pageUrl = <span class="keyword">new</span> URL(url);</span><br><span class="line">            BufferedReader br = <span class="keyword">new</span> BufferedReader(</span><br><span class="line">                <span class="keyword">new</span> InputStreamReader(pageUrl.openStream(), <span class="string">"utf-8"</span>));</span><br><span class="line">            <span class="comment">//程序文件目录建目录 download，用于存放下载的网页</span></span><br><span class="line">            File file = <span class="keyword">new</span> File(<span class="string">"D:\\Test\\maliang\\index.html"</span>); </span><br><span class="line">            FileOutputStream out = <span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line">            OutputStreamWriter write = <span class="keyword">new</span> OutputStreamWriter(out, <span class="string">"utf-8"</span>);</span><br><span class="line">            <span class="comment">// 将输入流读入到变量中，再写入到文件</span></span><br><span class="line">            <span class="keyword">while</span> ((inputLine = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                write.write(inputLine);</span><br><span class="line">                System.out.println(inputLine);</span><br><span class="line">            &#125;</span><br><span class="line">            br.close();</span><br><span class="line">            write.close();</span><br><span class="line">            System.err.println(<span class="string">"下载完毕!"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (MalformedURLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> url;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;java8 实现网页下载，大致分为4步，分别是:给定目标网页链接-&amp;gt;与目标主机建立连接-&amp;gt;读入网页文件流-&amp;gt;写入本地文件 。会用到java io 和 java net库。程序代码如下，留有注释。&lt;/p&gt;
-&lt;figure class=&quot;highlight j
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="/categories/Java/"/>
-    
-    
-      <category term="Java8" scheme="/tags/Java8/"/>
-    
-      <category term="下载网页的完整代码" scheme="/tags/%E4%B8%8B%E8%BD%BD%E7%BD%91%E9%A1%B5%E7%9A%84%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81/"/>
     
   </entry>
   
