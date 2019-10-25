@@ -14,7 +14,7 @@
     
     
     
-    <title>ubuntu 18.04.1 开机启动脚本 | Nan&#39;s Blog | 弱者才言命，强者只言运！</title>
+    <title>系统开机启动脚本 | Nan&#39;s Blog | 弱者才言命，强者只言运！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -24,15 +24,25 @@
     <meta name="description" content="ubuntu 18.04.1 开机启动脚本ubuntu18.04不再使用initd管理系统，改用systemd。个人觉得systemd很难用，改变太大，跟之前的完全不同 为了像以前一样，在/etc/rc.local中设置开机启动程序，需要以下几步：  systemd默认读取/etc/systemd/system下的配置文件，该目录下的文件会链接/lib/systemd/system/下的文件。一般">
 <meta name="keywords" content="Ubuntu,CentOS,RedHat,开机启动">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ubuntu 18.04.1 开机启动脚本">
-<meta property="og:url" content="/2019/01/07/ubuntu-18-04-1-开机启动脚本/index.html">
+<meta property="og:title" content="系统开机启动脚本">
+<meta property="og:url" content="/2019/01/07/系统开机启动脚本/index.html">
 <meta property="og:site_name" content="Nan&#39;s Blog">
 <meta property="og:description" content="ubuntu 18.04.1 开机启动脚本ubuntu18.04不再使用initd管理系统，改用systemd。个人觉得systemd很难用，改变太大，跟之前的完全不同 为了像以前一样，在/etc/rc.local中设置开机启动程序，需要以下几步：  systemd默认读取/etc/systemd/system下的配置文件，该目录下的文件会链接/lib/systemd/system/下的文件。一般">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-27T09:36:11.725Z">
+<meta property="og:image" content="/img/frpc001.png">
+<meta property="og:image" content="/img/frpc002.png">
+<meta property="og:image" content="/img/frpc003.png">
+<meta property="og:image" content="/img/frpc004.png">
+<meta property="og:image" content="/img/frpc005.png">
+<meta property="og:image" content="/img/frpc006.png">
+<meta property="og:image" content="/img/frpc007.png">
+<meta property="og:image" content="/img/frpc008.png">
+<meta property="og:image" content="/img/frpc009.png">
+<meta property="og:updated_time" content="2019-10-25T10:21:05.686Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ubuntu 18.04.1 开机启动脚本">
+<meta name="twitter:title" content="系统开机启动脚本">
 <meta name="twitter:description" content="ubuntu 18.04.1 开机启动脚本ubuntu18.04不再使用initd管理系统，改用systemd。个人觉得systemd很难用，改变太大，跟之前的完全不同 为了像以前一样，在/etc/rc.local中设置开机启动程序，需要以下几步：  systemd默认读取/etc/systemd/system下的配置文件，该目录下的文件会链接/lib/systemd/system/下的文件。一般">
+<meta name="twitter:image" content="/img/frpc001.png">
     
         <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
     
@@ -113,7 +123,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">ubuntu 18.04.1 开机启动脚本</div>
+        <div class="flex-col header-title ellipsis">系统开机启动脚本</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -131,7 +141,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">ubuntu 18.04.1 开机启动脚本</h1>
+        <h1 class="title">系统开机启动脚本</h1>
         <h5 class="subtitle">
             
                 <time datetime="2019-01-07T08:18:31.000Z" itemprop="datePublished" class="page-time">
@@ -156,15 +166,15 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ubuntu-18-04-1-开机启动脚本"><span class="post-toc-number">1.</span> <span class="post-toc-text">ubuntu 18.04.1 开机启动脚本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ubuntu-一般情况"><span class="post-toc-number">2.</span> <span class="post-toc-text">ubuntu - 一般情况</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开机启动脚本"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">开机启动脚本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-rc-local脚本"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">修改/etc/rc.local脚本</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#centos-redhat-一般情况"><span class="post-toc-number">3.</span> <span class="post-toc-text">centos/redhat - 一般情况</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开机启动脚本-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">开机启动脚本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-rc-local脚本-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">修改/etc/rc.local脚本</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注："><span class="post-toc-number">4.</span> <span class="post-toc-text">注：</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ubuntu-18-04-1-开机启动脚本"><span class="post-toc-number">1.</span> <span class="post-toc-text">ubuntu 18.04.1 开机启动脚本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ubuntu-一般情况"><span class="post-toc-number">2.</span> <span class="post-toc-text">ubuntu - 一般情况</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开机启动脚本"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">开机启动脚本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-rc-local脚本"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">修改/etc/rc.local脚本</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#centos-redhat-一般情况"><span class="post-toc-number">3.</span> <span class="post-toc-text">centos/redhat - 一般情况</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开机启动脚本-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">开机启动脚本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-rc-local脚本-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">修改/etc/rc.local脚本</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注："><span class="post-toc-number">4.</span> <span class="post-toc-text">注：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Win10怎么添加开机启动项？"><span class="post-toc-number">5.</span> <span class="post-toc-text">Win10怎么添加开机启动项？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法一：开机启动文件夹"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">方法一：开机启动文件夹</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法二：任务计划程序"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">方法二：任务计划程序</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-ubuntu-18-04-1-开机启动脚本" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-系统开机启动脚本" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">ubuntu 18.04.1 开机启动脚本</h1>
+        <h1 class="post-card-title">系统开机启动脚本</h1>
         <div class="post-meta">
             <time class="post-time" title="2019-01-07 16:18:31" datetime="2019-01-07T08:18:31.000Z" itemprop="datePublished">2019-01-07</time>
 
@@ -244,6 +254,42 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /etc/rc.d/rc.local</span><br></pre></td></tr></table></figure>
 <h2 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h2><p>比如像启动Tomcat这种，<code>前提是需要有jdk环境</code>，所以配置自启动这类型的命令时必须要将其前置条件<code>放在启动命令之前</code>，例如：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编辑vim /etc/rc.local，配置如下：</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#########################准备jdk环境##########################</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/jdk1.8.0_221  <span class="comment">## 这里要注意目录要换成自己解压的jdk 目录</span></span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="comment">#######################准备jdk环境-end########################</span></span><br><span class="line"></span><br><span class="line"><span class="comment">########################手动添加的命令########################</span></span><br><span class="line"><span class="comment"># 启动bbs-ssm项目</span></span><br><span class="line">/home/bbs-ssm/tomcat9/bin/startup.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动crud-bbs项目</span></span><br><span class="line">/home/crud-bbs/tomcat9/bin/startup.sh</span><br><span class="line"><span class="comment">######################手动添加的命令-end######################</span></span><br></pre></td></tr></table></figure>
+<h2 id="Win10怎么添加开机启动项？"><a href="#Win10怎么添加开机启动项？" class="headerlink" title="Win10怎么添加开机启动项？"></a>Win10怎么添加开机启动项？</h2><h3 id="方法一：开机启动文件夹"><a href="#方法一：开机启动文件夹" class="headerlink" title="方法一：开机启动文件夹"></a>方法一：开机启动文件夹</h3><p><code>亲测可用</code></p>
+<ol>
+<li><p>我们打开文件夹：<code>C:\Users（用户）\Administrator（当前用户名）\AppData\Roaming\Microsoft\Windows\Start Menu\Programs（「开始」菜单）\Programs（程序）\Startup（启动 ）</code>即可找到启动文件夹。如图：</p>
+<p><img src="/img/frpc001.png" alt=""></p>
+<p>PS：也可以粘贴以下路径回车打开:</p>
+<p><code>%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</code></p>
+</li>
+<li><p>新建<code>frpc.bat</code>脚本，内容如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">e:</span><br><span class="line"><span class="built_in">cd</span> E:\Program Files\frp_0.29.0_windows_amd64</span><br><span class="line">frpc -c frpc.ini</span><br></pre></td></tr></table></figure>
+<p><img src="/img/frpc002.png" alt=""></p>
+<p>新建<code>frpc.bat</code>快捷方式</p>
+</li>
+<li><p>然后我们把<code>frpc.bat</code>的快捷方式，Win10开机后就可以自动运行了。如图：</p>
+<p><img src="/img/frpc003.png" alt=""></p>
+</li>
+</ol>
+<h3 id="方法二：任务计划程序"><a href="#方法二：任务计划程序" class="headerlink" title="方法二：任务计划程序"></a>方法二：任务计划程序</h3><p><code>未亲测</code></p>
+<ol>
+<li><p>在我的<code>电脑</code> -&gt; <code>右键</code> -&gt; <code>管理</code></p>
+</li>
+<li><p>创建基本任务</p>
+<p><img src="/img/frpc004.png" alt=""></p>
+<p>下一步</p>
+<p><img src="/img/frpc005.png" alt=""></p>
+<p>下一步</p>
+<p><img src="/img/frpc006.png" alt=""></p>
+<p>下一步，<code>选择开机启动脚本</code></p>
+<p><img src="/img/frpc007.png" alt=""></p>
+<p><img src="/img/frpc008.png" alt=""></p>
+<p>下一步</p>
+<p><img src="/img/frpc009.png" alt=""></p>
+<p>完成。</p>
+</li>
+<li><p>然后就完成啦，可以试试，开机的时候，会不会自启动。</p>
+</li>
+</ol>
 
         </div>
 
@@ -252,12 +298,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-08-27T09:36:11.725Z" itemprop="dateUpdated">2019-08-27 17:36:11</time>
+    最后更新时间：<time datetime="2019-10-25T10:21:05.686Z" itemprop="dateUpdated">2019-10-25 18:21:05</time>
 </span><br>
 
 
         
-        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2019/01/07/ubuntu-18-04-1-开机启动脚本/" target="_blank" rel="external">/2019/01/07/ubuntu-18-04-1-开机启动脚本/</a>
+        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2019/01/07/系统开机启动脚本/" target="_blank" rel="external">/2019/01/07/系统开机启动脚本/</a>
         
     </div>
     
