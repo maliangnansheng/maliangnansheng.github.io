@@ -38,7 +38,15 @@
 <meta property="og:image" content="/img/frpc007.png">
 <meta property="og:image" content="/img/frpc008.png">
 <meta property="og:image" content="/img/frpc009.png">
-<meta property="og:updated_time" content="2019-10-25T10:21:05.686Z">
+<meta property="og:image" content="/img/nssm001.png">
+<meta property="og:image" content="/img/nssm002.png">
+<meta property="og:image" content="/img/nssm003.png">
+<meta property="og:image" content="/img/nssm004.png">
+<meta property="og:image" content="/img/nssm005.png">
+<meta property="og:image" content="/img/nssm006.png">
+<meta property="og:image" content="/img/nssm008.png">
+<meta property="og:image" content="/img/nssm009.png">
+<meta property="og:updated_time" content="2019-10-30T07:08:28.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="系统开机启动脚本">
 <meta name="twitter:description" content="ubuntu 18.04.1 开机启动脚本ubuntu18.04不再使用initd管理系统，改用systemd。个人觉得systemd很难用，改变太大，跟之前的完全不同 为了像以前一样，在/etc/rc.local中设置开机启动程序，需要以下几步：  systemd默认读取/etc/systemd/system下的配置文件，该目录下的文件会链接/lib/systemd/system/下的文件。一般">
@@ -166,7 +174,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ubuntu-18-04-1-开机启动脚本"><span class="post-toc-number">1.</span> <span class="post-toc-text">ubuntu 18.04.1 开机启动脚本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ubuntu-一般情况"><span class="post-toc-number">2.</span> <span class="post-toc-text">ubuntu - 一般情况</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开机启动脚本"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">开机启动脚本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-rc-local脚本"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">修改/etc/rc.local脚本</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#centos-redhat-一般情况"><span class="post-toc-number">3.</span> <span class="post-toc-text">centos/redhat - 一般情况</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开机启动脚本-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">开机启动脚本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-rc-local脚本-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">修改/etc/rc.local脚本</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注："><span class="post-toc-number">4.</span> <span class="post-toc-text">注：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Win10怎么添加开机启动项？"><span class="post-toc-number">5.</span> <span class="post-toc-text">Win10怎么添加开机启动项？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法一：开机启动文件夹"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">方法一：开机启动文件夹</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法二：任务计划程序"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">方法二：任务计划程序</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ubuntu-18-04-1-开机启动脚本"><span class="post-toc-number">1.</span> <span class="post-toc-text">ubuntu 18.04.1 开机启动脚本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ubuntu-一般情况"><span class="post-toc-number">2.</span> <span class="post-toc-text">ubuntu - 一般情况</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开机启动脚本"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">开机启动脚本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-rc-local脚本"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">修改/etc/rc.local脚本</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#centos-redhat-一般情况"><span class="post-toc-number">3.</span> <span class="post-toc-text">centos/redhat - 一般情况</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开机启动脚本-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">开机启动脚本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改-etc-rc-local脚本-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">修改/etc/rc.local脚本</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注："><span class="post-toc-number">4.</span> <span class="post-toc-text">注：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Win10怎么添加开机启动项？"><span class="post-toc-number">5.</span> <span class="post-toc-text">Win10怎么添加开机启动项？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方案一：开机启动文件夹"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">方案一：开机启动文件夹</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方案二：任务计划程序"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">方案二：任务计划程序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方案三：用nssm将frpc注册为Windows系统服务"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">方案三：用nssm将frpc注册为Windows系统服务</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -254,7 +262,7 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /etc/rc.d/rc.local</span><br></pre></td></tr></table></figure>
 <h2 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h2><p>比如像启动Tomcat这种，<code>前提是需要有jdk环境</code>，所以配置自启动这类型的命令时必须要将其前置条件<code>放在启动命令之前</code>，例如：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编辑vim /etc/rc.local，配置如下：</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#########################准备jdk环境##########################</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/jdk1.8.0_221  <span class="comment">## 这里要注意目录要换成自己解压的jdk 目录</span></span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="comment">#######################准备jdk环境-end########################</span></span><br><span class="line"></span><br><span class="line"><span class="comment">########################手动添加的命令########################</span></span><br><span class="line"><span class="comment"># 启动bbs-ssm项目</span></span><br><span class="line">/home/bbs-ssm/tomcat9/bin/startup.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动crud-bbs项目</span></span><br><span class="line">/home/crud-bbs/tomcat9/bin/startup.sh</span><br><span class="line"><span class="comment">######################手动添加的命令-end######################</span></span><br></pre></td></tr></table></figure>
-<h2 id="Win10怎么添加开机启动项？"><a href="#Win10怎么添加开机启动项？" class="headerlink" title="Win10怎么添加开机启动项？"></a>Win10怎么添加开机启动项？</h2><h3 id="方法一：开机启动文件夹"><a href="#方法一：开机启动文件夹" class="headerlink" title="方法一：开机启动文件夹"></a>方法一：开机启动文件夹</h3><p><code>亲测可用</code></p>
+<h2 id="Win10怎么添加开机启动项？"><a href="#Win10怎么添加开机启动项？" class="headerlink" title="Win10怎么添加开机启动项？"></a>Win10怎么添加开机启动项？</h2><h3 id="方案一：开机启动文件夹"><a href="#方案一：开机启动文件夹" class="headerlink" title="方案一：开机启动文件夹"></a>方案一：开机启动文件夹</h3><p><code>亲测可用，推荐方案三</code></p>
 <ol>
 <li><p>我们打开文件夹：<code>C:\Users（用户）\Administrator（当前用户名）\AppData\Roaming\Microsoft\Windows\Start Menu\Programs（「开始」菜单）\Programs（程序）\Startup（启动 ）</code>即可找到启动文件夹。如图：</p>
 <p><img src="/img/frpc001.png" alt=""></p>
@@ -270,7 +278,7 @@
 <p><img src="/img/frpc003.png" alt=""></p>
 </li>
 </ol>
-<h3 id="方法二：任务计划程序"><a href="#方法二：任务计划程序" class="headerlink" title="方法二：任务计划程序"></a>方法二：任务计划程序</h3><p><code>未亲测</code></p>
+<h3 id="方案二：任务计划程序"><a href="#方案二：任务计划程序" class="headerlink" title="方案二：任务计划程序"></a>方案二：任务计划程序</h3><p><code>未亲测，推荐方案三</code></p>
 <ol>
 <li><p>在我的<code>电脑</code> -&gt; <code>右键</code> -&gt; <code>管理</code></p>
 </li>
@@ -290,6 +298,51 @@
 <li><p>然后就完成啦，可以试试，开机的时候，会不会自启动。</p>
 </li>
 </ol>
+<h3 id="方案三：用nssm将frpc注册为Windows系统服务"><a href="#方案三：用nssm将frpc注册为Windows系统服务" class="headerlink" title="方案三：用nssm将frpc注册为Windows系统服务"></a>方案三：用nssm将frpc注册为Windows系统服务</h3><p><code>亲测可用，推荐优先使用该方案</code></p>
+<ol>
+<li><p>下载nssm</p>
+<p>官网：<a href="http://nssm.cc/download" target="_blank" rel="noopener">http://nssm.cc/download</a></p>
+<p><img src="/img/nssm001.png" alt=""></p>
+</li>
+<li><p>解压至本地目录</p>
+<p>根据操作系统选择32位或64位nssm，cd到nssm所在目录</p>
+<p><code>我的系统是64位的：</code></p>
+<p><img src="/img/nssm002.png" alt=""></p>
+</li>
+<li><p>服务注册（以注册frpc为例）</p>
+<p>命令行输入：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nssm install frpc		<span class="comment"># 回车</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>问题：</p>
+<p>此时可能会抛出<code>Administrator access is needed to install a service.</code>意思是：<code>需要管理员权限才能安装服务</code></p>
+<p>当我检查用户帐户时，它表明我是“管理员”组中的用户名。难搞哦！</p>
+</li>
+<li><p>解决</p>
+<ol>
+<li><p>右键单击cmd快捷方式，以管理员身份运行</p>
+<p><code>亲测可用</code></p>
+<p><img src="/img/nssm003.png" alt=""></p>
+<p>打开命令窗口后重新执行<code>nssm install frpc</code>命令</p>
+</li>
+<li><p>执行<code>cmd / admin</code></p>
+<p><code>未亲测</code></p>
+<p>打开命令窗口后重新执行<code>nssm install frpc</code>命令</p>
+</li>
+</ol>
+</li>
+</ul>
+<p>接下来会弹出一个框，在path处选择启动frpc的frpc.bat，点击Install service即可</p>
+<p><img src="/img/nssm004.png" alt=""></p>
+<p><img src="/img/nssm005.png" alt=""></p>
+<p><img src="/img/nssm006.png" alt=""></p>
+</li>
+<li><p>服务启动</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">nssm start frpc</span><br><span class="line"><span class="comment"># 其他命令：</span></span><br><span class="line">nssm start &lt;servicename&gt;</span><br><span class="line">nssm stop &lt;servicename&gt;</span><br><span class="line">nssm restart &lt;servicename&gt;</span><br><span class="line">nssm status &lt;servicename&gt;</span><br><span class="line">nssm rotate &lt;servicename&gt;</span><br><span class="line">nssm remove &lt;servicename&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><img src="/img/nssm008.png" alt=""></p>
+<p>启动后，你将在本地计算机服务列表看到frpc服务。Win+R，<code>services.msc</code></p>
+<p><img src="/img/nssm009.png" alt=""></p>
+</li>
+</ol>
 
         </div>
 
@@ -298,7 +351,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-10-25T10:21:05.686Z" itemprop="dateUpdated">2019-10-25 18:21:05</time>
+    最后更新时间：<time datetime="2019-10-30T07:08:28.923Z" itemprop="dateUpdated">2019-10-30 15:08:28</time>
 </span><br>
 
 
