@@ -38,7 +38,7 @@
 <meta property="og:image" content="/img/lvm7.png">
 <meta property="og:image" content="/img/lvm8.png">
 <meta property="og:image" content="/img/lvm9.png">
-<meta property="og:updated_time" content="2019-11-27T08:40:40.280Z">
+<meta property="og:updated_time" content="2019-11-27T08:48:42.447Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Centos7.x中磁盘管理及扩展">
 <meta name="twitter:description" content="前提要求：虚拟机：centos7.x 在安装Centos系统时，磁盘选择为LVM逻辑卷。当选择为LVM后才能创建逻辑卷等（必须） 数据格式选择的是xfs，很多讲解使用的是ext3，但以后xfs的优势会比ext越来越大。（可选） LVM是Logical Volume Manager（逻辑卷管理）的简写，它是Linux环境下对硬盘分区进行管理的一种机制。LVM是建立在硬盘和分区上的逻辑层，它允许跨硬盘">
@@ -203,14 +203,7 @@
 <p>数据格式选择的是<code>xfs</code>，很多讲解使用的是ext3，但以后xfs的优势会比ext越来越大。（可选）</p>
 <p>LVM是Logical Volume Manager（逻辑卷管理）的简写，它是Linux环境下对硬盘分区进行管理的一种机制。LVM是建立在硬盘和分区上的逻辑层，它允许跨硬盘、分区创建逻辑卷并创建文件系统，可以很方便执行<code>增加、扩展、删除</code>等操作。</p>
 <h2 id="CentOS7查看硬盘情况"><a href="#CentOS7查看硬盘情况" class="headerlink" title="CentOS7查看硬盘情况"></a>CentOS7查看硬盘情况</h2><blockquote>
-<p>lsblk                                        查看分区和磁盘</p>
-<p>df -h                                         查看空间使用情况</p>
-<p>fdisk -l                                        分区工具查看分区信息</p>
-<p>cfdisk /dev/sda                                查看分区</p>
-<p>blkid                                        查看硬盘label（别名）</p>
-<p>du -sh ./*                                    统计当前目录各文件夹大小</p>
-<p>free -h                                        查看内存大小</p>
-<p>cat /proc/cpuinfo| grep “cpu cores”| uniq        查看cpu核心数</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt; lsblk										<span class="comment">#查看分区和磁盘</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; df -h 										<span class="comment">#查看空间使用情况</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; fdisk -l									<span class="comment">#分区工具查看分区信息</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; cfdisk /dev/sda								<span class="comment">#查看分区</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; blkid										<span class="comment">#查看硬盘label（别名）</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; du -sh ./*									<span class="comment">#统计当前目录各文件夹大小</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; free -h										<span class="comment">#查看内存大小</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; cat /proc/cpuinfo| grep <span class="string">"cpu cores"</span>| uniq	<span class="comment">#查看cpu核心数</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="扩容磁盘挂载"><a href="#扩容磁盘挂载" class="headerlink" title="扩容磁盘挂载"></a>扩容磁盘挂载</h2><h3 id="物理卷（PV）"><a href="#物理卷（PV）" class="headerlink" title="物理卷（PV）"></a>物理卷（PV）</h3><p>物理卷（Physical Volume,PV）：就是指硬盘分区，也可以是整个硬盘或已创建的软RAID，是LVM的基本存储设备。在创建逻辑卷之前需要先创建物理卷，然后将多个物理卷组合创建卷组，最后在卷组的基础上创建逻辑卷。</p>
 <p>可以将空白硬盘或分区加入主机，系统识别到新的硬盘sdb后，使用pvcreate对硬盘创建PV。</p>
@@ -316,7 +309,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-11-27T08:40:40.280Z" itemprop="dateUpdated">2019-11-27 16:40:40</time>
+    最后更新时间：<time datetime="2019-11-27T08:48:42.447Z" itemprop="dateUpdated">2019-11-27 16:48:42</time>
 </span><br>
 
 
