@@ -20,23 +20,23 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="svn,技巧">
-    <meta name="description" content="背景项目开发中需要版本控制，而我们经常使用的是在windows系统上搭建svn服务器，下面介绍在Linux系统（CentOS 7.3.1611）上搭建svn服务器。 使用yum安装svn使用yum安装svn，命令如下： 1yum -y install subversion 安装完成之后，验证svn安装是否成功 1svn help 新建仓库目录在/opt目录下面创建一个svn目录，用来作为svn存储">
-<meta name="keywords" content="svn,技巧">
+    <meta name="keywords" content="技巧,svn">
+    <meta name="description" content="背景项目开发中需要版本控制，而我们经常使用的是在windows系统上搭建svn服务器，下面介绍在Linux系统（CentOS 7.3.1611）上搭建svn服务器。 使用yum安装svn使用yum安装svn，命令如下： 1yum -y install subversion 安装完成之后，验证svn安装是否成功 1svn help  若需查看svn安装位置，可以用以下命令 1rpm -ql subv">
+<meta name="keywords" content="技巧,svn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux服务器上搭建svn服务器">
 <meta property="og:url" content="/2019/02/15/Linux服务器上搭建svn服务器/index.html">
 <meta property="og:site_name" content="Nan&#39;s Blog">
-<meta property="og:description" content="背景项目开发中需要版本控制，而我们经常使用的是在windows系统上搭建svn服务器，下面介绍在Linux系统（CentOS 7.3.1611）上搭建svn服务器。 使用yum安装svn使用yum安装svn，命令如下： 1yum -y install subversion 安装完成之后，验证svn安装是否成功 1svn help 新建仓库目录在/opt目录下面创建一个svn目录，用来作为svn存储">
+<meta property="og:description" content="背景项目开发中需要版本控制，而我们经常使用的是在windows系统上搭建svn服务器，下面介绍在Linux系统（CentOS 7.3.1611）上搭建svn服务器。 使用yum安装svn使用yum安装svn，命令如下： 1yum -y install subversion 安装完成之后，验证svn安装是否成功 1svn help  若需查看svn安装位置，可以用以下命令 1rpm -ql subv">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="/img/svnserve.conf.png">
 <meta property="og:image" content="/img/passwd.png">
 <meta property="og:image" content="/img/authz.png">
 <meta property="og:image" content="/img/svn.png">
-<meta property="og:updated_time" content="2019-02-23T08:31:38.515Z">
+<meta property="og:updated_time" content="2019-12-06T16:28:58.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux服务器上搭建svn服务器">
-<meta name="twitter:description" content="背景项目开发中需要版本控制，而我们经常使用的是在windows系统上搭建svn服务器，下面介绍在Linux系统（CentOS 7.3.1611）上搭建svn服务器。 使用yum安装svn使用yum安装svn，命令如下： 1yum -y install subversion 安装完成之后，验证svn安装是否成功 1svn help 新建仓库目录在/opt目录下面创建一个svn目录，用来作为svn存储">
+<meta name="twitter:description" content="背景项目开发中需要版本控制，而我们经常使用的是在windows系统上搭建svn服务器，下面介绍在Linux系统（CentOS 7.3.1611）上搭建svn服务器。 使用yum安装svn使用yum安装svn，命令如下： 1yum -y install subversion 安装完成之后，验证svn安装是否成功 1svn help  若需查看svn安装位置，可以用以下命令 1rpm -ql subv">
 <meta name="twitter:image" content="/img/svnserve.conf.png">
     
         <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
@@ -168,7 +168,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用yum安装svn"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用yum安装svn</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#新建仓库目录"><span class="post-toc-number">3.</span> <span class="post-toc-text">新建仓库目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建一个测试仓库"><span class="post-toc-number">4.</span> <span class="post-toc-text">创建一个测试仓库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置SVN服务的配置文件svnserve-conf"><span class="post-toc-number">5.</span> <span class="post-toc-text">配置SVN服务的配置文件svnserve.conf</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置访问的用户及密码"><span class="post-toc-number">6.</span> <span class="post-toc-text">配置访问的用户及密码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置新用户的授权访问的文件"><span class="post-toc-number">7.</span> <span class="post-toc-text">配置新用户的授权访问的文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动svn服务"><span class="post-toc-number">8.</span> <span class="post-toc-text">启动svn服务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#windows系统拉取代码"><span class="post-toc-number">9.</span> <span class="post-toc-text">windows系统拉取代码</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用yum安装svn"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用yum安装svn</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#新建仓库目录"><span class="post-toc-number">3.</span> <span class="post-toc-text">新建仓库目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建一个测试仓库"><span class="post-toc-number">4.</span> <span class="post-toc-text">创建一个测试仓库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置SVN服务的配置文件svnserve-conf"><span class="post-toc-number">5.</span> <span class="post-toc-text">配置SVN服务的配置文件svnserve.conf</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置访问的用户及密码"><span class="post-toc-number">6.</span> <span class="post-toc-text">配置访问的用户及密码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置新用户的授权访问的文件"><span class="post-toc-number">7.</span> <span class="post-toc-text">配置新用户的授权访问的文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#防火墙3690端口开启"><span class="post-toc-number">8.</span> <span class="post-toc-text">防火墙3690端口开启</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动svn服务"><span class="post-toc-number">9.</span> <span class="post-toc-text">启动svn服务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#windows系统拉取代码"><span class="post-toc-number">10.</span> <span class="post-toc-text">windows系统拉取代码</span></a></li></ol>
         </nav>
     </aside>
 
@@ -198,6 +198,8 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install subversion</span><br></pre></td></tr></table></figure>
 <p>安装完成之后，验证svn安装是否成功</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<p> 若需查看svn安装位置，可以用以下命令</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ql subversion</span><br></pre></td></tr></table></figure>
 <h2 id="新建仓库目录"><a href="#新建仓库目录" class="headerlink" title="新建仓库目录"></a>新建仓库目录</h2><p>在/opt目录下面创建一个svn目录，用来作为svn存储目录，命令如下：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir  /opt/svn</span><br></pre></td></tr></table></figure>
 <h2 id="创建一个测试仓库"><a href="#创建一个测试仓库" class="headerlink" title="创建一个测试仓库"></a>创建一个测试仓库</h2><p>执行如下命令，创建一个仓库</p>
@@ -210,7 +212,16 @@
 </blockquote>
 <h2 id="配置SVN服务的配置文件svnserve-conf"><a href="#配置SVN服务的配置文件svnserve-conf" class="headerlink" title="配置SVN服务的配置文件svnserve.conf"></a>配置SVN服务的配置文件svnserve.conf</h2><p>进入到conf文件夹下面，编辑svnserve.conf文件，命令如下：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> conf</span><br><span class="line">ls</span><br><span class="line">vim svnserver.conf</span><br></pre></td></tr></table></figure>
-<p>在svnserver.conf文件中，anon-access前面的注释去掉，将对应的值设置为none，将auth-access前面的注释也去掉，将password-db前面的注释也去掉，还有将authz-db前面的注释也去掉，显示如下：</p>
+<p>在svnserver.conf文件中</p>
+<blockquote>
+<ol>
+<li>anon-access前面的注释去掉，将对应的值设置为<code>none</code></li>
+<li>auth-access前面的注释也去掉</li>
+<li>password-db前面的注释也去掉</li>
+<li>authz-db前面的注释也去掉</li>
+<li>realm = <code>/var/svn</code>：指定认证域，即 /var/svn 目录 ，显示如下：</li>
+</ol>
+</blockquote>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -238,13 +249,14 @@
                 </div>
                 <div class="image-caption"></div>
             </figure>
+<h2 id="防火墙3690端口开启"><a href="#防火墙3690端口开启" class="headerlink" title="防火墙3690端口开启"></a>防火墙<code>3690端口</code>开启</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示防火墙应用列表</span></span><br><span class="line">firewall-cmd --list-all</span><br><span class="line"><span class="comment"># 加入3690端口</span></span><br><span class="line">firewall-cmd --zone=public --add-port=3690/tcp --permanent</span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line">systemctl restart firewalld</span><br></pre></td></tr></table></figure>
 <h2 id="启动svn服务"><a href="#启动svn服务" class="headerlink" title="启动svn服务"></a>启动svn服务</h2><p>执行如下命令：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svnserve -d -r /opt/svn/</span><br></pre></td></tr></table></figure>
 <p>其中-d表示后台运行， -r指定根目录，这里需要注意：<strong>绝对不能将启动命令写成：svnserve -d -r /opt/svn/test/</strong></p>
 <p>还有启动的时候可能会出现如下错误：<code>svnserve: E000098: Can&#39;t bind server socket: Address already in use</code></p>
 <p>这个是由于已经启动了SVN服务，所以需要先关闭进程，重新启动即可，命令如下：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">killall svnserve</span><br><span class="line">svnserve -d -r /opt/svn/</span><br></pre></td></tr></table></figure>
-<h2 id="windows系统拉取代码"><a href="#windows系统拉取代码" class="headerlink" title="windows系统拉取代码"></a>windows系统拉取代码</h2><p>可以在图形化界面中输入：<code>svn://你的IP(公网)/test</code>链接svn</p>
+<h2 id="windows系统拉取代码"><a href="#windows系统拉取代码" class="headerlink" title="windows系统拉取代码"></a>windows系统拉取代码</h2><p>可以在图形化界面中输入：<code>svn://你的IP(公网)/test</code>或者<code>svn://你的IP(公网):3690/test</code>链接svn</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -263,7 +275,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-02-23T08:31:38.515Z" itemprop="dateUpdated">2019-02-23 16:31:38</time>
+    最后更新时间：<time datetime="2019-12-06T16:28:58.478Z" itemprop="dateUpdated">2019-12-07 00:28:58</time>
 </span><br>
 
 
