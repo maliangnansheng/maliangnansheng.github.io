@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-11-26T06:32:26.695Z</updated>
+  <updated>2019-12-19T01:29:31.375Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>南生论坛页面静态展示</title>
+    <link href="/2019/12/19/%E5%8D%97%E7%94%9F%E8%AE%BA%E5%9D%9B%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%B1%95%E7%A4%BA/"/>
+    <id>/2019/12/19/南生论坛页面静态展示/</id>
+    <published>2019-12-19T01:20:43.000Z</published>
+    <updated>2019-12-19T01:29:31.375Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="用户系统"><a href="#用户系统" class="headerlink" title="用户系统"></a>用户系统</h3><ul><li><p><strong>登录</strong></p><p><img src="/img/用户-登录2.png" alt="image"></p><p><code>手机上的效果：</code></p><p><img src="/img/手机-登录.jpg" alt="image" width="40%;"></p></li><li><p><strong>注册</strong></p><p><img src="/img/用户-注册.png" alt="image"></p><p><code>手机上的效果：</code></p><p><img src="/img/手机-注册.jpg" alt="image" width="40%;"></p></li><li><p><strong>首页-登录前</strong></p><p><img src="/img/用户-首页-登录前.png" alt="image"></p><p><code>手机上的效果：</code></p><p><img src="/img/手机-首页-登录前.jpg" alt="image" width="40%;"></p></li><li><p><strong>首页-登录后</strong></p><p><img src="/img/用户-首页-登陆后.png" alt="image"></p><p><code>手机上的效果：</code></p><p><img src="/img/手机-首页-登录后.jpg" alt="image" width="40%;"></p></li><li><p><strong>发帖</strong></p><p><img src="/img/用户-发帖2.png" alt="image"></p><p><code>手机上的效果：</code></p><p><img src="/img/手机-发帖.jpg" alt="image" width="40%;"></p></li><li><p><strong>个人主页</strong></p><p><img src="/img/用户-个人主页2.png" alt="image"></p><p><code>手机上的效果：</code></p><p><img src="/img/手机-个人主页.jpg" alt="image" width="40%;"></p></li><li><p><strong>编辑个人资料</strong></p><p><img src="/img/用户-编辑个人资料2.png" alt="image"></p><p><code>手机上的效果：</code></p><p><img src="/img/手机-编辑个人资料.jpg" alt="image" width="40%;"></p></li><li><p><strong>基本信息设置</strong></p><p><img src="/img/用户-基本信息设置2.png" alt="image"></p><p><code>手机上的效果：</code></p><p><img src="/img/手机-基本信息设置.jpg" alt="image" width="40%;"></p></li><li><p><strong>修改头像</strong></p><p><img src="/img/用户-上传头像2.png" alt="image"></p><p><code>手机上的效果：</code></p><p><img src="/img/手机-修改头像.jpg" alt="image" width="40%;"></p></li><li><p><strong>动态</strong></p><p><img src="/img/用户-动态.png" alt="image"></p><p><code>手机上的效果：</code></p><p><img src="/img/手机-动态.jpg" alt="image" width="40%;"></p></li><li><p><strong>回答</strong></p><p><img src="/img/用户-回答.png" alt="image"></p><p><code>手机上的效果：</code></p><p><img src="/img/手机-回复.jpg" alt="image" width="40%;"></p></li><li><p><strong>关注</strong></p><p><img src="/img/用户-关注.png" alt="image"></p><p><code>手机上的效果：</code></p><p><img src="/img/手机-关注.jpg" alt="image" width="40%;"></p></li><li><p><strong>收藏</strong></p><p><img src="/img/用户-收藏.png" alt="image"></p><p><code>手机上的效果：</code></p><p><img src="/img/手机-收藏.jpg" alt="image" width="40%;"></p></li><li><p><strong>相册</strong></p><p><img src="/img/用户-相册.png" alt="image"></p><p><code>手机上的效果：</code></p><p><img src="/img/手机-相册.jpg" alt="image" width="40%;"></p></li><li><p><strong>有照片的相册</strong></p><p><img src="/img/用户-照片-有.png" alt="image"></p><p><code>手机上的效果：</code></p><p><img src="/img/手机-有照片的相册.jpg" alt="image" width="40%;"></p></li><li><p><strong>无照片的相册</strong></p><p><img src="/img/用户-照片-无.png" alt="image"></p><p><code>手机上的效果：</code></p><p><img src="/img/手机-无照片的相册.jpg" alt="image" width="40%;"></p></li></ul><h3 id="管理员系统"><a href="#管理员系统" class="headerlink" title="管理员系统"></a>管理员系统</h3><ul><li><p><strong>登录</strong></p><p><img src="/img/管理员-登录2.png" alt="image"></p></li><li><p><strong>初始页面</strong></p><p><img src="/img/管理员-初始页面.png" alt="image"></p></li><li><p><strong>用户管理</strong></p><p><img src="/img/管理员-用户管理2.png" alt="image"></p></li><li><p><strong>帖子管理</strong></p><p><img src="/img/管理员-帖子管理2.png" alt="image"></p></li><li><p><strong>版块管理</strong></p><p><img src="/img/管理员-版块管理2.png" alt="image"></p></li><li><p><strong>访问记录</strong></p><p><img src="/img/管理员-访问记录.png" alt="image"></p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;用户系统&quot;&gt;&lt;a href=&quot;#用户系统&quot; class=&quot;headerlink&quot; title=&quot;用户系统&quot;&gt;&lt;/a&gt;用户系统&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;登录&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/用户-登录2.png&quot;
+      
+    
+    </summary>
+    
+      <category term="南生论坛" scheme="/categories/%E5%8D%97%E7%94%9F%E8%AE%BA%E5%9D%9B/"/>
+    
+    
+      <category term="展示" scheme="/tags/%E5%B1%95%E7%A4%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>Chrome插件</title>
@@ -534,40 +561,6 @@
       <category term="浏览器" scheme="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
     
       <category term="中文乱码" scheme="/tags/%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>手把手教你用frp实现内网穿透</title>
-    <link href="/2019/04/12/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E7%94%A8frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
-    <id>/2019/04/12/手把手教你用frp实现内网穿透/</id>
-    <published>2019-04-12T07:26:19.000Z</published>
-    <updated>2019-10-25T09:28:08.355Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp, http, https 协议。</p></blockquote><p><strong>数据准备：</strong></p><ul><li>公网IP: X.X.X.X</li><li>内网电脑使用的是两台win10-64系统（公司+家里）</li><li>公网电脑为linux-64系统。</li></ul><h2 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h2><h3 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h3><p>下载地址：<a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">frp下载</a></p><p><code>具有公网IP的电脑将作为frp服务端(frps)</code>，首先去项目地址的releases页面下载与服务端系统匹配的文件并解压</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/frp-linux.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入home目录</span></span><br><span class="line"><span class="built_in">cd</span> /home</span><br><span class="line"><span class="comment"># 下载对应的frp作为服务端</span></span><br><span class="line">wget https://github.com/fatedier/frp/releases/download/v0.26.0/frp_0.26.0_linux_amd64.tar.gz</span><br><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar -zxvf frp_0.26.0_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure><h3 id="编辑配置文件"><a href="#编辑配置文件" class="headerlink" title="编辑配置文件"></a>编辑配置文件</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入frp</span></span><br><span class="line"><span class="built_in">cd</span> frp_0.26.0_linux_amd64/</span><br><span class="line"><span class="comment"># 编辑frps.ini配置文件（一般不需要更改）</span></span><br><span class="line">vim frps.ini</span><br></pre></td></tr></table></figure><p>编辑frps.ini为以下内容：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/frp-配置.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p><code>bind_port</code>为客户端与服务端进行通信的端口。其它更丰富的配置可参考frps_full.ini和项目帮助文档。</p><h3 id="启动服务端"><a href="#启动服务端" class="headerlink" title="启动服务端"></a>启动服务端</h3><p>进行到解压后的frp目录，然后通过<code>./frps -c frps.ini</code>命令即可启动服务端，如下图所示：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/frp_0.26.0_linux_amd64/</span><br><span class="line"><span class="comment"># 前台启动（终端关闭进程终端）</span></span><br><span class="line">./frps -c frps.ini</span><br><span class="line"><span class="comment"># 后台启动</span></span><br><span class="line">nohup ./frps -c frps.ini</span><br></pre></td></tr></table></figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/frp-启动.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h3 id="设置开机启动和后台运行"><a href="#设置开机启动和后台运行" class="headerlink" title="设置开机启动和后台运行"></a>设置开机启动和后台运行</h3><p>上一步中的frps占据了整个命令窗口，所以接下来要考虑如何让它在后台运行并且开机自启：<br>参考<code>Nan&#39;s Blog</code>的《系统开机启动脚本》文章。</p><h2 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h2><h3 id="文件下载-1"><a href="#文件下载-1" class="headerlink" title="文件下载"></a>文件下载</h3><p>具有内网IP的电脑将作为客户端(frpc)，在releases页面下载<code>frp_0.16.0_windows_amd64.zip</code>解压</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/frp-win.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h3 id="编辑配置文件-1"><a href="#编辑配置文件-1" class="headerlink" title="编辑配置文件"></a>编辑配置文件</h3><p>编辑frpc.ini为以下内容：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line"><span class="comment"># sever_addr配置为公网电脑的IP</span></span><br><span class="line">server_addr = X.X.X.X</span><br><span class="line"><span class="comment"># server_port与frps.ini（服务端）中的bind_port一致</span></span><br><span class="line">server_port = 7000</span><br><span class="line"></span><br><span class="line"><span class="comment"># 两台或者多条客户端“ssh”要不一样，否则会有冲突导致启动失败</span></span><br><span class="line"><span class="comment"># 举例：[ssh-home]、[ssh-company]</span></span><br><span class="line">[ssh]</span><br><span class="line"><span class="built_in">type</span> = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line"><span class="comment"># 本地客户端对应的端口</span></span><br><span class="line"><span class="comment"># windows填3389，linux系统填22</span></span><br><span class="line">local_port = 3389</span><br><span class="line"><span class="comment"># 对应云端服务器的端口</span></span><br><span class="line"><span class="comment"># 注：</span></span><br><span class="line"><span class="comment"># 1，所有remote_port对应的端口必须在云端服务器中开放，否则无法进行访问</span></span><br><span class="line"><span class="comment"># 2，两台或者多台客户端remote_port必须不一样</span></span><br><span class="line">remote_port = 6000</span><br></pre></td></tr></table></figure><h3 id="启动客户端"><a href="#启动客户端" class="headerlink" title="启动客户端"></a>启动客户端</h3><p>双击frpc.exe或者用命令 <code>frpc -c frpc.ini</code>即可启动客户端，如下图所示：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/frp-win-启动.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p><strong>注意：</strong>这时候很可能启动不了，一般情况是因为<code>服务器端（linux）7000端口没开放：</code></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看端口开放情况</span></span><br><span class="line">firewall-cmd --list-all</span><br><span class="line"><span class="comment"># 添加开放端口</span></span><br><span class="line">firewall-cmd --zone=public --add-port=7000/tcp --permanent</span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line">systemctl restart firewalld</span><br></pre></td></tr></table></figure><p>然后再执行<code>frpc -c frpc.ini</code>就可以正常启动连接了。</p><h3 id="设置开机启动和后台运行-1"><a href="#设置开机启动和后台运行-1" class="headerlink" title="设置开机启动和后台运行"></a>设置开机启动和后台运行</h3><p>参考<code>Nan&#39;s Blog</code>的《系统开机启动脚本》文章。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp, http, https 协议。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;数据准备：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;公网IP: X.X.X.
-      
-    
-    </summary>
-    
-      <category term="内网穿透" scheme="/categories/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
-    
-    
-      <category term="Linux" scheme="/tags/Linux/"/>
-    
-      <category term="frp" scheme="/tags/frp/"/>
-    
-      <category term="Windows" scheme="/tags/Windows/"/>
     
   </entry>
   
