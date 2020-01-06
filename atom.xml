@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-12-19T01:47:55.466Z</updated>
+  <updated>2020-01-06T13:59:27.092Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>南生论坛页面静态展示v2.6</title>
+    <link href="/2020/01/06/%E5%8D%97%E7%94%9F%E8%AE%BA%E5%9D%9B%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%B1%95%E7%A4%BAv2-6/"/>
+    <id>/2020/01/06/南生论坛页面静态展示v2-6/</id>
+    <published>2020-01-06T13:34:33.000Z</published>
+    <updated>2020-01-06T13:59:27.092Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="用户系统"><a href="#用户系统" class="headerlink" title="用户系统"></a>用户系统</h3><h4 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/用户-登录v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p><code>手机上的效果：</code></p><p><img src="/img/手机-登录v2.6.jpg" alt="image" width="50%;" align="center"></p><h4 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/用户-注册v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p><code>手机上的效果：</code></p><p><img src="/img/手机-注册v2.6.jpg" alt="image" width="50%;" align="center/"></p><h4 id="首页-登录前"><a href="#首页-登录前" class="headerlink" title="首页-登录前"></a>首页-登录前</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/用户-首页-登录前v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p><code>手机上的效果：</code></p><p><img src="/img/手机-首页-登录前v2.6.jpg" alt="image" width="50%;" align="center"></p><h4 id="首页-登录后"><a href="#首页-登录后" class="headerlink" title="首页-登录后"></a>首页-登录后</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/用户-首页-登陆后v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p><code>手机上的效果：</code></p><p><img src="/img/手机-首页-登录后v2.6.jpg" alt="image" width="50%;" align="center"></p><h4 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/用户-写文章v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p><code>手机上的效果：</code></p><p><img src="/img/手机-写文章v2.6.jpg" alt="image" width="50%;" align="center"></p><h4 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/用户-修改文章v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p><code>手机上的效果：</code></p><p><img src="/img/手机-修改文章v2.6.jpg" alt="image" width="50%;" align="center"></p><h4 id="个人主页"><a href="#个人主页" class="headerlink" title="个人主页"></a>个人主页</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/用户-个人主页v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p><code>手机上的效果：</code></p><p><img src="/img/手机-个人主页v2.6.jpg" alt="image" width="50%;" align="center"></p><h4 id="他人主页"><a href="#他人主页" class="headerlink" title="他人主页"></a>他人主页</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/用户-他人主页v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p><code>手机上的效果：</code></p><p><img src="/img/手机-个人主页v2.6.jpg" alt="image" width="50%;" align="center"></p><h4 id="编辑个人资料"><a href="#编辑个人资料" class="headerlink" title="编辑个人资料"></a>编辑个人资料</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/用户-编辑个人资料v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p><code>手机上的效果：</code></p><p><img src="/img/手机-编辑个人资料v2.6.jpg" alt="image" width="50%;" align="center"></p><h4 id="基本信息设置"><a href="#基本信息设置" class="headerlink" title="基本信息设置"></a>基本信息设置</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/用户-基本信息设置v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p><code>手机上的效果：</code></p><p><img src="/img/手机-基本信息设置v2.6.jpg" alt="image" width="50%;" align="center"></p><h4 id="修改头像"><a href="#修改头像" class="headerlink" title="修改头像"></a>修改头像</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/用户-上传头像v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p><code>手机上的效果：</code></p><p><img src="/img/手机-修改头像v2.6.jpg" alt="image" width="50%;" align="center"></p><h4 id="动态"><a href="#动态" class="headerlink" title="动态"></a>动态</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/用户-动态v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p><code>手机上的效果：</code></p><p><img src="/img/手机-动态v2.6.jpg" alt="image" width="50%;" align="center"></p><h4 id="回答"><a href="#回答" class="headerlink" title="回答"></a>回答</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/用户-回答v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p><code>手机上的效果：</code></p><p><img src="/img/手机-回答v2.6.jpg" alt="image" width="50%;" align="center"></p><h4 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/用户-关注v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p><code>手机上的效果：</code></p><p><img src="/img/手机-关注v2.6.jpg" alt="image" width="50%;" align="center"></p><h4 id="收藏"><a href="#收藏" class="headerlink" title="收藏"></a>收藏</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/用户-收藏v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p><code>手机上的效果：</code></p><p><img src="/img/手机-收藏v2.6.jpg" alt="image" width="50%;" align="center"></p><h4 id="相册"><a href="#相册" class="headerlink" title="相册"></a>相册</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/用户-相册v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p><code>手机上的效果：</code></p><p><img src="/img/手机-相册v2.6.jpg" alt="image" width="50%;" align="center"></p><h4 id="有照片的相册"><a href="#有照片的相册" class="headerlink" title="有照片的相册"></a>有照片的相册</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/用户-照片-有v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p><code>手机上的效果：</code></p><p><img src="/img/手机-有照片的相册v2.6.jpg" alt="image" width="50%;" align="center"></p><h4 id="无照片的相册"><a href="#无照片的相册" class="headerlink" title="无照片的相册"></a>无照片的相册</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/用户-照片-无v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><p><code>手机上的效果：</code></p><p><img src="/img/手机-无照片的相册v2.6.jpg" alt="image" width="50%;" align="center"></p><h3 id="管理员系统"><a href="#管理员系统" class="headerlink" title="管理员系统"></a>管理员系统</h3><h4 id="登录-1"><a href="#登录-1" class="headerlink" title="登录"></a>登录</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/管理员-登录v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><h4 id="初始页面"><a href="#初始页面" class="headerlink" title="初始页面"></a>初始页面</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/管理员-初始页面v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><h4 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/管理员-用户管理v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><h4 id="文章管理"><a href="#文章管理" class="headerlink" title="文章管理"></a>文章管理</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/管理员-文章管理v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><h4 id="版块管理"><a href="#版块管理" class="headerlink" title="版块管理"></a>版块管理</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/管理员-版块管理v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure><h4 id="访问记录"><a href="#访问记录" class="headerlink" title="访问记录"></a>访问记录</h4><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/管理员-访问记录v2.6.png" alt="image" title="">                </div>                <div class="image-caption">image</div>            </figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;用户系统&quot;&gt;&lt;a href=&quot;#用户系统&quot; class=&quot;headerlink&quot; title=&quot;用户系统&quot;&gt;&lt;/a&gt;用户系统&lt;/h3&gt;&lt;h4 id=&quot;登录&quot;&gt;&lt;a href=&quot;#登录&quot; class=&quot;headerlink&quot; title=&quot;登录&quot;&gt;&lt;/a&gt;登录&lt;/h
+      
+    
+    </summary>
+    
+      <category term="南生论坛" scheme="/categories/%E5%8D%97%E7%94%9F%E8%AE%BA%E5%9D%9B/"/>
+    
+    
+      <category term="展示" scheme="/tags/%E5%B1%95%E7%A4%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>南生论坛页面静态展示</title>
@@ -231,11 +256,11 @@
       <category term="EwoMail" scheme="/categories/EwoMail/"/>
     
     
+      <category term="配置" scheme="/tags/%E9%85%8D%E7%BD%AE/"/>
+    
       <category term="邮件服务器" scheme="/tags/%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
       <category term="搭建" scheme="/tags/%E6%90%AD%E5%BB%BA/"/>
-    
-      <category term="配置" scheme="/tags/%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   
@@ -527,38 +552,6 @@
       <category term="Linux" scheme="/tags/Linux/"/>
     
       <category term="远程连接" scheme="/tags/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IntelliJIDEA tomcat在浏览器js乱码问题解决</title>
-    <link href="/2019/04/28/IntelliJIDEA-tomcat%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8js%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
-    <id>/2019/04/28/IntelliJIDEA-tomcat在浏览器js乱码问题解决/</id>
-    <published>2019-04-28T03:30:05.000Z</published>
-    <updated>2019-04-28T03:57:34.814Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><h2 id="在配置Tomcat的时候添加参数"><a href="#在配置Tomcat的时候添加参数" class="headerlink" title="在配置Tomcat的时候添加参数"></a>在配置Tomcat的时候添加参数</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Dfile.encoding=UTF-8</span><br></pre></td></tr></table></figure><p><img src="/img/idea-tomcat.png" alt=""></p></li><li><h2 id="修改idea64-exe-vmoptions和idea-exe-vmoptions文件"><a href="#修改idea64-exe-vmoptions和idea-exe-vmoptions文件" class="headerlink" title="修改idea64.exe.vmoptions和idea.exe.vmoptions文件"></a>修改<code>idea64.exe.vmoptions</code>和<code>idea.exe.vmoptions</code>文件</h2><p>找到idea安装目录bin目录下如下图所示两个文件，用编辑器打开，在文件末尾添加 <code>-Dfile.encoding=UTF-8</code> ，然后<code>重启idea</code>，再打开浏览器就会发现中文已经可以正常显示了</p><p><img src="/img/idea配置.png" alt=""></p><p><img src="/img/idea-v.png" alt=""></p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;h2 id=&quot;在配置Tomcat的时候添加参数&quot;&gt;&lt;a href=&quot;#在配置Tomcat的时候添加参数&quot; class=&quot;headerlink&quot; title=&quot;在配置Tomcat的时候添加参数&quot;&gt;&lt;/a&gt;在配置Tomcat的时候添加参数&lt;/h2&gt;&lt;figure 
-      
-    
-    </summary>
-    
-      <category term="IDEA" scheme="/categories/IDEA/"/>
-    
-    
-      <category term="IDEA" scheme="/tags/IDEA/"/>
-    
-      <category term="Tomcat" scheme="/tags/Tomcat/"/>
-    
-      <category term="浏览器" scheme="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
-    
-      <category term="中文乱码" scheme="/tags/%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/"/>
     
   </entry>
   
