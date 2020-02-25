@@ -32,7 +32,7 @@
 <meta property="og:image" content="/img/nginx.png">
 <meta property="og:image" content="/img/nginx%E9%85%8D%E7%BD%AE.png">
 <meta property="og:image" content="/img/nginx2.png">
-<meta property="og:updated_time" content="2019-10-10T03:19:16.658Z">
+<meta property="og:updated_time" content="2020-02-25T07:18:14.233Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建http服务器-nginx">
 <meta name="twitter:description" content="编译安装nginx参考：https://blog.csdn.net/w410589502/article/details/70787468 安装安装 nginx  1yum  -y install nginx 这一步可能会遇到&amp;quot;No package nginx available.&amp;quot;问题，解决方法如下： 问题处理问题描述：见下图">
@@ -223,7 +223,7 @@
 <ul>
 <li>防火墙中加入允许80 端口访问</li>
 </ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 加入80端口</span></span><br><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br><span class="line"></span><br><span class="line"><span class="comment">## 附加：</span></span><br><span class="line"><span class="comment"># 显示防火墙应用列表</span></span><br><span class="line">firewall-cmd --list-all</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 加入80端口（--permanent永久生效，没有此参数重启后失效）</span></span><br><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=1000-2000/tcp --permanent</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新载入</span></span><br><span class="line">firewall-cmd --reload</span><br><span class="line"><span class="comment"># 查看</span></span><br><span class="line">firewall-cmd --zone=public --query-port=80/tcp</span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line">firewall-cmd --zone=public --remove-port=80/tcp --permanent</span><br><span class="line"></span><br><span class="line"><span class="comment">## 附加：</span></span><br><span class="line"><span class="comment"># 显示防火墙应用列表</span></span><br><span class="line">firewall-cmd --list-all</span><br></pre></td></tr></table></figure>
 <ul>
 <li>重启防火墙</li>
 </ul>
@@ -277,7 +277,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-10-10T03:19:16.658Z" itemprop="dateUpdated">2019-10-10 11:19:16</time>
+    最后更新时间：<time datetime="2020-02-25T07:18:14.233Z" itemprop="dateUpdated">2020-02-25 15:18:14</time>
 </span><br>
 
 

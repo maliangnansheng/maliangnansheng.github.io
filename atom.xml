@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-01-09T01:24:21.618Z</updated>
+  <updated>2020-02-13T01:44:38.597Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>安装Licode</title>
+    <link href="/2020/02/11/%E5%AE%89%E8%A3%85Licode/"/>
+    <id>/2020/02/11/安装Licode/</id>
+    <published>2020-02-11T03:37:42.000Z</published>
+    <updated>2020-02-13T01:44:38.597Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><p>操作系统ubuntu18.04 LTS（root登录，否则手动给权限sudo）</p><h2 id="克隆Licode代码"><a href="#克隆Licode代码" class="headerlink" title="克隆Licode代码"></a>克隆Licode代码</h2><p>您首先需要从github克隆我们的代码。</p><p>您需要在计算机中安装git</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure><p> 现在克隆存储库并进入<code>licode/</code>文件夹（也可以先在本地下载好传输到服务器）</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/ging/licode.git</span><br><span class="line"><span class="built_in">cd</span> licode</span><br></pre></td></tr></table></figure><p> <code>下面使用的所有脚本都包含在从github克隆的代码中</code> </p><h2 id="安装依赖项"><a href="#安装依赖项" class="headerlink" title="安装依赖项"></a>安装依赖项</h2><p> 现在，您需要安装一些依赖项才能使用Licode </p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前提：需要安装git</span></span><br><span class="line">./scripts/installUbuntuDeps.sh</span><br></pre></td></tr></table></figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/licode001.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h2 id="安装Licode"><a href="#安装Licode" class="headerlink" title="安装Licode"></a>安装Licode</h2><p>此步骤将安装所有Licode组件。</p><p>这些组件是：<code>Erizo，Erizo API，Erizo Controller和Nuve</code></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前提：需要安装conan</span></span><br><span class="line">apt install python3-pip</span><br><span class="line">pip3 install conan</span><br><span class="line"><span class="comment">## 安装erizo</span></span><br><span class="line">./scripts/installErizo.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 前提：需要安装Cmake、mongodb</span></span><br><span class="line">apt install cmake</span><br><span class="line">apt install mongodb-clients</span><br><span class="line">apt install mongodb-server-core</span><br><span class="line"><span class="comment">## 安装nuve</span></span><br><span class="line">./scripts/installNuve.sh</span><br></pre></td></tr></table></figure><h2 id="安装基本示例"><a href="#安装基本示例" class="headerlink" title="安装基本示例"></a>安装基本示例</h2><p> 此步骤将安装一个基本的测试示例</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./scripts/installBasicExample.sh</span><br></pre></td></tr></table></figure><h2 id="测试Licode"><a href="#测试Licode" class="headerlink" title="测试Licode"></a>测试Licode</h2><p> 目前，您已经在计算机中安装了Licode和一个基本的视频会议示例以对其进行测试。让我们运行它们 </p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 此步骤将初始化所有Licode组件</span></span><br><span class="line">./scripts/initLicode.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此步骤将初始化基本示例</span></span><br><span class="line">./scripts/initBasicExample.sh</span><br></pre></td></tr></table></figure><p> 现在，您可以连接到“ localhost:3001”并测试您的基本视频会议示例！ </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;准备环境&quot;&gt;&lt;a href=&quot;#准备环境&quot; class=&quot;headerlink&quot; title=&quot;准备环境&quot;&gt;&lt;/a&gt;准备环境&lt;/h2&gt;&lt;p&gt;操作系统ubuntu18.04 LTS（root登录，否则手动给权限sudo）&lt;/p&gt;
+&lt;h2 id=&quot;克隆Licode代码
+      
+    
+    </summary>
+    
+      <category term="Licode" scheme="/categories/Licode/"/>
+    
+    
+      <category term="安装" scheme="/tags/%E5%AE%89%E8%A3%85/"/>
+    
+  </entry>
   
   <entry>
     <title>南生论坛页面静态展示v2.6</title>
@@ -522,36 +548,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Linux下远程连接MySQL数据库</title>
-    <link href="/2019/05/08/Linux%E4%B8%8B%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5MySQL%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    <id>/2019/05/08/Linux下远程连接MySQL数据库/</id>
-    <published>2019-05-08T15:43:12.000Z</published>
-    <updated>2019-08-21T09:05:34.326Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li><p><strong>在服务器端开启远程访问</strong></p><p>首先进入mysql数据库</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br><span class="line">Enter password: <span class="comment">#输入密码</span></span><br></pre></td></tr></table></figure><p>然后输入下面两个命令：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; grant all privileges on *.* to <span class="string">'root'</span>@<span class="string">'%'</span> identified by <span class="string">'password'</span>;</span><br><span class="line">Query OK, 0 rows affected, 1 warning (0.00 sec)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果该命令报错“ERROR 1819 (HY000): Your password does not satisfy the current policy requirements”，就先执行以下两个命令后再执行上面的命令</span></span><br><span class="line">mysql&gt; <span class="built_in">set</span> global validate_password_policy=0;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; <span class="built_in">set</span> global validate_password_length=1;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; flush privileges;</span><br></pre></td></tr></table></figure><ul><li><p>第一个*是数据库，可以改成允许访问的数据库名称</p></li><li><p>第二个<em> 是数据库的表名称，</em>代表允许访问任意的表</p></li><li>root代表远程登录使用的用户名，可以自定义</li><li>%代表允许任意ip登录，如果你想指定特定的IP，可以把%替换掉就可以了</li><li><code>password</code>代表<code>远程登录时使用的密码</code>，可以自定义</li><li><code>flush privileges;</code>这是让权限立即生效</li></ul></li><li><p><strong>修改<code>my.cnf</code>配置文件</strong></p><p>这个是mysql的配置文件，如果你无标题文章找不到在哪里的话，可以输入<code>find /* -name my.cnf</code> 找到<br>通过vim编辑该文件，找到<code>bind-address = 127.0.0.1</code>这一句（如果没有就不管），然后在前面加个#号注释掉，保存退出</p></li><li><p><strong>重启服务</strong></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service mysql restart</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">systemctl restart mysqld</span><br></pre></td></tr></table></figure></li><li><p><strong>开放3306端口（端口以自己实际情况为准）</strong></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看开发端口情况</span></span><br><span class="line">firewall-cmd --list-all</span><br><span class="line"><span class="comment"># 开发3306端口</span></span><br><span class="line">firewall-cmd --zone=public --add-port=3306/tcp --permanent</span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line">systemctl restart firewalld</span><br></pre></td></tr></table></figure></li><li><p><strong>在本地远程连接</strong></p><p>在终端输入：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h 服务器ip地址 -P 3306 -u root -p</span><br></pre></td></tr></table></figure><p>然后输入密码即可。</p><p>也可以使用连接工具连接，例如<code>Navicat</code></p></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;在服务器端开启远程访问&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;首先进入mysql数据库&lt;/p&gt;
-&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class
-      
-    
-    </summary>
-    
-      <category term="MySQL" scheme="/categories/MySQL/"/>
-    
-    
-      <category term="Linux" scheme="/tags/Linux/"/>
-    
-      <category term="远程连接" scheme="/tags/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/"/>
     
   </entry>
   
