@@ -449,10 +449,10 @@ var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = '马亮南生的博客';
+            document.title = '南生博客';
             clearTimeout(titleTime);
         } else {
-            document.title = '马亮南生的博客';
+            document.title = '南生博客';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

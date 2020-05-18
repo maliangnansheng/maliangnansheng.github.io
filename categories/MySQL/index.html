@@ -150,11 +150,11 @@
             ">全部</a>
         
 
-            <a href="/categories/MySQL/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light active">MySQL</a>
+            <a href="/categories/Linux/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">Linux</a>
 
         
 
-            <a href="/categories/Linux/" style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light">Linux</a>
+            <a href="/categories/MySQL/" style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">MySQL</a>
 
         
 
@@ -434,10 +434,10 @@ var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = '马亮南生的博客';
+            document.title = '南生博客';
             clearTimeout(titleTime);
         } else {
-            document.title = '马亮南生的博客';
+            document.title = '南生博客';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);
