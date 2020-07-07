@@ -248,9 +248,9 @@
       <category term="hexo" scheme="/categories/hexo/"/>
     
     
-      <category term="博客" scheme="/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
       <category term="CentOS" scheme="/tags/CentOS/"/>
+    
+      <category term="博客" scheme="/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
@@ -502,11 +502,11 @@
       <category term="CloudStack" scheme="/categories/CloudStack/"/>
     
     
+      <category term="CloudStack" scheme="/tags/CloudStack/"/>
+    
       <category term="云计算" scheme="/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
     
       <category term="api" scheme="/tags/api/"/>
-    
-      <category term="CloudStack" scheme="/tags/CloudStack/"/>
     
   </entry>
   
