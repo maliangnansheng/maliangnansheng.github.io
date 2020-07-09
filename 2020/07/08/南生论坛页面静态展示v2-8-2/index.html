@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>南生论坛页面静态展示v2.8.2 | Nan&#39;s Blog | 弱者才言命，强者只言运！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="展示">
+    <meta name="description" content="注：以下截图是v2.8.2的界面样子 功能说明南生论坛v2.8.2在v2.6的基础上： 对前后端代码和数据库表进行了全面重构，新增了闲聊，图片/视频文件压缩并上七牛云，优化系统，提升访问效率，新增轮播图管理、项目管理，运用了Redis缓存技术 适用人员南生论坛v2.8.2该版本适用于对ssm框架有一定熟悉度、对代码规范度要求比较高、对图片/视频文件上云有兴趣的童鞋使用，主要可以通过该项目了解整个项">
+<meta name="keywords" content="展示">
+<meta property="og:type" content="article">
+<meta property="og:title" content="南生论坛页面静态展示v2.8.2">
+<meta property="og:url" content="/2020/07/08/南生论坛页面静态展示v2-8-2/index.html">
+<meta property="og:site_name" content="Nan&#39;s Blog">
+<meta property="og:description" content="注：以下截图是v2.8.2的界面样子 功能说明南生论坛v2.8.2在v2.6的基础上： 对前后端代码和数据库表进行了全面重构，新增了闲聊，图片/视频文件压缩并上七牛云，优化系统，提升访问效率，新增轮播图管理、项目管理，运用了Redis缓存技术 适用人员南生论坛v2.8.2该版本适用于对ssm框架有一定熟悉度、对代码规范度要求比较高、对图片/视频文件上云有兴趣的童鞋使用，主要可以通过该项目了解整个项">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="/img/用户-登录v2.8.2.png">
+<meta property="og:image" content="/img/用户-注册v2.8.2.png">
+<meta property="og:image" content="/img/用户-首页v2.8.2.png">
+<meta property="og:image" content="/img/用户-写文章v2.6.png">
+<meta property="og:image" content="/img/用户-修改文章v2.6.png">
+<meta property="og:image" content="/img/用户-闲聊v2.8.2.png">
+<meta property="og:image" content="/img/用户-毒鸡汤v2.8.2.png">
+<meta property="og:image" content="/img/用户-文章详情v2.8.2.png">
+<meta property="og:image" content="/img/用户-个人主页v2.6.png">
+<meta property="og:image" content="/img/用户-他人主页v2.6.png">
+<meta property="og:image" content="/img/用户-编辑个人资料v2.6.png">
+<meta property="og:image" content="/img/用户-基本信息设置v2.6.png">
+<meta property="og:image" content="/img/用户-上传头像v2.6.png">
+<meta property="og:image" content="/img/用户-动态v2.6.png">
+<meta property="og:image" content="/img/用户-回答v2.6.png">
+<meta property="og:image" content="/img/用户-关注v2.6.png">
+<meta property="og:image" content="/img/用户-收藏v2.6.png">
+<meta property="og:image" content="/img/用户-相册v2.6.png">
+<meta property="og:image" content="/img/用户-照片-有v2.6.png">
+<meta property="og:image" content="/img/用户-照片-无v2.6.png">
+<meta property="og:image" content="/img/管理员-登录v2.6.png">
+<meta property="og:image" content="/img/管理员-仪表盘v2.8.2.png">
+<meta property="og:image" content="/img/管理员-用户管理v2.8.2.png">
+<meta property="og:image" content="/img/管理员-文章管理v2.8.2.png">
+<meta property="og:image" content="/img/管理员-版块管理v2.8.2.png">
+<meta property="og:image" content="/img/管理员-版本管理v2.8.2.png">
+<meta property="og:image" content="/img/管理员-轮播管理v2.8.2.png">
+<meta property="og:image" content="/img/管理员-项目管理v2.8.2.png">
+<meta property="og:image" content="/img/管理员-访问记录v2.8.2.png">
+<meta property="og:updated_time" content="2020-07-09T14:44:24.038Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="南生论坛页面静态展示v2.8.2">
+<meta name="twitter:description" content="注：以下截图是v2.8.2的界面样子 功能说明南生论坛v2.8.2在v2.6的基础上： 对前后端代码和数据库表进行了全面重构，新增了闲聊，图片/视频文件压缩并上七牛云，优化系统，提升访问效率，新增轮播图管理、项目管理，运用了Redis缓存技术 适用人员南生论坛v2.8.2该版本适用于对ssm框架有一定熟悉度、对代码规范度要求比较高、对图片/视频文件上云有兴趣的童鞋使用，主要可以通过该项目了解整个项">
+<meta name="twitter:image" content="/img/用户-登录v2.8.2.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">马亮南生</h5>
+          <a href="mailto:maliangnansheng@gmail.com" title="maliangnansheng@gmail.com" class="mail">maliangnansheng@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/maliangnansheng" target="_blank">
+                <i class="icon icon-lg icon-github-alt"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.nanshengbbs.top" target="_blank">
+                <i class="icon icon-lg icon-adjust"></i>
+                论坛
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">南生论坛页面静态展示v2.8.2</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">南生论坛页面静态展示v2.8.2</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-07-08T13:34:33.000Z" itemprop="datePublished" class="page-time">
+  2020-07-08
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/南生论坛/">南生论坛</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#功能说明"><span class="post-toc-number">1.</span> <span class="post-toc-text">功能说明</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#南生论坛v2-8-2"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">南生论坛v2.8.2</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#适用人员"><span class="post-toc-number">2.</span> <span class="post-toc-text">适用人员</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#南生论坛v2-8-2-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">南生论坛v2.8.2</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优势"><span class="post-toc-number">3.</span> <span class="post-toc-text">优势</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#南生论坛v2-8-2-2"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">南生论坛v2.8.2</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缺点"><span class="post-toc-number">4.</span> <span class="post-toc-text">缺点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用户系统-展示"><span class="post-toc-number">5.</span> <span class="post-toc-text">用户系统-展示</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#登录"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">登录</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#注册"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">注册</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#首页"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">首页</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#写文章"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">写文章</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修改文章"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">修改文章</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#闲聊"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">闲聊</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#毒鸡汤"><span class="post-toc-number">5.7.</span> <span class="post-toc-text">毒鸡汤</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#文章详情"><span class="post-toc-number">5.8.</span> <span class="post-toc-text">文章详情</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#个人主页"><span class="post-toc-number">5.9.</span> <span class="post-toc-text">个人主页</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#他人主页"><span class="post-toc-number">5.10.</span> <span class="post-toc-text">他人主页</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#编辑个人资料"><span class="post-toc-number">5.11.</span> <span class="post-toc-text">编辑个人资料</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基本信息设置"><span class="post-toc-number">5.12.</span> <span class="post-toc-text">基本信息设置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修改头像"><span class="post-toc-number">5.13.</span> <span class="post-toc-text">修改头像</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#动态"><span class="post-toc-number">5.14.</span> <span class="post-toc-text">动态</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#回答"><span class="post-toc-number">5.15.</span> <span class="post-toc-text">回答</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#关注"><span class="post-toc-number">5.16.</span> <span class="post-toc-text">关注</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#收藏"><span class="post-toc-number">5.17.</span> <span class="post-toc-text">收藏</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#相册"><span class="post-toc-number">5.18.</span> <span class="post-toc-text">相册</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#有照片的相册"><span class="post-toc-number">5.19.</span> <span class="post-toc-text">有照片的相册</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#无照片的相册"><span class="post-toc-number">5.20.</span> <span class="post-toc-text">无照片的相册</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#管理系统-展示"><span class="post-toc-number">6.</span> <span class="post-toc-text">管理系统-展示</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#登录-1"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">登录</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#仪表盘"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">仪表盘</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#用户管理"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">用户管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#文章管理"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">文章管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#版块管理"><span class="post-toc-number">6.5.</span> <span class="post-toc-text">版块管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#版本管理"><span class="post-toc-number">6.6.</span> <span class="post-toc-text">版本管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#轮播管理"><span class="post-toc-number">6.7.</span> <span class="post-toc-text">轮播管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#项目管理"><span class="post-toc-number">6.8.</span> <span class="post-toc-text">项目管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#访问记录"><span class="post-toc-number">6.9.</span> <span class="post-toc-text">访问记录</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-南生论坛页面静态展示v2-8-2" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">南生论坛页面静态展示v2.8.2</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-07-08 21:34:33" datetime="2020-07-08T13:34:33.000Z" itemprop="datePublished">2020-07-08</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/南生论坛/">南生论坛</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><strong>注：</strong><code>以下截图是v2.8.2的界面样子</code></p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><h4 id="南生论坛v2-8-2"><a href="#南生论坛v2-8-2" class="headerlink" title="南生论坛v2.8.2"></a>南生论坛v2.8.2</h4><p><code>在v2.6的基础上：</code> 对前后端代码和数据库表进行了全面重构，新增了闲聊，图片/视频文件压缩并上七牛云，优化系统，提升访问效率，新增轮播图管理、项目管理，运用了Redis缓存技术</p>
+<h3 id="适用人员"><a href="#适用人员" class="headerlink" title="适用人员"></a>适用人员</h3><h4 id="南生论坛v2-8-2-1"><a href="#南生论坛v2-8-2-1" class="headerlink" title="南生论坛v2.8.2"></a>南生论坛v2.8.2</h4><p>该版本适用于对ssm框架<code>有一定熟悉度</code>、对代码规范度要求比较高、对<code>图片/视频文件上云</code>有兴趣的童鞋使用，主要可以通过该项目了解整个项目的设计思路（让<code>心怀大志</code>、<code>无从下手</code>的你找到突破口）</p>
+<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><h4 id="南生论坛v2-8-2-2"><a href="#南生论坛v2-8-2-2" class="headerlink" title="南生论坛v2.8.2"></a>南生论坛v2.8.2</h4><p>注释十分详细、逻辑清晰、界面简洁美观、功能较完善、ECharts图表化展示、人机交互、异步加载、分页加载、统计记录、相册相片、支持Markdown、支持QQ分享文章、文章显示更加合理化（首页等展示文章的缩略信息-<code>可以提高文章的展示数量</code>；新增文章详情页面-<code>有利于读者专心于该文章而不被其它信息干扰</code>）、新增闲聊、图片/视频文件上云、新增轮播图管理、新增项目管理、Redis缓存技术、代码冗余度较低、命名规范</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>前后端未分离</p>
+<h3 id="用户系统-展示"><a href="#用户系统-展示" class="headerlink" title="用户系统-展示"></a>用户系统-展示</h3><h4 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-登录v2.8.2.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-注册v2.8.2.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-首页v2.8.2.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-写文章v2.6.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-修改文章v2.6.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="闲聊"><a href="#闲聊" class="headerlink" title="闲聊"></a>闲聊</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-闲聊v2.8.2.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="毒鸡汤"><a href="#毒鸡汤" class="headerlink" title="毒鸡汤"></a>毒鸡汤</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-毒鸡汤v2.8.2.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="文章详情"><a href="#文章详情" class="headerlink" title="文章详情"></a>文章详情</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-文章详情v2.8.2.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="个人主页"><a href="#个人主页" class="headerlink" title="个人主页"></a>个人主页</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-个人主页v2.6.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="他人主页"><a href="#他人主页" class="headerlink" title="他人主页"></a>他人主页</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-他人主页v2.6.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="编辑个人资料"><a href="#编辑个人资料" class="headerlink" title="编辑个人资料"></a>编辑个人资料</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-编辑个人资料v2.6.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="基本信息设置"><a href="#基本信息设置" class="headerlink" title="基本信息设置"></a>基本信息设置</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-基本信息设置v2.6.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="修改头像"><a href="#修改头像" class="headerlink" title="修改头像"></a>修改头像</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-上传头像v2.6.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="动态"><a href="#动态" class="headerlink" title="动态"></a>动态</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-动态v2.6.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="回答"><a href="#回答" class="headerlink" title="回答"></a>回答</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-回答v2.6.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-关注v2.6.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="收藏"><a href="#收藏" class="headerlink" title="收藏"></a>收藏</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-收藏v2.6.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="相册"><a href="#相册" class="headerlink" title="相册"></a>相册</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-相册v2.6.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="有照片的相册"><a href="#有照片的相册" class="headerlink" title="有照片的相册"></a>有照片的相册</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-照片-有v2.6.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="无照片的相册"><a href="#无照片的相册" class="headerlink" title="无照片的相册"></a>无照片的相册</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/用户-照片-无v2.6.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h3 id="管理系统-展示"><a href="#管理系统-展示" class="headerlink" title="管理系统-展示"></a>管理系统-展示</h3><h4 id="登录-1"><a href="#登录-1" class="headerlink" title="登录"></a>登录</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/管理员-登录v2.6.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="仪表盘"><a href="#仪表盘" class="headerlink" title="仪表盘"></a>仪表盘</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/管理员-仪表盘v2.8.2.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/管理员-用户管理v2.8.2.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="文章管理"><a href="#文章管理" class="headerlink" title="文章管理"></a>文章管理</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/管理员-文章管理v2.8.2.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="版块管理"><a href="#版块管理" class="headerlink" title="版块管理"></a>版块管理</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/管理员-版块管理v2.8.2.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="版本管理"><a href="#版本管理" class="headerlink" title="版本管理"></a>版本管理</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/管理员-版本管理v2.8.2.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="轮播管理"><a href="#轮播管理" class="headerlink" title="轮播管理"></a>轮播管理</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/管理员-轮播管理v2.8.2.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="项目管理"><a href="#项目管理" class="headerlink" title="项目管理"></a>项目管理</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/管理员-项目管理v2.8.2.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<h4 id="访问记录"><a href="#访问记录" class="headerlink" title="访问记录"></a>访问记录</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/管理员-访问记录v2.8.2.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-07-09T14:44:24.038Z" itemprop="dateUpdated">2020-07-09 22:44:24</time>
+</span><br>
+
+
+        
+        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2020/07/08/南生论坛页面静态展示v2-8-2/" target="_blank" rel="external">/2020/07/08/南生论坛页面静态展示v2-8-2/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="马亮南生">
+            马亮南生
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/展示/">展示</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/05/30/Java图片处理的几种方式/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Java图片处理的几种方式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "UWQMSUdPgeBkosxu47FddoUj-gzGzoHsz",
+            appKey: "ohoclLXY4S8LdLCGOtoIFtFx",
+            avatar: "monsterid",
+            placeholder: "有问题就问呗...",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请喝咖啡，谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>马亮南生 &copy; 2018 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '南生博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '南生博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+	
+	<!-- 页面点击小红心 -->
+	<script type="text/javascript" src="/js/love.js"></script>
+</body>
+</html>
