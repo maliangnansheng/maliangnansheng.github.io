@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-07-13T06:15:33.313Z</updated>
+  <updated>2020-07-13T10:03:33.471Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>值得推荐的idea优秀插件</title>
+    <link href="/2020/07/13/%E5%80%BC%E5%BE%97%E6%8E%A8%E8%8D%90%E7%9A%84idea%E4%BC%98%E7%A7%80%E6%8F%92%E4%BB%B6/"/>
+    <id>/2020/07/13/值得推荐的idea优秀插件/</id>
+    <published>2020-07-13T07:52:13.000Z</published>
+    <updated>2020-07-13T10:03:33.471Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Lombok"><a href="#Lombok" class="headerlink" title="Lombok"></a>Lombok</h2><p>Lombok能以简单的注解形式来简化java代码，提高开发人员的开发效率。例如开发中经常需要写的javabean，都需要花时间去添加相应的getter/setter，也许还要去写构造器、equals等方法，而且需要维护，当属性多时会出现大量的getter/setter方法，这些显得很冗长也没有太多技术含量，一旦修改属性，就容易出现忘记修改对应方法的失误。Lombok能通过注解的方式，在编译时自动为属性生成构造器、getter/setter、equals、hashcode、toString方法。</p><ol><li><p>idea下载安装插件</p></li><li><p>在使用之前需要添加一下依赖：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Lombok能以简单的注解形式来简化java代码，提高开发人员的开发效率 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></li></ol><h3 id="POJO类常用注解"><a href="#POJO类常用注解" class="headerlink" title="POJO类常用注解"></a>POJO类常用注解</h3><ul><li><strong>@Getter/@Setter</strong>： 作用类上，生成所有成员变量的getter/setter方法；作用于成员变量上，生成该成员变量的getter/setter方法。可以设定访问权限及是否懒加载等</li><li><strong>@ToString：</strong>作用于类，覆盖默认的toString()方法，可以通过of属性限定显示某些字段，通过exclude属性排除某些字段</li><li><strong>@EqualsAndHashCode：</strong>作用于类，覆盖默认的equals和hashCode</li><li><strong>@NonNull：</strong>主要作用于成员变量和参数中，标识不能为空，否则抛出空指针异常</li><li><strong>@NoArgsConstructor, @RequiredArgsConstructor, @AllArgsConstructor：</strong>作用于类上，用于生成构造函数。有staticName、access等属性 - <code>(staticName属性一旦设定，将采用静态方法的方式生成实例，access属性可以限定访问权限)</code><ul><li><strong>@NoArgsConstructor：</strong>生成无参构造器</li><li><strong>@RequiredArgsConstructor：</strong>生成包含final和@NonNull注解的成员变量的构造器</li><li><strong>@AllArgsConstructor：</strong>生成全参构造器</li></ul></li><li><strong>@Data：</strong>作用于类上，是以下注解的集合：<code>@ToString @EqualsAndHashCode @Getter @Setter @RequiredArgsConstructor</code></li><li><strong>@Builder：</strong>作用于类上，将类转变为建造者模式</li><li><strong>@Log：</strong>作用于类上，生成日志变量。针对不同的日志实现产品，有不同的注解</li></ul><h3 id="其他重要注解"><a href="#其他重要注解" class="headerlink" title="其他重要注解"></a>其他重要注解</h3><ul><li><p><strong>@Cleanup：</strong>自动关闭资源，针对实现了java.io.Closeable接口的对象有效，如：典型的IO流对象</p></li><li><p><strong>@SneakyThrows：</strong>可以对受检异常进行捕捉并抛出</p></li><li><p><strong>@Synchronized：</strong>作用于方法级别，可以替换synchronize关键字或lock锁，用处不大</p></li></ul><h2 id="MybatisX"><a href="#MybatisX" class="headerlink" title="MybatisX"></a>MybatisX</h2><p>MybatisX 是一款基于 IDEA 的快速开发插件，为效率而生</p><h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><ul><li>Java 与 XML 调回跳转</li><li>Mapper 方法自动生成 XML</li></ul><h3 id="计划支持"><a href="#计划支持" class="headerlink" title="计划支持"></a>计划支持</h3><ul><li>连接数据源之后 xml 里自动提示字段</li><li>sql 增删改查</li><li>集成 MP 代码生成</li><li>其他</li></ul><h2 id="Alibaba-Java-Coding-Guidelines"><a href="#Alibaba-Java-Coding-Guidelines" class="headerlink" title="Alibaba Java Coding Guidelines"></a>Alibaba Java Coding Guidelines</h2><p>一款阿里巴巴公司试行的开发设计规范~ </p><h3 id="Bug的严重程度、优先级如何定义"><a href="#Bug的严重程度、优先级如何定义" class="headerlink" title="Bug的严重程度、优先级如何定义"></a>Bug的严重程度、优先级如何定义</h3><ul><li><strong>Blocker：</strong> 即系统无法执行、崩溃或严重资源不足、应用模块无法启动或异常退出、无法测试、造成系统不稳定。<br>严重花屏、内存泄漏、用户数据丢失或破坏、系统崩溃/死机/冻结、模块无法启动或异常退出、严重的数值计算错误、功能设计与需求严重不符、其它导致无法测试的错误, 如服务器500错误</li><li><strong>Critical：</strong>即影响系统功能或操作，主要功能存在严重缺陷，但不会影响到系统稳定性。<br>功能未实现、功能错误、系统刷新错误、数据通讯错误、轻微的数值计算错误、影响功能及界面的错误字或拼写错误、安全性问题</li><li><strong>Major：</strong>即界面、性能缺陷、兼容性。<br>操作界面错误（包括数据窗口内列名定义、含义是否一致）、边界条件下错误、提示信息错误（包括未给出信息、信息提示错误等）、长时间操作无进度提示、系统未优化（性能问题）、光标跳转设置不好，鼠标（光标）定位错误、兼容性问题</li><li><strong>Minor/Trivial：</strong>即易用性及建议性问题。<br>界面格式等不规范、辅助说明描述不清楚、操作时未给用户提示、可输入区域和只读区域没有明显的区分标志、个别不影响产品理解的错别字、文字排列不整齐等一些小问题</li></ul><h3 id="犹如神助的功能"><a href="#犹如神助的功能" class="headerlink" title="犹如神助的功能"></a>犹如神助的功能</h3><p>阿里规范插件实时检查你书写的代码，并在右侧实时给出警告，警告也是汉字的！！</p><h4 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h4><p><strong>注：以下处理方式仅限Blocker，其他还需要自己手动修正</strong></p><ul><li><p>快捷键：Ait + Enter 自动补全（注：Windows 快捷键）</p></li><li><p>扫描结果面板，点击按钮自动补全</p></li></ul><h2 id="stackoverflow"><a href="#stackoverflow" class="headerlink" title="stackoverflow"></a>stackoverflow</h2><p>这个插件其实是最实用的插件，程序猿遇到的问题，基本都能找到回答，但是它使用的是google搜索引擎，对于，不购买vpn的同学来说，感觉好鸡肋呀~</p><p>选中需要搜索的问题，然后，右键点击查询 - <code>用StackoverFlow搜索的话个人觉得比用google 更精准</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Lombok&quot;&gt;&lt;a href=&quot;#Lombok&quot; class=&quot;headerlink&quot; title=&quot;Lombok&quot;&gt;&lt;/a&gt;Lombok&lt;/h2&gt;&lt;p&gt;Lombok能以简单的注解形式来简化java代码，提高开发人员的开发效率。例如开发中经常需要写的javabe
+      
+    
+    </summary>
+    
+      <category term="IDEA" scheme="/categories/IDEA/"/>
+    
+    
+      <category term="插件" scheme="/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>南生论坛页面静态展示v2.8.2</title>
@@ -528,40 +553,11 @@
       <category term="CloudStack" scheme="/categories/CloudStack/"/>
     
     
-      <category term="CloudStack" scheme="/tags/CloudStack/"/>
-    
       <category term="云计算" scheme="/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
     
       <category term="api" scheme="/tags/api/"/>
     
-  </entry>
-  
-  <entry>
-    <title>VPS搭建属于自己的SS代理</title>
-    <link href="/2019/06/10/VPS%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84SS%E4%BB%A3%E7%90%86/"/>
-    <id>/2019/06/10/VPS搭建属于自己的SS代理/</id>
-    <published>2019-06-10T08:09:06.000Z</published>
-    <updated>2019-06-10T08:40:53.564Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="安装shadowsocks"><a href="#安装shadowsocks" class="headerlink" title="安装shadowsocks"></a>安装shadowsocks</h2><h3 id="第一条命令"><a href="#第一条命令" class="headerlink" title="第一条命令"></a>第一条命令</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载脚本shadowsocks.sh</span></span><br><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 等待下载完成...</span></span><br></pre></td></tr></table></figure><h3 id="第二条命令"><a href="#第二条命令" class="headerlink" title="第二条命令"></a>第二条命令</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 为shadowsocks.sh添加执行权限</span></span><br><span class="line">chmod +x shadowsocks.sh</span><br></pre></td></tr></table></figure><h3 id="第三条命令"><a href="#第三条命令" class="headerlink" title="第三条命令"></a>第三条命令</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 中间会提示我们输入一些信息</span></span><br></pre></td></tr></table></figure><p><strong>中间会提示你输入你的SS server的账号，和端口。不输入就是默认。跑完命令后会出来你的SS客户端的信息。特别注意，由于iphone端的目前只支持到<code>cfb</code>，所以我们选择<code>aes-256-cfb</code>，即7，这一步按回车继续然后需要几分钟的安装过程，请耐心等待出现下面的画面！</strong></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/shadowsocks001.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;安装shadowsocks&quot;&gt;&lt;a href=&quot;#安装shadowsocks&quot; class=&quot;headerlink&quot; title=&quot;安装shadowsocks&quot;&gt;&lt;/a&gt;安装shadowsocks&lt;/h2&gt;&lt;h3 id=&quot;第一条命令&quot;&gt;&lt;a href=&quot;#第一条命
-      
-    
-    </summary>
-    
-      <category term="shadowsocks" scheme="/categories/shadowsocks/"/>
-    
-    
-      <category term="vps" scheme="/tags/vps/"/>
-    
-      <category term="shadowsocks" scheme="/tags/shadowsocks/"/>
-    
-      <category term="翻墙" scheme="/tags/%E7%BF%BB%E5%A2%99/"/>
+      <category term="CloudStack" scheme="/tags/CloudStack/"/>
     
   </entry>
   
