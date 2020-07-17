@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-07-13T10:03:33.471Z</updated>
+  <updated>2020-07-17T07:09:46.935Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据迁移</title>
+    <link href="/2020/07/17/%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB/"/>
+    <id>/2020/07/17/数据迁移/</id>
+    <published>2020-07-17T06:11:46.000Z</published>
+    <updated>2020-07-17T07:09:46.935Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><strong>cp</strong> 是在本机进行拷贝不能跨服务器</p></blockquote><blockquote><p><strong>scp</strong> 是secure copy的简写，用于在Linux下进行远程拷贝文件的命令， scp传输是加密的，可能会稍微影响一下速度，当你服务器硬盘变为只读 read only system时，用scp可以帮你把文件移出来，另 外，scp还非常不占资源，不会提高多少系统负荷，在这一点上，rsync就远远不及它了，虽然 rsync比scp会快一点，但当小文件众多的情况 下，rsync会导致硬盘I/O非常高，而scp基本不影响系统正常使用</p></blockquote><blockquote><p><strong>rsync</strong> 迁移单个没有太多小文件的数时比scp优秀，速度快</p></blockquote><h2 id="scp命令"><a href="#scp命令" class="headerlink" title="scp命令"></a>scp命令</h2><h2 id="rsync命令"><a href="#rsync命令" class="headerlink" title="rsync命令"></a>rsync命令</h2><h3 id="无密码通过ssh执行rsync"><a href="#无密码通过ssh执行rsync" class="headerlink" title="无密码通过ssh执行rsync"></a>无密码通过ssh执行rsync</h3><p>默认情况下，在执行rsync命令时通常需要我们<code>输入密码</code>。但有时我们并不希望如此，那么如何实现无密码执行rsync呢？</p><h4 id="需要密码"><a href="#需要密码" class="headerlink" title="需要密码"></a>需要密码</h4><ol><li><p>测试通过ssh可以执行rsync（需要密码）</p><p>执行rsync，确保你帐户的密码在远程服务器上可以使用，并能够将文件复制到远程服务器。<br>例：将原服务器<code>文件/root/mm.sh</code>同步到远程目录<code>/usr/share/nginx/html</code>(服务器地址：<code>172.18.195.253</code>) ，执行此操作时，服务器会要求你输入密码</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -avz -e ssh /root/mm.sh 172.18.195.253:/usr/share/nginx/html</span><br></pre></td></tr></table></figure></li></ol><h4 id="免密"><a href="#免密" class="headerlink" title="免密"></a>免密</h4><ol><li><p>使用<code>ssh-keygen</code>生成密匙</p><p>现在我们来配置ssh使得通过ssh执行rsync时不再索要密码。在原服务器上使用ssh-keygen生成公钥和秘钥。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line"><span class="comment"># 直接回车</span></span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/root/.ssh/id_rsa):</span><br><span class="line"><span class="comment"># 直接回车</span></span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line"><span class="comment"># 直接回车</span></span><br><span class="line">Enter same passphrase again:</span><br></pre></td></tr></table></figure><p>注意：当它要求您输入passphrase<code>按下enter键，不需要给任何密码</code></p></li><li><p>使用<code>ssh-copy-id</code>将公匙拷贝至远程主机</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ip 就是目标服务器地址</span></span><br><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub 172.18.195.253</span><br></pre></td></tr></table></figure><p>注：执行以上操作时会要求你输入远程主机帐户和密码，然后就会自动将公钥拷贝至远程目录。</p></li><li><p>无需密码通过ssh来执行rsync</p><p>现在，你可以不需要密码通过ssh连接到远程主机</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh 172.18.195.253</span><br></pre></td></tr></table></figure><p><img src="/img/rsync001.png" alt=""></p><p>再次执行rsync，它将不再要求你输入密码</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -avz -e ssh /root/mm.sh 172.18.195.253:/usr/share/nginx/html</span><br></pre></td></tr></table></figure><p><img src="/img/rsync002.png" alt=""></p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;cp&lt;/strong&gt; 是在本机进行拷贝不能跨服务器&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;scp&lt;/strong&gt; 是secure copy的简写，用于在Linux下进行远程拷贝文件的
+      
+    
+    </summary>
+    
+      <category term="远程拷贝" scheme="/categories/%E8%BF%9C%E7%A8%8B%E6%8B%B7%E8%B4%9D/"/>
+    
+    
+      <category term="rsync" scheme="/tags/rsync/"/>
+    
+  </entry>
   
   <entry>
     <title>值得推荐的idea优秀插件</title>
@@ -529,35 +558,6 @@
       <category term="汉字转拼音" scheme="/tags/%E6%B1%89%E5%AD%97%E8%BD%AC%E6%8B%BC%E9%9F%B3/"/>
     
       <category term="pinyin4j" scheme="/tags/pinyin4j/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CloudStack API编程指南</title>
-    <link href="/2019/07/02/CloudStack-API%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/"/>
-    <id>/2019/07/02/CloudStack-API编程指南/</id>
-    <published>2019-07-02T02:09:30.000Z</published>
-    <updated>2020-06-24T07:57:57.466Z</updated>
-    
-    <content type="html"><![CDATA[<p>来源：<a href="https://blog.csdn.net/u012124304/article/details/76152234" target="_blank" rel="noopener">https://blog.csdn.net/u012124304/article/details/76152234</a></p><h2 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h2><p>CloudStack API支持三种角色访问：</p><ol><li>根域管理员</li><li>域管理员</li><li>普通用户</li></ol><h2 id="提交API请求"><a href="#提交API请求" class="headerlink" title="提交API请求"></a>提交API请求</h2><p>所有CloudStack API请求都是以HTTP GET/POST的形式提交，一个请求包含下面三部分：</p><ul><li><code>API的URL地址：</code>即web服务API的入口地址(如： <a href="http://localhost:8080/client/api" target="_blank" rel="noopener">http://localhost:8080/client/api</a>)</li><li><code>命令：</code>你想要执行的web服务命令，如启动一个虚拟机</li><li><code>参数：</code>该命令所需要的必要或可选参数</li></ul><p>一个API请求的例子如下：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8080/client/api</span><br><span class="line">?<span class="built_in">command</span>=deployVirtualMachine</span><br><span class="line">&amp;serviceOfferingId=1</span><br><span class="line">&amp;diskOfferingId=1</span><br><span class="line">&amp;templateId=2</span><br><span class="line">&amp;zoneId=4</span><br><span class="line">&amp;apiKey=miVr6X7u6bN_sdahOBpjNejPgEsT35eXqjB8CG20YI3yaxXcgpyuaIRmFI_EJTVwZ0nUkkJbPmY3y2bciKwFQ</span><br><span class="line">&amp;signature=Lxx1DM40AjcXU%2FcaiK8RAP0O1hU%3D</span><br><span class="line"></span><br><span class="line"><span class="comment">#第1行就是CloudStack API的URL； </span></span><br><span class="line"><span class="comment">####第2行表示我们想要执行的命令； </span></span><br><span class="line"><span class="comment">###第3-6行是该命令所需的参数，命令和参数的详情具体可以参考API文档； </span></span><br><span class="line"><span class="comment">##第7行是唯一标识用户的账户的API Key； </span></span><br><span class="line"><span class="comment">#第8行是用来认证用户账户执行API命令权限的签名的哈希值</span></span><br></pre></td></tr></table></figure><h2 id="API请求的签名"><a href="#API请求的签名" class="headerlink" title="API请求的签名"></a>API请求的签名</h2><p>不管你是通过HTTP还是HTTPS的方式访问CloudStack API，都必须对请求进行签名从而让CloudStack能确认调用者已经被认证和授权执行该命令。在进行签名之前先确认你拥有API Key和管理员提供给你的账户的私钥。 </p><p>以上面的API请求为例子，每个API请求都包含以下几个部分：</p><ul><li><code>基本的URL：</code><a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a></li><li><code>API的路径：</code>处理请求的API Servlet的路径：/client/api?</li><li><code>命令字符串：</code>包括命令，命令的参数以及标志用户账户的API Key，需要注意的是，参数的键是不区分大小写的，而参数的值是区分大小写的</li><li><code>签名：</code>使用用户的私钥和HMAC SHA-1哈希算法生成的签名</li></ul><p><strong>生成签名的步骤：</strong></p><ol><li><p>命令字符串中的每个键值对<code>（以&amp;分隔开）</code>，URL对每个值进行编码从而使其能通过HTTP GET安全地发送</p></li><li><p>将命令字符串的字母全部<code>转换成小写</code>，并且对键值对按<code>字母顺序进行排序</code>，结果类似下面的形式： </p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">apikey=mivr6x7u6bn_sdahobpjnejpgest35exq-jb8cg20yi3yaxxcgpyuairmfi_ejtvwz0nukkjbpmy3y2bcikwfq</span><br><span class="line">&amp;<span class="built_in">command</span>=deployvirtualmachine</span><br><span class="line">&amp;diskofferingid=1</span><br><span class="line">&amp;serviceofferingid=1</span><br><span class="line">&amp;templateid=2</span><br><span class="line">&amp;zoneid=4</span><br></pre></td></tr></table></figure></li><li><p>将排序好的命令字符串和用户的私钥使用<code>HMAC SHA-1哈希算法</code>进行编码，在使用<code>Base64</code>将结果字节数组编码成<code>UTF-8</code>形式，最终得到的签名为：<code>Lxx1DM40AjcXU%2FcaiK8RAP0O1hU%3D</code></p></li></ol><h2 id="设置API调用失效时间"><a href="#设置API调用失效时间" class="headerlink" title="设置API调用失效时间"></a>设置API调用失效时间</h2><p>在不安全的通道如HTTP上，我们可以设置一个API调用逾期时间戳来防止重播攻击（replay attacks），服务器会追踪这个时间戳，并拒绝超过这个期限的后续的所有API调用。<br>在API请求中加入以下参数可实现这个特性：</p><ul><li>signatureVersion=3</li><li>expires=YYYY-MM-DDThh:mm:ssZ</li></ul><h2 id="限制API调用频率"><a href="#限制API调用频率" class="headerlink" title="限制API调用频率"></a>限制API调用频率</h2><p>避免对管理服务器的恶意攻击，防止性能下降以及对所有账户提供一致性，当API调用超过一定阈值后会向这些调用返回错误信息。调用者需要等待一段时间后重试一下。可以通过一下全局参数来设置API的调用频率限制：</p><ol><li>api.throttling.enabled：默认为false，即不限制API调用频率</li><li>api.throttling.interval ：以秒为单位</li><li>api.throttling.max：每个间隔周期接受的最大请求数</li><li>api.throttling.cachesize：存放API调用计数器的缓存，每个账户需要一个cache来存放该账户运行的API总数</li></ol><p>API调用频率限制的不足之处：</p><ul><li>存在多个管理服务器的时候，不同管理服务器的cache之间不是同步的，所以可能出现允许通过的请求数比设置的值要大的情况，最糟糕的情况下可能出现允许通过的请求数为：限制值*管理服务器数量</li><li>尽管如此，CloudStack还是可以有效地避免恶意攻击导致的服务拒绝</li></ul><h2 id="API响应"><a href="#API响应" class="headerlink" title="API响应"></a>API响应</h2><p>CloudStack支持两种响应格式：<code>XML和JSON</code>，默认的响应是XML，可以在请求URL中使用<code>&amp;response=json</code>来设置JSON格式的响应。<code>使用JSON格式时，如果一个响应的键没有值，则该键不会出现在响应中，而XML仍会返回一个空的元素。</code></p><h2 id="最大返回结果页"><a href="#最大返回结果页" class="headerlink" title="最大返回结果页"></a>最大返回结果页</h2><p>对于每个云，一个命令在一个页面中返回的结果数有一个默认的上限，以此来防止云服务器过载和防止DOS攻击。<br>每个云的默认上限值是不同的，通过全局参数default.page.size来配置。如果云上有许多用户运行了许多虚拟机的话，可以把这个值设置大一点，但要小心不要设置得太大了。</p><h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>如果在处理一个API请求的时候发生了错误，会返回特定格式的响应。每个错误信息响应包含一个错误代码和一个文本描述可能出错的原因。<br>如果用户的签名错误或没有权限导致请求被拒绝会返回一个HTTP 401错误</p><h2 id="异步命令"><a href="#异步命令" class="headerlink" title="异步命令"></a>异步命令</h2><p>异步命令可以隐式地执行那些耗时很长的任务，如创建一个快照。它和同步命令有以下几点不同：</p><ul><li>API引用以一个a来区分</li><li>提交后会马上返回一个任务ID</li><li>如果是创建资源的命令，在返回任务ID的同时还会返回资源ID</li></ul><p>使用异步命令的关键在于Job ID，它在命令被执行后马上返回。使用Job ID，通过queryAsyncJobResult命令我们可以周期性地检查任务的状态，这个命令返回3种可能的任务状态</p><ul><li>0-Job表示程序还在进行</li><li>1-Job表示成功地完成了</li><li>2-Job表示执行失败</li></ul><p>查询命令执行状态的命令：<code>command=queryAsyncJobResult&amp;jobId=1</code></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;来源：&lt;a href=&quot;https://blog.csdn.net/u012124304/article/details/76152234&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/u012124304/ar
-      
-    
-    </summary>
-    
-      <category term="CloudStack" scheme="/categories/CloudStack/"/>
-    
-    
-      <category term="云计算" scheme="/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
-    
-      <category term="api" scheme="/tags/api/"/>
-    
-      <category term="CloudStack" scheme="/tags/CloudStack/"/>
     
   </entry>
   
