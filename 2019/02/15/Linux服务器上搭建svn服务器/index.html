@@ -33,7 +33,7 @@
 <meta property="og:image" content="/img/passwd.png">
 <meta property="og:image" content="/img/authz.png">
 <meta property="og:image" content="/img/svn.png">
-<meta property="og:updated_time" content="2020-07-23T03:47:37.222Z">
+<meta property="og:updated_time" content="2020-07-23T03:51:51.647Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux服务器上搭建svn服务器">
 <meta name="twitter:description" content="搭建使用背景项目开发中需要版本控制，而我们经常使用的是在windows系统上搭建svn服务器，下面介绍在Linux系统（CentOS 7.3.1611）上搭建svn服务器。 使用yum安装svn使用yum安装svn，命令如下： 1yum -y install subversion 安装完成之后，验证svn安装是否成功 1svn help  若需查看svn安装位置，可以用以下命令 1rpm -ql">
@@ -168,7 +168,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#搭建使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">搭建使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用yum安装svn"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">使用yum安装svn</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#新建仓库目录"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">新建仓库目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建一个测试仓库"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">创建一个测试仓库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置SVN服务的配置文件svnserve-conf"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">配置SVN服务的配置文件svnserve.conf</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置访问的用户及密码"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">配置访问的用户及密码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置新用户的授权访问的文件"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">配置新用户的授权访问的文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#防火墙3690端口开启"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">防火墙3690端口开启</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动svn服务"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">启动svn服务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#windows系统拉取代码"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">windows系统拉取代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#迁移备份"><span class="post-toc-number">2.</span> <span class="post-toc-text">迁移备份</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#SVN备份方式对比分析"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">SVN备份方式对比分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优缺点分析："><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">优缺点分析：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#第一种"><span class="post-toc-number">2.1.1.0.1.</span> <span class="post-toc-text">第一种</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#第二种"><span class="post-toc-number">2.1.1.0.2.</span> <span class="post-toc-text">第二种</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#第三种"><span class="post-toc-number">2.1.1.0.3.</span> <span class="post-toc-text">第三种</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#svnadmin-hotcopy方法"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">svnadmin hotcopy方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#svnadmin-dump方式"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">svnadmin dump方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#svnsync方法"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">svnsync方法</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#搭建使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">搭建使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用yum安装svn"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">使用yum安装svn</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#新建仓库目录"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">新建仓库目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建一个测试仓库"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">创建一个测试仓库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置SVN服务的配置文件svnserve-conf"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">配置SVN服务的配置文件svnserve.conf</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置访问的用户及密码"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">配置访问的用户及密码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置新用户的授权访问的文件"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">配置新用户的授权访问的文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#防火墙3690端口开启"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">防火墙3690端口开启</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动svn服务"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">启动svn服务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#windows系统拉取代码"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">windows系统拉取代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#迁移备份"><span class="post-toc-number">2.</span> <span class="post-toc-text">迁移备份</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#SVN备份方式对比分析"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">SVN备份方式对比分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#优缺点分析and实现"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">优缺点分析and实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第一种"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">第一种</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第二种"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">第二种</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第三种"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">第三种</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -270,24 +270,24 @@
 <blockquote>
 <p>注意，svn备份不宜采用普通的文件拷贝方式（除非你备份的时候将库暂停），如copy、rsync命令。 曾经用rsync命令来做增量和全量备份，在季度备份检查审计中，发现备份出来的库大部分都不可用，因此最好是用svn本身提供的功能来进行备份。</p>
 </blockquote>
-<h3 id="优缺点分析："><a href="#优缺点分析：" class="headerlink" title="优缺点分析："></a>优缺点分析：</h3><h5 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h5><blockquote>
+<h2 id="优缺点分析and实现"><a href="#优缺点分析and实现" class="headerlink" title="优缺点分析and实现"></a>优缺点分析and实现</h2><h3 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h3><blockquote>
 <p>svnadmin dump是官方推荐的备份方式<br>优点是：比较灵活，可以全量备份也可以增量备份，并提供了版本恢复机制。<br>缺点是：如果版本比较大，如版本数增长到数万、数十万，那么dump的过程将非常慢；备份耗时，恢复更耗时；不利于快速进行灾难恢复。<br>个人建议在版本数比较小的情况下使用这种备份方式。</p>
 </blockquote>
-<h5 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h5><blockquote>
+<p>未测…</p>
+<h3 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h3><blockquote>
 <p>svnadmin hotcopy原设计目的估计不是用来备份的，只能进行全量拷贝，不能进行增量备份；<br>优点是：备份过程较快，灾难恢复也很快；如果备份机上已经搭建了svn服务，甚至不需要恢复，只需要进行简单配置即可切换到备份库上工作。<br>缺点是：比较耗费硬盘，需要有较大的硬盘支持（俺的备份机有1TB空间，呵呵）。</p>
 </blockquote>
-<h5 id="第三种"><a href="#第三种" class="headerlink" title="第三种"></a>第三种</h5><blockquote>
-<p>svnsync实际上是制作2个镜像库，当一个坏了的时候，可以迅速切换到另一个。不过，必须svn1.4版本以上才支持这个功能。<br>优点是：当制作成2个镜像库的时候起到双机实时备份的作用；<br>缺点是：当作为2个镜像库使用时，没办法做到“想完全抛弃今天的修改恢复到昨晚的样子”；而当作为普通备份机制每日备份时，操作又较前2种方法麻烦。</p>
-</blockquote>
-<h2 id="svnadmin-hotcopy方法"><a href="#svnadmin-hotcopy方法" class="headerlink" title="svnadmin hotcopy方法"></a>svnadmin hotcopy方法</h2><p><code>备份：</code></p>
+<p><code>备份：</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svnadmin hotcopy /opt/svn/sound-code/ /opt/svn/sound-code_bak --clean-logs</span><br></pre></td></tr></table></figure>
 <p>如果你传递–clean-logs选项，svnadmin会执行热拷贝操作，然后删除不用的Berkeley DB日志文件。 你可以在任何时候运行这个命令得到一个版本库的安全拷贝，不管其它进程是否使用这个版本库。</p>
 <p><code>还原：</code></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svnadmin hotcopy /opt/svn/sound-code_bak/ /opt/svn/sound-code/</span><br></pre></td></tr></table></figure>
 <p><strong>更换服务器怎么破？</strong></p>
 <p>将上面<code>备份</code>的文件拷贝到目标服务器 =&gt; 执行<code>还原</code>命令 =&gt; 在目标服务器<code>安装SVN</code>（参考<code>搭建使用</code>） </p>
-<h2 id="svnadmin-dump方式"><a href="#svnadmin-dump方式" class="headerlink" title="svnadmin dump方式"></a>svnadmin dump方式</h2><p>未测…</p>
-<h2 id="svnsync方法"><a href="#svnsync方法" class="headerlink" title="svnsync方法"></a>svnsync方法</h2><p>未测…</p>
+<h3 id="第三种"><a href="#第三种" class="headerlink" title="第三种"></a>第三种</h3><blockquote>
+<p>svnsync实际上是制作2个镜像库，当一个坏了的时候，可以迅速切换到另一个。不过，必须svn1.4版本以上才支持这个功能。<br>优点是：当制作成2个镜像库的时候起到双机实时备份的作用；<br>缺点是：当作为2个镜像库使用时，没办法做到“想完全抛弃今天的修改恢复到昨晚的样子”；而当作为普通备份机制每日备份时，操作又较前2种方法麻烦。</p>
+</blockquote>
+<p>未测…</p>
 
         </div>
 
@@ -296,7 +296,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-07-23T03:47:37.222Z" itemprop="dateUpdated">2020-07-23 11:47:37</time>
+    最后更新时间：<time datetime="2020-07-23T03:51:51.647Z" itemprop="dateUpdated">2020-07-23 11:51:51</time>
 </span><br>
 
 
