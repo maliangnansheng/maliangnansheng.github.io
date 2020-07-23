@@ -30,13 +30,13 @@
 <meta property="og:description" content="引用：centos7升级内核至最新 应用背景最近在接触docker，其对内核版本要求较高，就连目前使用的centos7.x默认内核版本为3.10.0-xxx，也是刚好满足其最低要求，故借此机会记录一下升级内核的操作步骤。 操作步骤小版本升级 查看当前和可升级版本 12345678yum list kernel# 以下是输出Installed Packages# 当前版本（有下划线标识）kernel">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="/img/kernel001.png">
-<meta property="og:image" content="/2020/07/22/CentOS7升级内核/img/kernel002.png">
-<meta property="og:image" content="/2020/07/22/CentOS7升级内核/img/kernel003.png">
-<meta property="og:image" content="/2020/07/22/CentOS7升级内核/img/kernel004.png">
-<meta property="og:image" content="/2020/07/22/CentOS7升级内核/img/kernel005.png">
+<meta property="og:image" content="/img/kernel002.png">
+<meta property="og:image" content="/img/kernel003.png">
+<meta property="og:image" content="/img/kernel004.png">
+<meta property="og:image" content="/img/kernel005.png">
 <meta property="og:image" content="/img/kernel006.png">
-<meta property="og:image" content="/2020/07/22/CentOS7升级内核/img/kernel007.png">
-<meta property="og:updated_time" content="2020-07-23T07:57:33.650Z">
+<meta property="og:image" content="/img/kernel007.png">
+<meta property="og:updated_time" content="2020-07-23T08:07:37.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS7升级内核">
 <meta name="twitter:description" content="引用：centos7升级内核至最新 应用背景最近在接触docker，其对内核版本要求较高，就连目前使用的centos7.x默认内核版本为3.10.0-xxx，也是刚好满足其最低要求，故借此机会记录一下升级内核的操作步骤。 操作步骤小版本升级 查看当前和可升级版本 12345678yum list kernel# 以下是输出Installed Packages# 当前版本（有下划线标识）kernel">
@@ -216,11 +216,11 @@
 </li>
 <li><p>升级安装ELRepo</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh \</span><br><span class="line">http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm</span><br></pre></td></tr></table></figure>
-<p><img src="img/kernel002.png" alt=""></p>
+<p><img src="/img/kernel002.png" alt=""></p>
 </li>
 <li><p>载入elrepo-kernel元数据</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum --disablerepo=\* --enablerepo=elrepo-kernel repolist</span><br></pre></td></tr></table></figure>
-<p><img src="img/kernel003.png" alt=""></p>
+<p><img src="/img/kernel003.png" alt=""></p>
 </li>
 <li><p>查看可用的rpm包</p>
 <p><strong>说明：</strong></p>
@@ -229,11 +229,11 @@
 <li><code>ml：</code>mainline，主线版本</li>
 </ul>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">yum --disablerepo=\* --enablerepo=elrepo-kernel list kernel*</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以下是输出</span></span><br><span class="line">Installed Packages</span><br><span class="line"><span class="comment"># 当前版本（有下划线标识）</span></span><br><span class="line">kernel.x86_64                       3.10.0-327.el7          @anaconda    </span><br><span class="line">kernel-tools.x86_64                 3.10.0-327.el7          @anaconda    </span><br><span class="line">kernel-tools-libs.x86_64            3.10.0-327.el7          @anaconda    </span><br><span class="line"></span><br><span class="line">Available Packages</span><br><span class="line"><span class="comment"># 安装目标版本</span></span><br><span class="line">kernel-lt.x86_64                    4.4.231-1.el7.elrepo    elrepo-kernel</span><br><span class="line">kernel<span class="_">-lt</span>-devel.x86_64              4.4.231-1.el7.elrepo    elrepo-kernel</span><br><span class="line">kernel<span class="_">-lt</span>-doc.noarch                4.4.231-1.el7.elrepo    elrepo-kernel</span><br><span class="line">kernel<span class="_">-lt</span>-headers.x86_64            4.4.231-1.el7.elrepo    elrepo-kernel</span><br><span class="line">kernel<span class="_">-lt</span>-tools.x86_64              4.4.231-1.el7.elrepo    elrepo-kernel</span><br><span class="line">kernel<span class="_">-lt</span>-tools-libs.x86_64         4.4.231-1.el7.elrepo    elrepo-kernel</span><br><span class="line">kernel<span class="_">-lt</span>-tools-libs-devel.x86_64   4.4.231-1.el7.elrepo    elrepo-kernel</span><br><span class="line">kernel-ml.x86_64                    5.7.10-1.el7.elrepo     elrepo-kernel</span><br><span class="line">kernel-ml-devel.x86_64              5.7.10-1.el7.elrepo     elrepo-kernel</span><br><span class="line">kernel-ml-doc.noarch                5.7.10-1.el7.elrepo     elrepo-kernel</span><br><span class="line">kernel-ml-headers.x86_64            5.7.10-1.el7.elrepo     elrepo-kernel</span><br><span class="line">kernel-ml-tools.x86_64              5.7.10-1.el7.elrepo     elrepo-kernel</span><br><span class="line">kernel-ml-tools-libs.x86_64         5.7.10-1.el7.elrepo     elrepo-kernel</span><br><span class="line">kernel-ml-tools-libs-devel.x86_64   5.7.10-1.el7.elrepo     elrepo-kernel</span><br></pre></td></tr></table></figure>
-<p><img src="img/kernel004.png" alt=""></p>
+<p><img src="/img/kernel004.png" alt=""></p>
 </li>
 <li><p>安装你选择的<code>目标版本</code>的kernel</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum --disablerepo=\* --enablerepo=elrepo-kernel install kernel-lt.x86_64 -y</span><br></pre></td></tr></table></figure>
-<p><img src="img/kernel005.png" alt=""></p>
+<p><img src="/img/kernel005.png" alt=""></p>
 </li>
 <li><p>删除旧版本工具包</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove kernel-tools.* -y</span><br></pre></td></tr></table></figure>
@@ -241,7 +241,7 @@
 </li>
 <li><p>安装新版本工具包</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum --disablerepo=\* --enablerepo=elrepo-kernel install kernel<span class="_">-lt</span>-tools.* \</span><br><span class="line">-y --skip-broken</span><br></pre></td></tr></table></figure>
-<p><img src="img/kernel007.png" alt=""></p>
+<p><img src="/img/kernel007.png" alt=""></p>
 </li>
 <li><p>查看内核插入顺</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">awk -F \<span class="string">' '</span><span class="variable">$1</span>==<span class="string">"menuentry "</span> &#123;<span class="built_in">print</span> i++ <span class="string">" : "</span> <span class="variable">$2</span>&#125;<span class="string">' /etc/grub2.cfg</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 以下是输出</span></span><br><span class="line"><span class="string">0 : CentOS Linux (4.4.231-1.el7.elrepo.x86_64) 7 (Core)</span></span><br><span class="line"><span class="string">1 : CentOS Linux (3.10.0-327.el7.x86_64) 7 (Core)</span></span><br><span class="line"><span class="string">2 : CentOS Linux (0-rescue-6f16a7323dcc49f69530668d8e1df48c) 7 (Core)</span></span><br></pre></td></tr></table></figure>
@@ -258,13 +258,10 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 0代表当前第一行，也就是上面的4.20.12版本那一行内容</span></span><br><span class="line">grub2-set-default 0</span><br><span class="line">grub2-editenv list</span><br><span class="line">saved_entry=0</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>重启并检查</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br><span class="line">uname -r</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br><span class="line">uname -r</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以下是输出（说明成功）</span></span><br><span class="line">4.4.231-1.el7.elrepo.x86_64</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<pre><code>成功截图...
 
-![](img/kernel008.png)
-</code></pre>
         </div>
 
         <blockquote class="post-copyright">
@@ -272,7 +269,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-07-23T07:57:33.650Z" itemprop="dateUpdated">2020-07-23 15:57:33</time>
+    最后更新时间：<time datetime="2020-07-23T08:07:37.135Z" itemprop="dateUpdated">2020-07-23 16:07:37</time>
 </span><br>
 
 
