@@ -46,7 +46,7 @@
 <meta property="og:image" content="/img/nssm006.png">
 <meta property="og:image" content="/img/nssm008.png">
 <meta property="og:image" content="/img/nssm009.png">
-<meta property="og:updated_time" content="2019-10-30T07:08:28.923Z">
+<meta property="og:updated_time" content="2020-07-27T11:28:08.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="系统开机启动脚本">
 <meta name="twitter:description" content="ubuntu 18.04.1 开机启动脚本ubuntu18.04不再使用initd管理系统，改用systemd。个人觉得systemd很难用，改变太大，跟之前的完全不同 为了像以前一样，在/etc/rc.local中设置开机启动程序，需要以下几步：  systemd默认读取/etc/systemd/system下的配置文件，该目录下的文件会链接/lib/systemd/system/下的文件。一般">
@@ -305,7 +305,9 @@
 <li><p>然后就完成啦，可以试试，开机的时候，会不会自启动。</p>
 </li>
 </ol>
-<h3 id="方案三：用nssm将frpc注册为Windows系统服务"><a href="#方案三：用nssm将frpc注册为Windows系统服务" class="headerlink" title="方案三：用nssm将frpc注册为Windows系统服务"></a>方案三：用nssm将frpc注册为Windows系统服务</h3><p><code>亲测可用，推荐优先使用该方案</code></p>
+<h3 id="方案三：用nssm将frpc注册为Windows系统服务"><a href="#方案三：用nssm将frpc注册为Windows系统服务" class="headerlink" title="方案三：用nssm将frpc注册为Windows系统服务"></a>方案三：用nssm将frpc注册为Windows系统服务</h3><p><strong>注：怎么删除Windows服务</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sc delete [服务名]</span><br><span class="line"><span class="comment"># 例如：sc delete frpc</span></span><br><span class="line"><span class="comment"># 权限不够使用管理员方式打开cmd</span></span><br></pre></td></tr></table></figure>
+<p><code>亲测可用，推荐优先使用该方案</code></p>
 <ol>
 <li><p>下载nssm</p>
 <p>官网：<a href="http://nssm.cc/download" target="_blank" rel="noopener">http://nssm.cc/download</a></p>
@@ -358,7 +360,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-10-30T07:08:28.923Z" itemprop="dateUpdated">2019-10-30 15:08:28</time>
+    最后更新时间：<time datetime="2020-07-27T11:28:08.050Z" itemprop="dateUpdated">2020-07-27 19:28:08</time>
 </span><br>
 
 
