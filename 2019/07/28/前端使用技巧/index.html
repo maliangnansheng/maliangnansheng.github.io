@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>前端使用技巧 | Nan&#39;s Blog | 弱者才言命，强者只言运！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="html,js,css">
+    <meta name="description" content="HTML+JS实现浏览器下载图片 引用：出处  a标签download属性如果使用a标签指向一个图片的话，你会发现点击链接时它会直接在浏览器中打开图片并显示 1&amp;lt;a href=&quot;http://www.baidu.com/img/baidu_jgylogo3.gif&quot; /&amp;gt; 但是这样的话，就存在一个问题，如果我想点击a链接直接下载图片到本地，该怎么实现呢？在查阅资料之后，发现a标签有一个">
+<meta name="keywords" content="html,js,css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端使用技巧">
+<meta property="og:url" content="/2019/07/28/前端使用技巧/index.html">
+<meta property="og:site_name" content="Nan&#39;s Blog">
+<meta property="og:description" content="HTML+JS实现浏览器下载图片 引用：出处  a标签download属性如果使用a标签指向一个图片的话，你会发现点击链接时它会直接在浏览器中打开图片并显示 1&amp;lt;a href=&quot;http://www.baidu.com/img/baidu_jgylogo3.gif&quot; /&amp;gt; 但是这样的话，就存在一个问题，如果我想点击a链接直接下载图片到本地，该怎么实现呢？在查阅资料之后，发现a标签有一个">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-28T06:56:06.619Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端使用技巧">
+<meta name="twitter:description" content="HTML+JS实现浏览器下载图片 引用：出处  a标签download属性如果使用a标签指向一个图片的话，你会发现点击链接时它会直接在浏览器中打开图片并显示 1&amp;lt;a href=&quot;http://www.baidu.com/img/baidu_jgylogo3.gif&quot; /&amp;gt; 但是这样的话，就存在一个问题，如果我想点击a链接直接下载图片到本地，该怎么实现呢？在查阅资料之后，发现a标签有一个">
+    
+        <link rel="alternate" type="application/atom+xml" title="Nan&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">马亮南生</h5>
+          <a href="mailto:maliangnansheng@gmail.com" title="maliangnansheng@gmail.com" class="mail">maliangnansheng@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/maliangnansheng" target="_blank">
+                <i class="icon icon-lg icon-github-alt"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.nanshengbbs.top" target="_blank">
+                <i class="icon icon-lg icon-adjust"></i>
+                论坛
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">前端使用技巧</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">前端使用技巧</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-28T06:46:47.000Z" itemprop="datePublished" class="page-time">
+  2019-07-28
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HTML-JS实现浏览器下载图片"><span class="post-toc-number">1.</span> <span class="post-toc-text">HTML+JS实现浏览器下载图片</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#a标签download属性"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">a标签download属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取返回的Blob"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">获取返回的Blob</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-前端使用技巧" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">前端使用技巧</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-28 14:46:47" datetime="2019-07-28T06:46:47.000Z" itemprop="datePublished">2019-07-28</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="HTML-JS实现浏览器下载图片"><a href="#HTML-JS实现浏览器下载图片" class="headerlink" title="HTML+JS实现浏览器下载图片"></a>HTML+JS实现浏览器下载图片</h2><blockquote>
+<p>引用：<a href="https://www.jianshu.com/p/dfe9c351b898" target="_blank" rel="noopener">出处</a></p>
+</blockquote>
+<h3 id="a标签download属性"><a href="#a标签download属性" class="headerlink" title="a标签download属性"></a>a标签download属性</h3><p>如果使用a标签指向一个图片的话，你会发现点击链接时它会直接在浏览器中打开图片并显示</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.baidu.com/img/baidu_jgylogo3.gif"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>但是这样的话，就存在一个问题，如果我想点击a链接直接下载图片到本地，该怎么实现呢？<br>在查阅资料之后，发现a标签有一个download的属性，添加了该属性，a标签将直接下载文件，并根据download属性的值设置下载文件的文件名，不为download属性设置值则文件将以默认文件名下载</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 文件名为默认名称 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"./baidu_jgylogo3.gif"</span> <span class="attr">download</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 文件名为baidu.gif --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"./baidu_jgylogo3.gif"</span> <span class="attr">download</span>=<span class="string">"baidu"</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 文件名为baidu.png --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"./baidu_jgylogo3.gif"</span> <span class="attr">download</span>=<span class="string">"baidu.png"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>但是这个办法有一个弊端，它<strong>仅支持同源链接下载，非同源链接还是会直接打开图片</strong>:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 同源链接能下载图片 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"./baidu_jgylogo3.gif"</span> <span class="attr">download</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 非同源链接download属性会无效，浏览器会直接打开图片 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.baidu.com/img/baidu_jgylogo3.gif"</span> <span class="attr">download</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="获取返回的Blob"><a href="#获取返回的Blob" class="headerlink" title="获取返回的Blob"></a>获取返回的Blob</h3><p>后来在<a href="http://danml.com/download.html" target="_blank" rel="noopener">download.js官网</a>中看到了如下的示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x=<span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    x.open(<span class="string">"GET"</span>, <span class="string">"http://danml.com/wave2.gif"</span>, <span class="literal">true</span>);</span><br><span class="line">    x.responseType = <span class="string">'blob'</span>;</span><br><span class="line">    x.onload=<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;download(x.response, <span class="string">"dlBinAjax.gif"</span>, <span class="string">"image/gif"</span> ); &#125;</span><br><span class="line">    x.send();</span><br></pre></td></tr></table></figure>
+<p>该示例的思路是，<code>通过XMLHttpRequest()请求图片链接，然后获取返回的Blob</code>。那结合上面下载图片的方法，就能下载图片了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x=<span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    x.open(<span class="string">"GET"</span>, <span class="string">"http://danml.com/wave2.gif"</span>, <span class="literal">true</span>);</span><br><span class="line">    x.responseType = <span class="string">'blob'</span>;</span><br><span class="line">    x.onload=<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> url = <span class="built_in">window</span>.URL.createObjectURL(x.response)</span><br><span class="line">        <span class="keyword">var</span> a = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</span><br><span class="line">        a.href = url</span><br><span class="line">        a.download = <span class="string">'下载后的文件名.gif'</span></span><br><span class="line">        a.click()</span><br><span class="line">    &#125;</span><br><span class="line">    x.send();</span><br></pre></td></tr></table></figure>
+<p>通过这种方法下载图片，gif图也能够显示正常了。<br><strong>注意：</strong>上述方法能够兼容大部分浏览器，但是<strong>不兼容IE浏览器(不支持download属性)</strong>。要兼容IE浏览器需要用其他办法。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-07-28T06:56:06.619Z" itemprop="dateUpdated">2020-07-28 14:56:06</time>
+</span><br>
+
+
+        
+        所谓博客，只是孤芳自赏罢了。 本文链接：<a href="/2019/07/28/前端使用技巧/" target="_blank" rel="external">/2019/07/28/前端使用技巧/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="马亮南生">
+            马亮南生
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/08/21/CentOS-7-x-安装MySQL-5-7/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">CentOS 7.x - 安装MySQL 5.7</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/07/11/Servlet登录拦截器/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Servlet登录拦截器</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "UWQMSUdPgeBkosxu47FddoUj-gzGzoHsz",
+            appKey: "ohoclLXY4S8LdLCGOtoIFtFx",
+            avatar: "monsterid",
+            placeholder: "有问题就问呗...",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请喝咖啡，谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>马亮南生 &copy; 2018 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '南生博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '南生博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+	
+	<!-- 页面点击小红心 -->
+	<script type="text/javascript" src="/js/love.js"></script>
+</body>
+</html>
