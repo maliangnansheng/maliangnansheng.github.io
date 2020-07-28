@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="Nan&#39;s Blog">
 <meta property="og:description" content="Docker自动启动容器Docker提供了重新启动策略 来控制容器在退出时或Docker重新启动时是否自动启动。重新启动策略可确保以正确的顺序启动链接的容器。Docker建议您使用重新启动策略，并避免使用进程管理器来启动容器。 重新启动策略--live-restore与dockerd 命令的标志不同。--live-restore尽管网络和用户输入中断，但使用允许您在Docker升级期间保持容器运行">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-28T10:12:42.670Z">
+<meta property="og:updated_time" content="2020-07-28T11:03:56.368Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker的使用姿势">
 <meta name="twitter:description" content="Docker自动启动容器Docker提供了重新启动策略 来控制容器在退出时或Docker重新启动时是否自动启动。重新启动策略可确保以正确的顺序启动链接的容器。Docker建议您使用重新启动策略，并避免使用进程管理器来启动容器。 重新启动策略--live-restore与dockerd 命令的标志不同。--live-restore尽管网络和用户输入中断，但使用允许您在Docker升级期间保持容器运行">
@@ -218,7 +218,7 @@
 </tbody>
 </table>
 <p>以下示例启动Redis容器并将其配置为始终重新启动，除非<code>手动停止</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -dit --restart always redis</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -dit --restart always redis</span><br></pre></td></tr></table></figure>
 <h3 id="重启政策详情"><a href="#重启政策详情" class="headerlink" title="重启政策详情"></a>重启政策详情</h3><p>使用重启策略时请记住以下几点：</p>
 <ul>
 <li>重启策略仅在容器成功启动后生效。在这种情况下，成功启动意味着容器启动至少10秒并且Docker已开始监视它。这可以防止根本不启动的容器进入重启循环。</li>
@@ -226,9 +226,7 @@
 <li>重新启动策略仅适用于<em>容器</em>。群组服务的重新启动策略配置不同。请参阅与服务重新启动相关的 标志。</li>
 </ul>
 <p><strong>如果run时没有添加restart 可以通过update命令追加</strong></p>
-<blockquote>
-<p>docker update –restart=always redis</p>
-</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker update --restart=always redis</span><br></pre></td></tr></table></figure>
 <ol>
 <li>先后台启动容器未加restart参数</li>
 <li>docker ps 查看了当前运行的容器</li>
@@ -246,7 +244,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-07-28T10:12:42.670Z" itemprop="dateUpdated">2020-07-28 18:12:42</time>
+    最后更新时间：<time datetime="2020-07-28T11:03:56.368Z" itemprop="dateUpdated">2020-07-28 19:03:56</time>
 </span><br>
 
 
