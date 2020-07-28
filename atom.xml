@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-07-23T08:07:37.135Z</updated>
+  <updated>2020-07-28T10:12:42.670Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker的使用姿势</title>
+    <link href="/2020/07/28/Docker%E7%9A%84%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/"/>
+    <id>/2020/07/28/Docker的使用姿势/</id>
+    <published>2020-07-28T10:03:14.000Z</published>
+    <updated>2020-07-28T10:12:42.670Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Docker自动启动容器"><a href="#Docker自动启动容器" class="headerlink" title="Docker自动启动容器"></a>Docker自动启动容器</h2><p>Docker提供了<a href="https://docs.docker.com/engine/reference/run/#restart-policies---restart" target="_blank" rel="noopener">重新启动策略</a> 来控制容器在退出时或Docker重新启动时是否自动启动。重新启动策略可确保以正确的顺序启动链接的容器。<code>Docker建议您使用重新启动策略，并避免使用进程管理器来启动容器。</code></p><p>重新启动策略<code>--live-restore</code>与<code>dockerd</code> 命令的标志不同。<code>--live-restore</code>尽管网络和用户输入中断，但使用允许您在Docker升级期间保持容器运行。</p><h3 id="使用重启策略"><a href="#使用重启策略" class="headerlink" title="使用重启策略"></a>使用重启策略</h3><p>要为容器配置重新启动策略，请在使用<code>docker run</code>命令时使用<code>--restart</code>标志。<code>--restart</code>标志的值可以是以下任何一种：</p><table><thead><tr><th>旗</th><th>描述</th></tr></thead><tbody><tr><td><code>no</code></td><td>不要自动重启容器。（默认）</td></tr><tr><td><code>on-failure</code></td><td>如果容器由于错误而退出，则重新启动容器，该错误表现为非零退出代码。</td></tr><tr><td><code>always</code></td><td>如果容器停止，请务必重启容器。如果手动停止，则仅在Docker守护程序重新启动或手动重新启动容器本身时才重新启动。（参见<a href="https://docs.docker.com/config/containers/start-containers-automatically/#restart-policy-details" target="_blank" rel="noopener">重启政策详情中</a>列出的第二个项目）</td></tr><tr><td><code>unless-stopped</code></td><td>类似于<code>always</code>，除了当容器停止（手动或其他方式）时，即使在Docker守护程序重新启动后也不会重新启动容器。</td></tr></tbody></table><p>以下示例启动Redis容器并将其配置为始终重新启动，除非<code>手动停止</code>。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -dit --restart always redis</span><br></pre></td></tr></table></figure><h3 id="重启政策详情"><a href="#重启政策详情" class="headerlink" title="重启政策详情"></a>重启政策详情</h3><p>使用重启策略时请记住以下几点：</p><ul><li>重启策略仅在容器成功启动后生效。在这种情况下，成功启动意味着容器启动至少10秒并且Docker已开始监视它。这可以防止根本不启动的容器进入重启循环。</li><li>如果手动停止容器，则会忽略其重新启动策略，直到Docker守护程序重新启动或手动重新启动容器。这是防止重启循环的另一种尝试。</li><li>重新启动策略仅适用于<em>容器</em>。群组服务的重新启动策略配置不同。请参阅与服务重新启动相关的 标志。</li></ul><p><strong>如果run时没有添加restart 可以通过update命令追加</strong></p><blockquote><p>docker update –restart=always redis</p></blockquote><ol><li>先后台启动容器未加restart参数</li><li>docker ps 查看了当前运行的容器</li><li>重启docker 服务</li><li>再次docker ps 查看当前运行的容器，发现容器并没有运行</li><li>利用 update 设置 restart=always</li><li>重启docker 服务</li><li>再次docker ps 查看当前运行的容器，此时发现已经自动启动容器</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Docker自动启动容器&quot;&gt;&lt;a href=&quot;#Docker自动启动容器&quot; class=&quot;headerlink&quot; title=&quot;Docker自动启动容器&quot;&gt;&lt;/a&gt;Docker自动启动容器&lt;/h2&gt;&lt;p&gt;Docker提供了&lt;a href=&quot;https://docs
+      
+    
+    </summary>
+    
+      <category term="Docker" scheme="/categories/Docker/"/>
+    
+    
+      <category term="镜像" scheme="/tags/%E9%95%9C%E5%83%8F/"/>
+    
+      <category term="容器" scheme="/tags/%E5%AE%B9%E5%99%A8/"/>
+    
+      <category term="仓库" scheme="/tags/%E4%BB%93%E5%BA%93/"/>
+    
+  </entry>
   
   <entry>
     <title>CentOS7升级内核</title>
@@ -528,36 +557,6 @@
       <category term="数据库" scheme="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
       <category term="MySQL" scheme="/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端使用技巧</title>
-    <link href="/2019/07/28/%E5%89%8D%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
-    <id>/2019/07/28/前端使用技巧/</id>
-    <published>2019-07-28T06:46:47.000Z</published>
-    <updated>2020-07-28T06:56:06.619Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="HTML-JS实现浏览器下载图片"><a href="#HTML-JS实现浏览器下载图片" class="headerlink" title="HTML+JS实现浏览器下载图片"></a>HTML+JS实现浏览器下载图片</h2><blockquote><p>引用：<a href="https://www.jianshu.com/p/dfe9c351b898" target="_blank" rel="noopener">出处</a></p></blockquote><h3 id="a标签download属性"><a href="#a标签download属性" class="headerlink" title="a标签download属性"></a>a标签download属性</h3><p>如果使用a标签指向一个图片的话，你会发现点击链接时它会直接在浏览器中打开图片并显示</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.baidu.com/img/baidu_jgylogo3.gif"</span> /&gt;</span></span><br></pre></td></tr></table></figure><p>但是这样的话，就存在一个问题，如果我想点击a链接直接下载图片到本地，该怎么实现呢？<br>在查阅资料之后，发现a标签有一个download的属性，添加了该属性，a标签将直接下载文件，并根据download属性的值设置下载文件的文件名，不为download属性设置值则文件将以默认文件名下载</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 文件名为默认名称 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"./baidu_jgylogo3.gif"</span> <span class="attr">download</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 文件名为baidu.gif --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"./baidu_jgylogo3.gif"</span> <span class="attr">download</span>=<span class="string">"baidu"</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 文件名为baidu.png --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"./baidu_jgylogo3.gif"</span> <span class="attr">download</span>=<span class="string">"baidu.png"</span> /&gt;</span></span><br></pre></td></tr></table></figure><p>但是这个办法有一个弊端，它<strong>仅支持同源链接下载，非同源链接还是会直接打开图片</strong>:</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 同源链接能下载图片 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"./baidu_jgylogo3.gif"</span> <span class="attr">download</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 非同源链接download属性会无效，浏览器会直接打开图片 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.baidu.com/img/baidu_jgylogo3.gif"</span> <span class="attr">download</span> /&gt;</span></span><br></pre></td></tr></table></figure><h3 id="获取返回的Blob"><a href="#获取返回的Blob" class="headerlink" title="获取返回的Blob"></a>获取返回的Blob</h3><p>后来在<a href="http://danml.com/download.html" target="_blank" rel="noopener">download.js官网</a>中看到了如下的示例：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x=<span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    x.open(<span class="string">"GET"</span>, <span class="string">"http://danml.com/wave2.gif"</span>, <span class="literal">true</span>);</span><br><span class="line">    x.responseType = <span class="string">'blob'</span>;</span><br><span class="line">    x.onload=<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;download(x.response, <span class="string">"dlBinAjax.gif"</span>, <span class="string">"image/gif"</span> ); &#125;</span><br><span class="line">    x.send();</span><br></pre></td></tr></table></figure><p>该示例的思路是，<code>通过XMLHttpRequest()请求图片链接，然后获取返回的Blob</code>。那结合上面下载图片的方法，就能下载图片了</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x=<span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    x.open(<span class="string">"GET"</span>, <span class="string">"http://danml.com/wave2.gif"</span>, <span class="literal">true</span>);</span><br><span class="line">    x.responseType = <span class="string">'blob'</span>;</span><br><span class="line">    x.onload=<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> url = <span class="built_in">window</span>.URL.createObjectURL(x.response)</span><br><span class="line">        <span class="keyword">var</span> a = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</span><br><span class="line">        a.href = url</span><br><span class="line">        a.download = <span class="string">'下载后的文件名.gif'</span></span><br><span class="line">        a.click()</span><br><span class="line">    &#125;</span><br><span class="line">    x.send();</span><br></pre></td></tr></table></figure><p>通过这种方法下载图片，gif图也能够显示正常了。<br><strong>注意：</strong>上述方法能够兼容大部分浏览器，但是<strong>不兼容IE浏览器(不支持download属性)</strong>。要兼容IE浏览器需要用其他办法。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;HTML-JS实现浏览器下载图片&quot;&gt;&lt;a href=&quot;#HTML-JS实现浏览器下载图片&quot; class=&quot;headerlink&quot; title=&quot;HTML+JS实现浏览器下载图片&quot;&gt;&lt;/a&gt;HTML+JS实现浏览器下载图片&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;引
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="html" scheme="/tags/html/"/>
-    
-      <category term="js" scheme="/tags/js/"/>
-    
-      <category term="css" scheme="/tags/css/"/>
     
   </entry>
   
