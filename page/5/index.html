@@ -475,10 +475,9 @@ PHP环境配置
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        ubuntu 18.04.1 开机启动脚本ubuntu18.04不再使用initd管理系统，改用systemd。个人觉得systemd很难用，改变太大，跟之前的完全不同
-为了像以前一样，在/etc/rc.local中设置开机启动程序，需要以下几步：
-
-systemd默认读取/etc/systemd/system下的配置文件，该目录下的文件会链接/lib/systemd/system/下的文件...
+        
+比如像启动Tomcat这种，前提是需要有jdk环境，所以配置自启动这类型的命令时必须要将其前置条件放在启动命令之前，例如：
+1234567891011121314151617&gt; # 编辑vim /etc/rc.local，配置如下：&gt; &gt; #########################准备jdk环境##########################&gt; expo...
     
 
         <a href="/2019/01/07/系统开机启动脚本/" class="post-more waves-effect waves-button">
