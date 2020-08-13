@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="/img/rsync001.png">
 <meta property="og:image" content="/img/rsync002.png">
-<meta property="og:updated_time" content="2020-07-17T08:42:44.925Z">
+<meta property="og:updated_time" content="2020-08-13T02:31:51.838Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据迁移">
 <meta name="twitter:description" content="cp 是在本机进行拷贝不能跨服务器   scp 是secure copy的简写，用于在Linux下进行远程拷贝文件的命令， scp传输是加密的，可能会稍微影响一下速度，当你服务器硬盘变为只读 read only system时，用scp可以帮你把文件移出来，另 外，scp还非常不占资源，不会提高多少系统负荷，在这一点上，rsync就远远不及它了，虽然 rsync比scp会快一点，但当小文件众多的">
@@ -166,7 +166,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#scp命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">scp命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rsync命令"><span class="post-toc-number">2.</span> <span class="post-toc-text">rsync命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rsync的参数说明"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">rsync的参数说明</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#无密码通过ssh执行rsync"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">无密码通过ssh执行rsync</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#需要密码"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">需要密码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#免密"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">免密</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#scp命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">scp命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rsync命令"><span class="post-toc-number">2.</span> <span class="post-toc-text">rsync命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rsync的参数说明"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">rsync的参数说明</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#无密码通过ssh执行rsync"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">无密码通过ssh执行rsync</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装rsync"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">安装rsync</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#需要密码"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">需要密码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#免密"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">免密</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -210,6 +210,8 @@
 <p><strong>–info=progress2</strong> 给出了一个很好的整体进度百分比（局部值）</p>
 </blockquote>
 <h3 id="无密码通过ssh执行rsync"><a href="#无密码通过ssh执行rsync" class="headerlink" title="无密码通过ssh执行rsync"></a>无密码通过ssh执行rsync</h3><p>默认情况下，在执行rsync命令时通常需要我们<code>输入密码</code>。但有时我们并不希望如此，那么如何实现无密码执行rsync呢？</p>
+<h4 id="安装rsync"><a href="#安装rsync" class="headerlink" title="安装rsync"></a>安装rsync</h4><p>每一台需要同步（交互的主机都需要安装）</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install rsync -y</span><br></pre></td></tr></table></figure>
 <h4 id="需要密码"><a href="#需要密码" class="headerlink" title="需要密码"></a>需要密码</h4><ol>
 <li><p>测试通过ssh可以执行rsync（需要密码）</p>
 <p>执行rsync，确保你帐户的密码在远程服务器上可以使用，并能够将文件复制到远程服务器。<br>例：将原服务器<code>文件/root/mm.sh</code>同步到远程目录<code>/usr/share/nginx/html</code>(服务器地址：<code>172.18.195.253</code>) ，执行此操作时，服务器会要求你输入密码</p>
@@ -243,7 +245,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-07-17T08:42:44.925Z" itemprop="dateUpdated">2020-07-17 16:42:44</time>
+    最后更新时间：<time datetime="2020-08-13T02:31:51.838Z" itemprop="dateUpdated">2020-08-13 10:31:51</time>
 </span><br>
 
 
