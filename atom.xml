@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-08-28T08:51:20.504Z</updated>
+  <updated>2020-11-03T09:25:23.662Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,87 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NVM 安装</title>
+    <link href="/2020/11/03/NVM%20%E5%AE%89%E8%A3%85/"/>
+    <id>/2020/11/03/NVM 安装/</id>
+    <published>2020-11-03T08:49:52.000Z</published>
+    <updated>2020-11-03T09:25:23.662Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="NVM介绍"><a href="#NVM介绍" class="headerlink" title="NVM介绍"></a>NVM介绍</h2><ul><li>node version manager（node版本管理工具）</li><li>通过将多个node 版本安装在指定路径，然后通过 nvm 命令切换时，就会切换我们环境变量中 node 命令指定的实际执行的软件路径。</li><li>使用场景：比如我们手上同时在做好几个项目，这些项目的需求都不太一样，导致了这些个项目需要依赖的nodejs版本也不同，这种情况下，<code>我们就可以通过nvm来切换nodejs的版本，而不需要频繁地下载/卸载不同版本的nodejs来满足当前项目的要求</code></li></ul><h2 id="Windows系统下的NVM安装"><a href="#Windows系统下的NVM安装" class="headerlink" title="Windows系统下的NVM安装"></a>Windows系统下的NVM安装</h2><h3 id="配置淘宝镜像"><a href="#配置淘宝镜像" class="headerlink" title="配置淘宝镜像"></a>配置淘宝镜像</h3><p>由于nvm默认的下载地址<a href="https://link.jianshu.com?t=http%3A%2F%2Fnodejs.org%2Fdist%2F" target="_blank" rel="noopener">http://nodejs.org/dist/</a>是外国外服务器，国内很慢可以使用淘宝的镜像</p><blockquote><p>node_mirror: <a href="https://link.jianshu.com?t=https%3A%2F%2Fnpm.taobao.org%2Fmirrors%2Fnode%2F" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/node/</a><br>npm_mirror: <a href="https://link.jianshu.com?t=https%3A%2F%2Fnpm.taobao.org%2Fmirrors%2Fnpm%2F" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/npm/</a></p></blockquote><p>打nvm的安装路径把上面的镜像地址复制到settings.txt中就OK了</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/nvm002.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/nvm003.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><ul><li><p>链接：<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fcoreybutler%2Fnvm-windows%2Freleases" target="_blank" rel="noopener">https://github.com/coreybutler/nvm-windows/releases</a></p><p><strong>可下载以下版本：</strong></p><ul><li>nvm-noinstall.zip：绿色免安装版，但使用时需要进行配置。</li><li>nvm-setup.zip：<code>安装版，推荐使用</code></li></ul></li></ul><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul><li><p>安装过程不做累述，<strong>遇坑警告：</strong>安装路径中尽量不要有<code>中文</code>、<code>空格</code></p></li><li><p>检查是否安装成功</p><p>打开CMD，输入<code>nvm</code>，安装成功则会如下图所示，它会显示出当前nvm版本以及nvm的命令：</p><p><img src="/img/nvm.png" alt=""></p></li></ul><h3 id="使用NVM"><a href="#使用NVM" class="headerlink" title="使用NVM"></a>使用NVM</h3><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">------------------ 显示版本列表 ----------------------------------------------</span><br><span class="line"><span class="comment"># 显示已安装的版本（同 nvm list installed）</span></span><br><span class="line">nvm list</span><br><span class="line"><span class="comment"># 显示已安装的版本</span></span><br><span class="line">nvm list installed</span><br><span class="line"><span class="comment"># 显示所有可以下载的版本</span></span><br><span class="line">nvm list available</span><br><span class="line"></span><br><span class="line">------------------ 安装指定版本nodejs ----------------------------------------</span><br><span class="line"><span class="comment"># 安装14.5.0版本node</span></span><br><span class="line">nvm install 14.5.0</span><br><span class="line"><span class="comment"># 安装最新版本node</span></span><br><span class="line">nvm install latest</span><br><span class="line"></span><br><span class="line">------------------ 使用指定版本nodejs【只有指定后 node -v 才生效】 ---------------</span><br><span class="line"><span class="comment"># 使用14.5.0版本node</span></span><br><span class="line">nvm use 14.5.0</span><br><span class="line"></span><br><span class="line">------------------ 卸载指定版本nodejs ----------------------------------------</span><br><span class="line"><span class="comment"># 卸载14.5.0版本node</span></span><br><span class="line">nvm uninstall 14.5.0</span><br></pre></td></tr></table></figure><p><strong>遇坑警告！</strong></p><blockquote><p>在运行<code>nvm install ...</code> 的时候，有可能会出现无权限安装的问题，如果遇到此问题，请 <code>以管理员身份运行</code> cmd</p></blockquote><h4 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示node是运行在32位还是64位系统上的</span></span><br><span class="line">nvm arch</span><br><span class="line"><span class="comment"># 开启nodejs版本管理</span></span><br><span class="line">nvm on</span><br><span class="line"><span class="comment"># 关闭nodejs版本管理</span></span><br><span class="line">nvm off</span><br><span class="line"><span class="comment"># 设置下载代理。不加可选参数url，显示当前代理。将url设置为none则移除代理</span></span><br><span class="line">nvm proxy [url]</span><br><span class="line"><span class="comment"># 设置node镜像。默认是https://nodejs.org/dist/。如果不写url，则使用默认url。设置后可至安装目录settings.txt文件查看，也可直接在该文件操作</span></span><br><span class="line">nvm node_mirror [url]</span><br><span class="line"><span class="comment"># 设置npm镜像。https://github.com/npm/cli/archive/。如果不写url，则使用默认url。设置后可至安装目录settings.txt文件查看，也可直接在该文件操作</span></span><br><span class="line">nvm npm_mirror [url]</span><br><span class="line"><span class="comment"># 设置存储不同版本node的目录。如果未设置，默认使用当前目录</span></span><br><span class="line">nvm root [path]</span><br><span class="line"><span class="comment"># 显示nvm版本。version可简化为v</span></span><br><span class="line">nvm version</span><br></pre></td></tr></table></figure><h3 id="NVM卸载"><a href="#NVM卸载" class="headerlink" title="NVM卸载"></a>NVM卸载</h3><ol><li>删除 E:\ProgramFiles\nvm（当初指定的 nvm 安装目录）文件夹</li><li>删除对应的环境变量<ul><li>删除变量名为 <code>NVM_HOME</code> 和 <code>NVM_SYMLINK</code> 的两个系统变量（and 用户变量）</li><li>删除系统变量（and 用户变量）path中的 <code>%NVM_HOME%;%NVM_SYMLINK%</code> 两个属性</li></ul></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;NVM介绍&quot;&gt;&lt;a href=&quot;#NVM介绍&quot; class=&quot;headerlink&quot; title=&quot;NVM介绍&quot;&gt;&lt;/a&gt;NVM介绍&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;node version manager（node版本管理工具）&lt;/li&gt;
+&lt;li&gt;通过将多个node 
+      
+    
+    </summary>
+    
+      <category term="nvm" scheme="/categories/nvm/"/>
+    
+    
+      <category term="nodejs" scheme="/tags/nodejs/"/>
+    
+      <category term="nvm" scheme="/tags/nvm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS安装RabbitMQ</title>
+    <link href="/2020/11/03/CentOS%E5%AE%89%E8%A3%85RabbitMQ/"/>
+    <id>/2020/11/03/CentOS安装RabbitMQ/</id>
+    <published>2020-11-03T06:56:51.000Z</published>
+    <updated>2020-11-03T07:03:19.239Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install build-essential openssl openssl-devel unixODBC unixODBC-devel make gcc gcc-c++ kernel-devel m4 ncurses-devel tk tc xz</span><br></pre></td></tr></table></figure><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget www.rabbitmq.com/releases/erlang/erlang-18.3-1.el7.centos.x86_64.rpm </span><br><span class="line">wget http://repo.iotti.biz/CentOS/7/x86_64/socat-1.7.3.2-5.el7.lux.x86_64.rpm </span><br><span class="line">wget www.rabbitmq.com/releases/rabbitmq-server/v3.6.5/rabbitmq-server-3.6.5-1.noarch.rpm</span><br></pre></td></tr></table></figure><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改hostname</span></span><br><span class="line">vi /etc/hostname</span><br><span class="line"><span class="comment"># 修改hosts(配置集群时可以配置多个节点)</span></span><br><span class="line">vi /etc/hosts</span><br><span class="line"><span class="comment"># 关闭防火墙</span></span><br><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure><h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装erlang</span></span><br><span class="line">rpm -ivh erlang-18.3-1.el7.centos.x86_64.rpm</span><br><span class="line"><span class="comment"># 安装socat</span></span><br><span class="line">rpm -ivh socat-1.7.3.2-5.el7.lux.x86_64.rpm</span><br><span class="line"><span class="comment"># 安装rabbitmq</span></span><br><span class="line">rpm -ivh rabbitmq-server-3.6.5-1.noarch.rpm</span><br></pre></td></tr></table></figure><h2 id="启用guest用户"><a href="#启用guest用户" class="headerlink" title="启用guest用户"></a>启用guest用户</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改配置文件rabbit.app</span></span><br><span class="line">vi /usr/lib/rabbitmq/lib/rabbitmq_server-3.6.5/ebin/rabbit.app </span><br><span class="line"><span class="comment"># 比如修改密码、配置等等，例如：loopback_users中的&lt;&lt;”guest”&gt;&gt;， 只保留guest</span></span><br></pre></td></tr></table></figure><h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动</span></span><br><span class="line">rabbitmq-server start &amp; </span><br><span class="line"><span class="comment"># 停止</span></span><br><span class="line">rabbitmqctl stop_app</span><br></pre></td></tr></table></figure><h2 id="管理插件"><a href="#管理插件" class="headerlink" title="管理插件"></a>管理插件</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看所有插件</span></span><br><span class="line">rabbitmq-plugins list</span><br><span class="line"><span class="comment"># 启动rabbitmq_management</span></span><br><span class="line">rabbitmq-plugins <span class="built_in">enable</span> rabbitmq_management</span><br></pre></td></tr></table></figure><h2 id="访问地址"><a href="#访问地址" class="headerlink" title="访问地址"></a>访问地址</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 访问rabbitmq管理后台</span></span><br><span class="line">http://&#123;你的linux服务器ip&#125;:15672</span><br><span class="line"><span class="comment"># 使用用户名guest，密码guest登录</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span cla
+      
+    
+    </summary>
+    
+      <category term="RabbitMQ" scheme="/categories/RabbitMQ/"/>
+    
+    
+      <category term="CentOS" scheme="/tags/CentOS/"/>
+    
+      <category term="RabbitMQ" scheme="/tags/RabbitMQ/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>值得推荐的vscode优秀插件</title>
+    <link href="/2020/09/09/%E5%80%BC%E5%BE%97%E6%8E%A8%E8%8D%90%E7%9A%84vscode%E4%BC%98%E7%A7%80%E6%8F%92%E4%BB%B6/"/>
+    <id>/2020/09/09/值得推荐的vscode优秀插件/</id>
+    <published>2020-09-09T03:02:15.000Z</published>
+    <updated>2020-09-10T03:48:44.973Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Live-Server"><a href="#Live-Server" class="headerlink" title="Live Server"></a>Live Server</h2><p>该插件允许我们在更改 IDE 中的代码时，自动重新加载 Web 页面</p><p>一旦安装 Live Server 后，<code>在html文件上右键单击</code>，可看到选项 Open with Live Server[Alt + L + Q]</p><h2 id="vscode-icons"><a href="#vscode-icons" class="headerlink" title="vscode-icons"></a>vscode-icons</h2><p>该插件会基于文件扩展名在 the tree view 中的文件名旁添加图标，让你更容易地识别文件</p><h2 id="Code-Runner"><a href="#Code-Runner" class="headerlink" title="Code Runner"></a>Code Runner</h2><p>可以在编辑器里直接运行代码，查看结果</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Live-Server&quot;&gt;&lt;a href=&quot;#Live-Server&quot; class=&quot;headerlink&quot; title=&quot;Live Server&quot;&gt;&lt;/a&gt;Live Server&lt;/h2&gt;&lt;p&gt;该插件允许我们在更改 IDE 中的代码时，自动重新加载 Web 页面
+      
+    
+    </summary>
+    
+      <category term="vscode" scheme="/categories/vscode/"/>
+    
+    
+      <category term="插件" scheme="/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>Redis的使用姿势</title>
@@ -408,9 +489,9 @@
       <category term="hexo" scheme="/categories/hexo/"/>
     
     
-      <category term="博客" scheme="/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
       <category term="CentOS" scheme="/tags/CentOS/"/>
+    
+      <category term="博客" scheme="/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
@@ -467,91 +548,6 @@
       <category term="安装配置" scheme="/tags/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/"/>
     
       <category term="WebMail" scheme="/tags/WebMail/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP入门技巧</title>
-    <link href="/2019/09/24/PHP%E5%85%A5%E9%97%A8%E6%8A%80%E5%B7%A7/"/>
-    <id>/2019/09/24/PHP入门技巧/</id>
-    <published>2019-09-24T02:01:34.000Z</published>
-    <updated>2019-09-24T03:37:39.305Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="集成环境"><a href="#集成环境" class="headerlink" title="集成环境"></a>集成环境</h2><h3 id="wamperserver"><a href="#wamperserver" class="headerlink" title="wamperserver"></a>wamperserver</h3><ol><li><p>下载好安装到本地指定目录，官网下载地址  <a href="http://www.wampserver.com" target="_blank" rel="noopener">http://www.wampserver.com</a></p><p><strong>安装成功的标志：</strong></p><ol><li><p>双击运行<code>wamperserver</code>图标后：</p><p><img src="/img/php003.png" alt=""></p></li><li><p>浏览器访问<code>localhost</code>出现以下页面表示安装成功</p><p><img src="/img/php004.png" alt=""></p></li></ol></li><li><p>根据自己实际的安装路径，<code>D:\maliangnansheng\wamp64\bin\apache\apache2.4.39\conf</code>，找到 apache  的配置文件 <code>httpd.conf</code></p><p><img src="/img/php001.png" alt=""></p><p>也可以<code>左键</code>图标直接打开文件修改：</p><p><img src="/img/php002.png" alt=""></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">打开文件httpd.conf文件</span><br><span class="line">搜索Include conf/extra/httpd-vhosts.conf</span><br><span class="line">去掉它前面的#，然后保存这个文件</span><br></pre></td></tr></table></figure></li><li><p>打开<code>D:\maliangnansheng\wamp64\bin\apache\apache2.4.39\conf\extra\httpd-vhosts.conf</code>文件，添加域名映射项，一般是在文件的最后添加上：</p><p><img src="/img/php005.png" alt=""></p><p>也可以<code>左键</code>图标直接打开文件修改：</p><p><img src="/img/php006.png" alt=""></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加的内容：</span></span><br><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">  ServerName wampserver-test.com</span><br><span class="line">  ServerAlias wampserver-test.com</span><br><span class="line">  DocumentRoot <span class="string">"<span class="variable">$&#123;INSTALL_DIR&#125;</span>/www"</span></span><br><span class="line">  &lt;Directory <span class="string">"<span class="variable">$&#123;INSTALL_DIR&#125;</span>/www/"</span>&gt;</span><br><span class="line">    Options +Indexes +Includes +FollowSymLinks +MultiViews</span><br><span class="line">    AllowOverride All</span><br><span class="line">    Require <span class="built_in">local</span></span><br><span class="line">  &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># ServerName wampserver-test.com为配置的虚拟站点</span></span><br><span class="line"><span class="comment"># DocumentRoot "$&#123;INSTALL_DIR&#125;/www"项目文件的路径</span></span><br></pre></td></tr></table></figure><p>视图如下：</p><p><img src="/img/php007.png" alt=""></p></li><li><p>找到本机的 host  文件（<code>C:\Windows\System32\drivers\etc</code> ），绑定到本地</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在文件最后添加域名：</span></span><br><span class="line">127.0.0.1 wampserver-test.com</span><br></pre></td></tr></table></figure></li><li><p>重启服务环境，就可以通过域名访问项目了</p><p><img src="/img/php008.png" alt=""></p></li></ol><h3 id="phpStudy"><a href="#phpStudy" class="headerlink" title="phpStudy"></a>phpStudy</h3><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/img/php009.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h2 id="php7-2-废弃each方法"><a href="#php7-2-废弃each方法" class="headerlink" title="php7.2 废弃each方法"></a>php7.2 废弃each方法</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$b = <span class="keyword">array</span>();</span><br><span class="line">each($b);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Deprecated:  The each() function is deprecated. This message will be suppressed on further calls</span></span><br></pre></td></tr></table></figure><p>each方法<code>替换</code>为</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun_adm_each</span><span class="params">(&amp;$array)</span></span>&#123;</span><br><span class="line">   $res = <span class="keyword">array</span>();</span><br><span class="line">   $key = key($array);</span><br><span class="line">   <span class="keyword">if</span>($key !== <span class="keyword">null</span>)&#123;</span><br><span class="line">       next($array); </span><br><span class="line">       $res[<span class="number">1</span>] = $res[<span class="string">'value'</span>] = $array[$key];</span><br><span class="line">       $res[<span class="number">0</span>] = $res[<span class="string">'key'</span>] = $key;</span><br><span class="line">   &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">       $res = <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> $res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;集成环境&quot;&gt;&lt;a href=&quot;#集成环境&quot; class=&quot;headerlink&quot; title=&quot;集成环境&quot;&gt;&lt;/a&gt;集成环境&lt;/h2&gt;&lt;h3 id=&quot;wamperserver&quot;&gt;&lt;a href=&quot;#wamperserver&quot; class=&quot;headerlink&quot; 
-      
-    
-    </summary>
-    
-      <category term="PHP" scheme="/categories/PHP/"/>
-    
-    
-      <category term="技巧" scheme="/tags/%E6%8A%80%E5%B7%A7/"/>
-    
-      <category term="集成环境" scheme="/tags/%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>EwoMail邮件服务器搭建and配置</title>
-    <link href="/2019/09/19/EwoMail%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAand%E9%85%8D%E7%BD%AE/"/>
-    <id>/2019/09/19/EwoMail邮件服务器搭建and配置/</id>
-    <published>2019-09-19T08:24:34.000Z</published>
-    <updated>2019-09-19T08:58:30.371Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>引用：</strong></p><ul><li><a href="http://doc.ewomail.com/docs/ewomail/install" target="_blank" rel="noopener">EwoMail 邮件服务器（开源版文档）</a></li><li><a href="https://www.laozuo.org/12465.html" target="_blank" rel="noopener">利用EwoMail开源软件自建邮件服务器 - 安装设置篇</a></li></ul><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>以下是无错的简单安装流程，如安装过程出错请参见《引用》地址</p><h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><p>安装前请检查端口，点击查看（<a href="http://doc.ewomail.com/docs/ewomail/not_server" target="_blank" rel="noopener">无法连接服务器</a>）</p><p>centos6/7系统，服务器需要干净环境，要求全新干净系统，不能安装在已有的apache,mysql的环境中。</p><p>最低配置要求<br>CPU：1核<br>内存：1G<br>硬盘：40G</p><p>由于新版本的杀毒软件占用的内存比较多，512M到2GB内存请参考<a href="http://doc.ewomail.com/docs/ewomail/reduce_memory" target="_blank" rel="noopener">降低内存占用</a></p><p>EwoMail安装后会把数据存放在 <code>/ewomail</code> 目录<br>建议你提前创建 <code>/ewomail</code> 目录，并且将硬盘容量挂载或分配到<code>/ewomail</code></p><h2 id="关闭selinux"><a href="#关闭selinux" class="headerlink" title="关闭selinux"></a>关闭selinux</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/selinux</span><br><span class="line"></span><br><span class="line"><span class="comment"># SELINUX=enforcing 改为 SELINUX=disabled</span></span><br></pre></td></tr></table></figure><h2 id="检查swap"><a href="#检查swap" class="headerlink" title="检查swap"></a>检查swap</h2><p>如果没启动swap，这会导致EwoMail的防病毒组件不能启动，所以在安装前先检查swap是否已经启动，如已启动可跳过该步骤。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看swap</span></span><br><span class="line">free -m</span><br></pre></td></tr></table></figure><p>如果swap位置<code>都显示是0</code>，那么系统还没创建swap</p><h3 id="创建swap分区（内存超过2G，可不配置）"><a href="#创建swap分区（内存超过2G，可不配置）" class="headerlink" title="创建swap分区（内存超过2G，可不配置）"></a>创建swap分区<code>（内存超过2G，可不配置）</code></h3><p>创建1G的swap，可以根据你的服务器配置来调整大小</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd <span class="keyword">if</span>=/dev/zero of=/mnt/swap bs=1M count=1024</span><br></pre></td></tr></table></figure><p>设置交换分区文件</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkswap /mnt/swap</span><br></pre></td></tr></table></figure><p>启动swap</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapon /mnt/swap</span><br></pre></td></tr></table></figure><p>设置开机时自启用 swap 分区</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 需要修改文件 /etc/fstab 中的 swap 行，在最后-添加以下内容</span></span><br><span class="line">/mnt/swap swap swap defaults 0 0</span><br></pre></td></tr></table></figure><h2 id="邮箱域名"><a href="#邮箱域名" class="headerlink" title="邮箱域名"></a>邮箱域名</h2><p>EwoMail本身是可以配置<code>多个域名</code>来收发邮件的，但在安装前需要<code>一个邮箱的主域名</code>。<br>本次教程例子使用的主域名是sunsheen.cn</p><h2 id="设置主机名（可不配置主机名）"><a href="#设置主机名（可不配置主机名）" class="headerlink" title="设置主机名（可不配置主机名）"></a>设置主机名<code>（可不配置主机名）</code></h2><p>EwoMail在安装后会默认使用域名前缀mail的主机名，例如mail.sunsheen.cn<br>将系统主机名改成mail.sunsheen.cn</p><p>查看当前主机名</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname -f</span><br></pre></td></tr></table></figure><p>输入命令：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostnamectl <span class="built_in">set</span>-hostname mail.sunsheen.cn</span><br></pre></td></tr></table></figure><p>修改文件 <code>/etc/hosts</code> , 添加 <code>mail.sunsheen.cn</code></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/hosts</span><br><span class="line"><span class="comment"># 在文件最后添加一下内容：</span></span><br><span class="line">172.18.11.11 mail.sunsheen.cn mail localhost</span><br></pre></td></tr></table></figure><h2 id="安装EwoMail邮件软件"><a href="#安装EwoMail邮件软件" class="headerlink" title="安装EwoMail邮件软件"></a>安装EwoMail邮件软件</h2><ol><li><p>代码获取渠道</p><blockquote><p>渠道：<a href="http://ewomail.com/list-11.html" target="_blank" rel="noopener">http://ewomail.com/list-11.html</a></p></blockquote><p>输入域名，然后生成安装地址，然后去执行安装</p><p><img src="/img/ewomail001.png" alt=""></p></li><li><p>安装成功</p><p><img src="/img/ewomail002.png" alt=""></p><p>现在就安装成功了，可以访问<code>邮箱管理后台</code>和<code>web邮件系统</code></p></li></ol><h2 id="EwoMail邮件系统登录管理"><a href="#EwoMail邮件系统登录管理" class="headerlink" title="EwoMail邮件系统登录管理"></a>EwoMail邮件系统登录管理</h2><blockquote><p>邮箱管理后台：<a href="http://IP:8010" target="_blank" rel="noopener">http://IP:8010</a> （默认账号admin，密码ewomail123）</p><p>web邮件系统：<a href="http://IP:8000" target="_blank" rel="noopener">http://IP:8000</a></p></blockquote><ul><li><p>web邮件系统-8000</p><p><img src="/img/ewomail003.png" alt=""></p></li><li><p>邮箱管理后台-8010</p><p><img src="/img/ewomail004.png" alt=""></p><p>登录后：</p><p><img src="/img/ewomail005.png" alt=""></p></li></ul><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;引用：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://doc.ewomail.com/docs/ewomail/install&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;EwoMail 邮件服务器（开源版文
-      
-    
-    </summary>
-    
-      <category term="EwoMail" scheme="/categories/EwoMail/"/>
-    
-    
-      <category term="邮件服务器" scheme="/tags/%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-      <category term="搭建" scheme="/tags/%E6%90%AD%E5%BB%BA/"/>
-    
-      <category term="配置" scheme="/tags/%E9%85%8D%E7%BD%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>yarn和npm的使用姿势</title>
-    <link href="/2019/09/08/yarn%E5%92%8Cnpm%E7%9A%84%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/"/>
-    <id>/2019/09/08/yarn和npm的使用姿势/</id>
-    <published>2019-09-08T03:26:40.000Z</published>
-    <updated>2020-09-08T03:59:20.256Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="yarn和npm常用命令"><a href="#yarn和npm常用命令" class="headerlink" title="yarn和npm常用命令"></a>yarn和npm常用命令</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意：使用yarn或yarn install安装全部依赖时是根据package.json里的"dependencies"字段来决定的</span></span><br><span class="line">npm install === yarn —— install安装是默认行为</span><br><span class="line"></span><br><span class="line"><span class="comment"># taco包立即被保存到 package.json 中</span></span><br><span class="line">npm install taco --save === yarn add taco</span><br><span class="line"></span><br><span class="line">npm uninstall taco --save === yarn remove taco</span><br><span class="line"></span><br><span class="line">npm install taco --save-dev === yarn add taco --dev</span><br><span class="line"></span><br><span class="line">npm update --save === yarn upgrade</span><br><span class="line"></span><br><span class="line">npm install taco@latest --save === yarn add taco</span><br><span class="line"></span><br><span class="line"><span class="comment"># 一如既往，请谨慎使用 global 标记</span></span><br><span class="line">npm install taco --global === yarn global add taco</span><br><span class="line"></span><br><span class="line">npm init === yarn init</span><br><span class="line"></span><br><span class="line">npm init --yes/-y === yarn init --yes/-y</span><br><span class="line"></span><br><span class="line">npm link === yarn link</span><br><span class="line"></span><br><span class="line">npm outdated === yarn outdated</span><br><span class="line"></span><br><span class="line">npm publish === yarn publish</span><br><span class="line"></span><br><span class="line">npm run === yarn run</span><br><span class="line"></span><br><span class="line">npm cache clean === yarn cache clean</span><br><span class="line"></span><br><span class="line">npm login === yarn login</span><br><span class="line"></span><br><span class="line">npm <span class="built_in">test</span> === yarn <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Yarn 独有的命令</span></span><br><span class="line">yarn licenses ls <span class="comment">#允许你检查依赖的许可信息</span></span><br><span class="line">yarn licenses generate <span class="comment">#自动创建依赖免责声明 license</span></span><br><span class="line">yarn why taco <span class="comment">#检查为什么会安装 taco，详细列出依赖它的其他包</span></span><br><span class="line">yarn why vuepress <span class="comment">#检查为什么会安装 vuepress，详细列出依赖它的其他包</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;yarn和npm常用命令&quot;&gt;&lt;a href=&quot;#yarn和npm常用命令&quot; class=&quot;headerlink&quot; title=&quot;yarn和npm常用命令&quot;&gt;&lt;/a&gt;yarn和npm常用命令&lt;/h2&gt;&lt;figure class=&quot;highlight sh&quot;&gt;&lt;tab
-      
-    
-    </summary>
-    
-      <category term="yarn和npm" scheme="/categories/yarn%E5%92%8Cnpm/"/>
-    
-    
-      <category term="yarn" scheme="/tags/yarn/"/>
-    
-      <category term="npm" scheme="/tags/npm/"/>
     
   </entry>
   
